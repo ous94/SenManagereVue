@@ -1,8 +1,7 @@
 <app-header></app-header>
 
 <div class="container" id="container">
-  <form>
-            <!-- information personnelle -->
+    <form [formGroup]="newEmployee" (ngSubmit)="onSubmitform()">            <!-- information personnelle -->
 
     <div class="panel panel-primary , col-lg-4">
         <!-- Default panel contents -->
@@ -13,47 +12,48 @@
 
             <div class="form-group"></div>
             <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom">
+            <input type="text" class="form-control" id="nom" formControlName="nom">
 
             <!-- for prenom -->            
 
             <div class="form-group"></div>
             <label for="prenom">Prenom</label>
-            <input type="text" class="form-control" id="prenom">
+            <input type="text" class="form-control" id="prenom" formControlName="prenom">
 
             <!-- for Adresse -->            
 
             <div class="form-group"></div>
             <label for="adresse">Adresse</label>
-            <input type="text" class="form-control" id="adresse">
+            <input type="text" class="form-control" id="adresse" formControlName="adresse">
 
             <!-- for Date-Naissance -->            
 
             <div class="form-group"></div>
             <label for="datenaissance">Date-Naissance</label>
-            <input type="date" class="form-control" id="datenaissance">
+            <input type="date" class="form-control" id="datenaissance" formControlName="datenaissance">
 
             <!-- for Telephone Mobile --> 
             <div class="form-group"></div>
             <label for="telephonemobile">Telephone Mobile <span class="glyphicon glyphicon-earphone"></span></label>
-            <input type="tel" class="form-control" id="telephonemobile">           
+            <input type="number" class="form-control" id="telephonemobile" formControlName="telephonemobile">           
 
       
             <!-- for telphone fixe -->    
 
             <div class="form-group"></div>
             <label for="telephonefixe">Telephone Fixe  <span class="glyphicon glyphicon-phone-alt"></span></label>
-            <input type="tel" class="form-control" id="telephonefixe">
+            <input type="number" class="form-control" id="telephonefixe" formControlName="telephonefixe">
 
             <!-- for email -->            
 
             <div class="form-group"></div>
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" formControlName="email">
 
         </div>
     
       </div>
+      <!-- information profesionnelle -->
       <div class="panel panel-primary , col-lg-4">
             <!-- information Professionnelle -->
             <div class="panel-heading">Information Professionnelle</div>
@@ -64,74 +64,126 @@
               <!-- for Nievau Etude -->            
             <div class="form-group"></div>
             <label for="niveau">Niveau d'Etude</label>
-            <select id="niveau" class="form-control"  >
-                <option value="NEANT">NEANT</option>
-                <option value="CFEE">CFEE</option>
-                <option value="BFEM">BFEM</option>
-                <option value="BAC">BAC</option>
-                <option value="LICENCE">LICENCE</option>
-                <option value="MASTER">MASTER</option>
+            <select id="niveau" class="form-control"  formControlName="niveau" >
+                <option  *ngFor="let nom of niveauetudeliste" value="{{nom}}">{{nom}}</option>
                 
             </select>
             <br/>
                  <!-- Multiple Radios (inline) -->
              <div class="form-group" >
-                 <label class="col-md-3 control-label" for="radios">Religion</label>
+                 <label class="col-md-3 control-label" for="radios" >Religion</label>
                     <div class="col-lg-13"> 
                  <label class="radio-inline ,col-md-3" for="radios-0">
-          <input type="radio" name="radios" id="radios-0" value="0" checked="checked">Musulmane</label>
+          <input type="radio" name="radios" id="radios-0" value="0" checked="checked" formControlName="radios">Musulmane</label>
                 <label class="radio-inline , col-md-4" for="radios-1">
-           <input type="radio" name="radios" id="radios-1" value="1">Chrétienne</label>
+           <input type="radio" name="radios" id="radios-1" value="1" formControlName="radios">Chrétienne</label>
     </div>
   </div>     
-            
+  
               <!-- for Nievau Etude -->            
               <div class="form-group"></div>
               <label for="situationMatrimoniale">Situation Matrimoniale</label>
-              <select id="situationMatrimoniale" class="form-control">
+              <select id="situationMatrimoniale" class="form-control" formControlName="situationMatrimoniale">
                   <option value="Celibataire">Celibataire</option>
                   <option value="Mariee">Mariee</option>
                   <option value="Divorcee">Divorcee</option>
                   <option value="Veuve">Veuve</option>
                   </select>
 
+                   <!-- for Competence --> 
+              <div class="form-group"></div>
+              <label for="competence">Competences:</label>   
+              <!-- <div class="col-lg-20">        
+                 <label class="checkbox-inline" *ngFor="let description of competenceListe"><input type="checkbox" value="">{{description}}</label>
+              </div> -->
+
+              <div class="col-xs-14">
+                  <div class="well" style="max-height: 200px;overflow: auto;">
+
+                    <div class="list-group checked-list-box">
+                        <label class="checkbox-inline" *ngFor="let description of competenceListe"><input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label>
+                        
+                    </div>
+                  </div>
+              </div>
+
                    <!-- for Ethenie -->            
               <div class="form-group"></div>
-              <label for="ethenie">Ethenie</label>
-              <select id="eth" class="form-control">
-                  <option value="Wolof">Wolof</option>
-                  <option value="Pheul">Pheul</option>
-                  <option value="Serere">Serere</option>
-                  <option value="Diola">diola</option>
+              <label for="ethenie">Ethnies:</label>
+              <select id="eth" class="form-control"  >
+                  <option  *ngFor="let nom of malisteethnies" value="{{nom}}">{{nom}}</option>
                   </select>
-                
-                
   
-              <!-- for Date-Naissance -->      
-              <!-- Form Name -->
-<legend>Form Name</legend>
-
-<!-- Select Multiple -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="selectmultiple">Select Multiple</label>
-  <div class="col-md-4">
-    <select id="selectmultiple" name="selectmultiple" class="form-control" multiple="multiple">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
-    </select>
-  </div>
-</div>
-      
-  
-              <!-- for name -->            
-  
+             
+                          <!-- langue parlé -->
               <div class="form-group"></div>
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email"> 
+              <label for="langue">Langues Parlée:</label> 
+              <div class="checkbox" *ngFor="let nom of langueliste">
+                  <label ><input formControlName="langue" type="checkbox" value="" class="form-control" >{{nom}}</label>
+                </div>
             
           </div>
       
         </div>
+
+        <!-- Suite information -->
+
+        <div class="panel panel-primary , col-lg-4">
+            <!-- information Professionnelle -->
+            <div class="panel-heading">Information Professionnelle</div>
+          <div class="panel-body">
+          
+          
+  
+              <!-- for identification -->            
+            <div class="form-group"></div>
+            <label for="identification">Type Identification </label>
+            <select id="identification" class="form-control"  formControlName="identification" >
+                <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
+                
+            </select>
+            <br/>
+            <div class="form-group"></div>
+            <label for="identite">Identification</label>
+            <input type="number" class="form-control" id="identite" formControlName="identite">
+                 <!-- Multiple Radios (inline) -->
+        
+          
+
+                   <!-- for Competence --> 
+              <!-- <div class="form-group"></div>
+              <label for="competence">Competences:</label>   
+            
+              <div class="col-xs-14">
+                  <div class="well" style="max-height: 300px;overflow: auto;">
+
+                    <div class="list-group checked-list-box">
+                        <label class="checkbox-inline" *ngFor="let description of competenceListe"><input type="checkbox" value="">{{description}}</label>
+                        
+                    </div>
+                  </div>
+              </div> -->
+
+                   <!-- for pays -->            
+              <div class="form-group"></div>
+              <label for="pays">Pays:</label>
+              <select id="eth" class="form-control"   formControlName="pays">
+                  <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
+                  </select>
+  
+             
+                          <!-- langue parlé -->
+             <!--  <div class="form-group"></div>
+              <label for="competence">Langues Parlée:</label> 
+              <div class="checkbox" *ngFor="let nom of langueliste">
+                  <label ><input type="checkbox" value="">{{nom}}</label>
+                </div> -->
+
+                
+          </div>
+      
+        </div>
+        <button type="submit " class="btn btn-primary" [disabled]="!newEmployee.valid">Enregistrer</button>
     </form>
 </div>
 
