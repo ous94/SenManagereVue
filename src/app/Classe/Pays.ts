@@ -1,7 +1,11 @@
+import {Client} from "./Client";
+import {Employee} from "./Employee";
+
 export class Pays {
     constructor() {}
     idpays: number;
     nom:string;
-    employees:any;
+    clients :Client[];
+    employees:Employee[];
 
 }

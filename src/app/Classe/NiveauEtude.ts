@@ -1,7 +1,10 @@
-export class NiveauEtude {
-    constructor() {}
-    idniveau: number;
-    nom:string;
-    employees:any;
+import { Employee } from "./Employee";
 
-}
+export class Niveauetude
+{
+    constructor(){}
+    idniveau :number;
+    niveau :String;
+    employees :Employee[];
+
+} 

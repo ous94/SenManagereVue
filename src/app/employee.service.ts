@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders,HttpClient } from '@angular/common/http';
 import { Ethenies } from './Ethenies';
 import { Observable } from 'rxjs';
-import { NiveauEtude } from './Classe/NiveauEtude';
+import { Niveauetude } from './Classe/Niveauetude';
 import { Langue } from './Classe/Langue';
 import { TypeIdentification } from './Classe/TypeIdentification';
 import { Pays } from './Classe/Pays';
@@ -35,7 +35,7 @@ export class EmployeeService {
    }
    // pour recuperer les  niveauEtudes
    getNiveauEtude(): Observable<any> {
-    return this.httpClient.get<NiveauEtude[]>(`${this.baseUrl}` + `/niveauetude/niveau`);
+    return this.httpClient.get<Niveauetude[]>(`${this.baseUrl}` + `/niveauetude/niveau`);
 
   }
   // pour recuperer les  langues parleess

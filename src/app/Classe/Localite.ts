@@ -1,11 +1,11 @@
 import { Client } from "./Client";
 import { Employee } from "./Employee";
 
-export class TypeIdentification {
+export class Localite
+{
     constructor() {}
-    ididentification: number;
-    nom:string;
+    idlocalite :number;
+    nom :String;
     clients :Client[];
-    employees:Employee[];
-
+    employees :Employee[];
 }
