@@ -29,20 +29,20 @@
             <!-- for Date-Naissance -->            
 
             <div class="form-group"></div>
-            <label for="datenaissance">Date-Naissance</label>
-            <input type="date" class="form-control" id="datenaissance" formControlName="datenaissance">
+            <label for="dateNaissance">Date-Naissance</label>
+            <input type="date" class="form-control" id="dateNaissance" formControlName="dateNaissance">
 
             <!-- for Telephone Mobile --> 
             <div class="form-group"></div>
-            <label for="telephonemobile">Telephone Mobile <span class="glyphicon glyphicon-earphone"></span></label>
-            <input type="number" class="form-control" id="telephonemobile" formControlName="telephonemobile">           
+            <label for="telephoneMobile">Telephone Mobile <span class="glyphicon glyphicon-earphone"></span></label>
+            <input type="number" class="form-control" id="telephoneMobile" formControlName="telephoneMobile">           
 
       
             <!-- for telphone fixe -->    
 
             <div class="form-group"></div>
-            <label for="telephonefixe">Telephone Fixe  <span class="glyphicon glyphicon-phone-alt"></span></label>
-            <input type="number" class="form-control" id="telephonefixe" formControlName="telephonefixe">
+            <label for="telephoneFixe">Telephone Fixe  <span class="glyphicon glyphicon-phone-alt"></span></label>
+            <input type="number" class="form-control" id="telephoneFixe" formControlName="telephoneFixe">
 
             <!-- for email -->            
 
@@ -63,24 +63,24 @@
   
               <!-- for Nievau Etude -->            
             <div class="form-group"></div>
-            <label for="niveau">Niveau d'Etude</label>
-            <select id="niveau" class="form-control"  formControlName="niveau" >
+            <label for="niveauetude">Niveau d'Etude</label>
+            <select id="niveauetude" class="form-control"  formControlName="niveauetude" >
                 <option  *ngFor="let nom of niveauetudeliste" value="{{nom}}">{{nom}}</option>
                 
             </select>
             <br/>
                  <!-- Multiple Radios (inline) -->
              <div class="form-group" >
-                 <label class="col-md-3 control-label" for="radios" >Religion</label>
+                 <label class="col-md-3 control-label" for="religion" >Religion</label>
                     <div class="col-lg-13"> 
                  <label class="radio-inline ,col-md-3" for="radios-0">
-          <input type="radio" name="radios" id="radios-0" value="0" checked="checked" formControlName="radios">Musulmane</label>
+          <input type="radio" name="religion" id="radios-0" value="Musulmane" checked="checked" formControlName="religion">Musulmane</label>
                 <label class="radio-inline , col-md-4" for="radios-1">
-           <input type="radio" name="radios" id="radios-1" value="1" formControlName="radios">Chrétienne</label>
+           <input type="radio" name="religion" id="radios-1" value="Chrétienne" formControlName="religion">Chrétienne</label>
     </div>
   </div>     
   
-              <!-- for Nievau Etude -->            
+              <!-- for situation matrimoniale  -->            
               <div class="form-group"></div>
               <label for="situationMatrimoniale">Situation Matrimoniale</label>
               <select id="situationMatrimoniale" class="form-control" formControlName="situationMatrimoniale">
@@ -92,7 +92,7 @@
 
                    <!-- for Competence --> 
               <div class="form-group"></div>
-              <label for="competence">Competences:</label>   
+              <label for="competences">Competences:</label>   
               <!-- <div class="col-lg-20">        
                  <label class="checkbox-inline" *ngFor="let description of competenceListe"><input type="checkbox" value="">{{description}}</label>
               </div> -->
@@ -109,18 +109,29 @@
 
                    <!-- for Ethenie -->            
               <div class="form-group"></div>
-              <label for="ethenie">Ethnies:</label>
-              <select id="eth" class="form-control"  >
+              <label for="ethnies">Ethnies:</label>
+              <select id="ethnies" class="form-control"  formControlName="ethnies" >
                   <option  *ngFor="let nom of malisteethnies" value="{{nom}}">{{nom}}</option>
                   </select>
   
              
                           <!-- langue parlé -->
-              <div class="form-group"></div>
-              <label for="langue">Langues Parlée:</label> 
+              <!-- <div class="form-group"></div>
+              <label for="langues">Langues Parlée:</label> 
               <div class="checkbox" *ngFor="let nom of langueliste">
-                  <label ><input formControlName="langue" type="checkbox" value="" class="form-control" >{{nom}}</label>
+                  <label ><input formControlName="langues" type="checkbox" value="" class="form-control" >{{nom}}</label>
+                </div> -->
+                <div class="col-12">
+                    <div><label for="langues" class="form-label" >Langues Parlées </label></div>
+                    <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls;let i = index;">
+                    <input class="form-check-input" [formControl]="control" (change)="getselectedlanguevalue()" 
+                    type="checkbox" id="langues{{i}}">
+                    <label class="form-check-label" for="langues{{i}} ">{{control}}</label>
                 </div>
+                <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez Cochez une reponse</small>
+
+                </div>
+                
             
           </div>
       
@@ -135,17 +146,17 @@
           
           
   
-              <!-- for identification -->            
+              <!-- for types identification -->            
             <div class="form-group"></div>
-            <label for="identification">Type Identification </label>
-            <select id="identification" class="form-control"  formControlName="identification" >
+            <label for="typeIdentification">Type Identification </label>
+            <select id="typeIdentification" class="form-control"  formControlName="typeIdentification" >
                 <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
                 
             </select>
             <br/>
             <div class="form-group"></div>
-            <label for="identite">Identification</label>
-            <input type="number" class="form-control" id="identite" formControlName="identite">
+            <label for="identification">Identification</label>
+            <input type="number" class="form-control" id="typeIdidentificationentification" formControlName="identification">
                  <!-- Multiple Radios (inline) -->
         
           
@@ -166,8 +177,8 @@
 
                    <!-- for pays -->            
               <div class="form-group"></div>
-              <label for="pays">Pays:</label>
-              <select id="eth" class="form-control"   formControlName="pays">
+              <label for="pay">Pays:</label>
+              <select id="pay" class="form-control"   formControlName="pay">
                   <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
                   </select>
   
