@@ -24,7 +24,18 @@ export class UploadFileService {
   getFiles(): Observable<String[]> {
     return this.http.get<String[]>(this.baseUrl+'/getallfiles')
   }
-  
+  getPhoto(nomFichier :String) :string
+  {
+    return this.baseUrl+"/files/"+nomFichier;
+  }
+
+  uploadPhoto(file:File) :Observable<String>
+  {
+    let formdata: FormData = new FormData();
+       formdata.append('file', file);
+       return this.http.post(this.baseUrl+'/post',formdata , {
+        reportProgress: true,
+        responseType: 'text'
+      });
+  }
 }
-
-
