@@ -116,6 +116,21 @@
   
              
                           <!-- langue parlé -->
+
+
+                          <!-- <div class="col-12">
+                            <div> <label for="" class="form-label"> Langues Parlée</label></div>
+                            <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls; let i = index;">
+                              <input class="form-check-input" [formControl]="control " type="checkbox" id="inlinecheck{{1}}" 
+                              (change)="getselectedlanguevalue() ">
+                              <label class="form-check-label" for="nlinecheck{{1}}">{{tableauLangue[i]}}</label>
+                            </div>
+                            <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez cocher </small>
+                        
+                          </div>
+ -->
+
+
               <!-- <div class="form-group"></div>
               <label for="langues">Langues Parlée:</label> 
               <div class="checkbox" *ngFor="let nom of langueliste">
@@ -123,20 +138,19 @@
                 </div> -->
                 <div class="col-12">
                     <div><label for="langues" class="form-label" >Langues Parlées </label></div>
-                    <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls;let i = index;">
-                    <input class="form-check-input" [formControl]="control" (change)="getselectedlanguevalue()" 
-                    type="checkbox" id="langues{{i}}">
-                    <label class="form-check-label" for="langues{{i}} ">{{control}}</label>
+                    <div class="form-check form-check-inline" *ngFor="let langues of langueArray.controls;let i = index;">
+                    <input class="form-check-input" formControlName="langues" [formControl]="langues" (change)="getselectedlanguevalue()" 
+                    type="checkbox" id="langues">
+                    <label class="form-check-label" for="langues ">{{tableauLangue[i]}}</label>
                 </div>
-                <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez Cochez une reponse</small>
+                <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez </small>
 
+                </div>
                 </div>
                 
             
           </div>
       
-        </div>
-
         <!-- Suite information -->
 
         <div class="panel panel-primary , col-lg-4">
@@ -156,7 +170,7 @@
             <br/>
             <div class="form-group"></div>
             <label for="identification">Identification</label>
-            <input type="number" class="form-control" id="typeIdidentificationentification" formControlName="identification">
+            <input type="number" class="form-control" id="identification" formControlName="identification"/>
                  <!-- Multiple Radios (inline) -->
         
           
@@ -200,3 +214,16 @@
 
 
 <!-- for age -->
+
+
+
+<!-- <div>
+        <div>
+         <label for="" class="form-label">langues</label>
+        </div>
+           <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls; let i=index;">
+              <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+              <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
+            </div>
+            <small id="erer" style="color: brown" *ngIf="favLangueErreur && checkLangueTouched()" class="form-text custom invalid-feedback">Veillez  cochez une Case</small>
+     </div> -->

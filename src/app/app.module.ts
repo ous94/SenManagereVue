@@ -11,12 +11,17 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DemandeEmployeeComponent } from './demande-employee/demande-employee.component';
+import { AdminComponent } from './admin/admin.component';
+import { MainComponent } from './main/main.component';
 
 const appRoutes: Routes = [
 
     {path:'',component:HomeComponent},
     {path:'employee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
+    {path:'admin',component:AdminComponent},
+    {path:'main',component:MainComponent},
+
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
       {path: '', component: HomeComponent}, {path: 'login', component: LoginComponent} ] }, */
@@ -39,7 +44,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    DemandeEmployeeComponent
+    DemandeEmployeeComponent,
+    AdminComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

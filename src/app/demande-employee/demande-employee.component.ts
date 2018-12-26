@@ -5,6 +5,7 @@ import { EmployeeService } from '../employee.service';
 import { Observable } from 'rxjs';
 import {FormGroup,FormBuilder,Validators, FormControl, FormArray   } from '@angular/forms';
 import { Employee } from '../Classe/Employee';
+import { Langue } from '../Classe/Langue';
 
 @Component({
   selector: 'app-demande-employee',
@@ -21,7 +22,12 @@ export class DemandeEmployeeComponent implements OnInit {
 
   //pour langue
   langueliste:any;
-  tablangueiste:Array<String> =[this.langueliste];
+  sel:Array<String> =[];
+
+  tableauLangue: Array<String> =['Wolof','française','Anglais','Chinois','pheul','Serere'];
+  //fruits: Array<String> = ['mango','crap','orange','Banana'];
+
+  //tablangueiste:Array<String> =[this.langueliste];
   selectedLanguevalues:Array<String> =[];
   //favfruitErreur: Boolean =true;
   erreurcheck:boolean= true;
@@ -84,6 +90,7 @@ export class DemandeEmployeeComponent implements OnInit {
     experiences :new FormControl(''),
     formations :new FormControl(''),
     langues :new FormControl(''),
+    
 
 
 
@@ -108,24 +115,24 @@ export class DemandeEmployeeComponent implements OnInit {
 
     this.newEmployee =this.fb.group({
 
-       langues:this.addfruitcontrole(),
- 
+      langues:this.addlanguecontrole(),
+
+      
  
      });
 
-     this.tablangueiste =[this.langueliste]
+
   }
 
 
-  addfruitcontrole()
+  addlanguecontrole()
   {
-    const arr = this.tablangueiste.map( element   =>{
+    const arr = this.tableauLangue.map( element   =>{
       return this.fb.control(false);
     });  
     return this.fb.array(arr);
 
   }
-  //recuperation de langues
   get langueArray()
   {
     return <FormArray>this.newEmployee.get('langues');
@@ -134,7 +141,7 @@ export class DemandeEmployeeComponent implements OnInit {
   onSubmitform()
   {
     console.log(this.newEmployee.value);
-     this.EmployeeService.addHero(this.newEmployee.value).
+     this.EmployeeService.addEmployee(this.newEmployee.value).
      subscribe(data => console.log(data), error => console.log(error));
     this.employee = new Employee();
   
@@ -145,11 +152,14 @@ export class DemandeEmployeeComponent implements OnInit {
     this.selectedLanguevalues=[]
     this.langueArray.controls.forEach((control , i) => {
         if (control.value) {
-        this.selectedLanguevalues.push(this.langueliste[i]); 
+        this.selectedLanguevalues.push(this.tableauLangue[i]); 
+       // this.Langues=this.selectedLanguevalues;
 
       }
     });
      console.log(this.selectedLanguevalues)
+
+     
      this.erreurcheck = this.selectedLanguevalues.length >0 ? false : true; 
   }
 
@@ -177,6 +187,7 @@ export class DemandeEmployeeComponent implements OnInit {
   
         ()=>{console.log('errer chargement des donnés')}
         );
+        console.log(this.langueliste);
 
         //mise a jour  Competences
        this.EmployeeService.getCompetence().subscribe(

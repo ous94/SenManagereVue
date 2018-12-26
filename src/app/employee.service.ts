@@ -40,7 +40,7 @@ export class EmployeeService {
   }
   // pour recuperer les  langues parleess
   getLangue(): Observable<any> {
-    return this.httpClient.get<Langue[]>(`${this.baseUrl}` + `/langue/nom`); 
+    return this.httpClient.get<Langue[]>('http://localhost:8000/api/langues'); 
 
   }
 
@@ -60,8 +60,13 @@ export class EmployeeService {
 
   }
  //methode pour ajouter un customer
- addHero (employee: Object): Observable<Object> {
-  return this.httpClient.post(`${this.baseUrl}` + `/employes/create`, employee);
+ addEmployee (employe: Object): Observable<Object> {
+  return this.httpClient.post(`${this.baseUrl}` + `/employes/create`, employe);
+}
+ // pour recuperer les  Localite
+ getLocalite(): Observable<any> {
+  return this.httpClient.get<TypeIdentification[]>(`${this.baseUrl}` + `/localites/nom`); 
+
 }
 
 
