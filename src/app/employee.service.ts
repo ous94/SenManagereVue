@@ -6,6 +6,7 @@ import { Niveauetude } from './Classe/Niveauetude';
 import { Langue } from './Classe/Langue';
 import { TypeIdentification } from './Classe/TypeIdentification';
 import { Pays } from './Classe/Pays';
+import { Employee } from './Classe/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class EmployeeService {
   headers:HttpHeaders=new HttpHeaders({'Content-Type': 'application/json'});
   private baseUrl: string = 'http://localhost:8000/api';
   //private baseurleditte: string = 'http://localhost:4201/api/custumeredit';
+  private baseUrl2: string = 'http://localhost:8000/api/employes';
 
 
 
@@ -59,15 +61,28 @@ export class EmployeeService {
     return this.httpClient.get<Pays[]>(`${this.baseUrl}` + `/pays/nom`); 
 
   }
+  //get £Paysbyno
+  getpaysbyNom(nom:String): Observable<Pays> {
+    return this.httpClient.get<Pays>(`${this.baseUrl}` + `/pays/nompays/${nom}`); 
+
+  }
+
  //methode pour ajouter un customer
- addEmployee (employe: Object): Observable<Object> {
-  return this.httpClient.post(`${this.baseUrl}` + `/employes/create`, employe);
+ addEmployee (employe: Employee): Observable<Employee> {
+  return this.httpClient.post<Employee>(`${this.baseUrl}` + `/employes/create`, employe);
 }
+
+//
+addEmployer2(employe: Object): Observable<Object> {
+return this.httpClient.post(`${this.baseUrl2}` + `/create`, employe);
+}
+
  // pour recuperer les  Localite
  getLocalite(): Observable<any> {
   return this.httpClient.get<TypeIdentification[]>(`${this.baseUrl}` + `/localites/nom`); 
 
 }
+
 
 
 

@@ -4,10 +4,17 @@ import { element } from '@angular/core/src/render3';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { Employee } from '../Classe/Employee';
+import { Pays } from '../Classe/Pays';
+import { TypeIdentification } from '../Classe/TypeIdentification';
+import { Localite } from '../Classe/Localite';
+import { Ethnies } from '../Classe/Ethnies';
+import { Niveauetude } from '../Classe/Niveauetude';
+import { Competence } from '../Classe/Competence';
+import { Langue } from '../Classe/Langue';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
+  templateUrl: './admin.component.html',       
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
@@ -28,7 +35,10 @@ export class AdminComponent implements OnInit {
   identificationListe:any;
   paysliste:any;
   localiteListe:any;
-  employee : Employee = new Employee();
+  employee1 : Employee = new Employee();
+  employee2 : Employee = new Employee();
+
+
 
   nestedForm= new FormGroup({
     idemploye:new FormControl(''),
@@ -339,13 +349,86 @@ submithandle()
    const newItemlangu =this.selectedLanguevalues;
    const newitemCompetence=this.selectedCompetenceevalues;
    
+   //this.employee = new Employee();
+   this.employee1= this.nestedForm.value;
+   this.employee2= this.nestedForm.value;
+
+   //recuperation idEmploye
+   this.employee1.idemploye = this.employee1.telephoneMobile+2018;
+   //recuperation competences
+   //this.employee2.competences = this.selectedCompetenceevalues;
+   //recuperation langue
+   this.employee1.langues = this.selectedLanguevalues;
+
+   let pays =new Pays();
+   pays.nom=this.pay.value;
+   this.employee1.pay=pays;
+
+   let typeID=new TypeIdentification();
+   typeID.nom=this.typeidentification.value;
+   this.employee1.typeIdentification=typeID;
+
+   let loc=new Localite();
+   loc.nom=this.localite.value;
+   this.employee1.localite=loc;
+
+
+   let ethni=new Ethnies();
+   ethni.nom=this.ethnies.value;
+   this.employee1.ethny=ethni;
+
+  let niveauEt= new Niveauetude();
+  niveauEt.niveau=this.niveauetude.value;
+  this.employee1.niveauetude=niveauEt;
+
+this.employee1.competences=[];
+  for(let i:number=0;i<this.selectedCompetenceevalues.length;i++)
+  {
+    let comp=new Competence();
+    comp.description=this.selectedCompetenceevalues[i];
+    console.log(comp);
+    this.employee1.competences[i]=comp;
+  }
+
+  this.employee1.langues=[];
+  for(let i:number=0;i<this.selectedLanguevalues.length;i++)
+  {
+    let langue=new Langue();
+    langue.nom=this.selectedLanguevalues[i];
+    console.log(langue);
+    this.employee1.langues[i]=langue;
+  }
   
-    console.log({...this.nestedForm.value, newItemlangu,newitemCompetence});
+
+   
+
+   //recuperation pays
+   console.log(this.employee1);
+  this.EmployeeService.addEmployer2(this.employee1).
+  subscribe(data => console.log(data), 
+  error => console.log(error));
+
+
+
+
+  // this.EmployeeService.getpaysbyNom("mali");
+   //this.employee2. = this.employee1.;``
+   //console.log(this.employee2.pay);
+   
+   
+
+
+
+
+
+  // console.log(this.employee1.pay);
+   
+    //console.log({...this.nestedForm.value, newItemlangu,newitemCompetence});
  
   //console.log(this.nestedForm.value);
-  this.EmployeeService.addEmployee(this.nestedForm.value).
-  subscribe(data => console.log(data), error => console.log(error));
-  this.employee = new Employee();
+  //this.EmployeeService.addEmployee(this.nestedForm.value).
+  //subscribe(data => console.log(data), error => console.log(error));
+ 
 
 
 

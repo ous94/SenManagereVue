@@ -12,7 +12,6 @@ import {Experience} from "./Experience";
 import { Niveauetude } from "./Niveauetude";
 
 export class Employee {
-  monEmploy: () => void;
     constructor() {}
     idemploye:number;
     adresse :String;
@@ -27,7 +26,7 @@ export class Employee {
     situationMatrimoniale :String
     telephoneFixe :number;
     telephoneMobile :number;
-    competences :Array<String>[];
+    competences :Competence[];
     demandes :Demande[];
     disponibilites :Disponibilite[];
     documents :Document[];
@@ -35,7 +34,7 @@ export class Employee {
     pay :Pays
     typeIdentification :TypeIdentification;
     niveauetude :Niveauetude;
-    ethnies :Ethnies
+    ethny :Ethnies
     experiences :Experience[];
     formations :Formation[];
     langues :Langue[];
