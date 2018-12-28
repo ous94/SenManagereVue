@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { DemandeEmployeeComponent } from './demande-employee/demande-employee.component';
 import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 const appRoutes: Routes = [
 
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
     {path:'main',component:MainComponent},
+    {path:'log',component:ConnexionComponent},
 
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DemandeEmployeeComponent,
     AdminComponent,
-    MainComponent
+    MainComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
