@@ -13,6 +13,6 @@ export class NiveauEtudeService {
 
   getNiveauEtudeByNiveau(niveau :String) :Observable<any>
   {
-    return this.http.get(this.baseUrl+"/nniveauEtudes/niveau"+niveau);
+    return this.http.get(this.baseUrl+"/nniveauEtudes/niveau/"+niveau);
   }
 }

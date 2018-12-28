@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs'
 import { FormGroup, FormBuilder, Validators, FormArray,FormControl } from '@angular/forms';
-import { element } from '@angular/core/src/render3';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { Employee } from '../Classe/Employee';
@@ -11,6 +11,14 @@ import { Ethnies } from '../Classe/Ethnies';
 import { Niveauetude } from '../Classe/Niveauetude';
 import { Competence } from '../Classe/Competence';
 import { Langue } from '../Classe/Langue';
+import {CompetenceService} from '../service/competence.service';
+import {EthniesService} from '../service/ethnies.service';
+import {LangueService} from '../service/langue.service';
+import {LocaliteService} from '../service/localite.service';
+import {NiveauEtudeService} from '../service/niveau-etude.service';
+import {PaysService} from '../service/pays.service';
+import {TypeIdentificationService} from '../service/type-identification.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -37,8 +45,6 @@ export class AdminComponent implements OnInit {
   localiteListe:any;
   employee1 : Employee = new Employee();
   employee2 : Employee = new Employee();
-
-
 
   nestedForm= new FormGroup({
     idemploye:new FormControl(''),
@@ -71,12 +77,8 @@ export class AdminComponent implements OnInit {
 
 
   });
-
-
-
-
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder) {
-
+  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService) {
+   
     setTimeout(() => {
       this.getdataEtude();
       this.getdatapays();
@@ -358,55 +360,92 @@ submithandle()
    //recuperation competences
    //this.employee2.competences = this.selectedCompetenceevalues;
    //recuperation langue
-   this.employee1.langues = this.selectedLanguevalues;
+   //this.employee1.langues = this.selectedLanguevalues;
 
-   let pays =new Pays();
-   pays.nom=this.pay.value;
-   this.employee1.pay=pays;
+   //let pays =new Pays();
+   //pays.nom=this.pay.value;
+   //this.employee1.pay=pays;
+   this.paysService.getPaysByNom(this.pay.value).subscribe(
+     (data)=>{this.employee1.pay=data;},
+     (error)=> {console.log("erreur");}
+   );
+   //this.paysEmploye=this.paysService.getPaysByNom(this.pay.value);
+   //console.log(this.paysService.getPaysByNom(this.pay.value));
+   //this.employee1.pay=this.paysEmploye;
 
-   let typeID=new TypeIdentification();
-   typeID.nom=this.typeidentification.value;
-   this.employee1.typeIdentification=typeID;
+   //let typeID=new TypeIdentification();
+   //typeID.nom=this.typeidentification.value;
+   //this.employee1.typeIdentification=typeID;
+   this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
+     (data) =>{this.employee1.typeIdentification=data;},
+     (error) =>{console.log("erreur sur le TypeIdentification");}
+   );
+   //console.log(this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value));
+   //this.employee1.typeIdentification=this.typeIdentificationEmploye;
 
-   let loc=new Localite();
-   loc.nom=this.localite.value;
-   this.employee1.localite=loc;
+   //let loc=new Localite();
+   //loc.nom=this.localite.value;
+   this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+     (data)=>{this.employee1.localite=data},
+     (error) =>{console.log("Erreur sur la localite");}
+   );
+   //console.log(this.localiteService.getLocaliteByNom(this.localite.value));
+   //this.employee1.localite=this.localiteEmploye
 
 
-   let ethni=new Ethnies();
-   ethni.nom=this.ethnies.value;
-   this.employee1.ethny=ethni;
+   //let ethni=new Ethnies();
+   //ethni.nom=this.ethnies.value;
+   //this.employee1.ethny=ethni;
+   this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
+     (data)=>{this.employee1.ethny=data;},
+     (error) =>{console.log("Erreur sur l ethnies");}
+   );
+   //console.log(this.ethniesService.getEthniesByNom(this.ethnies.value));
+   //this.employee1.ethny=this.ethniesEmploye;
 
-  let niveauEt= new Niveauetude();
-  niveauEt.niveau=this.niveauetude.value;
-  this.employee1.niveauetude=niveauEt;
+  //let niveauEt= new Niveauetude();
+  //niveauEt.niveau=this.niveauetude.value;
+  //this.employee1.niveauetude=niveauEt;
+  this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
+    (data) =>{this.employee1.niveauetude=data;},
+    (error)=>{console.log("Erreur sur le niveauEtude");}
+  );
+  //console.log(this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value));
+  //this.employee1.niveauetude=this.niveauEtudeEmploye
 
+//this.employee1.competences=[];
 this.employee1.competences=[];
   for(let i:number=0;i<this.selectedCompetenceevalues.length;i++)
   {
-    let comp=new Competence();
-    comp.description=this.selectedCompetenceevalues[i];
-    console.log(comp);
-    this.employee1.competences[i]=comp;
+     this.competenceService.getCompetenceByDescription(this.selectedCompetenceevalues[i]).subscribe(
+       (data) =>{this.employee1.competences[i]=data;}
+     );
   }
+  //this.employee1.competences=this.comptenceEmployee;
 
+  //this.employee1.langues=[];
   this.employee1.langues=[];
   for(let i:number=0;i<this.selectedLanguevalues.length;i++)
   {
-    let langue=new Langue();
-    langue.nom=this.selectedLanguevalues[i];
-    console.log(langue);
-    this.employee1.langues[i]=langue;
+     //let langue=new Langue();
+     //langue.nom=this.selectedLanguevalues[i];
+     //console.log(langue);
+     //this.employee1.langues[i]=langue;
+     this.langueService.getLangueByNom(this.selectedLanguevalues[i]).subscribe(
+       (data) =>{this.employee1.langues[i]=data;}
+     );
   }
+  //console.log(this.langueEmploye);
+  //this.employee1.langues=this.langueEmploye;
   
 
    
 
    //recuperation pays
    console.log(this.employee1);
-  this.EmployeeService.addEmployer2(this.employee1).
-  subscribe(data => console.log(data), 
-  error => console.log(error));
+  //this.EmployeeService.addEmployer2(this.employee1).
+  //subscribe(data => console.log(data), 
+  //error => console.log(error));
 
 
 
