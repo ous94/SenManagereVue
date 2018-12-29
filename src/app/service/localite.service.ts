@@ -12,6 +12,6 @@ export class LocaliteService {
 
   getLocaliteByNom(nom :String) :Observable<any>
   {
-    return this.http.get(this.baseUrl+"/langue/nom/"+nom);
+    return this.http.get(this.baseUrl+"/llocalite/nom/"+nom);
   }
 }

@@ -5,7 +5,7 @@ export class Localite
 {
     constructor() {}
     idlocalite :number;
-    nom :String;
+    nom :string;
     clients :Client[];
     employees :Employee[];
 }

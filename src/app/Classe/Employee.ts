@@ -15,7 +15,7 @@ export class Employee {
     constructor() {}
     idemploye:number;
     adresse :String;
-    dateNaissance :Date;
+    dateNaissance :any;
     email :String;
     identification :String;
     nom :String;
@@ -30,11 +30,11 @@ export class Employee {
     demandes :Demande[];
     disponibilites :Disponibilite[];
     documents :Document[];
+    pay :Pays;
     localite :Localite;
-    pay :Pays
     typeIdentification :TypeIdentification;
     niveauetude :Niveauetude;
-    ethny :Ethnies
+    ethnies :Ethnies
     experiences :Experience[];
     formations :Formation[];
     langues :Langue[];
