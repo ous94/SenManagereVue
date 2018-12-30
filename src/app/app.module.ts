@@ -21,6 +21,7 @@ import { ListeEmployeComponent } from './liste-employe/liste-employe.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 
+import { ConnexionComponent } from './connexion/connexion.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -28,18 +29,13 @@ const appRoutes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
     {path:'main',component:MainComponent},
+
     { path: 'aside', component:AsideComponent },
     { path: 'nouveau', component:NouveauEmployeeComponent},
     { path: 'recherche', component:RechercheComponent}, 
     { path: 'listeEmp', component:ListeEmployeComponent}, 
     { path: 'statistique', component:StatistiqueComponent}, 
-
-
-
- 
-    // RouterModule.forRoot([ { path: 'main',component: ParentComponent, } ]), RouterModule.forChild([ { path: 'parent', //parent path children: [ { path: '', redirectTo: '/parent/childs', //full child path pathMatch: 'full' }, { path: 'childs', component: ParentChildsComponent, }, ] } ]) 
-
-
+    {path:'log',component:ConnexionComponent},
 
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
@@ -67,13 +63,14 @@ const appRoutes: Routes = [
     DemandeEmployeeComponent,
     AdminComponent,
     MainComponent,
+
     FooterComponent,
     RechercheComponent,
     NouveauEmployeeComponent,
     ListeEmployeComponent,
     SidebarComponent,
-    StatistiqueComponent
-    
+    StatistiqueComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
