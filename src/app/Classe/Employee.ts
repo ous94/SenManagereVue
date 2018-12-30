@@ -35,8 +35,10 @@ export class Employee {
     typeIdentification :TypeIdentification;
     niveauetude :Niveauetude;
     ethny :Ethnies
-    experiences :Experience[];
+    experiences :string[];
     formations :Formation[];
-    langues :Langue[];
+    langues :String[];
+    //bonjour
+
     
 }

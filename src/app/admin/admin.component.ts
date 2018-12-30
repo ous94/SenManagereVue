@@ -394,19 +394,20 @@ this.employee1.competences=[];
   for(let i:number=0;i<this.selectedLanguevalues.length;i++)
   {
     let langue=new Langue();
-    langue.nom=this.selectedLanguevalues[i];
-    console.log(langue);
-    this.employee1.langues[i]=langue;
+    langue[i]=this.selectedLanguevalues[i];
+    console.log(langue[i]);
+    this.employee1.langues[i]=langue[i];
   }
   
 
-   
+
+ 
 
    //recuperation pays
    console.log(this.employee1);
-  this.EmployeeService.addEmployer2(this.employee1).
+  this.EmployeeService.addEmployer2(JSON.parse(JSON.stringify(this.employee1))).
   subscribe(data => console.log(data), 
-  error => console.log(error));
+  error => console.log(error)); 
 
 
 
@@ -429,8 +430,6 @@ this.employee1.competences=[];
   //this.EmployeeService.addEmployee(this.nestedForm.value).
   //subscribe(data => console.log(data), error => console.log(error));
  
-
-
 
   
   

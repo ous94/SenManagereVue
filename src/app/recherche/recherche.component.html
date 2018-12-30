@@ -1,0 +1,13 @@
+<app-header></app-header>
+<button  (click)="showHideSideBar =!showHideSideBar;" >Menu<span class="glyphicon glyphicon-bars"></span></button>
+
+<div class="row">
+  <div class="col-lg-12" *ngIf="showHideSideBar">
+      <app-sidebar></app-sidebar>
+  </div >
+
+  <div class="col-lg-10" >
+    
+  </div>
+
+</div>

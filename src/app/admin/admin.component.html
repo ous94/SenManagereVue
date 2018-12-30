@@ -179,24 +179,7 @@
              </div>
              
             <!-- Langues -->
-            <div class="form-group input-group-sm">
-              <label for="langues" class="form-label">Langues Parlées:</label>   
-             <div class="col-xs-14">
-               <div class="well" style="max-height: 110px;overflow: auto;">
- 
-                 <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
-                     <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
-                       <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
-                       <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                       <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
-                  </div>
-
-                </div>
-                </div>
-                <small id="erer" style="color: brown" *ngIf="favLangueErreur" class="form-text custom invalid-feedback">Veillez  cochez au moins  une Langue</small>
-
-
-             </div>
+            
 
               <!-- <div class="form-group input-group-sm">
                <div>
@@ -208,9 +191,33 @@
                   </div>
                   <small id="erer" style="color: brown" *ngIf="favLangueErreur && checkLangueTouched()" class="form-text custom invalid-feedback">Veillez  cochez une Case</small>
            </div> -->
+        </div>
+   </div>
 
-        
+   <div class="panel panel-primary , col-lg-3">
+    <!-- Default panel contents -->
+             <div class="panel-heading">Informations Professionnelles:</div>
+                  <div class="panel-body">
+                  
+          <!-- Langues -->
+          <div class="form-group input-group-sm">
+            <label for="langues" class="form-label">Langues Parlées:</label>   
+           <div class="col-xs-14">
+             <div class="well" style="max-height: 150px;overflow: auto;">
 
+               <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
+                   <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                     <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                     <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                     <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
+                </div>
+
+              </div>
+              </div>
+              <small id="erer" style="color: brown" *ngIf="favLangueErreur" class="form-text custom invalid-feedback">Veillez  cochez au moins  une Langue</small>
+
+
+           </div>
 
                 <button class="btn btn-primary" type="submit">Valider</button>
           </div>

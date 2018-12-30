@@ -7,6 +7,7 @@ import { Langue } from './Classe/Langue';
 import { TypeIdentification } from './Classe/TypeIdentification';
 import { Pays } from './Classe/Pays';
 import { Employee } from './Classe/Employee';
+import { Competence } from './Classe/Competence';
 
 @Injectable({
   providedIn: 'root'
@@ -83,8 +84,20 @@ return this.httpClient.post(`${this.baseUrl2}` + `/create`, employe);
 
 }
 
+//servicze recherche
+getcompetencebyDescription(description: String): Observable<Competence> {
+  return this.httpClient.get<Competence>(`${this.baseUrl}/competence/${description}`);
+}
 
 
+//servicze recherche situation
+getCustomersBySituation(genre: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
+}
+
+getEmployes(): Observable<any> {
+  return this.httpClient.get<Employee[]>('http://localhost:8000/api/employes'); 
+}
 
 
 
