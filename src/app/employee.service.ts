@@ -8,6 +8,8 @@ import { TypeIdentification } from './Classe/TypeIdentification';
 import { Pays } from './Classe/Pays';
 import { Employee } from './Classe/Employee';
 import { Competence } from './Classe/Competence';
+import { BaseUrl } from './ConfigProjet/baseUrl';
+import { baseDirectiveCreate } from '@angular/core/src/render3/instructions';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ import { Competence } from './Classe/Competence';
 export class EmployeeService {
 
   headers:HttpHeaders=new HttpHeaders({'Content-Type': 'application/json'});
-  private baseUrl: string = 'http://localhost:8000/api';
+base:BaseUrl = new BaseUrl();
+baseUrl:String=this.base.baseUrl;
+
+ // private baseUrl: string = 'http://localhost:8000/api';
   //private baseurleditte: string = 'http://localhost:4201/api/custumeredit';
   private baseUrl2: string = 'http://localhost:8000/api/employes';
 

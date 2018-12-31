@@ -22,6 +22,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 
 import { ConnexionComponent } from './connexion/connexion.component';
+import { EspaceClientComponent } from './espace-client/espace-client.component';
+import { NavbarComponent } from './navbar/navbar.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -36,6 +38,11 @@ const appRoutes: Routes = [
     { path: 'listeEmp', component:ListeEmployeComponent}, 
     { path: 'statistique', component:StatistiqueComponent}, 
     {path:'log',component:ConnexionComponent},
+    {path:'EspaceClient',component:EspaceClientComponent},
+    {path:'nav',component:NavbarComponent},
+
+
+
 
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
@@ -70,7 +77,9 @@ const appRoutes: Routes = [
     ListeEmployeComponent,
     SidebarComponent,
     StatistiqueComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    EspaceClientComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

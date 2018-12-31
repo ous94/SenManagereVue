@@ -36,10 +36,8 @@ export class Employee {
     niveauetude :Niveauetude;
     ethnies :Ethnies
     experiences :Experience[];
-
     formations :Formation[];
     langues :Langue[];
-    //bonjour
 
     
 }
