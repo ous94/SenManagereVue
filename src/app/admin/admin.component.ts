@@ -10,6 +10,7 @@ import {LocaliteService} from '../service/localite.service';
 import {NiveauEtudeService} from '../service/niveau-etude.service';
 import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
+import {UploadFileService} from '../upload-file.service';
 
 
 @Component({
@@ -24,6 +25,10 @@ export class AdminComponent implements OnInit {
 
   selectedLanguevalues=[];
   selectedCompetenceevalues=[];
+//Parametre pour la photo
+  fichierChoisi: FileList;
+  fichierCharger: File;
+  nomFichier :String;
 
   favLangueErreur: boolean=true;
   favCompetenceErreur: boolean=true;
@@ -68,7 +73,7 @@ export class AdminComponent implements OnInit {
   });
 
   //
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService) {
+  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -100,6 +105,7 @@ export class AdminComponent implements OnInit {
       ethnies:[null,Validators.required],
       religion:[null,Validators.required],
       situationMatrimoniale:[null,Validators.required],
+      observation:[null,Validators.required],
       langues: this.addlanguecontrole(),
       competences: this.addCompetencecontrole(),
       localite:[null,Validators.required],
@@ -367,11 +373,10 @@ this.employe.competences=[];
    this.employe.religion=this.employee1.religion;
    this.employe.adresse=this.employee1.adresse;
    this.employe.email=this.employee1.email
-   this.employe.observation=this.employee1.observation;
+   //this.employe.observation=this.employee1.observation;
    this.employe.photo=this.employee1.photo;
-   this.employe.pay=this.employee1.pay;
    this.employe.situationMatrimoniale=this.employee1.situationMatrimoniale;
-   this.employe.dateNaissance=this.employee1.dateNaissance;
+  // this.employe.dateNaissance=this.employee1.dateNaissance;
    this.employe.identification=this.employee1.identification;
    this.employe.telephoneFixe=this.employee1.telephoneFixe;
    this.employe.telephoneMobile=this.employee1.telephoneMobile;
@@ -379,15 +384,47 @@ this.employe.competences=[];
   console.log("#### Employee1");
   console.log(this.employee1);
   console.log("### Fin Employee1")
-  this.paysService.getPaysByNom(this.pay.value).subscribe(
-    (data)=>{this.employe.pay=data;
-     //Sauvegarde de l'employer
-            this.EmployeeService.addEmployee(this.employe).subscribe(
-            (data) => {console.log(data)}, 
-            (error) =>{console.log(error)} );
+  this.fichierCharger = this.fichierChoisi.item(0);
+  this.employe.dateNaissance=this.dateNaissance.value;
+  this.employe.observation=this.employee1.observation;
+ this.paysService.getPaysByNom(this.pay.value).subscribe(
+    (data)=>{
+            this.employe.pay=data;
+            //Sauvegarde de la photo de l'employe
+             this.uploadFileService.uploadPhoto(this.fichierCharger).subscribe(
+               (data)=>{
+                      this.nomFichier=data;
+                      this.employe.photo=this.nomFichier;
+                      console.log("le nom du fichier sur le serveur est :"+this.employe.photo);
+                      //Sauvegarde de l'employer
+                      this.EmployeeService.addEmployee(this.employe).subscribe(
+                          (data) => {console.log(data)}, 
+                          (error) =>{console.log(error)} );
+                    },
+              (error)=>{
+                console.log(error);
+              }
+             );
+     
+           // this.EmployeeService.addEmployee(this.employe).subscribe(
+           // (data) => {console.log(data)}, 
+           // (error) =>{console.log(error)} );
        },
     (error)=> {console.log("erreur intervenant lors de la sauvegqrde");
     }
   );
  }
+<<<<<<< HEAD
+ selectFile(event) {
+  const file = event.target.files.item(0)
+
+  if (file.type.match('image.*')) {
+    this.fichierChoisi = event.target.files;
+  } else {
+    alert('Le format du Fichier choisi est Invalide!');
+  }
 }
+}
+=======
+}
+>>>>>>> e83625d9dda3896d32aec19264d37f72c8c4ff0b
