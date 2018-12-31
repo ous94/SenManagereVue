@@ -33,7 +33,7 @@ export class UploadFileService {
   {
     let formdata: FormData = new FormData();
        formdata.append('file', file);
-       return this.http.post(this.baseUrl+'/post',formdata , {
+       return this.http.post(this.baseUrl+'/post/uploadPhoto',formdata , {
         reportProgress: true,
         responseType: 'text'
       });
