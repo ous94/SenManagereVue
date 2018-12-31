@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row content">
+<app-sidebar></app-sidebar>    
+
+    <div class="col-sm-9">
+      <!-- <h4><small>Liste des Employee</small></h4>
+      <table class="">
+        <thead>
+          <tr>
+            <th>Prenom</th><th>nom</th><th>Date Naissance</th><th>Adresse</th><th>Nationalié</th>
+          </tr>
+        </thead>
+         <tbody>
+           <tr *ngFor="let employe of listeEmploye">
+             <td>{{employe.nom}}</td><td>{{employe.Prenom}}</td><td>{{employe.Date}}</td><td>{{employe.Adresse}}</td>
+           </tr>
+
+         </tbody>
+      </table> -->
+      <div class="panel panel-primary">
+          <div class="panel-heading"><span class="glyphicon glyphicon-bar
+            "> LISTE DES CUSTOMERS</span></div>
+      <table class="table table-striped">
+          <thead class="thead-dark">
+          <th>Prenom</th>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Status</th>
+          <th>Action</th>
+        </thead>
+        <tbody >
+          
+          <tr *ngFor="let employee of listeEmploye " class="table-info">
+            <td class="table-primary"><span class="glyphicon glyphicon-bars
+              ">{{employee.prenom}}</span></td>
+            <td>{{employee.nom}}</td>
+        
+            <td><button type="submit" class="btn btn-danger" (click)='deleteEmploye(employee)' ><span class="glyphicon glyphicon-trash"></span></button></td>
+            <td><button type="submit" class="btn btn-primary" (click)='editeEmploye(employee)'><span class="glyphicon glyphicon-pencil"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+<!--       <button type="submit" class="btn btn-success" (click)='newUser()'>new Customer</button>
+ -->      </div>
+      
+    </div>
+  </div>
+</div>

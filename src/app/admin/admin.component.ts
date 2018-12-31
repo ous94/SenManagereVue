@@ -414,6 +414,7 @@ this.employe.competences=[];
     }
   );
  }
+<<<<<<< HEAD
  selectFile(event) {
   const file = event.target.files.item(0)
 
@@ -424,3 +425,6 @@ this.employe.competences=[];
   }
 }
 }
+=======
+}
+>>>>>>> e83625d9dda3896d32aec19264d37f72c8c4ff0b

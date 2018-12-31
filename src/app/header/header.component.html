@@ -11,15 +11,19 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">   
           <li><a href="#">Accueil</a></li>
-          <li routerLinkActive="active" ><a routerLink="main"  class="navbar-brand">Service</a></li>
-          <li routerLinkActive="active" ><a routerLink="employee"  class="navbar-brand">Demande</a></li>
-          <li routerLinkActive="active" ><a routerLink="admin"  class="navbar-brand">Contact</a></li>
+          <li routerLinkActive="active" ><a [routerLink]="['/recherche']" routerLinkActive="active"   class="navbar-brand">Admin</a></li>
+          <li routerLinkActive="active" ><a [routerLink]="['/recherche']" routerLinkActive="active" >Demande</a></li>
+          <li routerLinkActive="active" ><a routerLink=""  class="navbar-brand">Contact</a></li>
+          <li routerLinkActive="active" ><a [routerLink]="['/recherche']" routerLinkActive="active"  class="navbar-brand">Aside</a></li>
+
         </ul>
         <a class="nav navbar-nav navbar-right"><span class="glyphicon glyphicon-earphone"></span> +221 77 334 42 54</a>
   
         <ul class="nav navbar-nav navbar-right">
-          <li routerLinkActive="active"><a routerLink="login"  class="navbar-brand"><span class="glyphicon glyphicon-user"></span>S’inscrire</a></li>
-          <li routerLinkActive="active" ><a routerLink="log"  ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+          <li routerLinkActive="active"><a [routerLink]="['/login']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>S’inscrire</a></li>
+          <li routerLinkActive="active" ><a [routerLink]="['/login']"  ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
         </ul>
       </div>
     </div>

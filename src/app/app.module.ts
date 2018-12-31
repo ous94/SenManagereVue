@@ -13,15 +13,28 @@ import { HomeComponent } from './home/home.component';
 import { DemandeEmployeeComponent } from './demande-employee/demande-employee.component';
 import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { FooterComponent } from './footer/footer.component';
+import { RechercheComponent } from './recherche/recherche.component';
+import { NouveauEmployeeComponent } from './nouveau-employee/nouveau-employee.component';
+import { AsideComponent } from './aside/aside.component';
+import { ListeEmployeComponent } from './liste-employe/liste-employe.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
 
+import { ConnexionComponent } from './connexion/connexion.component';
 const appRoutes: Routes = [
 
-    {path:'',component:HomeComponent},
-    {path:'employee',component:DemandeEmployeeComponent},
+  {path: '', pathMatch: 'full', component: HomeComponent},
+   {path:'employee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
     {path:'main',component:MainComponent},
+
+    { path: 'aside', component:AsideComponent },
+    { path: 'nouveau', component:NouveauEmployeeComponent},
+    { path: 'recherche', component:RechercheComponent}, 
+    { path: 'listeEmp', component:ListeEmployeComponent}, 
+    { path: 'statistique', component:StatistiqueComponent}, 
     {path:'log',component:ConnexionComponent},
 
 
@@ -46,9 +59,17 @@ const appRoutes: Routes = [
     HeaderComponent,
     LoginComponent,
     HomeComponent,
+    AsideComponent,
     DemandeEmployeeComponent,
     AdminComponent,
     MainComponent,
+
+    FooterComponent,
+    RechercheComponent,
+    NouveauEmployeeComponent,
+    ListeEmployeComponent,
+    SidebarComponent,
+    StatistiqueComponent,
     ConnexionComponent
   ],
   imports: [
@@ -57,7 +78,7 @@ const appRoutes: Routes = [
     RouterModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{enableTracing:true}),
     ReactiveFormsModule
   ],
   providers: [],
