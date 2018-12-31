@@ -15,12 +15,12 @@ export class Employee {
     constructor() {}
     idemploye:number;
     adresse :String;
-    dateNaissance :any;
+    dateNaissance :Date;
     email :String;
     identification :String;
     nom :String;
     observation :String;
-    photo :any;
+    photo :String;
     prenom :String;
     religion :String;
     situationMatrimoniale :String
