@@ -9,7 +9,6 @@ import { Pays } from './Classe/Pays';
 import { Employee } from './Classe/Employee';
 import { Competence } from './Classe/Competence';
 import { BaseUrl } from './ConfigProjet/baseUrl';
-import { baseDirectiveCreate } from '@angular/core/src/render3/instructions';
 
 @Injectable({
   providedIn: 'root'
