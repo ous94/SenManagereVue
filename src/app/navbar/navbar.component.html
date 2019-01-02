@@ -27,15 +27,19 @@
                 <button class="btn btn-light"><i class="fa fa-search"></i></button>
             </form>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-link">
-                    <a class="btn btn-primary btn-block btn-login" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
-                </li>
-                <li class="nav-link">
-                    <a class="btn btn-primary btn-block btn-login" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
-                </li>
-                <li class="nav-link">
-                    <a class="btn btn-primary btn-block btn-login" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
-                </li>
+             <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/']" routerLinkActive="router-link-active"   class="navbar-brand">Accueil</a>      
+
+                <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/EspaceClient']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>Espace Client</a>      
+                  <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/recherche']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>Admin</a>      
+                
+                    <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/login']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>S’inscrire</a>
+                    </li>
+
+                    <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/login']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+
+
+              
+                  
 
             </ul>
         </div>

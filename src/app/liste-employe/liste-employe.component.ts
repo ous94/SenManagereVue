@@ -9,7 +9,7 @@ import { Employee } from '../Classe/Employee';
 })
 export class ListeEmployeComponent implements OnInit {
 
-  listeEmploye:Employee[];
+  listeEmploye:Array<Employee>= new Array();
 
   constructor(private EmployeeService:EmployeeService) { 
 
@@ -30,7 +30,7 @@ export class ListeEmployeComponent implements OnInit {
   
     //misea ajour Ethnies
      this.EmployeeService.getEmployes().subscribe(
-       data =>{this.listeEmploye=data},
+       data =>{this.listeEmploye=data;console.log(data)},
        error =>{console.log(this.listeEmploye)},
  
        ()=>{console.log('errer chargement des donnés')}

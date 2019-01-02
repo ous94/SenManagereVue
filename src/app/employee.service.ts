@@ -101,8 +101,10 @@ getCustomersBySituation(genre: String): Observable<any> {
 }
 
 getEmployes(): Observable<any> {
-  return this.httpClient.get<Employee[]>('http://localhost:8000/api/employes'); 
+  return this.httpClient.get('http://localhost:8000/api/employes'); 
 }
+
+
 
 
 

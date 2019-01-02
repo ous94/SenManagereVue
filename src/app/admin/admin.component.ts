@@ -11,6 +11,7 @@ import {NiveauEtudeService} from '../service/niveau-etude.service';
 import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
 import {UploadFileService} from '../upload-file.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -373,6 +374,7 @@ this.employe.competences=[];
    this.employe.religion=this.employee1.religion;
    this.employe.adresse=this.employee1.adresse;
    this.employe.email=this.employee1.email
+   this.employe.idemploye=++this.employee1.telephoneMobile;
    //this.employe.observation=this.employee1.observation;
    this.employe.photo=this.employee1.photo;
    this.employe.situationMatrimoniale=this.employee1.situationMatrimoniale;

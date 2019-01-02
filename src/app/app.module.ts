@@ -24,6 +24,15 @@ import { StatistiqueComponent } from './statistique/statistique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { EspaceClientComponent } from './espace-client/espace-client.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TestComponent } from './test/test.component';
+import { Section1Component } from './section1/section1.component';
+import { Section2Component } from './section2/section2.component';
+import { Section3Component } from './section3/section3.component';
+import { Section4Component } from './section4/section4.component';
+import { HomedComponent } from './homed/homed.component';
+import { ScriptComponent } from './script/script.component';
+import { SectionAcceuilComponent } from './section-acceuil/section-acceuil.component';
+import { HeadAdminComponent } from './head-admin/head-admin.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -79,7 +88,16 @@ const appRoutes: Routes = [
     StatistiqueComponent,
     ConnexionComponent,
     EspaceClientComponent,
-    NavbarComponent
+    NavbarComponent,
+    TestComponent,
+    Section1Component,
+    Section2Component,
+    Section3Component,
+    Section4Component,
+    HomedComponent,
+    ScriptComponent,
+    SectionAcceuilComponent,
+    HeadAdminComponent
   ],
   imports: [
     BrowserModule,
