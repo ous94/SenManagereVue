@@ -12,6 +12,7 @@ import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
 import {UploadFileService} from '../upload-file.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Competence } from '../Classe/Competence';
 
 
 @Component({
@@ -356,7 +357,9 @@ this.employe.competences=[];
   for(let i:number=0;i<this.selectedCompetenceevalues.length;i++)
   {
      this.competenceService.getCompetenceByDescription(this.selectedCompetenceevalues[i]).subscribe(
-       (data) =>{this.employe.competences[i]=data;}
+       (data) =>{
+                  this.employe.competences[i]=data;
+                }
      );
   };
   //
@@ -397,7 +400,6 @@ this.employe.competences=[];
                (data)=>{
                       this.nomFichier=data;
                       this.employe.photo=this.nomFichier;
-                      console.log("le nom du fichier sur le serveur est :"+this.employe.photo);
                       //Sauvegarde de l'employer
                       this.EmployeeService.addEmployee(this.employe).subscribe(
                           (data) => {console.log(data)}, 
@@ -412,7 +414,7 @@ this.employe.competences=[];
            // (data) => {console.log(data)}, 
            // (error) =>{console.log(error)} );
        },
-    (error)=> {console.log("erreur intervenant lors de la sauvegqrde");
+    (error)=> {console.log("erreur intervenant lors de la sauvegarde");
     }
   );
  }
@@ -425,5 +427,5 @@ this.employe.competences=[];
   } else {
     alert('Le format du Fichier choisi est Invalide!');
   }
-}
+ }
 }
