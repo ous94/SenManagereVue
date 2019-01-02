@@ -33,6 +33,7 @@ import { HomedComponent } from './homed/homed.component';
 import { ScriptComponent } from './script/script.component';
 import { SectionAcceuilComponent } from './section-acceuil/section-acceuil.component';
 import { HeadAdminComponent } from './head-admin/head-admin.component';
+import { ClientsComponent } from './clients/clients.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -97,7 +98,8 @@ const appRoutes: Routes = [
     HomedComponent,
     ScriptComponent,
     SectionAcceuilComponent,
-    HeadAdminComponent
+    HeadAdminComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
