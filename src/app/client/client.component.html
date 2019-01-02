@@ -1,0 +1,86 @@
+<form [formGroup]="clientForm" (ngSubmit)="submithandle()">
+  <div class="col-md-4 mb-3">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Nom" formControlName="nom" required>
+         <div class="valid-tooltip"> 
+        </div>
+   </div>
+  <div class="col-md-4 mb-3">
+     <label for="telephoneFixe">Téléphne Fixe</label>
+      <input type="text" class="form-control" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" required>
+      <div class="valid-tooltip"> 
+     </div>
+ </div>
+ <div class="col-md-4 mb-3">
+    <label for="localite">Localité</label>
+    <select id="localite" class="form-control" formControlName="localite" required>
+        <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
+        </select>
+ <div class="valid-tooltip"> 
+ </div>
+ </div>
+ <div class="col-md-4 mb-3">
+      <label for="prenom">Prénom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="prenom" formControlName="prenom" required>
+      <div class="valid-tooltip"> 
+      </div>
+ </div>
+<div class="col-md-4 mb-3">
+     <label for="telephoneMobile">Téléphne Mobile</label>
+      <input type="text" class="form-control" id="telephoneMobile" placeholder="telephoneMobile" formControlName="telephoneMobile" required>
+      <div class="valid-tooltip"> 
+      </div>
+</div>
+<div class="col-md-4 mb-3">
+     <label for="typeidentification">Type Identification</label>
+     <select id="typeidentification" class="form-control"  formControlName="typeidentification" required placeholder="typeidentification">
+          <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
+    </select>
+    <div class="valid-tooltip"> 
+    </div>
+</div>
+<div class="col-md-4 mb-3">
+    <label for="adresse">Adresse</label>
+    <input type="text" class="form-control" id="adresse" placeholder="adresse" formControlName="adresse" required>
+    <div class="valid-tooltip"> 
+    </div>
+</div>
+<div class="col-md-4 mb-3">
+    <label for="sexe">Sexe</label>
+    <select id="Sexe" class="form-control" formControlName="sexe">
+      <option selected>Masculin</option>
+      <option>Féminin</option>
+    </select>
+    <div class="valid-tooltip"> 
+    </div>
+</div>
+<div class="col-md-4 mb-3">
+    <label for="identification">N° d'Identification</label>
+    <input type="text" class="form-control" id="identification" placeholder="identification" formControlName="identification" required>
+    <div class="valid-tooltip"> 
+    </div>
+</div>
+<div class="col-md-4 mb-3">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" placeholder="email" formControlName="email" required>
+    <div class="valid-tooltip"> 
+    </div>
+</div>
+<div class="form-group col-md-4">
+      <label for="pay">Pays</label>
+      <select id="pay" class="form-control" required formControlName="pay">
+          <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
+      </select>
+      <div class="valid-tooltip"> 
+      </div>
+</div>
+<div class="col-md-4 mb-3">
+      <label for="textarea">Observation </label>
+      <textarea class="form-control" id="observation" rows="5" maxlength="500" formControlName="observation"></textarea>
+      <div class="valid-tooltip"> 
+      </div>
+      <button class="btn btn-primary"id="buttonenregistrer" type="submit">S'enregister</button>
+</div>
+
+
+</form>
