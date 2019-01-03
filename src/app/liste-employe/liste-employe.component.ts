@@ -39,10 +39,20 @@ export class ListeEmployeComponent implements OnInit {
      }
 
 
-     deleteEmploye()
-     {
+// delete employee
+deleteEmploye(employee:Employee) {
+  this.EmployeeService.deleteEmployeeid(employee.idemploye)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.listeEmploye.splice(this.listeEmploye.indexOf(employee),1);
+        
+      },
+      error => console.log(error));
+      this.reloadData();
+}
 
-     }
+
      editeEmploye()
      {
        

@@ -2,11 +2,21 @@
     <ul class="nav nav-pills nav-stacked">
            <li class="nav-item"><a class="nav-link" [routerLink]="['/recherche']" routerLinkActive="active" >Administration
             <span class="sr-only">(current)</span></a></li>
-           <li class="nav-item"><a class="nav-link" [routerLink]="['/nouveau']" routerLinkActive="active"  >Nouveu Employee</a></li>
+           <li class="nav-item"><a class="nav-link" [routerLink]="['/nouveau']" routerLinkActive="active"  >Nouveu Employee <span class="glyphicon glyphicon-user
+            "></span></a></li>
             <!-- 2eme -->
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/listeEmp']" routerLinkActive="active" >Liste Employee</a></li>
-             <!-- 3eme -->
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/statistique']">Statististique</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/listeEmp']" routerLinkActive="active" >Liste Employee <span class="glyphicon glyphicon-user
+              "></span><span class="glyphicon glyphicon-user
+              "></span> </a></li>
+
+
+               <!-- 3eme -->
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/listeClient']" routerLinkActive="active" >Liste Clients <span class="glyphicon glyphicon-user
+              "></span><span class="glyphicon glyphicon-user
+              "></span> </a></li>
+             <!-- 4eme -->
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/statistique']">Statististique<span class="glyphicon glyphicon-stats
+              "></span></a></li>
     
     </ul><br>
     <div class="input-group">

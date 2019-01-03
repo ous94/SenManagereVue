@@ -35,6 +35,7 @@ import { SectionAcceuilComponent } from './section-acceuil/section-acceuil.compo
 import { HeadAdminComponent } from './head-admin/head-admin.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './client/client.component';
+import { ListeClientComponent } from './liste-client/liste-client.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     SectionAcceuilComponent,
     HeadAdminComponent,
     ClientsComponent,
-    ClientComponent
+    ClientComponent,
+    ListeClientComponent
   ],
   imports: [
     BrowserModule,

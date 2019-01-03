@@ -104,6 +104,13 @@ getEmployes(): Observable<any> {
 }
 
 
+  // suppression d'un employee
+  deleteEmployeeid(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/employes/${id}`, { responseType: 'text' });
+  }
+
+
+
 
 
 
