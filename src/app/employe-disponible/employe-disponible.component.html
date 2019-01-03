@@ -1,0 +1,23 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="our-webcoderskull padding-lg">
+  <div class="container">
+    <div class="row heading heading-icon">
+        <h2>Nos Ménageres en attentes</h2>
+    </div>
+    <ul class="row">
+      <li class="col-8 col-md-3 col-lg-2" *ngFor="let employee of listeEmploye">
+          <div class="cnt-block equal-hight" style="height: 34px;">
+            <figure><img src={{uploadPhotoEmployer(employee.photo)}} class="img-responsive" alt=""></figure>
+            <h3><a>{{employee.prenom}}</a></h3>
+            <p>{{employee.nom}}</p>
+          
+          </div>
+      </li>
+      
+    </ul>
+  </div>
+</section>

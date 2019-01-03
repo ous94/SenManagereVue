@@ -15,7 +15,7 @@ export class ClientService {
 
   //Methode Pour ajouter un Client
   addClient (client: Client): Observable<Client> {
-    return this.httpClient.post<Client>(`${this.baseUrl}` + `/clients/create`, client);
+    return this.httpClient.post<Client>(this.baseUrl+ '/clients/create', client);
   }
    
   //Methode Pour lister les clients

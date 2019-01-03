@@ -84,7 +84,7 @@ return this.httpClient.post(`${this.baseUrl2}` + `/create`, employe);
 
  // pour recuperer les  Localite
  getLocalite(): Observable<any> {
-  return this.httpClient.get(`${this.baseUrl}` + `/localites/nom`); 
+  return this.httpClient.get(this.baseUrl+ "/localites/nom"); 
 
 }
 

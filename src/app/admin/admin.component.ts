@@ -20,8 +20,8 @@ import {UploadFileService} from '../upload-file.service';
 })
 export class AdminComponent implements OnInit {
 
-  tableauLangue: Array<String> =['Wolof','française','Anglais','Chinois','pheul','Serere'];
-  tableauCompetence: Array<String> =['Ménage','Linge','Garde d enfants','Repassage','Cuisine'];
+  tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere'];
+  tableauCompetence: Array<String> =['Ménage','Linge','Garde d enfants','Gepassage','Cuisine'];
 
   selectedLanguevalues=[];
   selectedCompetenceevalues=[];
