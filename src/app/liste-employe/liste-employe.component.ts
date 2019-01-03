@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../Classe/Employee';
+import { UploadFileService } from '../upload-file.service';
 
 @Component({
   selector: 'app-liste-employe',
@@ -9,9 +10,9 @@ import { Employee } from '../Classe/Employee';
 })
 export class ListeEmployeComponent implements OnInit {
 
-  listeEmploye:Array<Employee>= new Array();
+  listeEmploye:Employee[];
 
-  constructor(private EmployeeService:EmployeeService) { 
+  constructor(private EmployeeService:EmployeeService, private UploadFileService:UploadFileService) { 
 
     setTimeout(() => {
       this.reloadData();
@@ -46,6 +47,13 @@ export class ListeEmployeComponent implements OnInit {
      {
        
      }
+
+
+
+    uploadPhotoEmployer(photo:String): String
+    {
+      return this.UploadFileService.getPhoto(photo);
+  }
 
 
 

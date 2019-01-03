@@ -20,32 +20,36 @@
       </table> -->
       <div class="panel panel-primary">
           <div class="panel-heading"><span class="glyphicon glyphicon-bar
-            "> LISTE DES CUSTOMERS</span></div>
+            "> LISTE DES Employee</span></div>
       <table class="table table-striped">
           <thead class="thead-dark">
+            <th></th>
           <th>Prenom</th>
           <th>Nom</th>
           <th>Adresse</th>
+          <th>situationMatrimoniale</th>
           <th>Status</th>
           <th>Action</th>
         </thead>
         <tbody >
           
           <tr *ngFor="let employee of listeEmploye " class="table-info">
+            
+   <td><div><img  src={{uploadPhotoEmployer(employee.photo)}} class="img-circle"  width="94" height="66"></div></td>
+
             <td class="table-primary"><span class="glyphicon glyphicon-bars
               ">{{employee.prenom}}</span></td>
             <td>{{employee.nom}}</td>
             <td>{{employee.adresse}}</td>
+            <td>{{employee.situationMatrimoniale}}</td>
 
-        
+
             <td><button type="submit" class="btn btn-danger" (click)='deleteEmploye(employee)' ><span class="glyphicon glyphicon-trash"></span></button></td>
             <td><button type="submit" class="btn btn-primary" (click)='editeEmploye(employee)'><span class="glyphicon glyphicon-pencil"></span></button></td>
           </tr>
         </tbody>
       </table>
-<!--       <button type="submit" class="btn btn-success" (click)='newUser()'>new Customer</button>
- -->      </div>
-      
+      </div>
     </div>
   </div>
 </div>
