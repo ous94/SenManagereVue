@@ -1,3 +1,40 @@
-<p>
-  liste-client works!
-</p>
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row content">
+<app-sidebar></app-sidebar>    
+
+    <div class="col-sm-9">
+    
+      <div class="panel panel-primary">
+          <div class="panel-heading"><span class="glyphicon glyphicon-bar
+            "> Liste des Clients</span></div>
+      <table class="table table-striped">
+          <thead class="thead-dark">
+            <th></th>
+          <th>Prenom</th>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>TelephoneMobile</th>
+          <th>Status</th>
+          <th>Action</th>
+        </thead>
+        <tbody >
+          
+          <tr *ngFor="let client of listeClient " class="table-info">
+    
+            <td class="table-primary"><span class="glyphicon glyphicon-bars
+              ">{{client.prenom}}</span></td>
+            <td>{{client.nom}}</td>
+            <td>{{client.adresse}}</td>
+            <td>{{client.telephoneMobile}}</td>
+
+
+            <td><button type="submit" class="btn btn-danger" (click)='deleteClient(client)' ><span class="glyphicon glyphicon-trash"></span></button></td>
+            <td><button type="submit" class="btn btn-primary" (click)='editeClient(client)'><span class="glyphicon glyphicon-pencil"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

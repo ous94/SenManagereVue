@@ -33,7 +33,6 @@ import { HomedComponent } from './homed/homed.component';
 import { ScriptComponent } from './script/script.component';
 import { SectionAcceuilComponent } from './section-acceuil/section-acceuil.component';
 import { HeadAdminComponent } from './head-admin/head-admin.component';
-import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './client/client.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 const appRoutes: Routes = [
@@ -53,6 +52,8 @@ const appRoutes: Routes = [
     {path:'EspaceClient',component:EspaceClientComponent},
     {path:'nav',component:NavbarComponent},
     {path:'client',component:ClientComponent},
+    {path:'listeClient',component:ListeClientComponent},
+
 
 
 
@@ -103,7 +104,6 @@ const appRoutes: Routes = [
     ScriptComponent,
     SectionAcceuilComponent,
     HeadAdminComponent,
-    ClientsComponent,
     ClientComponent,
     ListeClientComponent
   ],
