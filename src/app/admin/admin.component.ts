@@ -11,8 +11,6 @@ import {NiveauEtudeService} from '../service/niveau-etude.service';
 import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
 import {UploadFileService} from '../upload-file.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Competence } from '../Classe/Competence';
 
 
 @Component({
