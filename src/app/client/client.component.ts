@@ -4,6 +4,9 @@ import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl,Validators, FormArray,} from '@angular/forms';
 import { Client } from '../Classe/Client';
+import { LocaliteService } from '../service/localite.service';
+import { TypeIdentificationService } from '../service/type-identification.service';
+import {PaysService} from '../service/pays.service';
 
 @Component({
   selector: 'app-client',
@@ -14,7 +17,9 @@ export class ClientComponent implements OnInit {
   identificationListe: any;
   paysliste:any;
   localiteListe:any;
+  //Definition des Clients pour  recuperer le contenu du formulaire
   client : Client = new Client();
+  clientFinal :Client =new Client();
   clientForm= new FormGroup({
     idclient:new FormControl(''),
     adresse :new FormControl(''),
@@ -36,8 +41,7 @@ export class ClientComponent implements OnInit {
 
   });
 
-
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder) {
+  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService ) {
 
     setTimeout(() => {
      // this.getdataEtude();
@@ -199,9 +203,38 @@ getdataTypeIdentification()
 submithandle()
 //s'enregistrer
 {
+
+  //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
   this.client= this.clientForm.value;
   console.log(this.client);
+  this.clientFinal.adresse=this.client.adresse;
+  this.clientFinal.email=this.client.email;
+  this.clientFinal.identification=this.client.identification;
+  this.clientFinal.nom=this.client.nom;
+  this.clientFinal.observation=this.client.observation;
+  this.clientFinal.prenom=this.client.prenom;
+  this.clientFinal.sexe=this.client.sexe;
+  this.clientFinal.telephoneFixe=this.client.telephoneFixe;
+  this.clientFinal.telephoneMobile=this.client.telephoneMobile;
+  this.client= this.clientForm.value;
+  console.log(this.client);
+
+  //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
+  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+    (data)=>{this.clientFinal.localite=data},
+    (error) =>{console.log("Erreur sur la localite");}
+  );
+
+  this.typeIdentificationService.getTypeIdentificationByNom("CNI").subscribe(
+    (data) =>{this.clientFinal.typeIdentification=data;},
+    (error) =>{console.log("erreur sur le TypeIdentification");}
+  );
+
+  this.paysService.getPaysByNom(this.pay.value).subscribe(
+    (data)=>{this.clientFinal.pay=data; },
+           (error)=>{console.log(error);}
+      );
+  console.log(this.clientFinal);
   
-  
-}
+ }
 }

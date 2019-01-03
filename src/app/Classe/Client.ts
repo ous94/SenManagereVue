@@ -15,8 +15,8 @@ export class Client
     observation :String;
     prenom :String;
     sexe :String;
-    telephoneFixe :String;
-    telephoneMobile :String;
+    telephoneFixe :number;
+    telephoneMobile :number;
     pay :Pays;
     localite :Localite;
     typeIdentification :TypeIdentification;
