@@ -1,4 +1,4 @@
-<form [formGroup]="nestedForm" (ngSubmit)="submithandle()">
+<form [formGroup]="nestedForm" (ngSubmit)="submithandle()" >
 
   <!-- panell -->
 
@@ -8,14 +8,14 @@
                     <div class="panel-body">
 
         <!-- pour prenom -->
-          <div class="form-group input-group-sm col-sm-12">
+          <div class="form-group input-group-sm col-sm-14">
              <label for="pretext">Prenom</label>
               <input type="text" formControlName="prenom" [ngClass]="{'form-control':true,
               'is-invalid':prenom.invalid && prenom.touched,
                 'is-valid':prenom.valid}" id="pretext" placeholder="Entrer Prenom">
          </div>
          <!-- pour nom -->
-         <div class="form-group input-group-sm col-sm-12">
+         <div class="form-group input-group-sm col-sm-14">
             <label for="nomtext">nom</label>
              <input type="text" formControlName="nom" [ngClass]="{'form-control':true,
              'is-invalid':nom.invalid && prenom.touched,
@@ -90,7 +90,7 @@
              <input type="number" formControlName="identification" [ngClass]="{'form-control':true,
              'is-invalid':identification.invalid && identification.touched,
                'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
-        </div>
+        </div><br>
 
          <!-- pour Locilté  -->
          <div class="form-group input-group-sm">
@@ -106,7 +106,7 @@
             <select id="ethnies" class="form-control"  formControlName="ethnies" >
                 <option  *ngFor="let nom of ethniesListe" value="{{nom}}">{{nom}}</option>
             </select>
-        </div>
+        </div><br>
          <!-- Multiple Radios (inline) -->
          <div class="form-group input-group-sm">
             <label class="col-md-4 control-label" for="religion" >Religion</label>
@@ -120,7 +120,7 @@
             </div>
 
            </div>
-         </div>  
+         </div>  <br><br><br><br><br>
          <!-- for situation matrimoniale  -->            
          <div class="form-group input-group-sm"> 
           <label for="situationMatrimoniale">Situation Matrimoniale</label>
@@ -181,8 +181,8 @@
            <div class="form-group input-group-sm">
               <label for="langues" class="form-label">Competences:</label>
    
-             <div class="col-xs-14">
-               <div class="well" style="max-height: 110px;overflow: auto;">
+             <div class="col-xs-20">
+               <div class="well" style="max-height: 130px;overflow: auto;">
  
                  <div class="list-group checked-list-box" *ngFor="let control of competenceArray.controls; let i=index;">
                      <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
@@ -201,7 +201,7 @@
           <div class="form-group input-group-sm">
               <label for="langues" class="form-label">Langues Parlées:</label>   
              <div class="col-xs-14">
-               <div class="well" style="max-height: 110px;overflow: auto;">
+               <div class="well" style="max-height: 150px;overflow: auto;">
   
                  <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
                      <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
@@ -216,6 +216,7 @@
   
   
              </div>
+             <br>  <br>
             
 
               <!-- <div class="form-group input-group-sm">
@@ -232,10 +233,51 @@
    </div>
    <!-- photo -->
  <div class="panel panel-primary , col-lg-3">
-  <div class="panel-heading">Photo d'Identite:</div>
+  <div class="panel-heading">Information :</div>
       <div class="panel-body">
+
+          <!-- Multiple Radios (inline) -->
+          <div class="form-group input-group-sm">
+              <label class="col-md-4 control-label" for="horaire" >Disponiblité:</label>
+             <div class="col-md-2">
+                
+              <div class="radio" >
+                <label><input type="radio" name="horaire" id="radios-0" value="Weekend"  formControlName="horaire">Weekend</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="horaire" id="radios-1" formControlName="horaire" value="Semaine">Semaine</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="horaire" id="radios-2" formControlName="horaire" value="Quinzaine">Quinzaine</label>
+                </div>
+  
+             </div>
+           <!-- disponiblité -->
+           <div class="form-group input-group-sm">
+              <label for="langues" class="form-label">Horaire disponible :</label>   
+             <div class="col-xs-14">
+               <div class="well" style="max-height: 140px;overflow: auto;">
+  
+                 <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
+                     <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                       <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                       <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                       <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
+                  </div>
+  
+                </div>
+                </div>
+                <small id="erer" style="color: brown" *ngIf="favLangueErreur" class="form-text custom invalid-feedback">Veillez  cochez au moins  une Langue</small>
+  
+  
+             </div>
+         </div> <br>
+
+             <!-- commentaire -->
+            
+
            <div class="form-group">
-                <label for="comment">Comment:</label>
+                <label for="comment">Obseravtion :</label>
                 <textarea class="form-control" rows="5" id="comment" maxlength="255" formControlName="observation"></textarea>
            </div>
            <div class="form-group input-group-sm">

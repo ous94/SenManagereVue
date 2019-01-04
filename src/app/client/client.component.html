@@ -9,10 +9,11 @@
      <label for="telephoneFixe">Téléphne Fixe</label>
       <input type="text" class="form-control" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" required>
       <div class="valid-tooltip"> 
-     </div>
+     </div>           
  </div>
  <div class="col-md-4 mb-3">
     <label for="localite">Localité</label>
+
     <select id="localite" class="form-control" formControlName="localite" >
         <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
         </select>

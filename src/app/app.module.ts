@@ -36,17 +36,19 @@ import { HeadAdminComponent } from './head-admin/head-admin.component';
 import { ClientComponent } from './client/client.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { EmployeDisponibleComponent } from './employe-disponible/employe-disponible.component';
+import { ConctactComponent } from './conctact/conctact.component';
+import { HeadClientComponent } from './head-client/head-client.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
-   {path:'employee',component:DemandeEmployeeComponent},
+   {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
     {path:'main',component:MainComponent},
 
     { path: 'aside', component:AsideComponent },
     { path: 'nouveau', component:NouveauEmployeeComponent},
-    { path: 'recherche', component:RechercheComponent}, 
+    { path: 'serviceAdmin', component:RechercheComponent}, 
     { path: 'listeEmp', component:ListeEmployeComponent}, 
     { path: 'statistique', component:StatistiqueComponent}, 
     {path:'log',component:ConnexionComponent},
@@ -56,6 +58,8 @@ const appRoutes: Routes = [
     {path:'listeClient',component:ListeClientComponent},
     {path:'test',component:TestComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
+    {path:'contacter',component:ConctactComponent},
+
 
 
 
@@ -112,7 +116,9 @@ const appRoutes: Routes = [
     HeadAdminComponent,
     ClientComponent,
     ListeClientComponent,
-    EmployeDisponibleComponent
+    EmployeDisponibleComponent,
+    ConctactComponent,
+    HeadClientComponent
   ],
   imports: [
     BrowserModule,

@@ -21,10 +21,15 @@ import {UploadFileService} from '../upload-file.service';
 export class AdminComponent implements OnInit {
 
   tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere'];
-  tableauCompetence: Array<String> =['Ménage','Linge','Garde d enfants','Gepassage','Cuisine'];
-
   selectedLanguevalues=[];
+
+  tableauCompetence: Array<String> =['Garde d enfants','Ménage','Linge','Gepassage','Cuisine','Travaux spéciaux (vitres, stores, tapis...etc.)'];
   selectedCompetenceevalues=[];
+
+  //disponiblité
+  tableauDisponiblite: Array<String> =['Matin','Midi','Soir'];
+  selectedDisponiblitevalues=[];
+
 //Parametre pour la photo
   fichierChoisi: FileList;
   fichierCharger: File;
@@ -32,6 +37,8 @@ export class AdminComponent implements OnInit {
 
   favLangueErreur: boolean=true;
   favCompetenceErreur: boolean=true;
+  favDisponibliteErreur: boolean=true;
+
   //nestedForm:FormGroup;
   //liste sugestion
   niveauetudeliste:any;
@@ -69,6 +76,10 @@ export class AdminComponent implements OnInit {
     experiences :new FormControl(''),
     formations :new FormControl(''),
     langues :new FormControl(''),
+    //
+    horaire :new FormControl(''),
+
+  
     
   });
 
@@ -108,6 +119,9 @@ export class AdminComponent implements OnInit {
       observation:[null,Validators.required],
       langues: this.addlanguecontrole(),
       competences: this.addCompetencecontrole(),
+      disponibilites: this.addDisponiblitecontrole(),
+      ///horaire
+      horaire:[null,Validators.required],
       localite:[null,Validators.required],
     });
   }
@@ -282,6 +296,36 @@ export class AdminComponent implements OnInit {
     });  
     return this.fb.array(arr);
 
+  }
+
+  // recuperation disponiblité array
+  get disponibliteArray(){
+    return <FormArray>this.nestedForm.get('disponibilites');
+  }
+
+  //controle Disponiblité
+  addDisponiblitecontrole()
+  {
+    const arr = this.tableauDisponiblite.map( element   =>{
+      return this.fb.control(false);
+    });  
+    return this.fb.array(arr);
+
+  }
+  //disponiblité checked
+  //la langue checked
+  getselectedDisponiblitevalues(){
+    this.selectedDisponiblitevalues =[];
+    this.disponibliteArray.controls.forEach((control , i)=>{
+      if( control.value){
+        this.selectedDisponiblitevalues.push(this.tableauDisponiblite[i]);
+         
+      }
+
+    });
+    console.log(this.selectedDisponiblitevalues);
+    this.favDisponibliteErreur = this.selectedDisponiblitevalues.length >0 ? false :true;
+    
   }
   //la langue checked
   getselectedLanguevalues(){

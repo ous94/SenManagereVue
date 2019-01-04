@@ -1,229 +1,147 @@
-<!-- <app-header></app-header>
- -->
-<div class="container" id="container">
-    <form [formGroup]="newEmployee" (ngSubmit)="onSubmitform()">            <!-- information personnelle -->
+<app-script></app-script>
+<body>
+ 
+  <app-navbar></app-navbar>
 
-    <div class="panel panel-primary , col-lg-4">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Information personnelles</div>
-        <div class="panel-body">
-        
-              <!-- for nom -->            
-
-            <div class="form-group"></div>
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" formControlName="nom">
-
-            <!-- for prenom -->            
-
-            <div class="form-group"></div>
-            <label for="prenom">Prenom</label>
-            <input type="text" class="form-control" id="prenom" formControlName="prenom">
-
-            <!-- for Adresse -->            
-
-            <div class="form-group"></div>
-            <label for="adresse">Adresse</label>
-            <input type="text" class="form-control" id="adresse" formControlName="adresse">
-
-            <!-- for Date-Naissance -->            
-
-            <div class="form-group"></div>
-            <label for="dateNaissance">Date-Naissance</label>
-            <input type="date" class="form-control" id="dateNaissance" formControlName="dateNaissance">
-
-            <!-- for Telephone Mobile --> 
-            <div class="form-group"></div>
-            <label for="telephoneMobile">Telephone Mobile <span class="glyphicon glyphicon-earphone"></span></label>
-            <input type="number" class="form-control" id="telephoneMobile" formControlName="telephoneMobile">           
-
-      
-            <!-- for telphone fixe -->    
-
-            <div class="form-group"></div>
-            <label for="telephoneFixe">Telephone Fixe  <span class="glyphicon glyphicon-phone-alt"></span></label>
-            <input type="number" class="form-control" id="telephoneFixe" formControlName="telephoneFixe">
-
-            <!-- for email -->            
-
-            <div class="form-group"></div>
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email">
-
-        </div>
     
-      </div>
-      <!-- information profesionnelle -->
-      <div class="panel panel-primary , col-lg-4">
-            <!-- information Professionnelle -->
-            <div class="panel-heading">Information Professionnelle</div>
-          <div class="panel-body">
-          
-          
-  
-              <!-- for Nievau Etude -->            
-            <div class="form-group"></div>
-            <label for="niveauetude">Niveau d'Etude</label>
-            <select id="niveauetude" class="form-control"  formControlName="niveauetude" >
-                <option  *ngFor="let nom of niveauetudeliste" value="{{nom}}">{{nom}}</option>
-                
-            </select>
-            <br/>
-                 <!-- Multiple Radios (inline) -->
-             <div class="form-group" >
-                 <label class="col-md-3 control-label" for="religion" >Religion</label>
-                    <div class="col-lg-13"> 
-                 <label class="radio-inline ,col-md-3" for="radios-0">
-          <input type="radio" name="religion" id="radios-0" value="Musulmane" checked="checked" formControlName="religion">Musulmane</label>
-                <label class="radio-inline , col-md-4" for="radios-1">
-           <input type="radio" name="religion" id="radios-1" value="Chrétienne" formControlName="religion">Chrétienne</label>
-    </div>
-  </div>     
-  
-              <!-- for situation matrimoniale  -->            
-              <div class="form-group"></div>
-              <label for="situationMatrimoniale">Situation Matrimoniale</label>
-              <select id="situationMatrimoniale" class="form-control" formControlName="situationMatrimoniale">
-                  <option value="Celibataire">Celibataire</option>
-                  <option value="Mariee">Mariee</option>
-                  <option value="Divorcee">Divorcee</option>
-                  <option value="Veuve">Veuve</option>
-                  </select>
+    <header class="masthead text-white ">
+        <div class="overlay"></div>
+        <div class="container slider-top-text">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="my-heading">Bienvenue sur <span class="bg-main">votre Espace Managere</span></h3>
+                    <H4 class="myp-slider text-center">Faites confiance à l’une de nos équipes dynamiques, professionnelles et pleines d’énergie!
+                    </H4>
+                    <p class="myp text-center">Services Entreprise    |   Service Domicile    |   Service Organisation </p>
+                    <a class="btn btn-primary btn-join" href="#">Joingnez notre communauté</a>
 
-                   <!-- for Competence --> 
-              <div class="form-group"></div>
-              <label for="competences">Competences:</label>   
-              <!-- <div class="col-lg-20">        
-                 <label class="checkbox-inline" *ngFor="let description of competenceListe"><input type="checkbox" value="">{{description}}</label>
-              </div> -->
-
-              <div class="col-xs-14">
-                  <div class="well" style="max-height: 200px;overflow: auto;">
-
-                    <div class="list-group checked-list-box">
-                        <label class="checkbox-inline" *ngFor="let description of competenceListe"><input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label>
-                        
+                </div>
+                <div class="col-md-12 text-center mt-5">
+                    <div class="scroll-down">
+                        <a class="btn btn-default btn-scroll floating-arrow" href="#gobottom" id="bottom"><i class="fa fa-angle-down"></i></a>
                     </div>
-                  </div>
-              </div>
-
-                   <!-- for Ethenie -->            
-              <div class="form-group"></div>
-              <label for="ethnies">Ethnies:</label>
-              <select id="ethnies" class="form-control"  formControlName="ethnies" >
-                  <option  *ngFor="let nom of malisteethnies" value="{{nom}}">{{nom}}</option>
-                  </select>
-  
-             
-                          <!-- langue parlé -->
-
-
-                          <!-- <div class="col-12">
-                            <div> <label for="" class="form-label"> Langues Parlée</label></div>
-                            <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls; let i = index;">
-                              <input class="form-check-input" [formControl]="control " type="checkbox" id="inlinecheck{{1}}" 
-                              (change)="getselectedlanguevalue() ">
-                              <label class="form-check-label" for="nlinecheck{{1}}">{{tableauLangue[i]}}</label>
-                            </div>
-                            <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez cocher </small>
-                        
-                          </div>
- -->
-
-
-              <!-- <div class="form-group"></div>
-              <label for="langues">Langues Parlée:</label> 
-              <div class="checkbox" *ngFor="let nom of langueliste">
-                  <label ><input formControlName="langues" type="checkbox" value="" class="form-control" >{{nom}}</label>
-                </div> -->
-                <div class="col-12">
-                    <div><label for="langues" class="form-label" >Langues Parlées </label></div>
-                    <div class="form-check form-check-inline" *ngFor="let langues of langueArray.controls;let i = index;">
-                    <input class="form-check-input" formControlName="langues" [formControl]="langues" (change)="getselectedlanguevalue()" 
-                    type="checkbox" id="langues">
-                    <label class="form-check-label" for="langues ">{{tableauLangue[i]}}</label>
                 </div>
-                <small id="erer" *ngIf="erreurcheck" class="form-text custom invalid-feedback">Veillez </small>
-
-                </div>
-                </div>
-                
-            
-          </div>
-      
-        <!-- Suite information -->
-
-        <div class="panel panel-primary , col-lg-4">
-            <!-- information Professionnelle -->
-            <div class="panel-heading">Information Professionnelle</div>
-          <div class="panel-body">
-          
-          
-  
-              <!-- for types identification -->            
-            <div class="form-group"></div>
-            <label for="typeIdentification">Type Identification </label>
-            <select id="typeIdentification" class="form-control"  formControlName="typeIdentification" >
-                <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
-                
-            </select>
-            <br/>
-            <div class="form-group"></div>
-            <label for="identification">Identification</label>
-            <input type="number" class="form-control" id="identification" formControlName="identification"/>
-                 <!-- Multiple Radios (inline) -->
-        
-          
-
-                   <!-- for Competence --> 
-              <!-- <div class="form-group"></div>
-              <label for="competence">Competences:</label>   
-            
-              <div class="col-xs-14">
-                  <div class="well" style="max-height: 300px;overflow: auto;">
-
-                    <div class="list-group checked-list-box">
-                        <label class="checkbox-inline" *ngFor="let description of competenceListe"><input type="checkbox" value="">{{description}}</label>
-                        
-                    </div>
-                  </div>
-              </div> -->
-
-                   <!-- for pays -->            
-              <div class="form-group"></div>
-              <label for="pay">Pays:</label>
-              <select id="pay" class="form-control"   formControlName="pay">
-                  <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
-                  </select>
-  
-             
-                          <!-- langue parlé -->
-             <!--  <div class="form-group"></div>
-              <label for="competence">Langues Parlée:</label> 
-              <div class="checkbox" *ngFor="let nom of langueliste">
-                  <label ><input type="checkbox" value="">{{nom}}</label>
-                </div> -->
-
-                
-          </div>
-      
-        </div>
-        <button type="submit " class="btn btn-primary" [disabled]="!newEmployee.valid">Enregistrer</button>
-    </form>
-</div>
-
-
-<!-- for age -->
-
-
-
-<!-- <div>
-        <div>
-         <label for="" class="form-label">langues</label>
-        </div>
-           <div class="form-check form-check-inline" *ngFor="let control of langueArray.controls; let i=index;">
-              <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-              <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
             </div>
-            <small id="erer" style="color: brown" *ngIf="favLangueErreur && checkLangueTouched()" class="form-text custom invalid-feedback">Veillez  cochez une Case</small>
-     </div> -->
+        </div>
+    </header>
+    <!-- espace Section1 -->    
+
+        <!-- espace Section2 -->    
+
+    
+
+
+        <!-- espace Section3 -->    
+
+            <!-- espace Section4 -->  
+            <div class="col-md-12 text-center">
+                    <section class="testimonials" id="gobottom">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3 wow bounceInUp" data-wow-duration="1.4s">
+                                        <div class="big-img">
+                                            <img src="../assets/SET/L1.jpg" class="img-fluid">
+
+                                        </div>
+                                        <div id="equipe">
+                                                <h4 class="text-justify">Nos équipes prennent en charge la propreté de votre maison ou de votre logement des salles de bain à la cuisine afin que votre seul souci soit de profiter pleinement de votre espace de vie.</h4>
+                                                <h4 class="text-justify">Nos équipes prennent en charge la propreté de votre maison ou de votre logement des salles de bain à la cuisine afin que votre seul souci soit de profiter pleinement de votre espace de vie.</h4>
+                                                <h4 class="text-justify">Nos équipes prennent en charge la propreté de votre maison ou de votre logement des salles de bain à la cuisine afin que votre seul souci soit de profiter pleinement de votre espace de vie.</h4>
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="inner-section wow fadeInUp">
+                                            <h3><span class="bg-main"> Postuler en tant que Ménagere </span></h3>
+                                            <br/><br/>
+                                            <div class="linear-grid">
+                                                <div class="row">
+                                                    <app-admin></app-admin>
+                                                    
+                        
+                                                   
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+            <br/><br/>
+            </div><br/><br/>    
+    <!-- script -->
+    <script>
+        new WOW().init();
+        </script>
+<script>
+  $(window).scroll( function(){
+
+
+    var topWindow = $(window).scrollTop();
+    var topWindow = topWindow * 1.5;
+    var windowHeight = $(window).height();
+    var position = topWindow / windowHeight;
+    position = 1 - position;
+  
+    $('#bottom').css('opacity', position);
+  
+  });
+
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.display = "0";
+      document.body.style.backgroundColor = "white";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginRight= "0";
+      document.body.style.backgroundColor = "white";
+  }
+
+
+$(window).on("scroll", function() {
+      if ($(this).scrollTop() > 10) {
+          $("nav.navbar").addClass("mybg-dark");
+          $("nav.navbar").addClass("navbar-shrink");
+        
+
+      } else {
+          $("nav.navbar").removeClass("mybg-dark");
+          $("nav.navbar").removeClass("navbar-shrink");
+         
+      }
+      
+
+
+  });
+  
+  $(function() {
+$('#bottom').click(function() {
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+var target = $(this.hash);
+target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+if (target.length) {
+  $('html,body').animate({
+    scrollTop: target.offset().top
+  }, 500);
+  return false;
+}
+}
+});
+});
+
+
+</script>
+<script>
+$(document).ready(function(){
+$(".fancybox").fancybox({
+      openEffect: "none",
+      closeEffect: "none"
+  });
+});
+</script>
+
+    </body>
