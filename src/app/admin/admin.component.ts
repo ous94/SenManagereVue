@@ -207,6 +207,12 @@ export class AdminComponent implements OnInit {
   {
     return this.nestedForm.get('religion');
   }
+
+   //recuperation Horaire
+   get horaire()
+   {
+     return this.nestedForm.get('horaire');
+   }
   //recuperation situationmatrimoniale 
   get situationMatrimoniale()
   {
