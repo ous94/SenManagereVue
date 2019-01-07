@@ -22,7 +22,7 @@ import {DisponibiliteService} from '../service/disponibilite.service';
 })
 export class AdminComponent implements OnInit {
 
-  tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere'];
+  tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere','','',''];
   selectedLanguevalues=[];
 
   tableauCompetence: Array<String> =['Garde d enfants','Ménage','Linge','Gepassage','Cuisine','Travaux spéciaux (vitres, stores, tapis...etc.)'];
@@ -96,10 +96,10 @@ export class AdminComponent implements OnInit {
       this.getdataTypeIdentification();
       this.getdtataEthnies();
       this.getdtataLocalite();
-
-      
     }, 2000
      );
+    
+    
    }
 //
   ngOnInit() {
@@ -128,6 +128,15 @@ export class AdminComponent implements OnInit {
       horaire:[null,Validators.required],
       localite:[null,Validators.required],
     });
+    this.competenceService.getAllCompetenceDescription().subscribe(
+      (data)=>{this.tableauCompetence=data;},
+      (error)=>{console.log(error);}
+    );
+    this.langueService.getAllLangueNom().subscribe(
+      (data)=>{this.tableauLangue=data;},
+      (error)=>{console.log(error);}
+    );
+   
   }
   //
   addAddressGroup(){
@@ -492,4 +501,5 @@ this.employe.competences=[];
     alert('Le format du Fichier choisi est Invalide!');
   }
  }
+ 
 }

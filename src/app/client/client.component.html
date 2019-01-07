@@ -70,6 +70,7 @@
 <div class="form-group col-md-4">
       <label for="pay">Pays</label>
       <select id="pay" class="form-control"  formControlName="pay">
+          <option selected >Sénégal</option>
           <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
       </select>
       <div class="valid-tooltip"> 

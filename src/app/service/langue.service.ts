@@ -15,4 +15,8 @@ export class LangueService {
   {
      return this.http.get(this.baseUrl+"/langue/nom/"+nom);
   }
+  getAllLangueNom():Observable<any>
+  {
+    return this.http.get(this.baseUrl+"/langues");
+  }
 }
