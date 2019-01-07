@@ -38,6 +38,7 @@ import { ListeClientComponent } from './liste-client/liste-client.component';
 import { EmployeDisponibleComponent } from './employe-disponible/employe-disponible.component';
 import { ConctactComponent } from './conctact/conctact.component';
 import { HeadClientComponent } from './head-client/head-client.component';
+import { CarouselComponent } from './carousel/carousel.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     ListeClientComponent,
     EmployeDisponibleComponent,
     ConctactComponent,
-    HeadClientComponent
+    HeadClientComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

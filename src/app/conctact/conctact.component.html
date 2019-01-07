@@ -4,30 +4,69 @@
   <app-navbar></app-navbar>
 
     
-    <header class="masthead text-white ">
-        <div class="overlay"></div>
-        <div class="container slider-top-text">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3 class="my-heading">Bienvenue sur <span class="bg-main">votre Espace Managere</span></h3>
-                    <H4 class="myp-slider text-center">Faites confiance à l’une de nos équipes dynamiques, professionnelles et pleines d’énergie!
-                    </H4>
-                    <p class="myp text-center">Services Entreprise    |   Service Domicile    |   Service Organisation </p>
-                    <a class="btn btn-primary btn-join" href="#">Joingnez notre communauté</a>
-
-                </div>
-                <div class="col-md-12 text-center mt-5">
-                    <div class="scroll-down">
-                        <a class="btn btn-default btn-scroll floating-arrow" href="#gobottom" id="bottom"><i class="fa fa-angle-down"></i></a>
-                    </div>
-                </div>
+    <app-head-client></app-head-client>
+    <!-- espace Section1 -->   
+    
+    <section class="testimonials" id="gobottom">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 mb-5 wow bounceInUp" data-wow-duration="1.4s">
+                  <div class="big-img">
+                      <img src="../assets/SET1/client.jpg" class="img-fluid">
+                  </div>
+                  
+              </div>
+              <div class="col-md-8">
+                  <div class="inner-section wow fadeInUp">
+                      <h3>Contacter<span class="bg-main"> votre Agence </span></h3>
+                      <br/><br/>
+                      <div class="linear-grid">
+                          <div class="row">
+                              
+                                <!-- espace Section2 -->    
+        <div class="contact"  >
+          <div class="row test">
+            <div class="col-md-6">
+              <h5><span class="bg-main">Merci ! de laisser une note.</span></h5>
+              <h4><span class="glyphicon glyphicon-map-marker"></span>Dakar, Medina</h4>
+              <h4><span class="glyphicon glyphicon-phone"></span>Phone: +221 77 334 42 54</h4>
+              <h4><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</h4>
             </div>
+            <div class="col-md-12 bg-dark">
+              <div class="row">
+                <div class="col-sm-6 form-group"><br>
+                  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-12 form-group">
+                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+              </div>
+              <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <button class="btn pull-right" type="submit">Send</button>
+                </div>
+              </div> 
+            </div>
+          </div>
         </div>
-    </header>
-    <!-- espace Section1 -->    
+  
+                             
+                          </div>
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 
-        <!-- espace Section2 -->    
+  <app-section3></app-section3>
+  <app-section4></app-section4>
 
+
+
+      
     
 
 
@@ -35,7 +74,6 @@
 
             <!-- espace Section4 -->  
             <div class="col-md-12 text-center">
-                <app-section-acceuil></app-section-acceuil>
 
             <br/><br/>
             </div><br/><br/>

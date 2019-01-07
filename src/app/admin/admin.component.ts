@@ -217,6 +217,12 @@ export class AdminComponent implements OnInit {
   {
     return this.nestedForm.get('localite');
   }
+
+  //recuperation horaire 
+  get horaire()
+  {
+    return this.nestedForm.get('horaire');
+  }
   //mise a jour Niveau Etudes
   getdataEtude()
   {
