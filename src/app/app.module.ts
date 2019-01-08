@@ -38,6 +38,8 @@ import { ListeClientComponent } from './liste-client/liste-client.component';
 import { EmployeDisponibleComponent } from './employe-disponible/employe-disponible.component';
 import { ConctactComponent } from './conctact/conctact.component';
 import { HeadClientComponent } from './head-client/head-client.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { Nav1Component } from './nav1/nav1.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -59,6 +61,9 @@ const appRoutes: Routes = [
     {path:'test',component:TestComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
     {path:'contacter',component:ConctactComponent},
+    //new version
+    {path:'nav1',component:Nav1Component},
+
 
 
 
@@ -118,7 +123,9 @@ const appRoutes: Routes = [
     ListeClientComponent,
     EmployeDisponibleComponent,
     ConctactComponent,
-    HeadClientComponent
+    HeadClientComponent,
+    CarouselComponent,
+    Nav1Component
   ],
   imports: [
     BrowserModule,

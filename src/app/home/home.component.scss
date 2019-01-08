@@ -16,7 +16,8 @@ header.masthead {
     position: relative;
     height: 50vh;
    // background-color: #343a40;
-    background: url('/../assets/images/ma.jpg') no-repeat center center;
+//background: url('/../assets/images/ma.jpg') no-repeat center center;
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -25,12 +26,13 @@ header.masthead {
     padding-bottom: 8rem;
 }
 
-header.masthead .overlay{position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}
+header.masthead .overlay{position:absolute;height:100%;width:100%;top:0;left:0;opacity:.3}
 
 @media (min-width:768px) {
     header.masthead {
         padding-top: 12rem;
         padding-bottom: 12rem;
+        margin-top: -500px;
     }
     header.masthead h3 {
         font-size: 4rem;

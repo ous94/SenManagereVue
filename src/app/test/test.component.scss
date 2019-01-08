@@ -1,0 +1,56 @@
+/* Remove the jumbotron's default bottom margin */ 
+.jumbotron {
+    margin-bottom: 0;
+    background-color: rgb(255, 255, 255);
+
+
+  }
+  ////////@at-root
+header.masthead {
+    position: relative;
+   // height: 50vh;
+    //margin-top: -300px;
+    z-index: 1;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 0px;
+   // margin-top: 0px;
+    padding-bottom: 0px;
+}
+
+header.masthead .overlay{
+    position:absolute;
+   // background-color: brown;
+    //height:100%;
+   // width:100%;
+    top:0;
+    left:0;
+    opacity:0.8}
+    
+
+span.bg-main {
+    color: #008ba3;
+}
+
+#text1
+{
+    color: blue;
+}
+#contacter{
+    margin-top: -200px;
+    z-index: 1;
+   vertical-align: center;
+   margin-bottom: 70px;
+
+}
+#nav1{
+    border-top-width: 0px;
+    margin-bottom: 0;
+
+}
+#test1{
+    margin-left: 280px;
+
+}

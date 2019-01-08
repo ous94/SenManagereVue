@@ -1,7 +1,8 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    
     <div class="container">
         <a class="navbar-brand" href="index.html">
-            <h3 class="my-heading ">Web<span class="bg-main">Gram</span></h3>
+            <h3 class="my-heading "><span class="bg-main">SenMenagère</span></h3>
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars mfa-white"></span>
@@ -10,36 +11,22 @@
         <div id="main">
             <a href="javascript:void(0)" class="openNav"><span class="fa fa-bars" onclick="openNav()"></span></a>
         </div>
-
-     
-       
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    
-         
-      
     </div>
 
-
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <form class="form-inline my-2 my-lg-0 col-md-6">
-                <input class="myform-control mr-sm-2" type="search" placeholder="find peoples, instruments, bands and more..." aria-label="Search">
-                <button class="btn btn-light"><i class="fa fa-search"></i></button>
-            </form>
+                <li class="nav-link" routerLinkActive="active"><a  id="bg-main" [routerLink]="['/']" routerLinkActive="router-link-active"   class="navbar-brand">Accueil</a>      
+
+                <li class="nav-link" routerLinkActive="active"><a  id="bg-main" [routerLink]="['/EspaceClient']" routerLinkActive="router-link-active"   class="navbar-brand"><span class=" glyphicon glyphicon-user"></span>Espace Client</a> 
+                    <li class="nav-link" routerLinkActive="active"><a  id="bg-main" [routerLink]="['/serviceAdmin']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>Admin</a>      
+                        <li class="nav-link" routerLinkActive="active"><a  id="bg-main" [routerLink]="['/DemandeEmployee']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>S’inscrire</a> </li> 
+                        <li class="nav-link" routerLinkActive="active"><a  id="bg-main" [routerLink]="['/test']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+
+
             <ul class="navbar-nav ml-auto">
-             <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/']" routerLinkActive="router-link-active"   class="navbar-brand">Accueil</a>      
-
-                <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/EspaceClient']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>Espace Client</a>      
-                  <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/serviceAdmin']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>Admin</a>      
-                
-                    <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/DemandeEmployee']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-user"></span>S’inscrire</a>
-                    </li>
-
-                    <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/test']" routerLinkActive="router-link-active"   class="navbar-brand"><span class="glyphicon glyphicon-log-in"></span>Login</a>
 
 
-              
-                  
 
             </ul>
         </div>
