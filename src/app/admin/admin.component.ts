@@ -82,9 +82,6 @@ export class AdminComponent implements OnInit {
     langues :new FormControl(''),
     //
     horaire :new FormControl(''),
-
-  
-    
   });
 
   //
@@ -306,7 +303,7 @@ export class AdminComponent implements OnInit {
     });  
     return this.fb.array(arr);
 
-  }
+  } 
   //controle competences
   addCompetencecontrole()
   {
@@ -314,6 +311,7 @@ export class AdminComponent implements OnInit {
       return this.fb.control(false);
     });  
     return this.fb.array(arr);
+
 
   }
 
