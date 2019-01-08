@@ -11,6 +11,8 @@ import {NiveauEtudeService} from '../service/niveau-etude.service';
 import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
 import {UploadFileService} from '../upload-file.service';
+import { Disponibilite } from '../Classe/Disponibilite';
+import {DisponibiliteService} from '../service/disponibilite.service';
 
 
 @Component({
@@ -49,6 +51,8 @@ export class AdminComponent implements OnInit {
   localiteListe:any;
   employee1 : Employee = new Employee();
   employe :Employee=new Employee();
+  employeRetour :Employee=new Employee();
+  disponibilite :Disponibilite= new Disponibilite();
 //
   nestedForm= new FormGroup({
     idemploye:new FormControl(''),
@@ -84,7 +88,7 @@ export class AdminComponent implements OnInit {
   });
 
   //
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService) {
+  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -207,6 +211,12 @@ export class AdminComponent implements OnInit {
   {
     return this.nestedForm.get('religion');
   }
+
+   //recuperation Horaire
+   get horaire()
+   {
+     return this.nestedForm.get('horaire');
+   }
   //recuperation situationmatrimoniale 
   get situationMatrimoniale()
   {
@@ -218,11 +228,6 @@ export class AdminComponent implements OnInit {
     return this.nestedForm.get('localite');
   }
 
-  //recuperation horaire 
-  get horaire()
-  {
-    return this.nestedForm.get('horaire');
-  }
   //mise a jour Niveau Etudes
   getdataEtude()
   {
@@ -380,27 +385,27 @@ submithandle()
    const newitemCompetence=this.selectedCompetenceevalues;
    //
    this.employee1= this.nestedForm.value;
-   //
+   //Recuperation de Tyep d'Identification
    this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
      (data) =>{this.employe.typeIdentification=data;},
      (error) =>{console.log("erreur sur le TypeIdentification");}
    );
-   //
+   // Recuperation de la Localite
    this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
      (data)=>{this.employe.localite=data},
      (error) =>{console.log("Erreur sur la localite");}
    );
-   //
+   //Recuperation de L'ethnie
    this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
      (data)=>{this.employe.ethnies=data;},
      (error) =>{console.log("Erreur sur l ethnies");}
    );
-   //
+   //Recuperation du Niveau d'etude
   this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
     (data) =>{this.employe.niveauetude=data;},
     (error)=>{console.log("Erreur sur le niveauEtude");}
   );
-//
+// Recuperation des =Competences
 this.employe.competences=[];
   for(let i:number=0;i<this.selectedCompetenceevalues.length;i++)
   {
@@ -410,7 +415,7 @@ this.employe.competences=[];
                 }
      );
   };
-  //
+  // Recuperation des Langues
   this.employe.langues=[];
   for(let i:number=0;i<this.selectedLanguevalues.length;i++)
   {
@@ -418,6 +423,9 @@ this.employe.competences=[];
        (data) =>{this.employe.langues[i]=data;}
      );
   };
+  // Recuperation des disponibilites
+  
+
   //
    console.log(this.employee1);
    this.employe.nom=this.employee1.nom;
@@ -446,26 +454,35 @@ this.employe.competences=[];
             //Sauvegarde de la photo de l'employe
              this.uploadFileService.uploadPhoto(this.fichierCharger).subscribe(
                (data)=>{
-                      this.nomFichier=data;
+                     this.nomFichier=data;
                       this.employe.photo=this.nomFichier;
                       //Sauvegarde de l'employer
+                      console.log(this.employe);
                       this.EmployeeService.addEmployee(this.employe).subscribe(
-                          (data) => {console.log(data)}, 
+                          (data) => { 
+                                     //Sauvegarde des Disponibilites de l'employee
+                                      this.employe.disponibilites=[];
+                                      for(let i:number=0;i<this.selectedDisponiblitevalues.length;i++)
+                                      {
+                                          this.disponibilite=new Disponibilite();
+                                          this.disponibilite.horaire=this.selectedDisponiblitevalues[i];
+                                          this.disponibilite.moment=this.horaire.value;
+                                          this.disponibilite.employee=data;
+                                          console.log(this.disponibilite);
+                                          this.disponibiliteService.addDisponibilite(this.disponibilite).subscribe(
+                                              (data)=>{console.log(data)},
+                                              (error)=>{console.log(error);} );    
+                                      }
+                                      console.log(data)
+                                  }, 
                           (error) =>{console.log(error)} );
                     },
               (error)=>{
                 console.log(error);
-              }
-             );
-     
-           // this.EmployeeService.addEmployee(this.employe).subscribe(
-           // (data) => {console.log(data)}, 
-           // (error) =>{console.log(error)} );
+              } );
        },
-    (error)=> {console.log("erreur intervenant lors de la sauvegarde");
-    }
-  );
- }
+       (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
+  }
 
  selectFile(event) {
   const file = event.target.files.item(0)
