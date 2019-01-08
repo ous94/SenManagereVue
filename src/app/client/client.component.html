@@ -1,74 +1,74 @@
 <div class="bg-dark">
 <form [formGroup]="clientForm" (ngSubmit)="submithandle()">
-  <div class="col-md-4 mb-3">
+<div id="parti1">
+  <div class="row">
+    <div class="col-xs-6 col-md-4  Vcenter">
+
         <label for="nom">Nom</label>
         <input type="text" class="form-control" id="nom" placeholder="Nom" formControlName="nom" required>
          <div class="valid-tooltip"> 
         </div>
    </div>
-  <div class="col-md-4 mb-3">
+   <div class="col-md-4 mb-3">
      <label for="telephoneFixe">Téléphne Fixe</label>
       <input type="text" class="form-control" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" required>
-      <div class="valid-tooltip"> 
-     </div>           
- </div>
- <div class="col-md-4 mb-3">
-    <label for="localite">Localité</label>
-
-    <select id="localite" class="form-control" formControlName="localite" >
-        <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
-        </select>
- <div class="valid-tooltip"> 
- </div>
- </div>
- <div class="col-md-4 mb-3">
+      <div class="valid-tooltip"></div>           
+   </div>
+   <div class="col-md-4 mb-3">
+      <label for="localite">Localité</label>
+      <select id="localite" class="form-control" formControlName="localite" >
+          <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
+      </select>
+      <div class="valid-tooltip"> </div>
+   </div>
+   <div class="col-md-4 mb-3">
       <label for="prenom">Prénom</label>
       <input type="text" class="form-control" id="prenom" placeholder="prenom" formControlName="prenom" required>
       <div class="valid-tooltip"> 
       </div>
- </div>
-<div class="col-md-4 mb-3">
+   </div>
+   <div class="col-md-4 mb-3">
      <label for="telephoneMobile">Téléphne Mobile</label>
       <input type="text" class="form-control" id="telephoneMobile" placeholder="telephoneMobile" formControlName="telephoneMobile" required>
       <div class="valid-tooltip"> 
       </div>
-</div>
-<div class="col-md-4 mb-3">
+   </div>
+   <div class="col-md-4 mb-3">
      <label for="typeidentification">Type Identification</label>
      <select id="typeidentification" class="form-control"  formControlName="typeidentification"  placeholder="typeidentification">
           <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
-    </select>
-    <div class="valid-tooltip"> 
-    </div>
-</div>
-<div class="col-md-4 mb-3">
+     </select>
+     <div class="valid-tooltip"> 
+     </div>
+   </div>
+  <div class="col-md-4 mb-3">
     <label for="adresse">Adresse</label>
     <input type="text" class="form-control" id="adresse" placeholder="adresse" formControlName="adresse" required>
     <div class="valid-tooltip"> 
     </div>
-</div>
-<div class="col-md-4 mb-3">
+   </div>
+  <div class="col-md-4 mb-3">
     <label for="sexe">Sexe</label>
     <select id="Sexe" class="form-control" formControlName="sexe">
-      <option selected>Masculin</option>
+       <option selected>Masculin</option>
       <option>Féminin</option>
     </select>
     <div class="valid-tooltip"> 
     </div>
-</div>
-<div class="col-md-4 mb-3">
+  </div>
+  <div class="col-md-4 mb-3">
     <label for="identification">N° d'Identification</label>
     <input type="text" class="form-control" id="identification" placeholder="identification" formControlName="identification" required>
     <div class="valid-tooltip"> 
     </div>
-</div>
-<div class="col-md-4 mb-3">
+ </div>
+ <div class="col-md-4 mb-3">
     <label for="email">Email</label>
     <input type="text" class="form-control" id="email" placeholder="email" formControlName="email" required>
     <div class="valid-tooltip"> 
     </div>
-</div>
-<div class="form-group col-md-4">
+ </div>
+ <div class="form-group col-md-4">
       <label for="pay">Pays</label>
       <select id="pay" class="form-control"  formControlName="pay">
           <option selected >Sénégal</option>
@@ -76,22 +76,42 @@
       </select>
       <div class="valid-tooltip"> 
       </div>
-</div>
-<div class="col-md-4 mb-3">
+ </div>
+ <div class="col-md-4 mb-3">
       <label for="textarea">Observation </label>
       <textarea class="form-control" id="observation" rows="5" maxlength="500" formControlName="observation"></textarea>
       <div class="valid-tooltip"> 
       </div>
-      <button class="btn btn-primary"id="buttonenregistrer" type="submit">S'enregister</button>
+      <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" type="submit">Suivant</button>
+  </div>
 </div>
+</div>
+ <!-- DEUXIEME DIV CONFIRMATION  -->
+ <div id="parti2">
+  <div>
+      <div class="col-xs-6 col-md-8 col-lg-10 Vcenter">
+    <!--<div class="col-md-4 mb-6" >-->
+      
 
-
+                <h5 class="card-title text-center">Register</h5>
+                  
+                  <div >
+                    <!--<label for="inputEmail"> Adresse Email</label>-->
+                    <input type="email" id="inputEmail" class="form-control" placeholder="adresse Email " required>
+                  </div>
+                  <div >
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de Passe" required>
+                   <!-- <label for="inputPassword">Mot de Passe</label>-->
+                  </div>
+                  
+                  <div >
+                    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer" required>
+                    <!--<label for="inputConfirmPassword">Confirmer</label>-->
+                  </div>
+                  <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit">S'enregistrer</button>  
+      </div>
+</div>
+</div>
 </form>
 </div>
-
-
-
 <!--  -->
-
-
-	
