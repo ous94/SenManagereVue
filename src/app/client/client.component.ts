@@ -7,6 +7,7 @@ import { LocaliteService } from '../service/localite.service';
 import { TypeIdentificationService } from '../service/type-identification.service';
 import {PaysService} from '../service/pays.service';
 import {ClientService} from '../service/client.service'
+import { MessagesService } from '../service/messages.service';
 
 @Component({
   selector: 'app-client',
@@ -34,14 +35,14 @@ export class ClientComponent implements OnInit {
     telephoneMobile :new FormControl(''),
     localite :new FormControl(''),
     pay :new FormControl(''),
-    typeidentification :new FormControl(''),
+    typeidentification :new FormControl(''), 
     
 
 
 
   });
 
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ) {
+  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService) {
 
     setTimeout(() => {
      // this.getdataEtude();
