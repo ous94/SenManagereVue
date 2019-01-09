@@ -17,6 +17,7 @@ export class ClientComponent implements OnInit {
   identificationListe: any;
   paysliste:any;
   localiteListe:any;
+  suivant:Boolean=false;
   //Definition des Clients pour  recuperer le contenu du formulaire
   client : Client = new Client();
   clientFinal :Client =new Client();
@@ -35,10 +36,6 @@ export class ClientComponent implements OnInit {
     localite :new FormControl(''),
     pay :new FormControl(''),
     typeidentification :new FormControl(''),
-    
-
-
-
   });
 
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ) {
@@ -236,5 +233,14 @@ submithandle()
      this.clientService.addClient(this.clientFinal).subscribe(
               (data) => {console.log(data)}, 
               (error) =>{console.log(error)} );
+  }
+  visibiliteDiv($event)
+  {
+       this.suivant=!this.suivant;
+       var elements = document.getElementsByClassName("ativaction");
+       for(let i:number=0;i<elements.length;i++)
+       {
+         
+       }
   }
 }
