@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray,FormControl } from '@angular/forms';
-import { EmployeeService } from '../employee.service';
+import { Employee } from 'src/app/Classe/Employee';
+import { Disponibilite } from 'src/app/Classe/Disponibilite';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { EmployeeService } from 'src/app/employee.service';
 import { Router } from '@angular/router';
-import { Employee } from '../Classe/Employee';
-import {CompetenceService} from '../service/competence.service';
-import {EthniesService} from '../service/ethnies.service';
-import {LangueService} from '../service/langue.service';
-import {LocaliteService} from '../service/localite.service';
-import {NiveauEtudeService} from '../service/niveau-etude.service';
-import {PaysService} from '../service/pays.service';
-import {TypeIdentificationService} from '../service/type-identification.service';
-import {UploadFileService} from '../upload-file.service';
-import { Disponibilite } from '../Classe/Disponibilite';
-import {DisponibiliteService} from '../service/disponibilite.service';
+import { CompetenceService } from 'src/app/service/competence.service';
+import { EthniesService } from 'src/app/service/ethnies.service';
+import { LocaliteService } from 'src/app/service/localite.service';
+import { LangueService } from 'src/app/service/langue.service';
+import { PaysService } from 'src/app/service/pays.service';
+import { NiveauEtudeService } from 'src/app/service/niveau-etude.service';
+import { TypeIdentificationService } from 'src/app/service/type-identification.service';
+import { UploadFileService } from 'src/app/upload-file.service';
+import { DisponibiliteService } from 'src/app/service/disponibilite.service';
 
+///new version
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',       
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-inscription',
+  templateUrl: './inscription.component.html',
+  styleUrls: ['./inscription.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class InscriptionComponent implements OnInit {
 
-  tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere','','',''];
+  tableauLangue: Array<String> =['Française','Arabe','Anglais','Chinois','Pheul','Serere','Wolof'];
   selectedLanguevalues=[];
 
   tableauCompetence: Array<String> =['Garde d enfants','Ménage','Linge','Gepassage','Cuisine','Travaux spéciaux (vitres, stores, tapis...etc.)'];
@@ -505,5 +506,4 @@ this.employe.competences=[];
     alert('Le format du Fichier choisi est Invalide!');
   }
  }
- 
 }
