@@ -10,15 +10,14 @@
         <!-- pour prenom -->
           <div class="form-group input-group-sm col-sm-14">
              <label for="pretext">Prenom</label>
-              <input type="text" formControlName="prenom" [ngClass]="{'form-control':true,
-              'is-invalid':prenom.invalid && prenom.touched,
-                'is-valid':prenom.valid}" id="pretext" placeholder="Entrer Prenom">
+              <input type="text" formControlName="prenom" required minlength="3" id="pretext" placeholder="Entrer Prenom">
+              <p  *ngIf=" prenom.touched && !prenom.valid"></p>
          </div>
          <!-- pour nom -->
          <div class="form-group input-group-sm col-sm-14">
             <label for="nomtext">nom</label>
              <input type="text" formControlName="nom" [ngClass]="{'form-control':true,
-             'is-invalid':nom.invalid && prenom.touched,
+             'is-invalid':nom.invalid && nom.touched,
                'is-valid':nom.valid}" id="nomtext" placeholder="Entrer nom">
         </div>
 
@@ -40,14 +39,14 @@
         <!-- pour telephoneFixe -->
         <div class="form-group input-group-sm">
             <label for="fixetext">Téléphone Fixe</label>
-             <input type="number" formControlName="telephoneFixe" [ngClass]="{'form-control':true,
+             <input type="tel" formControlName="telephoneFixe" [ngClass]="{'form-control':true,
              'is-invalid':telephoneFixe.invalid && telephoneFixe.touched,
                'is-valid':telephoneFixe.valid}" id="fixetext" placeholder="Entrer Telephone Fixe">
         </div>
         <!-- pour telephoneMobile -->
         <div class="form-group input-group-sm">
             <label for="mobiletext">Téléphone Mobile</label>
-             <input type="number" formControlName="telephoneMobile" [ngClass]="{'form-control':true,
+             <input type="tel" formControlName="telephoneMobile" [ngClass]="{'form-control':true,
              'is-invalid':telephoneMobile.invalid && telephoneMobile.touched,
                'is-valid':telephoneMobile.valid}" id="mobiletext" placeholder="Entrer TelephoneMobile">
         </div>
@@ -56,7 +55,9 @@
             <label for="emailtext">Email</label>
              <input type="email" formControlName="email" [ngClass]="{'form-control':true,
              'is-invalid':email.invalid && email.touched,
-               'is-valid':email.valid}" id="emailtext" placeholder="Entrer Email">
+               'is-valid':email.valid}" id="emailtext" placeholder="Entrer Email"      >
+               
+               
         </div>
 <!-- fin 1er panel info -->
         
@@ -289,7 +290,7 @@
            </div>
       </div>
 </div>
-<button class="btn btn-primary" type="submit">Save<span class=" glyphicon glyphicon-ok
+<button  class="btn btn-primary" type="submit">Save<span class=" glyphicon glyphicon-ok
 
   "></span></button>
 </form>

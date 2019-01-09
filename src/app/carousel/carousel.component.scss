@@ -2,11 +2,11 @@
 #carousel
 {
    background-color: rgb(255, 255, 255);
-    padding-left: 175px;
+    padding-left: 250px;
     vertical-align: center;
 }
 div#slider { 
-   width: 1000px; max-width: 1000px;height: 350px;text-align: right; overflow: hidden; }
+   width: 1000px; max-width: 1000px; height: 350px; text-align: right; overflow: hidden; }
 div#slider figure {
     position: relative; 
     width: 700%;
@@ -17,7 +17,7 @@ div#slider figure {
    //background-color: rgb(184, 176, 176);
    // margin: 30px;
   }
-  div#slider figure img { width: 30%; height: auto; float: left; }
+  div#slider figure img { width: 10%; height: auto; float: left; }
  div#slider { width: 80%; max-width: 1000px; overflow: hidden }
 @keyframes slidy {
     0% { left: 0%; }

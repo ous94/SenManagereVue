@@ -82,9 +82,6 @@ export class AdminComponent implements OnInit {
     langues :new FormControl(''),
     //
     horaire :new FormControl(''),
-
-  
-    
   });
 
   //
@@ -104,15 +101,16 @@ export class AdminComponent implements OnInit {
 //
   ngOnInit() {
 
+
     this.nestedForm= this.fb.group({
       idemploye:[null,Validators.required],
-      prenom:[null,Validators.required],
-      nom:[null,Validators.required],
+      prenom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(3)])],
+      nom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(2)])],
       adresse:[null,Validators.required],
       dateNaissance :[null,Validators.required],
       telephoneFixe:[null,Validators.required],
       telephoneMobile:[null,Validators.required],
-      email:[null,Validators.required],
+      email:[null,Validators.email],
       niveauetude :[null,Validators.required],
       pay:[null,Validators.required],
       typeidentification:[null,Validators.required],
@@ -307,7 +305,7 @@ export class AdminComponent implements OnInit {
     });  
     return this.fb.array(arr);
 
-  }
+  } 
   //controle competences
   addCompetencecontrole()
   {
@@ -315,6 +313,7 @@ export class AdminComponent implements OnInit {
       return this.fb.control(false);
     });  
     return this.fb.array(arr);
+
 
   }
 
@@ -482,6 +481,7 @@ this.employe.competences=[];
                                               (data)=>{console.log(data)},
                                               (error)=>{console.log(error);} );    
                                       }
+                                      
                                       console.log(data)
                                   }, 
                           (error) =>{console.log(error)} );
@@ -491,6 +491,7 @@ this.employe.competences=[];
               } );
        },
        (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
+       this.nestedForm.reset();
   }
 
  selectFile(event) {

@@ -40,6 +40,11 @@ import { ConctactComponent } from './conctact/conctact.component';
 import { HeadClientComponent } from './head-client/head-client.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { Nav1Component } from './nav1/nav1.component';
+import { ClientConnectComponent } from './client-connect/client-connect.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { TableClientComponent } from './table-client/table-client.component';
+import { InscriptionComponent } from './employee/inscription/inscription.component';
+import { Footer1Component } from './footer1/footer1.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -63,6 +68,10 @@ const appRoutes: Routes = [
     {path:'contacter',component:ConctactComponent},
     //new version
     {path:'nav1',component:Nav1Component},
+    {path:'clientconnect',component:ClientConnectComponent},
+    {path:'employee/inscription',component:InscriptionComponent},
+
+
 
 
 
@@ -125,7 +134,12 @@ const appRoutes: Routes = [
     ConctactComponent,
     HeadClientComponent,
     CarouselComponent,
-    Nav1Component
+    Nav1Component,
+    ClientConnectComponent,
+    AdministrationComponent,
+    TableClientComponent,
+    InscriptionComponent,
+    Footer1Component
   ],
   imports: [
     BrowserModule,

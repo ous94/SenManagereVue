@@ -15,17 +15,14 @@ export class Client
     observation :String;
     prenom :String;
     sexe :String;
-    telephoneFixe :number;
-    telephoneMobile :number;
+    telephoneFixe :String;
+    telephoneMobile :String;
     pay :Pays;
     localite :Localite;
     typeIdentification :TypeIdentification;
     demandes :Demande[];
     documents :Document[];
-
-
-
-
-
+    login :String;
+    password :String;
 
 }
