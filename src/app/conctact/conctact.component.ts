@@ -33,10 +33,13 @@ export class ConctactComponent implements OnInit {
   envoyerEmail()
   {
      this.messages=this.contactForm.value;
+     /*
      this.messagesService.sendMessages(this.messages).subscribe(
         (data)=>{console.log("Reponse sans erreur :"+data);},
         (error)=>{console.log("Reponse avec Erreur :"+error)}
      );
+     */ 
+    console.log(this.messages);
   }
 
 }

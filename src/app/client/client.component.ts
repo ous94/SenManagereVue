@@ -8,6 +8,7 @@ import { TypeIdentificationService } from '../service/type-identification.servic
 import {PaysService} from '../service/pays.service';
 import {ClientService} from '../service/client.service'
 import { MessagesService } from '../service/messages.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-client',
