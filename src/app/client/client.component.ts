@@ -65,7 +65,7 @@ export class ClientComponent implements OnInit {
       dateNaissance :[null,Validators.required],
       telephoneFixe:[null,Validators.required],
       telephoneMobile:[null,Validators.required],
-      email:[null,Validators.required],
+      email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
       pay:[null,Validators.required],
       sexe:[null,Validators.required],
       typeidentification:[null,Validators.required],
