@@ -65,12 +65,12 @@ export class ClientComponent implements OnInit {
 
     this.clientForm= this.fb.group({
       idclient:[null,Validators.required],
-      prenom:[null,Validators.compose([,Validators.minLength(3),Validators.maxLength(50), Validators.required])],
-      nom:[null,Validators.compose([,Validators.minLength(2),Validators.maxLength(30), Validators.required])],
+      prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
+      nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
       adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
       dateNaissance :[null,Validators.required],
-      telephoneFixe:[null,Validators.compose([,Validators.minLength(9),Validators.maxLength(13), Validators.required])],
-      telephoneMobile:[null,Validators.compose([,Validators.minLength(9),Validators.maxLength(13), Validators.required])],
+      telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required])],
+      telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required])],
       email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
       pay:[null,Validators.required],
       sexe:[null,Validators.required],
@@ -79,8 +79,8 @@ export class ClientComponent implements OnInit {
       localite:[null,Validators.required],
       observation:[null,Validators.required],
       login:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
-      password:[null,Validators.compose([,Validators.minLength(8),Validators.maxLength(20), Validators.required])],
-      confirmer :[null,Validators.compose([,Validators.minLength(8),Validators.maxLength(20), Validators.required])],
+      password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
+      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
   });
 }
 
