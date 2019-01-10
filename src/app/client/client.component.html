@@ -3,112 +3,87 @@
 <div id="parti1">
   <div class="row">
     <div class="col-xs-6 col-md-4  Vcenter">
-
         <label for="nom">Nom</label>
-        <input type="text" class="form-control activation" id="nom" placeholder="Nom" formControlName="nom"  [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" >
-         <div class="valid-tooltip"> 
-        </div>
+        <input type="text" class="form-control activation" id="nom" placeholder="Nom" formControlName="nom"  [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" >   
    </div>
    <div class="col-md-4 mb-3">
-     <label for="telephoneFixe">Téléphne Fixe</label>
-      <input type="text" class="form-control activation" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" [ngClass]="{'has-error': clientForm.dirty && clientForm.telephoneFixe.invalid, 'has-success': clientForm.telephoneFixe.valid}">
-      <div class="valid-tooltip"></div>           
+      <label for="telephoneFixe">Téléphne Fixe</label>
+      <input type="text" class="form-control activation" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" [ngClass]="{'form-control':true,'is-invalid':telephoneFixe.invalid && telephoneFixe.touched, 'is-valid':telephoneFixe.valid && telephoneFixe.touched}">           
    </div>
    <div class="col-md-4 mb-3">
       <label for="localite">Localité</label>
-      <select id="localite" class="form-control activation" formControlName="localite" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}" >
+      <select id="localite" class="form-control activation" formControlName="localite" [ngClass]="{'form-control':true,'is-invalid':localite.invalid && localite.touched, 'is-valid':localite.valid && localite.touched}" >
           <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
       </select>
-      <div class="valid-tooltip"> </div>
    </div>
    <div class="col-md-4 mb-3">
       <label for="prenom">Prénom</label>
-      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-      <div class="valid-tooltip"> 
-      </div>
+      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" [ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}">
    </div>
    <div class="col-md-4 mb-3">
-     <label for="telephoneMobile">Téléphne Mobile</label>
-      <input type="text" class="form-control activation" id="telephoneMobile" placeholder="telephoneMobile" formControlName="telephoneMobile" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-      <div class="valid-tooltip"> 
-      </div>
+      <label for="telephoneMobile">Téléphne Mobile</label>
+      <input type="text" class="form-control activation" id="telephoneMobile" placeholder="telephoneMobile" formControlName="telephoneMobile" [ngClass]="{'form-control':true,'is-invalid':telephoneMobile.invalid && telephoneMobile.touched, 'is-valid':telephoneMobile.valid && telephoneMobile.touched}">
    </div>
    <div class="col-md-4 mb-3">
      <label for="typeidentification">Type Identification</label>
-     <select id="typeidentification" class="form-control activation"  formControlName="typeidentification"  placeholder="typeidentification" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
+     <select id="typeidentification" class="form-control activation"  formControlName="typeidentification"  placeholder="typeidentification" [ngClass]="{'form-control':true,'is-invalid':typeidentification.invalid && typeidentification.touched, 'is-valid':typeidentification.valid && typeidentification.touched}">
           <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
      </select>
-     <div class="valid-tooltip"> 
-     </div>
    </div>
-  <div class="col-md-4 mb-3">
-    <label for="adresse">Adresse</label>
-    <input type="text" class="form-control activation" id="adresse" placeholder="adresse" formControlName="adresse" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-    <div class="valid-tooltip"> 
-    </div>
+   <div class="col-md-4 mb-3">
+     <label for="adresse">Adresse</label>
+     <input type="text" class="form-control activation" id="adresse" placeholder="adresse" formControlName="adresse" [ngClass]="{'form-control':true,'is-invalid':adresse.invalid && adresse.touched, 'is-valid':adresse.valid && adresse.touched}">
    </div>
-  <div class="col-md-4 mb-3">
-    <label for="sexe">Sexe</label>
-    <select id="Sexe" class="form-control activation" formControlName="sexe" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
+   <div class="col-md-4 mb-3">
+     <label for="sexe">Sexe</label>
+     <select id="Sexe" class="form-control activation" formControlName="sexe" [ngClass]="{'form-control':true,'is-invalid':sexe.invalid && sexe.touched, 'is-valid':sexe.valid && sexe.touched}">
        <option selected>Masculin</option>
        <option>Féminin</option>
-    </select>
-    <div class="valid-tooltip"> 
-    </div>
+     </select>
   </div>
   <div class="col-md-4 mb-3">
     <label for="identification">N° d'Identification</label>
-    <input type="text" class="form-control activation" id="identification" placeholder="identification" formControlName="identification" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-    <div class="valid-tooltip"> 
-    </div>
+    <input type="text" class="form-control activation" id="identification" placeholder="identification" formControlName="identification" [ngClass]="{'form-control':true,'is-invalid':identification.invalid && identification.touched, 'is-valid':identification.valid && identification.touched}">
  </div>
  <div class="col-md-4 mb-3">
     <label for="email">Email</label>
-    <input type="text" class="form-control activation" id="email" placeholder="email" formControlName="email" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-    <div class="valid-tooltip"> 
-    </div>
+    <input type="text" class="form-control activation" id="email" placeholder="email" formControlName="email" [ngClass]="{'form-control':true,'is-invalid':email.invalid && email.touched, 'is-valid':email.valid && email.touched}">
  </div>
  <div class="form-group col-md-4">
       <label for="pay">Pays</label>
-      <select id="pay" class="form-control activation"  formControlName="pay" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
+      <select id="pay" class="form-control activation"  formControlName="pay" [ngClass]="{'form-control':true,'is-invalid':pay.invalid && pay.touched, 'is-valid':pay.valid && pay.touched}">
           <option selected >Sénégal</option>
           <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
       </select>
-      <div class="valid-tooltip"> 
-      </div>
  </div>
  <div class="col-md-4 mb-3">
       <label for="textarea">Observation </label>
-      <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}"></textarea>
-      <div class="valid-tooltip"> 
-      </div>
+      <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" [ngClass]="{'form-control':true,'is-invalid':observation.invalid && observation.touched, 'is-valid':observation.valid && observation.touched}"></textarea>
       <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant">Suivant</button>
   </div>
-</div>
-</div>
+ </div>
+ </div>
  <!-- DEUXIEME DIV CONFIRMATION  -->
  <div id="parti2" *ngIf="suivant " >
   <div>
       <div class="col-xs-6 col-md-8 col-lg-10 Vcenter">
-    <!--<div class="col-md-4 mb-6" >-->
-                <h5 class="card-title text-center">Register</h5>
-                  <div >
-                    <!--<label for="inputEmail"> Adresse Email</label>-->
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Login" formControlName="login" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-                  </div>
-                  <div >
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Mot de Passe" formControlName="password" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-                   <!-- <label for="inputPassword">Mot de Passe</label>-->
-                  </div>
-                  
-                  <div >
-                    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer" formControlName="confirmer" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-                    <!--<label for="inputConfirmPassword">Confirmer</label>-->
-                  </div>
-                  <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit" ng-disabled="clientForm.$invalid" >S'enregistrer</button>  
+           <h5 class="card-title text-center">Register</h5>
+           <div >
+               <!--<label for="inputEmail"> Adresse Email</label>-->
+               <input type="email" id="inputEmail" class="form-control" placeholder="Login" formControlName="login" [ngClass]="{'form-control':true,'is-invalid':login.invalid && login.touched, 'is-valid':login.valid && login.touched}">
+            </div>
+            <div >
+               <input type="password" id="inputPassword" class="form-control" placeholder="Mot de Passe" formControlName="password" [ngClass]="{'form-control':true,'is-invalid':password.invalid && password.touched, 'is-valid':password.valid && password.touched}">
+               <!-- <label for="inputPassword">Mot de Passe</label>-->
+            </div>
+            <div >
+               <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer" formControlName="confirmer" [ngClass]="{'form-control':true,'is-invalid':confirmer.invalid && confirmer.touched, 'is-valid':confirmer.valid && confirmer.touched}">
+                <!--<label for="inputConfirmPassword">Confirmer</label>-->
+            </div>
+            <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit" ng-disabled="clientForm.$invalid" >S'enregistrer</button>  
       </div>
-</div>
-</div>
+   </div>
+ </div>
 </form>
 </div>
 <!--  -->
