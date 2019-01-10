@@ -1,159 +1,135 @@
 <app-script></app-script>
 <body>
- 
   <app-navbar></app-navbar>
-
-    
-    <app-head-client></app-head-client>
+  <app-head-client></app-head-client>
     <!-- espace Section1 -->   
-    
     <section class="testimonials" id="gobottom">
       <div class="container">
-          <div class="row">
-              <div class="col-md-4 mb-5 wow bounceInUp" data-wow-duration="1.4s">
-                  <div class="big-img">
+        <div class="row">
+            <div class="col-md-4 mb-5 wow bounceInUp" data-wow-duration="1.4s">
+                <div class="big-img">
                       <img src="../assets/SET1/client.jpg" class="img-fluid">
-                  </div>
-                  
-              </div>
-              <div class="col-md-8">
-                  <div class="inner-section wow fadeInUp">
-                      <h3>Contacter<span class="bg-main"> votre Agence </span></h3>
-                      <br/><br/>
-                      <div class="linear-grid">
-                          <div class="row">
-                              
-                                <!-- espace Section2 -->    
-        <div class="contact"  >
-          <div class="row test">
-            <div class="col-md-6">
-              <h5><span class="bg-main">Merci ! de laisser une note.</span></h5>
-              <h4><span class="glyphicon glyphicon-map-marker"></span>Dakar, Medina</h4>
-              <h4><span class="glyphicon glyphicon-phone"></span>Phone: +221 77 334 42 54</h4>
-              <h4><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</h4>
+                </div>  
             </div>
-            <form action="/action_page.php">
-            <div class="col-md-12 bg-dark">
-              <div class="row">
-                <div class="col-sm-6 form-group"><br>
-                  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-                </div>
-                <div class="col-sm-12 form-group">
-                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-                </div>
-                <div class="col-sm-12 form-group">
-                  <input class="form-control" id="phone" name="phone" placeholder="Phone" type="phone_number" required>
-                </div>
-                   </div>
-                      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+            <div class="col-md-8">
+                <div class="inner-section wow fadeInUp">
+                  <br/><h3>Contacter<span class="bg-main"> votre Agence </span></h3>
+                    <br/>
+                    <div class="linear-grid">
                         <div class="row">
-                            <div class="col-md-12 form-group">
-                              <button class="btn pull-right" type="submit">Send</button>
-                            </div>
-                       </div> 
-                   </div></form>
+                                <!-- espace Section2 -->    
+                         <div class="contact"  >
+                            <div class="row test">
+                              <div class="col-md-6">
+                                <h5><span class="bg-main">Merci ! de laisser une note.</span></h5>
+                                <h4><span class="glyphicon glyphicon-map-marker"></span>Dakar, Medina</h4>
+                                <h4><span class="glyphicon glyphicon-phone"></span>Phone: +221 77 334 42 54</h4>
+                                <h4><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</h4>
+                                <br/>
+                              </div>
+                              <form >
+                              <div class="col-md-12 bg-dark">
+                               <div class="row">
+                                  <div class="col-sm-6 form-group"><br>
+                                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                                  </div>
+                                  <div class="col-sm-12 form-group">
+                                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                                  </div>
+                                  <div class="col-sm-12 form-group">
+                                    <input class="form-control" id="phone" name="phone" placeholder="Phone" type="number" required>
+                                  </div>
+                               </div>
+                               <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+                               <div class="row">
+                                <div class="col-md-12 form-group">
+                                   <button class="btn pull-right" type="submit">Send</button>
+                               </div>
+                              </div> 
+                           </div>
+                          </form>
+                          <br/><br/>
+                          </div>
+                         </div>    
+                        </div>
+                      </div> 
+                  </div>
               </div>
-           </div>    
-        </div>
-    </div>        
-  </div>
-</div>
-</div>
-</div>
-</section>
+          </div>
+      
+      </div>
+  </section>
   <app-section3></app-section3>
   <app-section4></app-section4>
-
-
-
-      
-    
-
-
-        <!-- espace Section3 -->    
-
-            <!-- espace Section4 -->  
-            <div class="col-md-12 text-center">
-
-            <br/><br/>
-            </div><br/><br/>
-
-
-   
-   <app-footer></app-footer>
-   
-    
+    <!-- espace Section3 -->    
+    <!-- espace Section4 -->  
+    <div class="col-md-12 text-center">
+    <br/><br/>
+    </div><br/><br/>
+    <app-footer></app-footer>
     <!-- script -->
     <script>
         new WOW().init();
-        </script>
-<script>
-  $(window).scroll( function(){
-
-
-    var topWindow = $(window).scrollTop();
-    var topWindow = topWindow * 1.5;
-    var windowHeight = $(window).height();
-    var position = topWindow / windowHeight;
-    position = 1 - position;
-  
-    $('#bottom').css('opacity', position);
-  
-  });
-
-  function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-      document.getElementById("main").style.display = "0";
-      document.body.style.backgroundColor = "white";
-  }
-
-  function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("main").style.marginRight= "0";
-      document.body.style.backgroundColor = "white";
-  }
-
-
-$(window).on("scroll", function() {
-      if ($(this).scrollTop() > 10) {
-          $("nav.navbar").addClass("mybg-dark");
-          $("nav.navbar").addClass("navbar-shrink");
-        
-
-      } else {
-          $("nav.navbar").removeClass("mybg-dark");
-          $("nav.navbar").removeClass("navbar-shrink");
-         
+    </script>
+    <script>
+       $(window).scroll( function()
+       {
+          var topWindow = $(window).scrollTop();
+          var topWindow = topWindow * 1.5;
+          var windowHeight = $(window).height();
+          var position = topWindow / windowHeight;
+          position = 1 - position;
+          $('#bottom').css('opacity', position);
+      });
+      function openNav()
+      {
+         document.getElementById("mySidenav").style.width = "250px";
+         document.getElementById("main").style.display = "0";
+         document.body.style.backgroundColor = "white";
       }
-      
-
-
-  });
-  
-  $(function() {
-$('#bottom').click(function() {
-if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-var target = $(this.hash);
-target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-if (target.length) {
-  $('html,body').animate({
-    scrollTop: target.offset().top
-  }, 500);
-  return false;
-}
-}
-});
-});
-
-
-</script>
-<script>
-$(document).ready(function(){
-$(".fancybox").fancybox({
-      openEffect: "none",
-      closeEffect: "none"
-  });
-});
-</script>
-
-    </body>
+      function closeNav() {
+         document.getElementById("mySidenav").style.width = "0";
+         document.getElementById("main").style.marginRight= "0";
+         document.body.style.backgroundColor = "white";
+      }
+      $(window).on("scroll", function()
+       {
+          if ($(this).scrollTop() > 10) 
+          {
+              $("nav.navbar").addClass("mybg-dark");
+              $("nav.navbar").addClass("navbar-shrink");
+          } 
+          else
+          {
+             $("nav.navbar").removeClass("mybg-dark");
+             $("nav.navbar").removeClass("navbar-shrink");
+          }
+      });
+      $(function() 
+      {
+          $('#bottom').click(function()
+          {
+              if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
+             {
+                  var target = $(this.hash);
+                 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                 if (target.length)
+                  {
+                     $('html,body').animate({
+                     scrollTop: target.offset().top
+                     }, 500);
+                    return false;
+                  }
+             }
+          });
+      });   
+    </script>
+    <script>
+     $(document).ready(function(){
+     $(".fancybox").fancybox({
+       openEffect: "none",
+       closeEffect: "none"
+      });
+    });
+   </script>
+</body>
