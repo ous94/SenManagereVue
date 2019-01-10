@@ -19,6 +19,8 @@ export class ClientComponent implements OnInit {
   paysliste:any;
   localiteListe:any;
   suivant:Boolean=false;
+  password1:string='test';
+  password2:string='test';
   //Definition des Clients pour  recuperer le contenu du formulaire
   client : Client = new Client();
   clientFinal :Client =new Client();
@@ -37,6 +39,9 @@ export class ClientComponent implements OnInit {
     localite :new FormControl(''),
     pay :new FormControl(''),
     typeidentification :new FormControl(''),
+    login :new FormControl(''),
+    password :new FormControl(''),
+    confirmer :new FormControl('')
   });
 
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService) {
@@ -72,6 +77,9 @@ export class ClientComponent implements OnInit {
       identification:[null,Validators.required],
       localite:[null,Validators.required],
       observation:[null,Validators.required],
+      login:[null,Validators.required],
+      password:[null,Validators.required],
+      confirmer :[null,Validators.required]
   });
 }
 
@@ -198,43 +206,69 @@ getdataTypeIdentification()
     ()=>{console.log('errer chargement des donnés')}
     );
 }
+get login()
+{
+  return this.clientForm.get('login');
+}
+get password()
+{
+  return this.clientForm.get('password');
+}
+get confirmer()
+{
+  return this.clientForm.get('confirmer');
+}
 submithandle()
 //Fonction pour Enregister un Client
 {
-
-  this.client= this.clientForm.value;
-  console.log(this.client);
-  //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
-  this.clientFinal.adresse=this.client.adresse;
-  this.clientFinal.email=this.client.email;
-  this.clientFinal.identification=this.client.identification;
-  this.clientFinal.nom=this.client.nom;
-  this.clientFinal.observation=this.client.observation;
-  this.clientFinal.prenom=this.client.prenom;
-  this.clientFinal.sexe=this.client.sexe;
-  this.clientFinal.telephoneFixe=this.client.telephoneFixe;
-  this.clientFinal.telephoneMobile=this.client.telephoneMobile;
-  //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
-  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
-    (data)=>{this.clientFinal.localite=data},
-    (error) =>{console.log("Erreur sur la localite");}
-  );
-  //Recuperation du Type d'Identification 
-  this.typeIdentificationService.getTypeIdentificationByNom("CNI").subscribe(
-    (data) =>{this.clientFinal.typeIdentification=data;},
-    (error) =>{console.log("erreur sur le TypeIdentification");}
-  );
-  // Recupration du Pays
-  this.paysService.getPaysByNom(this.pay.value).subscribe(
-    (data)=>{this.clientFinal.pay=data;},
-           (error)=>{console.log(error);}
+  this.password1=this.password.value;
+  this.password2=this.confirmer.value;
+  console.log("Password1 :"+this.password1);
+  console.log("Password2 :"+this.password2);
+   if(this.password.value.localeCompare(this.confirmer.value)==0)
+   {
+       this.client= this.clientForm.value;
+       console.log(this.client);
+      //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
+      this.clientFinal.adresse=this.client.adresse;
+      this.clientFinal.email=this.client.email;
+      this.clientFinal.identification=this.client.identification;
+      this.clientFinal.nom=this.client.nom;
+      this.clientFinal.observation=this.client.observation;
+      this.clientFinal.prenom=this.client.prenom;
+      this.clientFinal.sexe=this.client.sexe;
+      this.clientFinal.telephoneFixe=this.client.telephoneFixe;
+      this.clientFinal.telephoneMobile=this.client.telephoneMobile;
+      this.clientFinal.login=this.client.login;
+      this.clientFinal.password=this.client.password
+      //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
+    /*  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+          (data)=>{this.clientFinal.localite=data},
+          (error) =>{console.log("Erreur sur la localite");}
       );
-  console.log(this.clientFinal);
-  //Sauvegarde du Client
-     this.clientService.addClient(this.clientFinal).subscribe(
+      //Recuperation du Type d'Identification 
+      this.typeIdentificationService.getTypeIdentificationByNom("CNI").subscribe(
+         (data) =>{this.clientFinal.typeIdentification=data;},
+         (error) =>{console.log("erreur sur le TypeIdentification");}
+       );
+      // Recupration du Pays
+      this.paysService.getPaysByNom(this.pay.value).subscribe(
+           (data)=>{this.clientFinal.pay=data;},
+           (error)=>{console.log(error);}
+       );
+      console.log(this.clientFinal);
+      //Sauvegarde du Client
+      this.clientService.addClient(this.clientFinal).subscribe(
               (data) => {console.log(data)}, 
               (error) =>{console.log(error)} );
-  }
+  */
+       console.log(this.clientFinal);
+    }
+    else
+    {
+      console.log("erreur veillez confirmer le mot de Passe s'il vous  plait");
+    }
+}
   visibiliteDiv($event)
   {
        this.suivant=!this.suivant;
