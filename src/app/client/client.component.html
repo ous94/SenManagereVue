@@ -23,7 +23,7 @@
    </div>
    <div class="col-md-4 mb-3">
       <label for="prenom">Prénom</label>
-      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
+      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" [ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}">
       <div class="valid-tooltip"> 
       </div>
    </div>
