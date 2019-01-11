@@ -15,9 +15,9 @@ export class ConctactComponent implements OnInit {
   messages :Messages=new Messages();
   contactForm= new FormGroup({
     email:new FormControl(''),
-    numero:new FormControl(''),
+    telClient:new FormControl(''),
     message :new FormControl(''),
-    nom :new FormControl('')
+    nomClient :new FormControl('')
   });
   constructor(private httpClient :HttpClient,private fb:FormBuilder ,private messagesService :MessagesService ) { }
 
@@ -25,9 +25,9 @@ export class ConctactComponent implements OnInit {
 
     this.contactForm= this.fb.group({
       email:[null,Validators.required],
-      numero:[null,Validators.required],
+      telClient:[null,Validators.required],
       message :[null,Validators.required],
-      nom :[null,Validators.required]
+      nomClient :[null,Validators.required]
     });
   }
   envoyerEmail()
