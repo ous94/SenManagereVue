@@ -80,7 +80,7 @@ export class ClientComponent implements OnInit {
       observation:[null,Validators.required],
       login:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
       password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
-      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
+      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required,Validators.pattern(this.password.value)])],
   });
 }
 
@@ -283,5 +283,10 @@ submithandle()
        {
          
        }
+  }
+  retour($event)
+  {
+       this.suivant=!this.suivant;
+       
   }
 }

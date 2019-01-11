@@ -1,6 +1,6 @@
 <div>
 <form [formGroup]="clientForm" (ngSubmit)="submithandle()">
-<div id="parti1">
+<div id="parti1" *ngIf="!suivant">
   <div class="row">
     <div class="col-xs-6 col-md-4  Vcenter">
         <label for="nom">Nom<span>*</span></label>
@@ -59,12 +59,12 @@
  <div class="col-md-4 mb-3">
       <label for="textarea">Observation </label>
       <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" [ngClass]="{'form-control':true,'is-invalid':observation.invalid && observation.touched, 'is-valid':observation.valid && observation.touched}"></textarea>
-      <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant">Suivant</button>
+      <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant" [disabled]="nom.invalid">Suivant</button>
   </div>
  </div>
  </div>
  <!-- DEUXIEME DIV CONFIRMATION  -->
- <div id="parti2" *ngIf="suivant " >
+ <div id="parti2" *ngIf="suivant" >
   <div>
       <div class="col-xs-6 col-md-8 col-lg-10 Vcenter">
            
@@ -80,8 +80,10 @@
               <label for="inputConfirmPassword">Confirmer<span>*</span></label> 
                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer" formControlName="confirmer" [ngClass]="{'form-control':true,'is-invalid':confirmer.invalid && confirmer.touched, 'is-valid':confirmer.valid && confirmer.touched}">
             </div>
-            <button type="reset" (click)="revert()"[disabled]="heroForm.pristine">Cancel</button>
-            <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit" ng-disabled="clientForm.$invalid" >S'enregistrer</button>  
+            <div id="boutons" class="row"> 
+            <button id="boutons retour" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-6 Vcenter" type="reset" (click)="retour($event)"> Précédent</button> 
+            <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter" type="submit" [disabled]="clientForm.invalid" >S'enregistrer</button>
+           </div>
       </div>
    </div>
  </div>

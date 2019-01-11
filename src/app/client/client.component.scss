@@ -9,6 +9,10 @@ span
 {
   color: red;
 }
+#boutons
+{
+ //display: inline-block;
+}
 #buttonenregistrer
 {
     margin-top: 20px;
@@ -30,10 +34,19 @@ span
 }
 #Valider
 {
-  margin-top: 20px;
-   margin-bottom:20px;
+  //margin-top: 20px;
+  // margin-bottom:20px;
+ // margin-left: 10px;
 }
 
+#bootonsretour
+{
+  //margin-top: 20px;
+ // margin-bottom:20px;
+  //margin-right: 50px;
+  //margin-right: 10px
+
+}
 
 :root {
     --input-padding-x: 1.5rem;
