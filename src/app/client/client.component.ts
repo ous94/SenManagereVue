@@ -267,12 +267,17 @@ submithandle()
     }
     else
     {
+      this.password.invalid;
+      this.confirmer.hasError;
       console.log("erreur veillez confirmer le mot de Passe s'il vous  plait");
     }
+    this.clientForm.reset;
 }
   visibiliteDiv($event)
   {
        this.suivant=!this.suivant;
+       this.login.setValue(this.email.value);
+       this.login.disabled;
        var elements = document.getElementsByClassName("ativaction");
        for(let i:number=0;i<elements.length;i++)
        {
