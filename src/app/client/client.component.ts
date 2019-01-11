@@ -53,9 +53,16 @@ export class ClientComponent implements OnInit {
       this.getdataTypeIdentification();
      // this.getdtataEthnies();
       this.getdtataLocalite();
-    this.paysliste=this.EmployeeService.getpays;
-    this.localiteListe=this.EmployeeService.getLocalite;
-    this.identificationListe=this.EmployeeService.getIdentification;
+    this.EmployeeService.getpays().subscribe(
+         (data)=> {this.paysliste=data;},
+       (error) =>{console.log("erreur sur pays")} 
+    );
+    this.EmployeeService.getLocalite().subscribe(
+      (data)=>{this.localiteListe=data}
+    );
+    this.EmployeeService.getIdentification().subscribe(
+      (data)=>{this.identificationListe=data}
+    );
 
       
     }, 2000
