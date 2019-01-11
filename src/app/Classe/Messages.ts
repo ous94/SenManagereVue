@@ -1,7 +1,8 @@
 export class Messages
 {
     email:String;
-    numero:String;
+    numero:number;
     message:String;
-    nom :String;
+    nomClient :String;
+    telClient :String;
 }
