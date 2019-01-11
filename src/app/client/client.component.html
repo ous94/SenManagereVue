@@ -59,7 +59,7 @@
  <div class="col-md-4 mb-3">
       <label for="textarea">Observation </label>
       <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" [ngClass]="{'form-control':true,'is-invalid':observation.invalid && observation.touched, 'is-valid':observation.valid && observation.touched}"></textarea>
-      <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant">Suivant</button>
+      <button class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-8 Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant" [disabled]="{nom.invalid && prenom.invalid}">Suivant</button>
   </div>
  </div>
  </div>
@@ -80,7 +80,7 @@
                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer" formControlName="confirmer" [ngClass]="{'form-control':true,'is-invalid':confirmer.invalid && confirmer.touched, 'is-valid':confirmer.valid && confirmer.touched}">
                 <!--<label for="inputConfirmPassword">Confirmer</label>-->
             </div>
-            <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit" ng-disabled="clientForm.$invalid" >S'enregistrer</button>  
+            <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase col-xs-6 col-md-2 col-lg-4 Vcenter" type="submit" [disabled]="clientForm.invalid" >S'enregistrer</button>  
       </div>
    </div>
  </div>
