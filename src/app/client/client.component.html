@@ -3,11 +3,9 @@
 <div id="parti1">
   <div class="row">
     <div class="col-xs-6 col-md-4  Vcenter">
-
         <label for="nom">Nom</label>
         <input type="text" class="form-control activation" id="nom" placeholder="Nom" formControlName="nom"  [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" >
-         <div class="valid-tooltip"> 
-        </div>
+         
    </div>
    <div class="col-md-4 mb-3">
      <label for="telephoneFixe">Téléphne Fixe</label>
@@ -23,9 +21,8 @@
    </div>
    <div class="col-md-4 mb-3">
       <label for="prenom">Prénom</label>
-      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
-      <div class="valid-tooltip"> 
-      </div>
+      <input type="text" class="form-control activation" id="prenom" placeholder="prenom" formControlName="prenom" [ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}">
+      
    </div>
    <div class="col-md-4 mb-3">
      <label for="telephoneMobile">Téléphne Mobile</label>
