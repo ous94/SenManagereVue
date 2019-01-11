@@ -243,7 +243,7 @@ submithandle()
       this.clientFinal.login=this.client.login;
       this.clientFinal.password=this.client.password
       //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
-    /*  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+      this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
           (data)=>{this.clientFinal.localite=data},
           (error) =>{console.log("Erreur sur la localite");}
       );
@@ -262,7 +262,7 @@ submithandle()
       this.clientService.addClient(this.clientFinal).subscribe(
               (data) => {console.log(data)}, 
               (error) =>{console.log(error)} );
-  */
+  
        console.log(this.clientFinal);
     }
     else
