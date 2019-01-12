@@ -1,0 +1,83 @@
+
+<div class="container bootstrap snippet">
+    <div class="row">
+  	    	<div class="col-sm">
+            <ul class="nav nav-tabs">
+                <!-- <li class="active"><a data-toggle="tab">Home<span class="glyphicon glyphicon-list-alt
+                        "></span></a></li> -->
+                <li class="active"><a data-toggle="tab" (click)="visibiliteLister()">Lister<span class="glyphicon glyphicon-list-alt
+                    "></span></a></li>
+                <li><a data-toggle="tab" (click)="visibiliteAjouter()">Ajouter<span class="glyphicon glyphicon-plus-sign
+                    "></span></a></li>
+                <li><a data-toggle="tab" (click)="visibiliteAction()">action<span class="glyphicon glyphicon-trash
+                    "></span></a></li>
+              </ul>
+
+              <!-- lister -->
+          <div class="tab-content" *ngIf="showListerEmployee">
+            <div class="tab-pane active" id="home"><br>
+                <p>bojour lister</p>
+               
+                  
+              
+        
+            
+             
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+             <!-- ajouter -->
+             <div class="tab-content">
+                    <div class="tab-pane active" id="home" *ngIf="showAjouterEmployye"><br>
+                        <h3><span class="glyphicon glyphicon-plus-sign"></span>Ajout d'un Employer</h3>
+                        <app-inscription></app-inscription>
+                          
+                      
+                
+                    
+                     
+                       
+                      </div><!--/tab-pane-->
+                  </div><!--/tab-content-->
+                     <!-- action -->
+          <div class="tab-content">
+                <div class="tab-pane active" id="home" *ngIf="showActionEmployee"><br>
+                    <p>bojour Action</p>
+                      
+                    <app-liste-employe></app-liste-employe>
+            
+                
+                 
+                   
+                  </div><!--/tab-pane-->
+              </div><!--/tab-content-->
+
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+    
+                                                      
+
+    <script>
+    $(document).ready(function() {
+
+    
+var readURL = function(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.avatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+$(".file-upload").on('change', function(){
+    readURL(this);
+});
+});
+</script>

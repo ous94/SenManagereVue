@@ -101,28 +101,10 @@
             </div>
           </div>
         </div>
-        <!--  -->
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <!-- pour typeIdentification  -->
-           <div class="form-group input-group-sm">
-              <label for="typeidentification">Type Identification:</label>
-              <select id="typeidentification" class="form-control"  formControlName="typeidentification" >
-                  <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>   
-              </select>
-          </div>
-          <!-- pour identification -->
-          <div class="form-group input-group-sm">
-              <label for="identification">N° d'Identification</label>
-             <input type="text" formControlName="identification" [ngClass]="{'form-control':true,
-             'is-invalid':identification.invalid && identification.touched,
-               'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
-              </div>
+       
 
-            </div>
-          </div>
-        </div>
+
+        <!-- fin -->
       </div>
       
     </div>
@@ -133,6 +115,29 @@
     
       <div class="container-fluid">
         <div class="row">
+           <!--  -->
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <!-- pour typeIdentification  -->
+             <div class="form-group input-group-sm">
+                <label for="typeidentification">Type Identification:</label>
+                <select id="typeidentification" class="form-control"  formControlName="typeidentification" >
+                    <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>   
+                </select>
+            </div>
+            <!-- pour identification -->
+            <div class="form-group input-group-sm">
+                <label for="identification">N° d'Identification</label>
+               <input type="text" formControlName="identification" [ngClass]="{'form-control':true,
+               'is-invalid':identification.invalid && identification.touched,
+                 'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          <!-- fin -->
           <div class="col">
             <div class="card">
               <div class="card-body">
@@ -205,56 +210,59 @@
               </div>
             </div>
           </div>
-                  <!--  -->
-  
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <!-- Competence -->
-           <div class="form-group input-group-sm">
-              <label for="langues" class="form-label">Competences:</label>
-                 <div class="list-group checked-list-box" *ngFor="let control of competenceArray.controls; let i=index;">
-                     <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
-                       <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
-                       <input class="form-check-input" [formControl]="control" (change)="getselectedCompetencevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                       <label class="form-check-label " style="margin-left: 15%" for="inlineCkeckbox{{i}}"> {{tableauCompetence[i]}}</label>
-                  </div>
-             </div>
-
-              </div>
-            </div>
           </div>
-          <!--  -->
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                  <!-- Langues -->
-          <div class="form-group input-group-sm">
-              <label for="langues" class="form-label">Langues Parlées:</label>     
-                 <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
-                       <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                       <label class="form-check-label " style="margin-left: 15%" for="inlineCkeckbox{{i}}">   {{tableauLangue[i]}}   </label>
-                  </div>
-                </div>    
-              </div>
-            </div>
-          </div>
-        </div>
       <!-- section3 -->
 
-        <div id="wrapper" class="animate" style="padding-top: 4px;padding-bottom: 4px;">
+        <div id="wrapper" class="animate" style="padding-top: 4px;padding-bottom: 4px; padding-left: 0px;">
     
-            <div class="container-fluid">
+            <div class="container-fluid" style=" padding-left: 0px; ">
               <div class="row">
+                <!-- debut -->
+                        <!--  -->
+  
+          <div class="col" >
+              <div class="card">
+                <div class="card-body">
+                  <!-- Competence -->
+             <div class="form-group input-group-sm" >
+                <label for="langues" class="form-label">Competences:</label>
+                   <div class="list-group checked-list-box" *ngFor="let control of competenceArray.controls; let i=index;">
+                       <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                         <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                         <input class="form-check-input" [formControl]="control" (change)="getselectedCompetencevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                         <label class="form-check-label " style="margin-left: 15%" for="inlineCkeckbox{{i}}"> {{tableauCompetence[i]}}</label>
+                    </div>
+                  </div><br><br><br>
+  
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                    <!-- Langues -->
+            <div class="form-group input-group-sm">
+                <label for="langues" class="form-label">Langues Parlées:</label>     
+                   <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
+                         <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                         <label class="form-check-label " style="margin-left: 15%" for="inlineCkeckbox{{i}}">   {{tableauLangue[i]}}   </label>
+                    </div>
+                  </div>   <br><br><br> 
+                </div>
+              </div>
+            </div>
+          
+
+                <!-- fin -->
                 <div class="col">
                   <div class="card">
                     <div class="card-body">
                  
           <!-- Multiple Radios (inline) -->
-          <div class="form-group input-group-sm-2">
+          <div class="form-group input-group-sm-3">
               <label class="col-md control-label" for="horaire" >Disponiblité:</label>
              <div class="col-md">
-                
               <div class="radio" >
                 <label><input type="radio" name="horaire" id="radios-0" value="Weekend"  formControlName="horaire">Weekend</label>
               </div>
@@ -264,6 +272,20 @@
               <div class="radio">
                   <label><input type="radio" name="horaire" id="radios-2" formControlName="horaire" value="Quinzaine">Quinzaine</label>
                 </div>
+                    <!-- disponiblité -->
+             <div class="form-group input-group-sm">
+                <label for="langues" class="form-label">Horaire disponible:</label>
+                  <div class="col-xs-15">
+  
+                     <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
+                        <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                         <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                         <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                         <label class="form-check-label  "  style="margin-left: 20%" for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
+                      </div>
+                    </div>  
+                 </div>
+                 <!--  -->
   
              </div>
                 </div>
@@ -278,59 +300,49 @@
                 </div>
                         <!--  -->
         
-                <div class="col">
+                <div class="col col-md-3">
                   <div class="card">
                     <div class="card-body">
                  <!--  -->
-                  <!-- disponiblité -->
-             <div class="form-group input-group-sm">
-                <label for="langues" class="form-label">Horaire disponible :</label> <br><br>
-                  <div class="col-xs-15">
-  
-                     <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
-                        <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
-                         <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
-                         <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                         <label class="form-check-label  "  style="margin-left: 20%" for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
-                      </div>
-                    </div>  
-                 </div><br>
-                 <!--  -->
+                  <!-- pour telephoneFixe -->
+                  <div class="form-group">
+                      <label for="comment">Obseravtion :</label>
+                      <textarea class="form-control" rows="3"   id="comment" formControlName="observation"></textarea>
+                 </div>
+                 <div class="form-group input-group-sm">
+                    <img src="../../../../../../image/image1.jpeg" class="img-thumbnail"> 
+                 </div>
+                 <div class="form-group input-group-sm">
+                   <input type="file" (change)="selectFile($event)" class="form-control" />
+                   <button  class="btn btn-success" type="submit">Save<span class=" glyphicon glyphicon-ok
+                
+                    "></span></button>
+                 </div>
+              
                        
                  
                     </div>
                   </div>
+                  
                 </div>
                         <!--  -->
         
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-body">
-                       <!-- pour telephoneFixe -->
-                       <div class="form-group">
-                          <label for="comment">Obseravtion :</label>
-                          <textarea class="form-control" rows="5" id="comment" maxlength="255" formControlName="observation"></textarea>
-                     </div>
-                     <div class="form-group input-group-sm">
-                        <img src="../../../../../../image/image1.jpeg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
-                     </div>
-                     <div class="form-group input-group-sm">
-                       <input type="file" (change)="selectFile($event)" class="form-control" />
-                     </div>
                
-                    </div>
-                  </div>
-                </div>
-                        <!--  -->
         
                </div>
               </div>
             </div>
-          <!-- 2eme Section -->
+          
         
       </div>
     </div>
+    
   </form>
   
 
-<app-footer1></app-footer1>
+
+
+
+
+
+  

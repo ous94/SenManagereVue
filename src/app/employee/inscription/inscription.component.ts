@@ -26,7 +26,7 @@ export class InscriptionComponent implements OnInit {
   tableauLangue: Array<String> =['Française','Arabe','Anglais','Chinois','Pheul','Serere','Wolof'];
   selectedLanguevalues=[];
 
-  tableauCompetence: Array<String> =['Garde d enfants','Ménage','Linge','Gepassage','Cuisine','Travaux spéciaux (vitres, stores, tapis...etc.)'];
+  tableauCompetence: Array<String> =['Garde d enfants','Ménage','Linge','Gepassage','Cuisine','Baby-Syster','Nounou'];
   selectedCompetenceevalues=[];
 
   //disponiblité
@@ -112,13 +112,13 @@ export class InscriptionComponent implements OnInit {
       nom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(2)])],
       adresse:[null,Validators.required],
       dateNaissance :[null,Validators.required],
-      telephoneFixe:[null,Validators.required],
-      telephoneMobile:[null,Validators.required],
-      email:[null,Validators.email],
+      telephoneFixe:[null,Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(9),Validators.maxLength(14)])],
+      telephoneMobile:[null,Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(9),Validators.maxLength(14)])],
+      email:[null,Validators.compose([Validators.required,Validators.pattern('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$')])],
       niveauetude :[null,Validators.required],
       pay:[null,Validators.required],
       typeidentification:[null,Validators.required],
-      identification:[null,Validators.required],
+      identification:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z0-9]*'),Validators.minLength(3),Validators.maxLength(14)])],
       ethnies:[null,Validators.required],
       religion:[null,Validators.required],
       situationMatrimoniale:[null,Validators.required],

@@ -45,6 +45,13 @@ import { AdministrationComponent } from './administration/administration.compone
 import { TableClientComponent } from './table-client/table-client.component';
 import { InscriptionComponent } from './employee/inscription/inscription.component';
 import { Footer1Component } from './footer1/footer1.component';
+///tost
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
+import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
+
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -70,6 +77,10 @@ const appRoutes: Routes = [
     {path:'nav1',component:Nav1Component},
     {path:'clientconnect',component:ClientConnectComponent},
     {path:'employee/inscription',component:InscriptionComponent},
+    {path:'administration',component:AdministrationComponent},
+    {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
+
+
 
 
 
@@ -139,7 +150,8 @@ const appRoutes: Routes = [
     AdministrationComponent,
     TableClientComponent,
     InscriptionComponent,
-    Footer1Component
+    Footer1Component,
+    TapeEmployerComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +160,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes,{enableTracing:true}),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
