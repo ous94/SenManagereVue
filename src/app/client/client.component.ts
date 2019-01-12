@@ -71,7 +71,7 @@ export class ClientComponent implements OnInit {
   ngOnInit() {
 
     this.clientForm= this.fb.group({
-      idclient:[null,Validators.required],
+      idclient:[null],
       prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
       nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
       adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
