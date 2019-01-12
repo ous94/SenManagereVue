@@ -51,6 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
 import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
+import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
 
 const appRoutes: Routes = [
 
@@ -79,6 +80,9 @@ const appRoutes: Routes = [
     {path:'employee/inscription',component:InscriptionComponent},
     {path:'administration',component:AdministrationComponent},
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
+    {path:'client/mesclients',component:MesClientsComponent},
+
+
 
 
 
@@ -151,7 +155,8 @@ const appRoutes: Routes = [
     TableClientComponent,
     InscriptionComponent,
     Footer1Component,
-    TapeEmployerComponent
+    TapeEmployerComponent,
+    MesClientsComponent,
   ],
   imports: [
     BrowserModule,
@@ -168,3 +173,4 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

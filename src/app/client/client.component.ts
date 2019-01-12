@@ -53,9 +53,16 @@ export class ClientComponent implements OnInit {
       this.getdataTypeIdentification();
      // this.getdtataEthnies();
       this.getdtataLocalite();
-    this.paysliste=this.EmployeeService.getpays;
-    this.localiteListe=this.EmployeeService.getLocalite;
-    this.identificationListe=this.EmployeeService.getIdentification;
+    this.EmployeeService.getpays().subscribe(
+         (data)=> {this.paysliste=data;},
+       (error) =>{console.log("erreur sur pays")} 
+    );
+    this.EmployeeService.getLocalite().subscribe(
+      (data)=>{this.localiteListe=data}
+    );
+    this.EmployeeService.getIdentification().subscribe(
+      (data)=>{this.identificationListe=data}
+    );
 
       
     }, 2000
@@ -69,8 +76,8 @@ export class ClientComponent implements OnInit {
       nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
       adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
       dateNaissance :[null,Validators.required],
-      telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required])],
-      telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required])],
+      telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required, Validators.required,Validators.pattern('[0-9]*')])],
+      telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
       email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
       pay:[null,Validators.required],
       sexe:[null,Validators.required],
@@ -80,7 +87,7 @@ export class ClientComponent implements OnInit {
       observation:[null,Validators.required],
       login:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
       password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
-      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
+      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required,Validators.pattern(this.password.value)])],
   });
 }
 
@@ -243,7 +250,7 @@ submithandle()
       this.clientFinal.login=this.client.login;
       this.clientFinal.password=this.client.password
       //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
-    /*  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+      this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
           (data)=>{this.clientFinal.localite=data},
           (error) =>{console.log("Erreur sur la localite");}
       );
@@ -262,21 +269,31 @@ submithandle()
       this.clientService.addClient(this.clientFinal).subscribe(
               (data) => {console.log(data)}, 
               (error) =>{console.log(error)} );
-  */
+  
        console.log(this.clientFinal);
     }
     else
     {
+      this.password.invalid;
+      this.confirmer.hasError;
       console.log("erreur veillez confirmer le mot de Passe s'il vous  plait");
     }
+    this.clientForm.reset;
 }
   visibiliteDiv($event)
   {
        this.suivant=!this.suivant;
+       this.login.setValue(this.email.value);
+       this.login.disabled;
        var elements = document.getElementsByClassName("ativaction");
        for(let i:number=0;i<elements.length;i++)
        {
          
        }
+  }
+  retour($event)
+  {
+       this.suivant=!this.suivant;
+       
   }
 }
