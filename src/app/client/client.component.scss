@@ -9,9 +9,25 @@ span
 {
   color: red;
 }
+label
+{
+  font-size: 20px;
+}
+#pay,#localite,#sexe,#typeidentification,input
+{
+  height: 40px;
+  font-size: 20px;
+}
+#inputConfirmPassword,#inputPassword,#inputEmail
+{
+  //width: 500px;
+  font-size: 20px;
+  height: 40px;
+}
 #boutons
 {
- //display: inline-block;
+ margin-top: 40px;
+ padding-left: 60px;
 }
 #buttonenregistrer
 {
@@ -31,7 +47,7 @@ span
 }
 #parti2
 {
-    background-color: blue;
+   // background-color: blue;
 }
 #Valider
 {
@@ -49,6 +65,12 @@ span
   //font-size: 10px;
 
 }
+#inputUserame
+  {
+    font-size: 20px;
+    height:30px;
+    margin-bottom: 20px;
+  }
 
 :root {
     --input-padding-x: 1.5rem;
@@ -169,27 +191,7 @@ span
     margin-bottom: 20px;
   }
   
-  #inputEmail
-  {
-    font-size: 20px;
-    height:30px;
-    margin-bottom: 20px;
-  }
   
-  #inputPassword
-  {
-    font-size: 20px;
-    height:30px;
-    margin-bottom: 20px;
-  }
-  
-  #inputConfirmPassword
-  {
-    font-size: 20px;
-    height:30px;
-    margin-bottom: 20px;
-  
-  }
   
 
 

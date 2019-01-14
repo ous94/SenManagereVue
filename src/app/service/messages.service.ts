@@ -11,7 +11,8 @@ export class MessagesService {
   private baseUrl='http://localhost:8000/api';
   constructor(private httpClient :HttpClient) { }
 
-  sendMessages(messages: Messages): Observable<any> {
-    return this.httpClient.post<any>(this.baseUrl+ '/messages/send', messages);
+  sendMessages(messages: Messages): Observable<String> {
+    return this.httpClient.post<String>(this.baseUrl+ '/messages/send', messages);
   }
+
 }

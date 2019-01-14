@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray,FormControl } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,10 @@ import {PaysService} from '../service/pays.service';
 import {TypeIdentificationService} from '../service/type-identification.service';
 import {UploadFileService} from '../upload-file.service';
 import { Disponibilite } from '../Classe/Disponibilite';
-import {DisponibiliteService} from '../service/disponibilite.service';
+import {DisponibiliteService} from '../service/disponibilite.service'; 
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { NotificationServiceService } from '../service/notification-service.service';
+
 
 
 @Component({
@@ -21,6 +24,7 @@ import {DisponibiliteService} from '../service/disponibilite.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+
 
   tableauLangue: Array<String> =['Wolof','Française','Anglais','Chinois','Pheul','Serere','','',''];
   selectedLanguevalues=[];
@@ -85,7 +89,7 @@ export class AdminComponent implements OnInit {
   });
 
   //
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
+  constructor(public notifyService : NotificationServiceService,public ToastrService: ToastrService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -98,9 +102,17 @@ export class AdminComponent implements OnInit {
     
     
    }
+   showHtmlToaster(){  
+    this.notifyService.showSuccess("<h2>Data shown successfully !!</h2>", "Notification")
+}
+ 
+ 
+
+   showToaster(){
+    this.ToastrService.success("Hello, I'm the toastr message.")
+}
 //
   ngOnInit() {
-
 
     this.nestedForm= this.fb.group({
       idemploye:[null,Validators.required],
