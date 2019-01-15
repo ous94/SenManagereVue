@@ -85,7 +85,7 @@ export class TapeEmployerComponent implements OnInit {
 
   }
 
-  visibiliteSituation($event)
+  visibiliteRechercheSituation($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
@@ -95,7 +95,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheEmail=false;
   }
 
-  visibiliteReligion($event)
+  visibiliteRechercheReligion($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
@@ -105,7 +105,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheEmail=false;
   }
 
-  visibiliteEmail($event)
+  visibiliteRechercheEmail($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
