@@ -1,3 +1,72 @@
-<p>
-  recherche-email works!
-</p>
+
+<div class="col-md-2">
+  <form (ngSubmit)="rechercher()">
+  <div class="input-group">
+    <input type="text"  placeholder="Search  for..." class="form-control" id="email" required [(ngModel)]="email" name="email">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+    </span>
+  </div><!-- /input-group -->
+  </form>
+</div><!-- /.col-lg-6 -->
+<br/> <br/>  <br/> <br/>
+<br/> <br/>
+
+  <section id="team" class="pb">
+  <div class="container">
+      <div class="row">
+          <!-- Team member -->
+          <div class="col-xs-7 col-sm-6 col-md-3"  *ngFor="let employee of rechercherReligion">
+<!--                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');" >
+-->                    
+                   <div>
+                    <div>
+<!--                       <div class="mainflip" >
+-->                        <div class="frontside">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                  <p><img  src={{uploadPhotoEmployer(employee.photo)}} class="img-circle"  width="94" height="66"></p>
+                                  <h4 class="card-title">{{employee.prenom}} {{employee.nom}}</h4>
+                                  <p class="card-text">{{employee.email}},{{employee.email}}</p>
+                              </div>
+                          </div>
+                      </div>
+
+
+
+                      <div class="backside">
+                          <div class="card">
+                              <div class="card-body text-center mt-4">
+                                  <h4 class="card-title">{{employee.prenom}},{{employee.nom}}</h4>
+                                  <p class="card-text">Adresse :{{employee.adresse}}</p>
+                                  <p class="card-text">Religion :{{employee.religion}}</p>
+                                  <p class="card-text">Situation Matrimoniale :{{employee.situationMatrimoniale}}</p>
+                                  <p class="card-text">TelephoneFixe :{{employee.telephoneFixe}}</p>
+                                  <p class="card-text">TelephoneMobile :{{employee.telephoneMobile}}</p>
+                                  <p class="card-text">DateNaissance :{{employee.dateNaissance}}</p>
+                                  <ul class="list-inline">
+                                      <li class="list-inline-item">
+                                          <a (click)='deleteEmploye(employee)' target="_blank">
+                                              <i class="glyphicon glyphicon-trash"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item">
+                                              <a (click)='editeEmploye(employee)' target="_blank">
+                                                      <i class="glyphicon glyphicon-pencil"></i>
+                                                  </a>
+                                      </li>
+                          
+                                  </ul>
+                              </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- ./Team member -->
+         
+          <!-- ./Team member -->
+
+      </div>
+  </div>
+</section>
