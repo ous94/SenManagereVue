@@ -58,6 +58,8 @@ import { TapeClientComponent } from './client/tape-client/tape-client.component'
 import { Test2Component } from './employee/test2/test2.component';
 import { TapeRechercheComponent } from './recherche/tape-recherche/tape-recherche.component';
 import { RechercheEmployeeComponent } from './employee/recherche-employee/recherche-employee.component';
+import { RechercheSituationMatrimonialeComponent } from './employee/recherche-situation-matrimoniale/recherche-situation-matrimoniale.component';
+import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
 
 
 const appRoutes: Routes = [
@@ -138,7 +140,9 @@ const appRoutes: Routes = [
     TapeClientComponent,
     Test2Component,
     TapeRechercheComponent,
-    RechercheEmployeeComponent
+    RechercheEmployeeComponent,
+    RechercheSituationMatrimonialeComponent,
+    RechercheReligionComponent
   ],
   entryComponents: [
     ConfirmComponent
