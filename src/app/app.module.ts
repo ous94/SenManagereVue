@@ -60,6 +60,7 @@ import { TapeRechercheComponent } from './recherche/tape-recherche/tape-recherch
 import { RechercheEmployeeComponent } from './employee/recherche-employee/recherche-employee.component';
 import { RechercheSituationMatrimonialeComponent } from './employee/recherche-situation-matrimoniale/recherche-situation-matrimoniale.component';
 import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
+import { RechercheEmailComponent } from './employee/recherche-email/recherche-email.component';
 
 
 const appRoutes: Routes = [
@@ -142,7 +143,8 @@ const appRoutes: Routes = [
     TapeRechercheComponent,
     RechercheEmployeeComponent,
     RechercheSituationMatrimonialeComponent,
-    RechercheReligionComponent
+    RechercheReligionComponent,
+    RechercheEmailComponent
   ],
   entryComponents: [
     ConfirmComponent
