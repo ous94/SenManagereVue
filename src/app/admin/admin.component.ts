@@ -102,9 +102,6 @@ export class AdminComponent implements OnInit {
     
     
    }
-   showHtmlToaster(){  
-    this.notifyService.showSuccess("<h2>Data shown successfully !!</h2>", "Notification")
-}
  
  
 

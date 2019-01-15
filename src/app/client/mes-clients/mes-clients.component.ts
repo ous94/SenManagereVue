@@ -11,6 +11,7 @@ import { UploadFileService } from 'src/app/upload-file.service';
 export class MesClientsComponent implements OnInit {
 
   listeClient:Client[];
+  showdetail:boolean=false;
 
   constructor(private ClientService:ClientService, private UploadFileService:UploadFileService) { 
 
@@ -72,6 +73,12 @@ deleteClient(client:Client) {
     {
       return this.UploadFileService.getPhoto(photo);
   }
+  //
+  visibiliteDetail()
+{
+  this.showdetail=!this.showdetail;
+  
+}
 
 
 }
