@@ -102,9 +102,12 @@ export class AdminComponent implements OnInit {
     
     
    }
+<<<<<<< HEAD
   // showHtmlToaster(){  
   //  this.notifyService.showSuccess("<h2>Data shown successfully !!</h2>", "Notification")
 //}
+=======
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
  
  
 
@@ -515,5 +518,13 @@ this.employe.competences=[];
     alert('Le format du Fichier choisi est Invalide!');
   }
  }
- 
+ showSuccess() {
+  this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+}
+showError() {
+  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+} 
+showWarning() {
+  this.ToastrService.warning('Erreur fatal !', 'Attention !');
+} 
 }

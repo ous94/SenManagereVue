@@ -46,14 +46,30 @@ import { TableClientComponent } from './table-client/table-client.component';
 import { InscriptionComponent } from './employee/inscription/inscription.component';
 import { Footer1Component } from './footer1/footer1.component';
 ///tost
-import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
+<<<<<<< HEAD
 //import { ToastrModule } from 'ngx-toastr';
 import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
 import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
 import { AcceuilClientComponent } from './client/acceuil-client/acceuil-client.component';
 import { NouvelleDemandeComponent } from './client/nouvelle-demande/nouvelle-demande.component';
+=======
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
+import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
+import { MesEmplyesComponent } from './employee/mes-emplyes/mes-emplyes.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { ToastrModule } from 'ngx-toastr';
+import { TapeClientComponent } from './client/tape-client/tape-client.component';
+import { Test2Component } from './employee/test2/test2.component';
+import { TapeRechercheComponent } from './recherche/tape-recherche/tape-recherche.component';
+import { RechercheEmployeeComponent } from './employee/recherche-employee/recherche-employee.component';
+import { RechercheSituationMatrimonialeComponent } from './employee/recherche-situation-matrimoniale/recherche-situation-matrimoniale.component';
+import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
+import { RechercheEmailComponent } from './employee/recherche-email/recherche-email.component';
+
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
 
 const appRoutes: Routes = [
 
@@ -83,23 +99,17 @@ const appRoutes: Routes = [
     {path:'administration',component:AdministrationComponent},
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
     {path:'client/mesclients',component:MesClientsComponent},
+<<<<<<< HEAD
     {path:'client/acceuil',component:AcceuilClientComponent},
 
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
       {path: '', component: HomeComponent}, {path: 'login', component: LoginComponent} ] }, */
    
+=======
+
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
 ];
-
-
-/* const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'auth/:login', component: LoginComponent },
-  { path: 'employee', component: DemandeEmployeeComponent }
-];
- */
-
 
 @NgModule({
   declarations: [
@@ -111,7 +121,6 @@ const appRoutes: Routes = [
     DemandeEmployeeComponent,
     AdminComponent,
     MainComponent,
-
     FooterComponent,
     RechercheComponent,
     NouveauEmployeeComponent,
@@ -144,8 +153,23 @@ const appRoutes: Routes = [
     Footer1Component,
     TapeEmployerComponent,
     MesClientsComponent,
+<<<<<<< HEAD
     AcceuilClientComponent,
     NouvelleDemandeComponent,
+=======
+    MesEmplyesComponent,
+    ConfirmComponent,
+    TapeClientComponent,
+    Test2Component,
+    TapeRechercheComponent,
+    RechercheEmployeeComponent,
+    RechercheSituationMatrimonialeComponent,
+    RechercheReligionComponent,
+    RechercheEmailComponent
+  ],
+  entryComponents: [
+    ConfirmComponent
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
   ],
   imports: [
     BrowserModule,
@@ -156,7 +180,15 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,{enableTracing:true}),
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
+<<<<<<< HEAD
    // ToastrModule.forRoot()
+=======
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
   ],
   providers: [],
   bootstrap: [AppComponent]

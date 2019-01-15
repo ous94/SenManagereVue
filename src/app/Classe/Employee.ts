@@ -38,6 +38,8 @@ export class Employee {
     experiences :Experience[];
     formations :Formation[];
     langues :Langue[];
+    horaire :string;
+
 
     
 }

@@ -10,6 +10,12 @@ export class TapeEmployerComponent implements OnInit {
   showAjouterEmployye:boolean=false;
   showActionEmployee:boolean=false;
   showListerEmployee:boolean=false;
+  showListerRechercheSituation:boolean=false;
+  showListerRechercheReligion:boolean=false;
+  showListerRechercheEmail:boolean=false;
+  showListerRechercheAdresse:boolean=false;
+
+
 
 
 
@@ -31,27 +37,89 @@ export class TapeEmployerComponent implements OnInit {
 
   visibiliteLister($event)
   {
-       this.showListerEmployee=!this.showListerEmployee
+       this.showListerEmployee=!this.showListerEmployee;
        this.showActionEmployee=false;
        this.showAjouterEmployye=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
+
 
   }
 
   visibiliteAction($event)
   {
-    this.showActionEmployee=!this.showActionEmployee
+    this.showActionEmployee=!this.showActionEmployee;
        this.showAjouterEmployye=false;
        this.showListerEmployee=false;
+       this.showListerRechercheAdresse=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
+
 
   }
 
 
   visibiliteAjouter($event)
   {
-        this.showAjouterEmployye=!this.showAjouterEmployye
+        this.showAjouterEmployye=!this.showAjouterEmployye;
        this.showActionEmployee=false;
        this.showListerEmployee=false;
+       this.showListerRechercheAdresse=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
 
   }
+  visibiliteRechercheAdresse($event)
+  {
+       this.showActionEmployee=false;
+       this.showAjouterEmployye=false;
+       this.showListerEmployee=false;
+       this.showListerRechercheAdresse=!this.showListerRechercheAdresse;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
+
+
+  }
+
+  visibiliteRechercheSituation($event)
+  {
+       this.showListerEmployee=false;
+       this.showActionEmployee=false;
+       this.showAjouterEmployye=false;
+       this.showListerRechercheSituation=!this.showListerRechercheSituation;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
+  }
+
+  visibiliteRechercheReligion($event)
+  {
+       this.showListerEmployee=false;
+       this.showActionEmployee=false;
+       this.showAjouterEmployye=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=!this.showListerRechercheReligion;
+       this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
+  }
+
+  visibiliteRechercheEmail($event)
+  {
+       this.showListerEmployee=false;
+       this.showActionEmployee=false;
+       this.showAjouterEmployye=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=!this.showListerRechercheEmail;
+       this.showListerRechercheAdresse=false;
+  }
+
+  
 
 }

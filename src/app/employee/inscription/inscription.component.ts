@@ -13,6 +13,9 @@ import { NiveauEtudeService } from 'src/app/service/niveau-etude.service';
 import { TypeIdentificationService } from 'src/app/service/type-identification.service';
 import { UploadFileService } from 'src/app/upload-file.service';
 import { DisponibiliteService } from 'src/app/service/disponibilite.service';
+import { ToastrService } from 'ngx-toastr';
+import {trigger,state,style,animate,transition,} from '@angular/animations';
+
 
 ///new version
 
@@ -51,6 +54,8 @@ export class InscriptionComponent implements OnInit {
   paysliste:any;
   localiteListe:any;
   employee1 : Employee = new Employee();
+  employeeTest : Employee = new Employee();
+
   employe :Employee=new Employee();
   employeRetour :Employee=new Employee();
   disponibilite :Disponibilite= new Disponibilite();
@@ -63,23 +68,23 @@ export class InscriptionComponent implements OnInit {
     identification :new FormControl(''),
     nom :new FormControl(''),
     observation :new FormControl(''),
-    photo :new FormControl(''),
+    //photo :new FormControl(''),
     prenom :new FormControl(''),
     religion :new FormControl(''),
     situationMatrimoniale :new FormControl(''),
     telephoneFixe :new FormControl(''),
     telephoneMobile :new FormControl(''),
     competences :new FormControl(''),
-    demandes :new FormControl(''),
+   // demandes :new FormControl(''),
     disponibilites :new FormControl(''),
-    documents :new FormControl(''),
+    //documents :new FormControl(''),
     localite :new FormControl(''),
     pay :new FormControl(''),
     typeIdentification :new FormControl(''),
     niveauetude :new FormControl(''),
     ethnies :new FormControl(''),
-    experiences :new FormControl(''),
-    formations :new FormControl(''),
+    //experiences :new FormControl(''),
+    //formations :new FormControl(''),
     langues :new FormControl(''),
     //
     horaire :new FormControl(''),
@@ -89,7 +94,7 @@ export class InscriptionComponent implements OnInit {
   });
 
   //
-  constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
+  constructor(private service : ToastrService, private ToastrService:ToastrService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -107,7 +112,7 @@ export class InscriptionComponent implements OnInit {
 
 
     this.nestedForm= this.fb.group({
-      idemploye:[null,Validators.required],
+      idemploye:[1,Validators.required],
       prenom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(3)])],
       nom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(2)])],
       adresse:[null,Validators.required],
@@ -392,6 +397,7 @@ getselectedCompetencevalues(){
 
 submithandle()
 {
+<<<<<<< HEAD
    const newItemlangu =this.selectedLanguevalues;
    const newitemCompetence=this.selectedCompetenceevalues;
    //
@@ -412,46 +418,69 @@ submithandle()
      (error) =>{console.log("Erreur sur l ethnies");}
    );
    //Recuperation du Niveau d'etude
-  this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
-    (data) =>{this.employe.niveauetude=data;},
-    (error)=>{console.log("Erreur sur le niveauEtude");}
+=======
+  const newItemlangu =this.selectedLanguevalues;
+  const newitemCompetence=this.selectedCompetenceevalues;
+  this.employee1= this.nestedForm.value;
+
+  //
+  //Recuperation de Tyep d'Identification
+  this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
+    (data) =>{this.employe.typeIdentification=data;},
+    (error) =>{console.log("erreur sur le TypeIdentification");}
   );
-// Recuperation des =Competences
-this.employe.competences=[];
+  // Recuperation de la Localite
+  this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
+    (data)=>{this.employe.localite=data},
+    (error) =>{console.log("Erreur sur la localite");}
+  );
+  //Recuperation de L'ethnie
+  this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
+    (data)=>{this.employe.ethnies=data;},
+    (error) =>{console.log("Erreur sur l ethnies");}
+  );
+  //Recuperation du Niveau d'etude
+>>>>>>> 157e5a7a7999dc5b8d53e135df0f721f50ebb8c6
+  this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
+   (data) =>{this.employe.niveauetude=data;},
+   (error)=>{console.log("Erreur sur le niveauEtude");}
+  );
+  // Recuperation des =Competences
+  this.employe.competences=[];
   for(let i:number=0;i<this.selectedCompetenceevalues.length;i++)
   {
-     this.competenceService.getCompetenceByDescription(this.selectedCompetenceevalues[i]).subscribe(
-       (data) =>{
-                  this.employe.competences[i]=data;
-                }
-     );
+    this.competenceService.getCompetenceByDescription(this.selectedCompetenceevalues[i]).subscribe(
+      (data) =>{
+                 this.employe.competences[i]=data;
+               }
+    );
   };
   // Recuperation des Langues
   this.employe.langues=[];
   for(let i:number=0;i<this.selectedLanguevalues.length;i++)
   {
-     this.langueService.getLangueByNom(this.selectedLanguevalues[i]).subscribe(
-       (data) =>{this.employe.langues[i]=data;}
-     );
+    this.langueService.getLangueByNom(this.selectedLanguevalues[i]).subscribe(
+      (data) =>{this.employe.langues[i]=data;}
+    );
   };
   // Recuperation des disponibilites
   
-
+  
   //
-   console.log(this.employee1);
-   this.employe.nom=this.employee1.nom;
-   this.employe.prenom=this.employee1.prenom;
-   this.employe.religion=this.employee1.religion;
-   this.employe.adresse=this.employee1.adresse;
-   this.employe.email=this.employee1.email
-   this.employe.idemploye=++this.employee1.telephoneMobile;
-   //this.employe.observation=this.employee1.observation;
-   this.employe.photo=this.employee1.photo;
-   this.employe.situationMatrimoniale=this.employee1.situationMatrimoniale;
+  console.log(this.employee1);
+  this.employe.nom=this.employee1.nom;
+  this.employe.prenom=this.employee1.prenom;
+  this.employe.religion=this.employee1.religion;
+  this.employe.adresse=this.employee1.adresse;
+  this.employe.email=this.employee1.email
+  this.employe.idemploye=++this.employee1.telephoneMobile;
+  //this.employe.observation=this.employee1.observation;
+  this.employe.photo=this.employee1.photo;
+  this.employe.situationMatrimoniale=this.employee1.situationMatrimoniale;
   // this.employe.dateNaissance=this.employee1.dateNaissance;
-   this.employe.identification=this.employee1.identification;
-   this.employe.telephoneFixe=this.employee1.telephoneFixe;
-   this.employe.telephoneMobile=this.employee1.telephoneMobile;
+  this.employe.identification=this.employee1.identification;
+  this.employe.telephoneFixe=this.employee1.telephoneFixe;
+  this.employe.telephoneMobile=this.employee1.telephoneMobile;
   // 
   console.log("#### Employee1");
   console.log(this.employee1);
@@ -459,51 +488,88 @@ this.employe.competences=[];
   this.fichierCharger = this.fichierChoisi.item(0);
   this.employe.dateNaissance=this.dateNaissance.value;
   this.employe.observation=this.employee1.observation;
- this.paysService.getPaysByNom(this.pay.value).subscribe(
-    (data)=>{
-            this.employe.pay=data;
-            //Sauvegarde de la photo de l'employe
-             this.uploadFileService.uploadPhoto(this.fichierCharger).subscribe(
-               (data)=>{
-                     this.nomFichier=data;
-                      this.employe.photo=this.nomFichier;
-                      //Sauvegarde de l'employer
-                      console.log(this.employe);
-                      this.EmployeeService.addEmployee(this.employe).subscribe(
-                          (data) => { 
-                                     //Sauvegarde des Disponibilites de l'employee
-                                      this.employe.disponibilites=[];
-                                      for(let i:number=0;i<this.selectedDisponiblitevalues.length;i++)
-                                      {
-                                          this.disponibilite=new Disponibilite();
-                                          this.disponibilite.horaire=this.selectedDisponiblitevalues[i];
-                                          this.disponibilite.moment=this.horaire.value;
-                                          this.disponibilite.employee=data;
-                                          console.log(this.disponibilite);
-                                          this.disponibiliteService.addDisponibilite(this.disponibilite).subscribe(
-                                              (data)=>{console.log(data)},
-                                              (error)=>{console.log(error);} );    
-                                      }
-                                      
-                                      console.log(data)
-                                  }, 
-                          (error) =>{console.log(error)} );
-                    },
-              (error)=>{
-                console.log(error);
-              } );
-       },
-       (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
-       this.nestedForm.reset();
-  }
+  this.paysService.getPaysByNom(this.pay.value).subscribe(
+   (data)=>{
+           this.employe.pay=data;
+           //Sauvegarde de la photo de l'employe
+            this.uploadFileService.uploadPhoto(this.fichierCharger).subscribe(
+              (data)=>{
+                    this.nomFichier=data;
+                     this.employe.photo=this.nomFichier;
+                     //Sauvegarde de l'employer
+                     console.log(this.employe);
+                     this.showSuccess();
+                     this.EmployeeService.addEmployee(this.employe).subscribe(
+                       
+                         (data) => { 
+                                    //Sauvegarde des Disponibilites de l'employee
+                                     this.employe.disponibilites=[];
+                                     for(let i:number=0;i<this.selectedDisponiblitevalues.length;i++)
+                                     {
+                                         this.disponibilite=new Disponibilite();
+                                         this.disponibilite.horaire=this.selectedDisponiblitevalues[i];
+                                         this.disponibilite.moment=this.horaire.value;
+                                         this.disponibilite.employee=data;
+                                         console.log(this.disponibilite);
+                                         this.disponibiliteService.addDisponibilite(this.disponibilite).subscribe(
+                                             (data)=>{console.log(data)},
+                                             (error)=>{console.log(error);} );    
+                                     }
+                                     
+                                     console.log(data)
+                                 }, 
+                         (error) =>{console.log(error)} );
+                   },
+             (error)=>{
+               console.log(error);
+             } );
+      },
+      (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
+      this.nestedForm.reset();
+  
+      /////__________________________________
 
+}
  selectFile(event) {
   const file = event.target.files.item(0)
 
   if (file.type.match('image.*')) {
     this.fichierChoisi = event.target.files;
-  } else {
+  } else 
+  {
     alert('Le format du Fichier choisi est Invalide!');
   }
- }
+}
+
+//methode toastr
+showSuccess() {
+
+  this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+}
+showError() {
+  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+} 
+showWarning() {
+  this.ToastrService.warning('Erreur fatal !', 'Attention !');
+} 
+
+//methode valider
+validerSave() 
+{
+  console.log(this.nestedForm.value);
+  //this.employeeTest= this.nestedForm.value;
+   /*  this.employeeTest.prenom !=null && this.employeeTest.nom !=null && this.employeeTest.adresse !=null && this.employeeTest.dateNaissance !=null
+    && this.employeeTest.telephoneFixe !=null && this.employeeTest.telephoneMobile!=null && this.employeeTest.email!=null && this.employeeTest.pay !=null
+    && this.employeeTest.typeIdentification!=null && this.employeeTest.identification!=null && this.employeeTest.localite!=null && this.employeeTest.ethnies!=null
+    && this.employeeTest.situationMatrimoniale!=null && this.employeeTest.nive auetude!=null && this.employeeTest.religion!=null && this.employeeTest.competences!=null
+    && this.employeeTest.langues null && this.employeeTest.disponibilites!=null && this.employeeTest.horaire!=null  && this.employeeTest.observation!=null  && this.employeeTest.photo!=null && this.fichierChoisi!=null */
+    this.showSuccess();
+    this.submithandle();
+}
+
+ // Success Type
+ typeSuccess() {
+  this.service.success('You are awesome!', 'Success!');
+}
+
 }
