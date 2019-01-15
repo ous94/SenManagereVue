@@ -102,6 +102,9 @@ getCustomersBySituation(genre: String): Observable<any> {
 getEmployes(): Observable<any> {
   return this.httpClient.get('http://localhost:8000/api/employes'); 
 }
+getAllEmployes(): Observable<any> {
+  return this.httpClient.get('http://localhost:8000/api/allemployes'); 
+}
 
 
   // suppression d'un employee

@@ -49,9 +49,11 @@ import { Footer1Component } from './footer1/footer1.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
-import { ToastrModule } from 'ngx-toastr';
+//import { ToastrModule } from 'ngx-toastr';
 import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
 import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
+import { AcceuilClientComponent } from './client/acceuil-client/acceuil-client.component';
+import { NouvelleDemandeComponent } from './client/nouvelle-demande/nouvelle-demande.component';
 
 const appRoutes: Routes = [
 
@@ -81,22 +83,7 @@ const appRoutes: Routes = [
     {path:'administration',component:AdministrationComponent},
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
     {path:'client/mesclients',component:MesClientsComponent},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    {path:'client/acceuil',component:AcceuilClientComponent},
 
 
     /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
@@ -157,6 +144,8 @@ const appRoutes: Routes = [
     Footer1Component,
     TapeEmployerComponent,
     MesClientsComponent,
+    AcceuilClientComponent,
+    NouvelleDemandeComponent,
   ],
   imports: [
     BrowserModule,
@@ -167,7 +156,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,{enableTracing:true}),
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()
+   // ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

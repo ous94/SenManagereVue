@@ -10,12 +10,6 @@ export class AdministrationComponent implements OnInit {
   showHideClient:boolean=false;
   showHideInscription:boolean=false;
 
-
-
-
-
-
-
   constructor() { }
 
   ngOnInit() {

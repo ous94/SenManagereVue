@@ -1,0 +1,118 @@
+<form [formGroup]="demandeForm" (ngSubmit)="validerDemande()">
+<!--Formulaire Pour Donner le Salaire Propose et les Services
+	 ++++++++++++++++DEBUT++++++++++++++++++++++++++++++-->
+		<div class="row">
+		  <div class="col-sm-8" style="background-color:yellow;">
+			<div class="col-md-8 bg-dark" id="formulaireDemande">
+				<div class="row">
+				   <div class="col-sm-8 form-group"><br>
+					 <input class="form-control" id="" name="" placeholder="Salaire Proposé en FCFA" type="text" formControlName="salairePropose" >
+				   </div>
+				   <div class="col-sm-12 form-group"><br>
+					  <textarea class="form-control" id="" name="" placeholder="Commentaire sur le(s) Service(s) demande(s)" formControlName="service" rows="7"></textarea>
+				  </div> 
+				</div> 
+		    </div>
+		  </div>
+		  <div class="col-sm-4" style="background-color:pink;">
+			<div class="checkbox" >
+				<label class="labCompetence" *ngFor="let competence of listeCompetences; let i=index;"><input class="competenceCheckBox" type="checkbox" value="" (change)="getselectedCompetencevalues(competence)">{{competence.description}}</label><br/><br/>
+			</div>
+			<small id="erer" style="color: brown" *ngIf="favCompetenceErreur" class="form-text custom invalid-feedback">Veillez  cochez au moins une Competence</small>
+		  </div>
+		</div>
+<!--+++++++++++++++FIN+++++++++++++++++++++++++++++++++
+   Formulaire Pour Donner le Salaire Propose et les Services-->
+
+<!-- LIste Des employes a associer a la Demande 
+    +++++++++++++++++++++DEBUT++++++++++++++++++-->
+<div class="container" id="listeEmployes">
+  <div class="row">
+	<section class="content">
+	  <div class="table-container panel-body panel panel-default col-md-8">
+		<table class="table table-filter">
+		  <tbody>
+			<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+			  <td>
+				<div class="ckbox">
+					<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+						<label for="inlineCkeckbox{{position}}"></label>
+				</div>
+			  </td>
+			  <td>
+				<a href="javascript:;" class="star">
+				  <i class="glyphicon glyphicon-star"></i>
+				</a>
+			  </td>
+			  <td>
+                <div class="media">
+				  <a href="#" class="pull-left">
+					 <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
+				  </a>
+				  <div class="media-body">
+						<h4 class="title">
+									{{employe.prenom}}  {{employe.nom}}
+									<span class="pull-right pagado">Adresse :{{employe.adresse}}</span>
+						</h4>
+					<div class="row">
+					<span class="media-meta pull-right col-sm-6">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+					<span class="media-meta pull-right col-sm-6">Date de Naissance :{{employe.dateNaissance}}</span>
+					</div>
+					<div class="row">
+							<h4 class="col-sm-4">Information :</h4>
+							<p class="summary col-sm-8"><textarea disabled>{{employe.observation}}</textarea></p>
+					</div>
+						<div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+							<div class="row">
+								<div class="col-sm-6" style="background-color:yellow;">
+									<p>Nationnalite :{{employe.pay.nom}}</p>
+								</div>
+								<div class="col-sm-6" style="background-color:pink;">
+									<p>Langues parlées :</p>
+									<ul>
+										 <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6" style="background-color:pink;">
+									<p>Ethnie :{{employe.ethny.nom}}</p>
+								</div>
+								<div class="col-sm-6" style="background-color:yellow;">
+									<p>Competences :</p>
+									<ul>
+										 <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6" style="background-color:yellow;">
+									<p>Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+								</div>
+								<div class="col-sm-6" style="background-color:pink;">
+									<p>Disponibilite :</p>
+									<ul>
+										<li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+				  </div>
+        </div>
+			 </td>
+			 <td>
+				 <button (click)="details(position)"  *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+				 <button (click)="reduire(position)"  *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+			 </td>
+			</tr>
+		  </tbody>
+		</table>
+	  </div>
+	</section>
+  </div>
+</div>
+<button  class="btn btn-primary" type="submit" >Valider<span class=" glyphicon glyphicon-ok"></span></button>
+</form>
+<!--++++++++++++++++++++FIN++++++++++++++++++++++++++
+ LIste Des employes a associer a la Demande -->
