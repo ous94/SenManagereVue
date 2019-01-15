@@ -157,7 +157,6 @@ const appRoutes: Routes = [
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
