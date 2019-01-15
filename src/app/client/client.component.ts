@@ -26,9 +26,7 @@ export class ClientComponent implements OnInit {
   client : Client = new Client();
   clientFinal :Client =new Client();
   clientForm= new FormGroup({
-    idclient:new FormControl(''),
     adresse :new FormControl(''),
-    dateNaissance :new FormControl(''),
     email :new FormControl(''),
     identification :new FormControl(''),
     nom :new FormControl(''),
@@ -43,6 +41,20 @@ export class ClientComponent implements OnInit {
     login :new FormControl(''),
     password :new FormControl(''),
     confirmer :new FormControl('')
+  });
+  clientForminter= new FormGroup({
+    adresse :new FormControl(''),
+    email :new FormControl(''),
+    identification :new FormControl(''),
+    nom :new FormControl(''),
+    observation :new FormControl(''),
+    prenom :new FormControl(''),
+    sexe :new FormControl(''),
+    telephoneFixe :new FormControl(''),
+    telephoneMobile :new FormControl(''),
+    localite :new FormControl(''),
+    pay :new FormControl(''),
+    typeidentification :new FormControl(''),
   });
 
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService) {
@@ -70,20 +82,37 @@ export class ClientComponent implements OnInit {
    }
   ngOnInit() {
     this.clientForm= this.fb.group({
-      prenom:["",Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
+      prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
       nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
       adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
-      dateNaissance :[null,Validators.required],
       telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
       telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
-      email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
+      email:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
       pay:[null,Validators.required],
       sexe:[null,Validators.required],
       typeidentification:[null,Validators.required],
       identification:[null,Validators.required],
       localite:[null,Validators.required],
-      observation:[null]
+      observation:[null],
+      login:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
+      password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
+      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required,Validators.pattern(this.password.value)])],
   });
+    
+  this.clientForminter= this.fb.group({
+    prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
+    nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
+    adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
+    telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
+    telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
+    email:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
+    pay:[null,Validators.required],
+    sexe:[null,Validators.required],
+    typeidentification:[null,Validators.required],
+    identification:[null,Validators.required],
+    localite:[null,Validators.required],
+    observation:[null],
+});
 }
 
 
@@ -278,48 +307,9 @@ submithandle()
   visibiliteDiv($event)
   {
        this.suivant=!this.suivant;
-       this.login.setValue(this.email.value);
-       if(this.suivant)
-       {
-        this.clientForm= this.fb.group({
-          idclient:[null],
-          prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
-          nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
-          adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
-          dateNaissance :[null,Validators.required],
-          telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required, Validators.required,Validators.pattern('[0-9]*')])],
-          telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
-          email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
-          pay:[null,Validators.required],
-          sexe:[null,Validators.required],
-          typeidentification:[null,Validators.required],
-          identification:[null,Validators.required],
-          localite:[null,Validators.required],
-          observation:[null,Validators.required],
-          login:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
-          password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
-          confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required,Validators.pattern(this.password.value)])],
-      });
-       }
-       else
-       {
-        this.clientForm= this.fb.group({
-          idclient:[null],
-          prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
-          nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
-          adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
-          dateNaissance :[null,Validators.required],
-          telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
-          telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
-          email:[null,Validators.compose([Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'),Validators.minLength(10),Validators.required])],
-          pay:[null,Validators.required],
-          sexe:[null,Validators.required],
-          typeidentification:[null,Validators.required],
-          identification:[null,Validators.required],
-          localite:[null,Validators.required],
-          observation:[null],
-      });
-       }
+      let inter=this.email.value;
+       this.login.setValue(inter);
+       
   }
   retour($event)
   {

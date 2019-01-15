@@ -1,6 +1,7 @@
-<div class="">
 <div>
-<form [formGroup]="clientForm" (ngSubmit)="submithandle()">
+<div class="">
+<form [formGroup]="clientForm" (ngSubmit)="submithandle()" >
+ <form [formGroup]="clientForminter" >
 <div id="parti1" *ngIf="!suivant">
   <div class="row">
    <div class="col-xs-6 col-md-6  Vcenter">
@@ -60,10 +61,11 @@
  <div class="col-xs-6 col-md-6">
       <label for="textarea">Observation </label>
       <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" [ngClass]="{'form-control':true,'is-invalid':observation.invalid && observation.touched, 'is-valid':observation.valid && observation.touched}"></textarea>
-      <button  class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" *ngIf="!suivant">Suivant</button>
+      <button  class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter"id="buttonenregistrer" (click)="visibiliteDiv($event)" [disabled]="!clientForminter.valid" *ngIf="!suivant"  >Suivant</button>
   </div>
  </div>
  </div>
+</form>
  <!-- DEUXIEME DIV CONFIRMATION  -->
  <div id="parti2" *ngIf="suivant" >
       <div >
@@ -84,7 +86,7 @@
                  <button id="boutons retour" class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter" type="reset" (click)="retour($event)"> Précédent</button> 
                </div>
                <div class="col-md-6 col-sm-6" >
-                 <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter" type="submit" [disabled]="clientForm.invalid" >S'enregistrer</button>
+                 <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter" type="submit"[disabled]="!clientForm.valid" >S'enregistrer</button>
                </div>
            </div>
       </div>
