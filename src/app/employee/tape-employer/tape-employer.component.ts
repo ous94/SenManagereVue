@@ -10,10 +10,10 @@ export class TapeEmployerComponent implements OnInit {
   showAjouterEmployye:boolean=false;
   showActionEmployee:boolean=false;
   showListerEmployee:boolean=false;
-  showListerRecherche:boolean=false;
   showListerRechercheSituation:boolean=false;
   showListerRechercheReligion:boolean=false;
   showListerRechercheEmail:boolean=false;
+  showListerRechercheAdresse:boolean=false;
 
 
 
@@ -43,6 +43,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
 
 
   }
@@ -52,10 +53,11 @@ export class TapeEmployerComponent implements OnInit {
     this.showActionEmployee=!this.showActionEmployee;
        this.showAjouterEmployye=false;
        this.showListerEmployee=false;
-       this.showListerRecherche=false;
+       this.showListerRechercheAdresse=false;
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
 
 
   }
@@ -66,18 +68,18 @@ export class TapeEmployerComponent implements OnInit {
         this.showAjouterEmployye=!this.showAjouterEmployye;
        this.showActionEmployee=false;
        this.showListerEmployee=false;
-       this.showListerRecherche=false;
+       this.showListerRechercheAdresse=false;
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
 
   }
-  visibiliteRecherche($event)
+  visibiliteRechercheAdresse($event)
   {
        this.showActionEmployee=false;
        this.showAjouterEmployye=false;
        this.showListerEmployee=false;
-       this.showListerRecherche=!this.showListerRecherche;
+       this.showListerRechercheAdresse=!this.showListerRechercheAdresse;
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
@@ -85,7 +87,7 @@ export class TapeEmployerComponent implements OnInit {
 
   }
 
-  visibiliteSituation($event)
+  visibiliteRechercheSituation($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
@@ -93,9 +95,10 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=!this.showListerRechercheSituation;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
   }
 
-  visibiliteReligion($event)
+  visibiliteRechercheReligion($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
@@ -103,9 +106,10 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=!this.showListerRechercheReligion;
        this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
   }
 
-  visibiliteEmail($event)
+  visibiliteRechercheEmail($event)
   {
        this.showListerEmployee=false;
        this.showActionEmployee=false;
@@ -113,6 +117,9 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=!this.showListerRechercheEmail;
+       this.showListerRechercheAdresse=false;
   }
+
+  
 
 }

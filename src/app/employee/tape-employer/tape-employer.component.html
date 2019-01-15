@@ -10,7 +10,7 @@
                     "></span></a></li>
                 <li><a data-toggle="tab" (click)="visibiliteAction()">Action <span class="glyphicon glyphicon-trash
                     "></span></a></li> 
-                    <li><a data-toggle="tab" (click)="visibiliteRecherche()">Adresse <span class="glyphicon glyphicon-search"></span></a></li>
+                    <li><a data-toggle="tab" (click)="visibiliteRechercheAdresse()">Adresse <span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a data-toggle="tab" (click)="visibiliteRechercheSituation()">Situation Matrimoniale <span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a data-toggle="tab" (click)="visibiliteRechercheReligion()">Religion <span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a data-toggle="tab" (click)="visibiliteRechercheEmail()">Email <span class="glyphicon glyphicon-search"></span></a></li> 
@@ -39,12 +39,21 @@
 
                   <!-- Recherche -->
           <div class="tab-content">
-                <div class="tab-pane active" id="home" *ngIf="showListerRecherche"><br>
+                <div class="tab-pane active" id="home" *ngIf="showListerRechercheAdresse"><br>
                     <p>recherche</p>
                       
                     <app-recherche-employee></app-recherche-employee>           
                   </div><!--/tab-pane-->
               </div><!--/tab-content-->
+                 <!-- Recherche Situation-->
+          <div class="tab-content">
+                <div class="tab-pane active" id="home" *ngIf="showListerRechercheSituation"><br>
+                    <p>recherche Situation</p>
+                      
+                    <app-recherche-employee></app-recherche-employee>           
+                  </div><!--/tab-pane-->
+              </div><!--/tab-content-->
+
         </div><!--/col-9-->
     </div><!--/row-->
     <script>

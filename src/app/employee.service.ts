@@ -94,10 +94,7 @@ getcompetencebyDescription(description: String): Observable<Competence> {
 }
 
 
-//servicze recherche situation
-getCustomersBySituation(genre: String): Observable<any> {
-  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
-}
+
 
 getEmployes(): Observable<any> {
   return this.httpClient.get('http://localhost:8000/api/employes'); 
@@ -113,6 +110,21 @@ getEmployes(): Observable<any> {
 //get by adress
 getEmployerByAdresse(adress: String): Observable<any> {
   return this.httpClient.get(`${this.baseUrl}/employes/adresse/${adress}`);
+}
+
+//get by  Religion
+getEmployerByReligion(religion: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/religion/${religion}`);
+}
+
+//servicze recherche situation
+getCustomersBySituation(genre: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
+}
+
+//servicze recherche Email
+getCustomersByEmail(genre: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
 }
 
 
