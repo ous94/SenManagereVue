@@ -29,7 +29,7 @@
                                          
                           </div>
                           <ul class="inbox-nav inbox-divider">
-                              <li class="active">
+                              <li >
                                   <a (click)="visibiliteInscription()"><i class="fa fa-inbox"></i> Employees</a>
     
                               </li>
@@ -39,13 +39,16 @@
                               <li>
                                   <a href="#"><i class=" fa fa-envelope-o "></i>Envoie Email <span class="label label-info pull-right">30</span></a>
                               </li>
-                              <li>
+                              <!-- <li>
                                   <a (click)="showHideInscription =!showHideInscription"><i class="fa fa-bookmark-o"></i> Important</a>
-                              </li>
+                              </li> -->
                               
                               <li>
                                   <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
                               </li>
+                              <li>
+                                    <a (click)="visibiliteRecherche()"><i class=" fa fa-search"></i> Recherche</a>
+                                </li>
                           </ul>
                           
                         
@@ -84,17 +87,25 @@
                           <div class="inbox-body" *ngIf="showHideClient" >
                              
                             <!-- table client -->
-                            <app-footer1></app-footer1>
+                            <app-tape-client></app-tape-client>
                             
                             
                           </div>
                           <div class="inbox-body" *ngIf=" showHideInscription " >
                              
-                              <!-- table client -->
+                              <!-- table Employer -->
                               <app-tape-employer></app-tape-employer>
-                              
-                              
                             </div>
+                            <div class="inbox-body" *ngIf="showHideClient" >
+                                    <!-- table client -->
+                                    <app-tape-client></app-tape-client>
+                                    
+                                    
+                                  </div>
+                                  <div class="inbox-body" *ngIf="showHideRecherche" >
+                                        <!-- table recherche -->
+                                        <app-tape-recherche></app-tape-recherche>                
+                                      </div>
                       </aside>
                   </div>
     </div>

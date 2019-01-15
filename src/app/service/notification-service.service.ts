@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationServiceService {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(public toastr: ToastrService) { }
 
-  showSuccess(message, title){
-      this.toastr.success(message, title)
-  }
+  // Success Type
+  peSuccess() {
+    this.toastr.success('You are awesome!', 'Success!');
+}
 }

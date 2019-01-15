@@ -102,9 +102,6 @@ export class AdminComponent implements OnInit {
     
     
    }
-   showHtmlToaster(){  
-    this.notifyService.showSuccess("<h2>Data shown successfully !!</h2>", "Notification")
-}
  
  
 
@@ -515,5 +512,13 @@ this.employe.competences=[];
     alert('Le format du Fichier choisi est Invalide!');
   }
  }
- 
+ showSuccess() {
+  this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+}
+showError() {
+  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+} 
+showWarning() {
+  this.ToastrService.warning('Erreur fatal !', 'Attention !');
+} 
 }

@@ -108,8 +108,12 @@ getEmployes(): Observable<any> {
   deleteEmployeeid(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseUrl}/employes/${id}`, { responseType: 'text' });
   }
+  
 
-
+//get by adress
+getEmployerByAdresse(adress: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/adresse/${adress}`);
+}
 
 
 
