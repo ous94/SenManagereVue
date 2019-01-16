@@ -4,6 +4,7 @@ import { ClientService } from 'src/app/service/client.service';
 import { Client } from 'src/app/Classe/Client';
 import { Router } from '@angular/router';
 import { log } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     
   });
 
-  constructor(private fb: FormBuilder,private ClientService:ClientService,private router:Router) { 
+  constructor(private ToastrService:ToastrService,private fb: FormBuilder,private ClientService:ClientService,private router:Router) { 
     this.loginForm=this.fb.group({
       login:[null,Validators.required],
       password:[null,Validators.required],
@@ -47,18 +48,27 @@ export class LoginComponent implements OnInit {
       if(this.client3)
     {
       console.log('Connexion reussssssssss')
+      this.showSuccess();
       this.router.navigate(['administration']);
       
     }else{
       console.log('Connexion echec')
+      this.showError();
 
     }
     });
     
-    
-    
+     
+ }
 
-
+  showSuccess() {
+    this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
   }
+  showError() {
+    this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+  } 
+  showWarning() {
+    this.ToastrService.warning('Erreur fatal !', 'Attention !');
+  } 
 
 }
