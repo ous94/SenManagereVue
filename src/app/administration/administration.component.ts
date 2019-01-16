@@ -15,12 +15,7 @@ export class AdministrationComponent implements OnInit {
 client3:Client;
 
 
-  constructor() {
-    console.log('bonjour');
-    
-    console.log(this.client3);
-    
-   }
+  constructor() { }
 
   ngOnInit() {
     console.log('bonjour');
