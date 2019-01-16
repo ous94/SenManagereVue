@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/upload-file.service';
 
 @Component({
-  selector: 'app-recherche-situation-matrimoniale',
-  templateUrl: './recherche-situation-matrimoniale.component.html',
-  styleUrls: ['./recherche-situation-matrimoniale.component.scss']
+  selector: 'app-recherche-disponibilite',
+  templateUrl: './recherche-disponibilite.component.html',
+  styleUrls: ['./recherche-disponibilite.component.scss']
 })
-export class RechercheSituationMatrimonialeComponent implements OnInit {
+export class RechercheDisponibiliteComponent implements OnInit {
 
-  rechercherSituation : Employee[];
-  situationMatrimoniale:String;
+  rechercherDisponibilite : Employee[];
+  disponibilite:String;
 
 //private baseurl: string = 'http://localhost:4201/api/customers';
 constructor(private EmployeeService:EmployeeService,private router:Router,private UploadFileService:UploadFileService) {
@@ -24,13 +24,13 @@ constructor(private EmployeeService:EmployeeService,private router:Router,privat
  }
 
   ngOnInit() {
-    this.situationMatrimoniale=null;
+    this.disponibilite=null;
   }
 
    // rechercher par age
    private searchCustomers() {
-    this.EmployeeService.getCustomersBySituation(this.situationMatrimoniale)
-      .subscribe(rechercherSituation => this.rechercherSituation = rechercherSituation);
+    this.EmployeeService.getEmployerByAdresse(this.disponibilite)
+      .subscribe(rechercherDisponibilite => this.rechercherDisponibilite =rechercherDisponibilite);
   }
   //button de validation
   rechercher() {
@@ -48,7 +48,7 @@ deleteEmploye(employee:Employee) {
     .subscribe(
       data => {
         console.log(data);
-        this.rechercherSituation.splice(this.rechercherSituation.indexOf(employee),1);
+        this.rechercherDisponibilite.splice(this.rechercherDisponibilite.indexOf(employee),1);
         
       },
       error => console.log(error));

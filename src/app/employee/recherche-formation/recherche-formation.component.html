@@ -2,7 +2,7 @@
 <div class="col-md-2">
   <form (ngSubmit)="rechercher()">
   <div class="input-group">
-    <input type="text"  placeholder="Search  for..." class="form-control" id="email" required [(ngModel)]="email" name="email">
+    <input type="text"  placeholder="Search  for..." class="form-control" id="formation" required [(ngModel)]="formation" name="formation">
     <span class="input-group-btn">
       <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
     </span>
@@ -16,7 +16,7 @@
   <div class="container">
       <div class="row">
           <!-- Team member -->
-          <div class="col-xs-7 col-sm-6 col-md-3"  *ngFor="let employee of rechercherEmail">
+          <div class="col-xs-7 col-sm-6 col-md-3"  *ngFor="let employee of rechercherFormation">
 <!--                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');" >
 -->                    
                    <div>
@@ -27,7 +27,7 @@
                               <div class="card-body text-center">
                                   <p><img  src={{uploadPhotoEmployer(employee.photo)}} class="img-circle"  width="94" height="66"></p>
                                   <h4 class="card-title">{{employee.prenom}} {{employee.nom}}</h4>
-                                  <p class="card-text">{{employee.email}},{{employee.email}}</p>
+                                  <p class="card-text">{{employee.formation}},{{employee.email}}</p>
                               </div>
                           </div>
                       </div>
@@ -53,7 +53,7 @@
                                       <li class="list-inline-item">
                                               <a (click)='editeEmploye(employee)' target="_blank">
                                                       <i class="glyphicon glyphicon-pencil"></i>
-                                              </a>
+                                                  </a>
                                       </li>
                           
                                   </ul>

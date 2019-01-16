@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/upload-file.service';
 
 @Component({
-  selector: 'app-recherche-situation-matrimoniale',
-  templateUrl: './recherche-situation-matrimoniale.component.html',
-  styleUrls: ['./recherche-situation-matrimoniale.component.scss']
+  selector: 'app-recherche-langues',
+  templateUrl: './recherche-langues.component.html',
+  styleUrls: ['./recherche-langues.component.scss']
 })
-export class RechercheSituationMatrimonialeComponent implements OnInit {
+export class RechercheLanguesComponent implements OnInit {
 
-  rechercherSituation : Employee[];
-  situationMatrimoniale:String;
+  rechercherLangues : Employee[];
+  langues:String;
 
 //private baseurl: string = 'http://localhost:4201/api/customers';
 constructor(private EmployeeService:EmployeeService,private router:Router,private UploadFileService:UploadFileService) {
@@ -24,13 +24,13 @@ constructor(private EmployeeService:EmployeeService,private router:Router,privat
  }
 
   ngOnInit() {
-    this.situationMatrimoniale=null;
+    this.langues=null;
   }
 
    // rechercher par age
    private searchCustomers() {
-    this.EmployeeService.getCustomersBySituation(this.situationMatrimoniale)
-      .subscribe(rechercherSituation => this.rechercherSituation = rechercherSituation);
+    this.EmployeeService.getEmployerByAdresse(this.langues)
+      .subscribe(rechercherLangues => this.rechercherLangues =rechercherLangues);
   }
   //button de validation
   rechercher() {
@@ -48,7 +48,7 @@ deleteEmploye(employee:Employee) {
     .subscribe(
       data => {
         console.log(data);
-        this.rechercherSituation.splice(this.rechercherSituation.indexOf(employee),1);
+        this.rechercherLangues.splice(this.rechercherLangues.indexOf(employee),1);
         
       },
       error => console.log(error));

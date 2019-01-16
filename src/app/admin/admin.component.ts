@@ -13,8 +13,9 @@ import {TypeIdentificationService} from '../service/type-identification.service'
 import {UploadFileService} from '../upload-file.service';
 import { Disponibilite } from '../Classe/Disponibilite';
 import {DisponibiliteService} from '../service/disponibilite.service'; 
-import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+//import { ToastContainerDirective, ToastrService } from 'ngx-toastr'; public ToastrService: ToastrService,
 import { NotificationServiceService } from '../service/notification-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -89,7 +90,7 @@ export class AdminComponent implements OnInit {
   });
 
   //
-  constructor(public notifyService : NotificationServiceService,public ToastrService: ToastrService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
+  constructor(private ToastrService:ToastrService,public notifyService : NotificationServiceService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -102,13 +103,6 @@ export class AdminComponent implements OnInit {
     
     
    }
- 
- 
-
-   showToaster(){
-    this.ToastrService.success("Hello, I'm the toastr message.")
-}
-//
   ngOnInit() {
 
     this.nestedForm= this.fb.group({
@@ -414,7 +408,7 @@ submithandle()
    );
    //Recuperation de L'ethnie
    this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
-     (data)=>{this.employe.ethnies=data;},
+     (data)=>{this.employe.ethny=data;},
      (error) =>{console.log("Erreur sur l ethnies");}
    );
    //Recuperation du Niveau d'etude
@@ -513,10 +507,10 @@ this.employe.competences=[];
   }
  }
  showSuccess() {
-  this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+  this.ToastrService.success('Avec succès !', 'Connexion réussi !');
 }
 showError() {
-  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+  this.ToastrService.error('Vérifiez les informations saisies !', 'Echec de connexion !');
 } 
 showWarning() {
   this.ToastrService.warning('Erreur fatal !', 'Attention !');
