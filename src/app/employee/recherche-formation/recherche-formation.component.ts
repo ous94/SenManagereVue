@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { UploadFileService } from 'src/app/upload-file.service';
 
 @Component({
-  selector: 'app-recherche-niveau-etudes',
-  templateUrl: './recherche-niveau-etudes.component.html',
-  styleUrls: ['./recherche-niveau-etudes.component.scss']
+  selector: 'app-recherche-formation',
+  templateUrl: './recherche-formation.component.html',
+  styleUrls: ['./recherche-formation.component.scss']
 })
-export class RechercheNiveauEtudesComponent implements OnInit {
+export class RechercheFormationComponent implements OnInit {
 
-  rechercherNiveau : Employee[];
-  niveauEtudes:String;
+  rechercherFormation : Employee[];
+  formation:String;
 
 //private baseurl: string = 'http://localhost:4201/api/customers';
 constructor(private EmployeeService:EmployeeService,private router:Router,private UploadFileService:UploadFileService) {
@@ -24,13 +24,13 @@ constructor(private EmployeeService:EmployeeService,private router:Router,privat
  }
 
   ngOnInit() {
-    this.niveauEtudes=null;
+    this.formation=null;
   }
 
    // rechercher par age
    private searchCustomers() {
-    this.EmployeeService.getEmployerByAdresse(this.niveauEtudes)
-      .subscribe(rechercherNiveau => this.rechercherNiveau =rechercherNiveau);
+    this.EmployeeService.getEmployerByAdresse(this.formation)
+      .subscribe(rechercherFormation => this.rechercherFormation =rechercherFormation);
   }
   //button de validation
   rechercher() {
@@ -48,7 +48,7 @@ deleteEmploye(employee:Employee) {
     .subscribe(
       data => {
         console.log(data);
-        this.rechercherNiveau.splice(this.rechercherNiveau.indexOf(employee),1);
+        this.rechercherFormation.splice(this.rechercherFormation.indexOf(employee),1);
         
       },
       error => console.log(error));

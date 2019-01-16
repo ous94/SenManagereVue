@@ -7,10 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NotificationServiceService {
 
-  constructor(public toastr: ToastrService) { }
+  //constructor(private toastr: ToastrService) { }
 
-  // Success Type
-  peSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
-}
+ // showSuccess(message, title){
+ //     this.toastr.success(message, title)
+ // }
 }

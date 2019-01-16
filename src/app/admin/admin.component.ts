@@ -507,10 +507,10 @@ this.employe.competences=[];
   }
  }
  showSuccess() {
-  this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+  this.ToastrService.success('Avec succès !', 'Connexion réussi !');
 }
 showError() {
-  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+  this.ToastrService.error('Vérifiez les informations saisies !', 'Echec de connexion !');
 } 
 showWarning() {
   this.ToastrService.warning('Erreur fatal !', 'Attention !');

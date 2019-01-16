@@ -32,7 +32,8 @@ export class NouvelleDemandeComponent implements OnInit {
 
   constructor(private fb:FormBuilder ,private employeService:EmployeeService,private comptenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService) { 
        this.employeService.getAllEmployes().subscribe(
-           (data)=>{this.listeEmployes=data;}
+           (data)=>{this.listeEmployes=data;
+                    console.log(this.listeEmployes);}
        );
        this.comptenceService.getAllCompetences().subscribe(
           (data)=>{this.listeCompetences=data;}
