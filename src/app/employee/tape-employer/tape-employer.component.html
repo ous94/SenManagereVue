@@ -14,6 +14,8 @@
                     <li><a data-toggle="tab" (click)="visibiliteRechercheSituation()">Situation Matrimoniale <span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a data-toggle="tab" (click)="visibiliteRechercheReligion()">Religion <span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a data-toggle="tab" (click)="visibiliteRechercheEmail()">Email <span class="glyphicon glyphicon-search"></span></a></li> 
+                    <li><a data-toggle="tab" (click)="visibiliteRecherchePlus()">Plus <span class="glyphicon glyphicon-search"></span></a></li>
+
               </ul>
               <!-- lister -->
           <div class="tab-content" *ngIf="showListerEmployee">
@@ -62,6 +64,14 @@
               </div><!--/tab-pane-->
           </div><!--/tab-content-->
 
+           <!-- RecherchePlus -->
+           <div class="tab-content">
+            <div class="tab-pane active" id="home" *ngIf="showListerRecherchePlus"><br>
+                
+                 <app-tape-plus></app-tape-plus>
+              </div><!--/tab-pane-->
+            </div>
+
           <!-- RechercheEmail -->
           <div class="tab-content">
             <div class="tab-pane active" id="home" *ngIf="showListerRechercheEmail"><br>
@@ -69,6 +79,8 @@
                  <app-recherche-email></app-recherche-email>
               </div><!--/tab-pane-->
           </div><!--/tab-content-->
+
+          
 
 
         </div><!--/col-9-->
