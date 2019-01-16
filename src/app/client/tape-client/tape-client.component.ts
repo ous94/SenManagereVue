@@ -11,17 +11,13 @@ export class TapeClientComponent implements OnInit {
   showActionEmployee:boolean=false;
   showListerEmployee:boolean=false;
 
-
-
-
-
-
-
-
   constructor() { }
 
   ngOnInit() {
   }
+
+  //
+  //
 
 
 

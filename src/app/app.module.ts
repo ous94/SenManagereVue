@@ -99,6 +99,7 @@ const appRoutes: Routes = [
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
     {path:'client/mesclients',component:MesClientsComponent},
     {path:'client/acceuil',component:AcceuilClientComponent},
+    {path:'contact1',component:Contact1Component},
 ];
 
 @NgModule({
