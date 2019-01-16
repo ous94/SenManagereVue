@@ -13,4 +13,5 @@ export class NotificationServiceService {
      this.toastr.success(message, title)
 
 }
+
 }
