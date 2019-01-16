@@ -9,6 +9,10 @@ export class CompetenceService {
   private baseUrl='http://localhost:8000/api';
 
   constructor(private http:HttpClient ) {}
+  getAllCompetences():Observable<any>
+  {
+    return this.http.get(this.baseUrl+"/competences");
+  }
   getAllCompetenceDescription():Observable<any>
   {
     return this.http.get(this.baseUrl+"/competence/description");

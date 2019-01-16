@@ -47,7 +47,8 @@ import { InscriptionComponent } from './employee/inscription/inscription.compone
 import { Footer1Component } from './footer1/footer1.component';
 ///tost
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { AcceuilClientComponent } from './client/acceuil-client/acceuil-client.component';
+import { NouvelleDemandeComponent } from './client/nouvelle-demande/nouvelle-demande.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
 import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
@@ -62,7 +63,6 @@ import { RechercheSituationMatrimonialeComponent } from './employee/recherche-si
 import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
 import { RechercheEmailComponent } from './employee/recherche-email/recherche-email.component';
 import { RechercheNiveauEtudesComponent } from './employee/recherche-niveau-etudes/recherche-niveau-etudes.component';
-
 
 const appRoutes: Routes = [
 
@@ -92,7 +92,7 @@ const appRoutes: Routes = [
     {path:'administration',component:AdministrationComponent},
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
     {path:'client/mesclients',component:MesClientsComponent},
-
+    {path:'client/acceuil',component:AcceuilClientComponent},
 ];
 
 @NgModule({
@@ -137,6 +137,8 @@ const appRoutes: Routes = [
     Footer1Component,
     TapeEmployerComponent,
     MesClientsComponent,
+    AcceuilClientComponent,
+    NouvelleDemandeComponent,
     MesEmplyesComponent,
     ConfirmComponent,
     TapeClientComponent,
@@ -150,6 +152,7 @@ const appRoutes: Routes = [
   ],
   entryComponents: [
     ConfirmComponent
+
   ],
   imports: [
     BrowserModule,

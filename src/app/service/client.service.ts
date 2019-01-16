@@ -26,7 +26,11 @@ export class ClientService {
 
   // suppression d'un employee
   deleteClientid(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/clients/${id}`, { responseType: 'text' });
+    return this.httpClient.delete(this.baseUrl+ '/clients/create', { responseType: 'text' });
+  }
+  //Methode Pour lister les clients
+  getLoginClient(client:Client): Observable<Client> {
+    return this.httpClient.post<Client>(this.baseUrl+ '/client/login',client); 
   }
 
 }

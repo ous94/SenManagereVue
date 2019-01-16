@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Client } from '../Classe/Client';
 
 @Component({
   selector: 'app-administration',
@@ -10,17 +11,17 @@ export class AdministrationComponent implements OnInit {
   showHideClient:boolean=false;
   showHideInscription:boolean=false;
   showHideRecherche:boolean=false;
-
-
-
-
-
-
+@Input()
+client3:Client;
 
 
   constructor() { }
 
   ngOnInit() {
+    console.log('bonjour');
+    
+    console.log(this.client3);
+    
   }
 
 

@@ -64,7 +64,7 @@ deleteEmploye(employee:Employee) {
     uploadPhotoEmployer(photo:String): String
     {
       return this.UploadFileService.getPhoto(photo);
-  }
+    }
 
 
 
