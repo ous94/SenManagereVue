@@ -55,6 +55,10 @@ export class ClientComponent implements OnInit {
     localite :new FormControl(''),
     pay :new FormControl(''),
     typeidentification :new FormControl(''),
+    login :new FormControl(''),
+    password :new FormControl(''),
+    confirmer :new FormControl('')
+    
   });
 
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService) {
@@ -112,6 +116,9 @@ export class ClientComponent implements OnInit {
     identification:[null,Validators.required],
     localite:[null,Validators.required],
     observation:[null],
+    login:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10)])],
+    password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20),])],
+      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20)])],
 });
 }
 
@@ -307,8 +314,8 @@ submithandle()
   visibiliteDiv($event)
   {
        this.suivant=!this.suivant;
-      let inter=this.email.value;
-       this.login.setValue(inter);
+       console.log(this.email.value);
+       this.login.setValue(this.email.value);
        
   }
   retour($event)
