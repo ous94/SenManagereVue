@@ -68,6 +68,7 @@ import { RechercheFormationComponent } from './employee/recherche-formation/rech
 import { RechercheLanguesComponent } from './employee/recherche-langues/recherche-langues.component';
 import { RechercheDisponibiliteComponent } from './employee/recherche-disponibilite/recherche-disponibilite.component';
 import { RecherchePaysComponent } from './employee/recherche-pays/recherche-pays.component';
+import { Contact1Component } from './contact1/contact1.component';
 
 const appRoutes: Routes = [
 
@@ -158,7 +159,8 @@ const appRoutes: Routes = [
     RechercheFormationComponent,
     RechercheLanguesComponent,
     RechercheDisponibiliteComponent,
-    RecherchePaysComponent
+    RecherchePaysComponent,
+    Contact1Component
   ],
   entryComponents: [
     ConfirmComponent
