@@ -414,7 +414,7 @@ submithandle()
    );
    //Recuperation de L'ethnie
    this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
-     (data)=>{this.employe.ethnies=data;},
+     (data)=>{this.employe.ethny=data;},
      (error) =>{console.log("Erreur sur l ethnies");}
    );
    //Recuperation du Niveau d'etude

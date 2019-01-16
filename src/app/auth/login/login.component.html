@@ -1,17 +1,17 @@
 <body>
-    <form name="auth">
+    <form name="auth" [formGroup]="loginForm" (submit)="connexion()" >
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-5 col-md-3">
                     <div class="form-login">
                     <h4>Sen Menageres</h4>
-                    <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+                    <input type="text" id="userName" formControlName="login" class="form-control input-sm chat-input" placeholder="username" />
                     <br/>
-                    <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+                    <input type="text" id="userPassword" formControlName="password" class="form-control input-sm chat-input" placeholder="password" />
                     <br/>
                     <div class="wrapper">
                     <span class="group-btn">     
-                        <a href="#" class="btn btn-primary btn-md">login <span class="glyphicon glyphicon-log-in"></span><i class="fa fa-sign-in"></i></a>
+                    <button type="submit" class="btn btn-primary btn-md">login <span class="glyphicon glyphicon-log-in"></span><i class="fa fa-sign-in"></i></button>
                     </span>
                     </div>
                     </div>

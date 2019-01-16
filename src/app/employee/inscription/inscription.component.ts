@@ -61,7 +61,7 @@ export class InscriptionComponent implements OnInit {
   disponibilite :Disponibilite= new Disponibilite();
 //
   nestedForm= new FormGroup({
-    idemploye:new FormControl(''),
+    //idemploye:new FormControl(''),
     adresse :new FormControl(''),
     dateNaissance :new FormControl(''),
     email :new FormControl(''),
@@ -112,7 +112,7 @@ export class InscriptionComponent implements OnInit {
 
 
     this.nestedForm= this.fb.group({
-      idemploye:[1,Validators.required],
+     // idemploye:[1,Validators.required],
       prenom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(3)])],
       nom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(2)])],
       adresse:[null,Validators.required],
@@ -414,7 +414,7 @@ submithandle()
   );
   //Recuperation de L'ethnie
   this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
-    (data)=>{this.employe.ethnies=data;},
+    (data)=>{this.employe.ethny=data;},
     (error) =>{console.log("Erreur sur l ethnies");}
   );
   //Recuperation du Niveau d'etude

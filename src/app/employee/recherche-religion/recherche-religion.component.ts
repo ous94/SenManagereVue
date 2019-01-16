@@ -29,7 +29,7 @@ constructor(private EmployeeService:EmployeeService,private router:Router,privat
 
    // rechercher par age
    private searchCustomers() {
-    this.EmployeeService.getEmployerByAdresse(this.religion)
+    this.EmployeeService.getEmployerByReligion(this.religion)
       .subscribe(rechercherReligion => this.rechercherReligion =rechercherReligion);
   }
   //button de validation

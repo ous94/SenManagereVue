@@ -107,7 +107,7 @@ getEmployes(): Observable<any> {
   }
   
 
-//get by adress
+//get by adresse
 getEmployerByAdresse(adress: String): Observable<any> {
   return this.httpClient.get(`${this.baseUrl}/employes/adresse/${adress}`);
 }
@@ -119,12 +119,12 @@ getEmployerByReligion(religion: String): Observable<any> {
 
 //servicze recherche situation
 getCustomersBySituation(genre: String): Observable<any> {
-  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
+  return this.httpClient.get(`${this.baseUrl}/employes/situation/${genre}`);
 }
 
 //servicze recherche Email
-getCustomersByEmail(genre: String): Observable<any> {
-  return this.httpClient.get(`${this.baseUrl}/situation/${genre}`);
+getEmployesByEmail(email: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/email/${email}`);
 }
 
 
