@@ -24,10 +24,6 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.2.0",
     "jquery": "^3.2.1",
-<<<<<<< HEAD
-=======
-
->>>>>>> 1f1a25a9827ca41b98164390f805fe9e4517de80
     "ngx": "^2.4.0",
     "ng2-bootstrap-modal": "^1.0.1",
     "ngx-toastr": "^9.1.1",

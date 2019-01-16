@@ -70,6 +70,7 @@ const appRoutes: Routes = [
     {path:'log',component:ConnexionComponent},
     {path:'EspaceClient',component:EspaceClientComponent},
     {path:'nav',component:NavbarComponent},
+    
     {path:'client',component:ClientComponent},
     {path:'listeClient',component:ListeClientComponent},
     {path:'test',component:TestComponent},
