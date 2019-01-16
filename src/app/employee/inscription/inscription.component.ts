@@ -418,7 +418,7 @@ submithandle()
     (error) =>{console.log("Erreur sur l ethnies");}
   );
   //Recuperation du Niveau d'etude
-  this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
+    this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
    (data) =>{this.employe.niveauetude=data;},
    (error)=>{console.log("Erreur sur le niveauEtude");}
   );

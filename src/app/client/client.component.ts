@@ -9,6 +9,7 @@ import {PaysService} from '../service/pays.service';
 import {ClientService} from '../service/client.service'
 import { MessagesService } from '../service/messages.service';
 import { Observable } from 'rxjs';
+import {MustMatch} from './ValidationPassword';
 
 @Component({
   selector: 'app-client',
@@ -42,20 +43,7 @@ export class ClientComponent implements OnInit {
     password :new FormControl(''),
     confirmer :new FormControl('')
   });
-  clientForminter= new FormGroup({
-    adresse :new FormControl(''),
-    email :new FormControl(''),
-    identification :new FormControl(''),
-    nom :new FormControl(''),
-    observation :new FormControl(''),
-    prenom :new FormControl(''),
-    sexe :new FormControl(''),
-    telephoneFixe :new FormControl(''),
-    telephoneMobile :new FormControl(''),
-    localite :new FormControl(''),
-    pay :new FormControl(''),
-    typeidentification :new FormControl(''),
-  });
+  
 
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService) {
 
@@ -95,25 +83,13 @@ export class ClientComponent implements OnInit {
       localite:[null,Validators.required],
       observation:[null],
       login:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
-      password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required])],
-      confirmer :[null,Validators.compose([Validators.minLength(8),Validators.maxLength(20), Validators.required,Validators.pattern(this.password.value)])],
+      password:[null,Validators.compose([Validators.minLength(8),Validators.required])],
+      confirmer :[null,Validators.compose([Validators.required,Validators.pattern(this.password.value)])]
+    }, {
+       validator: MustMatch('password', 'confirmer')
   });
-    
-  this.clientForminter= this.fb.group({
-    prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
-    nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
-    adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
-    telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
-    telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
-    email:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
-    pay:[null,Validators.required],
-    sexe:[null,Validators.required],
-    typeidentification:[null,Validators.required],
-    identification:[null,Validators.required],
-    localite:[null,Validators.required],
-    observation:[null],
-});
 }
+get f() { return this.clientForm.controls; }
 
 
 addAddressGroup(){
@@ -253,12 +229,7 @@ get confirmer()
 submithandle()
 //Fonction pour Enregister un Client
 {
-  this.password1=this.password.value;
-  this.password2=this.confirmer.value;
-  console.log("Password1 :"+this.password1);
-  console.log("Password2 :"+this.password2);
-   if(this.password.value.localeCompare(this.confirmer.value)==0)
-   {
+
        this.client= this.clientForm.value;
        console.log(this.client);
       //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
@@ -295,25 +266,12 @@ submithandle()
               (error) =>{console.log(error)} );
   
        console.log(this.clientFinal);
-    }
-    else
-    {
-      this.password.invalid;
-      this.confirmer.hasError;
-      console.log("erreur veillez confirmer le mot de Passe s'il vous  plait");
-    }
-    this.clientForm.reset;
+       this.clientForm.reset;
+    
 }
-  visibiliteDiv($event)
+  emailLogin()
   {
-       this.suivant=!this.suivant;
-      let inter=this.email.value;
-       this.login.setValue(inter);
-       
-  }
-  retour($event)
-  {
-       this.suivant=!this.suivant;
-       
+    console.log(this.email.value);
+    this.login.setValue(this.email.value);
   }
 }

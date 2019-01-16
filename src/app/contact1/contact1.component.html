@@ -1,1 +1,79 @@
+<app-nav1 id="nav"></app-nav1>
+<app-carousel></app-carousel>
+<header id="contacter" class="masthead text-white ">
+        <div class="overlay"></div>
+        <div class="container slider-top-text">
+            <div class="row">
+                <div  class="contact col-md-12 text-center">
+                    <a id="contacternous" class="btn btn-primary btn-join" [routerLink]="['/contacter']" routerLinkActive="active" ><h4>Contacter Nous<span class="glyphicon glyphicon-chevron-right
+                      "></span></h4></a>
+                </div>
+                <div  class="bouton col-md-12 text-center mt-5">
+                        <div class="scroll-down">
+                            <a class="btn btn-default btn-scroll floating-arrow" href="#gobottom" id="bottom"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </header>
 
+<!-- espace Section1 -->   
+<section class="testimonials" id="gobottom">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-5 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="big-img">
+                  <img src="../assets/SET1/client.jpg" class="img-fluid" width="550" height="300" style="margin-left:10px;">
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="inner-section wow fadeInUp">
+              <h3 ><span class="bg-main"></span></h3>
+                
+                <div class="linear-grid">
+                    <div class="row">
+                            <!-- espace Section2 -->    
+                     <div class="contact"  >
+                        <div class="row test">
+                          <div class="text col-md-6">
+                            <h3><span class="bg-main"><b>Contacter votre Agence </b></span></h3>
+                            <h5><span class="bg-main">Merci de laisser une note.</span></h5>
+                            <h4><span class="glyphicon glyphicon-map-marker"></span>Dakar, Medina</h4>
+                            <h4><span class="glyphicon glyphicon-phone"></span>Phone: +221 77 334 42 54</h4>
+                            <h4><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</h4>
+                           
+                          </div>
+                          <form [formGroup]="contactForm" (ngSubmit)="envoyerEmail()">
+                          <div class="col-md-12 bg-dark">
+                           <div class="row">
+                              <div class="col-sm-6 form-group"><br>
+                                <input class="form-control" id="name" name="name" placeholder="Name" type="text" formControlName="nomClient" required>
+                              </div>
+                              <div class="col-sm-12 form-group">
+                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" formControlName="email" required>
+                              </div>
+                              <div class="col-sm-12 form-group">
+                                <input class="form-control" id="phone" name="phone" placeholder="Phone" type="number" formControlName="telClient" required>
+                              </div>
+                           </div>
+                           <textarea class="form-control" id="comments" name="comments" placeholder="Comment" formControlName="message" rows="5"></textarea>
+                           <div class="row">
+                            <div class="col-md-12 form-group">
+                               <button class="btn pull-right" type="submit" [disabled]="!contactForm.valid">Send</button>
+                           </div>
+                          </div> 
+                       </div>
+                      </form>
+                      <br/><br/>
+                      </div>
+                     </div>    
+                    </div>
+                  </div> 
+              </div>
+          </div>
+      </div>
+  
+  </div>
+</section>
+
+<app-footer></app-footer>
