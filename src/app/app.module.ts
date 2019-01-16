@@ -65,6 +65,9 @@ import { RechercheEmailComponent } from './employee/recherche-email/recherche-em
 import { RechercheNiveauEtudesComponent } from './employee/recherche-niveau-etudes/recherche-niveau-etudes.component';
 import { RechercheExperienceComponent } from './employee/recherche-experience/recherche-experience.component';
 import { RechercheFormationComponent } from './employee/recherche-formation/recherche-formation.component';
+import { RechercheLanguesComponent } from './employee/recherche-langues/recherche-langues.component';
+import { RechercheDisponibiliteComponent } from './employee/recherche-disponibilite/recherche-disponibilite.component';
+import { RecherchePaysComponent } from './employee/recherche-pays/recherche-pays.component';
 
 const appRoutes: Routes = [
 
@@ -152,7 +155,10 @@ const appRoutes: Routes = [
     RechercheEmailComponent,
     RechercheNiveauEtudesComponent,
     RechercheExperienceComponent,
-    RechercheFormationComponent
+    RechercheFormationComponent,
+    RechercheLanguesComponent,
+    RechercheDisponibiliteComponent,
+    RecherchePaysComponent
   ],
   entryComponents: [
     ConfirmComponent
