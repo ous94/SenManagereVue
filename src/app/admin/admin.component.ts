@@ -15,7 +15,6 @@ import { Disponibilite } from '../Classe/Disponibilite';
 import {DisponibiliteService} from '../service/disponibilite.service'; 
 //import { ToastContainerDirective, ToastrService } from 'ngx-toastr'; public ToastrService: ToastrService,
 import { NotificationServiceService } from '../service/notification-service.service';
-import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -90,7 +89,7 @@ export class AdminComponent implements OnInit {
   });
 
   //
-  constructor(private ToastrService:ToastrService,public notifyService : NotificationServiceService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
+  constructor(public notifyService : NotificationServiceService,private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private competenceService: CompetenceService,private ethniesService :EthniesService,private langueService :LangueService ,private localiteService :LocaliteService,private niveauEtudeService :NiveauEtudeService,private paysService :PaysService,private typeIdentificationService :TypeIdentificationService,private uploadFileService :UploadFileService ,private disponibiliteService:DisponibiliteService) {
    
     setTimeout(() => {
       this.getdataEtude();
@@ -103,6 +102,16 @@ export class AdminComponent implements OnInit {
     
     
    }
+  // showHtmlToaster(){  
+  //  this.notifyService.showSuccess("<h2>Data shown successfully !!</h2>", "Notification")
+//}
+ 
+ 
+
+  // showToaster(){
+  //  this.ToastrService.success("Hello, I'm the toastr message.")
+//}
+//
   ngOnInit() {
 
     this.nestedForm= this.fb.group({

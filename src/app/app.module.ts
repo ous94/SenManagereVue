@@ -47,22 +47,12 @@ import { InscriptionComponent } from './employee/inscription/inscription.compone
 import { Footer1Component } from './footer1/footer1.component';
 ///tost
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AcceuilClientComponent } from './client/acceuil-client/acceuil-client.component';
-import { NouvelleDemandeComponent } from './client/nouvelle-demande/nouvelle-demande.component';
-import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+ 
+//import { ToastrModule } from 'ngx-toastr';
 import { TapeEmployerComponent } from './employee/tape-employer/tape-employer.component';
 import { MesClientsComponent } from './client/mes-clients/mes-clients.component';
-import { MesEmplyesComponent } from './employee/mes-emplyes/mes-emplyes.component';
-import { ConfirmComponent } from './confirm/confirm.component';
-import { ToastrModule } from 'ngx-toastr';
-import { TapeClientComponent } from './client/tape-client/tape-client.component';
-import { Test2Component } from './employee/test2/test2.component';
-import { TapeRechercheComponent } from './recherche/tape-recherche/tape-recherche.component';
-import { RechercheEmployeeComponent } from './employee/recherche-employee/recherche-employee.component';
-import { RechercheSituationMatrimonialeComponent } from './employee/recherche-situation-matrimoniale/recherche-situation-matrimoniale.component';
-import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
-import { RechercheEmailComponent } from './employee/recherche-email/recherche-email.component';
-import { RechercheNiveauEtudesComponent } from './employee/recherche-niveau-etudes/recherche-niveau-etudes.component';
+import { AcceuilClientComponent } from './client/acceuil-client/acceuil-client.component';
+import { NouvelleDemandeComponent } from './client/nouvelle-demande/nouvelle-demande.component';
 
 const appRoutes: Routes = [
 
@@ -93,6 +83,11 @@ const appRoutes: Routes = [
     {path:'emloyee/tapeemploye',component:TapeEmployerComponent},
     {path:'client/mesclients',component:MesClientsComponent},
     {path:'client/acceuil',component:AcceuilClientComponent},
+
+
+    /* { path: '', component: HomeComponent, pathMatch: 'prefix', children: [
+      {path: '', component: HomeComponent}, {path: 'login', component: LoginComponent} ] }, */
+   
 ];
 
 @NgModule({
@@ -139,20 +134,6 @@ const appRoutes: Routes = [
     MesClientsComponent,
     AcceuilClientComponent,
     NouvelleDemandeComponent,
-    MesEmplyesComponent,
-    ConfirmComponent,
-    TapeClientComponent,
-    Test2Component,
-    TapeRechercheComponent,
-    RechercheEmployeeComponent,
-    RechercheSituationMatrimonialeComponent,
-    RechercheReligionComponent,
-    RechercheEmailComponent,
-    RechercheNiveauEtudesComponent
-  ],
-  entryComponents: [
-    ConfirmComponent
-
   ],
   imports: [
     BrowserModule,
@@ -163,11 +144,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,{enableTracing:true}),
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot({
-      timeOut: 10000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    }),
+   // ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
