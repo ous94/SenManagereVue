@@ -61,6 +61,7 @@ import { RechercheEmployeeComponent } from './employee/recherche-employee/recher
 import { RechercheSituationMatrimonialeComponent } from './employee/recherche-situation-matrimoniale/recherche-situation-matrimoniale.component';
 import { RechercheReligionComponent } from './employee/recherche-religion/recherche-religion.component';
 import { RechercheEmailComponent } from './employee/recherche-email/recherche-email.component';
+import { RechercheNiveauEtudesComponent } from './employee/recherche-niveau-etudes/recherche-niveau-etudes.component';
 
 
 const appRoutes: Routes = [
@@ -144,7 +145,8 @@ const appRoutes: Routes = [
     RechercheEmployeeComponent,
     RechercheSituationMatrimonialeComponent,
     RechercheReligionComponent,
-    RechercheEmailComponent
+    RechercheEmailComponent,
+    RechercheNiveauEtudesComponent
   ],
   entryComponents: [
     ConfirmComponent
