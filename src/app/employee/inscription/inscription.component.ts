@@ -397,7 +397,6 @@ getselectedCompetencevalues(){
 
 submithandle()
 {
-<<<<<<< HEAD
   const newItemlangu =this.selectedLanguevalues;
   const newitemCompetence=this.selectedCompetenceevalues;
   this.employee1= this.nestedForm.value;
@@ -419,28 +418,6 @@ submithandle()
     (error) =>{console.log("Erreur sur l ethnies");}
   );
   //Recuperation du Niveau d'etude
-=======
-   const newItemlangu =this.selectedLanguevalues;
-   const newitemCompetence=this.selectedCompetenceevalues;
-   //
-   this.employee1= this.nestedForm.value;
-   //Recuperation de Tyep d'Identification
-   this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
-     (data) =>{this.employe.typeIdentification=data;},
-     (error) =>{console.log("erreur sur le TypeIdentification");}
-   );
-   // Recuperation de la Localite
-   this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
-     (data)=>{this.employe.localite=data},
-     (error) =>{console.log("Erreur sur la localite");}
-   );
-   //Recuperation de L'ethnie
-   this.ethniesService.getEthniesByNom(this.ethnies.value).subscribe(
-     (data)=>{this.employe.ethny=data;},
-     (error) =>{console.log("Erreur sur l ethnies");}
-   );
-   //Recuperation du Niveau d'etude
->>>>>>> 325ad228c7855f174b2123c7fe678bd489c9c07f
   this.niveauEtudeService.getNiveauEtudeByNiveau(this.niveauetude.value).subscribe(
    (data) =>{this.employe.niveauetude=data;},
    (error)=>{console.log("Erreur sur le niveauEtude");}
