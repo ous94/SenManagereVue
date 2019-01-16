@@ -1,0 +1,56 @@
+<div class="container bootstrap snippet">
+  <div class="row">
+        <div class="col-sm">
+          <ul class="nav nav-tabs">
+              <!-- <li class="active"><a data-toggle="tab">Home<span class="glyphicon glyphicon-list-alt
+                      "></span></a></li> -->
+                  <li><a data-toggle="tab" (click)="visibiliteRechercheFormation()">Formation <span class="glyphicon glyphicon-search"></span></a></li>
+                  <li><a data-toggle="tab" (click)="visibiliteRechercheNiveauEtude()">Niveau Etude<span class="glyphicon glyphicon-search"></span></a></li>
+                  <li><a data-toggle="tab" (click)="visibiliteRecherchePays()">Pays <span class="glyphicon glyphicon-search"></span></a></li>
+                  <li><a data-toggle="tab" (click)="visibiliteRechercheEthenies()">Ethenies <span class="glyphicon glyphicon-search"></span></a></li> 
+                  <li><a data-toggle="tab" (click)="visibiliteRechercheLocalite()">Localité <span class="glyphicon glyphicon-search"></span></a></li>
+
+            </ul>
+            <!-- lister -->
+        <div class="tab-content" *ngIf="showListerRechercheFormation">
+          <div class="tab-pane active" id="home"><br>
+              <p>bojour lister</p>
+             <app-mes-emplyes></app-mes-emplyes>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+           <!-- ajouter -->
+           <div class="tab-content">
+                  <div class="tab-pane active" id="home" *ngIf="showListerRechercheNiveauEtude"><br>
+                      <h3><span class="glyphicon glyphicon-plus-sign"></span>Ajout d'un Employer</h3>
+                      <app-inscription></app-inscription>             
+                    </div><!--/tab-pane-->
+                </div><!--/tab-content-->
+                   <!-- action -->
+        <div class="tab-content">
+              <div class="tab-pane active" id="home" *ngIf="showListerRecherchePays"><br>
+                  <p>bojour Action</p>
+                  <app-test2></app-test2>
+                </div><!--/tab-pane-->
+            </div><!--/tab-content-->
+
+                <!-- Recherche -->
+        <div class="tab-content">
+              <div class="tab-pane active" id="home" *ngIf="showListerRechercheEthnies"><br>
+                  <p>recherche</p>
+                    
+                  <app-recherche-employee></app-recherche-employee>           
+                </div><!--/tab-pane-->
+            </div><!--/tab-content-->
+
+            <!-- RechercheSituation -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="home" *ngIf="showListerRechercheLocalite"><br>
+              <p> localite</p>
+               <app-recherche-situation-matrimoniale></app-recherche-situation-matrimoniale>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div>
+        </div>
+        </div>
+
+        

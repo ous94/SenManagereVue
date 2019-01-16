@@ -65,10 +65,11 @@ import { RechercheEmailComponent } from './employee/recherche-email/recherche-em
 import { RechercheNiveauEtudesComponent } from './employee/recherche-niveau-etudes/recherche-niveau-etudes.component';
 import { RechercheExperienceComponent } from './employee/recherche-experience/recherche-experience.component';
 import { RechercheFormationComponent } from './employee/recherche-formation/recherche-formation.component';
+import { TapePlusComponent } from './employee/tape-plus/tape-plus.component';
 import { RechercheLanguesComponent } from './employee/recherche-langues/recherche-langues.component';
 import { RechercheDisponibiliteComponent } from './employee/recherche-disponibilite/recherche-disponibilite.component';
 import { RecherchePaysComponent } from './employee/recherche-pays/recherche-pays.component';
-
+import { Contact1Component } from './contact1/contact1.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -156,9 +157,11 @@ const appRoutes: Routes = [
     RechercheNiveauEtudesComponent,
     RechercheExperienceComponent,
     RechercheFormationComponent,
+    TapePlusComponent,
     RechercheLanguesComponent,
     RechercheDisponibiliteComponent,
-    RecherchePaysComponent
+    RecherchePaysComponent,
+    Contact1Component
   ],
   entryComponents: [
     ConfirmComponent

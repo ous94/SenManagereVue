@@ -14,6 +14,8 @@ export class TapeEmployerComponent implements OnInit {
   showListerRechercheReligion:boolean=false;
   showListerRechercheEmail:boolean=false;
   showListerRechercheAdresse:boolean=false;
+  showListerRecherchePlus:boolean=false;
+  
 
 
 
@@ -44,6 +46,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
        this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=false
 
 
   }
@@ -58,6 +61,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
        this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=false
 
 
   }
@@ -72,6 +76,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
+       this.showListerRecherchePlus=false
 
   }
   visibiliteRechercheAdresse($event)
@@ -83,6 +88,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheSituation=false;
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
+       this.showListerRecherchePlus=false
 
 
   }
@@ -96,6 +102,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=false;
        this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=false
   }
 
   visibiliteRechercheReligion($event)
@@ -107,6 +114,7 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheReligion=!this.showListerRechercheReligion;
        this.showListerRechercheEmail=false;
        this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=false
   }
 
   visibiliteRechercheEmail($event)
@@ -118,6 +126,19 @@ export class TapeEmployerComponent implements OnInit {
        this.showListerRechercheReligion=false;
        this.showListerRechercheEmail=!this.showListerRechercheEmail;
        this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=false
+  }
+
+  visibiliteRecherchePlus($event)
+  {
+       this.showListerEmployee=false;
+       this.showActionEmployee=false;
+       this.showAjouterEmployye=false;
+       this.showListerRechercheSituation=false;
+       this.showListerRechercheReligion=false;
+       this.showListerRechercheEmail=false;
+       this.showListerRechercheAdresse=false;
+       this.showListerRecherchePlus=!this.showListerRecherchePlus;
   }
 
   
