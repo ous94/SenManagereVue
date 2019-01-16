@@ -42,21 +42,28 @@ export class LoginComponent implements OnInit {
     console.log(this.client1);
     this.client2.login=this.client1.login;
     this.client2.password=this.client1.password;
-    this.ClientService.getLoginClient(this.client2).subscribe((data)=>
-    {
-      this.client3=data;
-      if(this.client3)
-    {
-      console.log('Connexion reussssssssss')
-      this.showSuccess();
-      this.router.navigate(['administration']);
-      
-    }else{
-      console.log('Connexion echec')
-      this.showError();
+    this.ClientService.getLoginClient(this.client2).subscribe(
+      data =>{this.client3=data;console.log(data)
+        if(this.client3!=null)
+        {
+          console.log('Connexion reussssssssss')
+           this.showSuccess();
+           this.router.navigate(['administration']);
+        }else{
+          console.log('Connexion echec')
+           this.showError();
+          this.router.navigate(['login']);
+          
 
-    }
-    });
+        }
+        
+         },
+      error =>{console.log(this.client3)},
+
+      ()=>{console.log('errer chargement des donnés')}
+      );
+
+     console.log(this.client3);
     
      
  }
