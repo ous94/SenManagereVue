@@ -5,6 +5,8 @@ import { Client } from 'src/app/Classe/Client';
 import { Router } from '@angular/router';
 import { log } from 'util';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorage } from '@ngx-pwa/local-storage';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
     
   });
 
-  constructor(private ToastrService:ToastrService,private fb: FormBuilder,private ClientService:ClientService,private router:Router) { 
+  constructor(private ToastrService:ToastrService,private fb: FormBuilder,private ClientService:ClientService,private router:Router ,private localStorage :LocalStorage) { 
     this.loginForm=this.fb.group({
       login:[null,Validators.required],
       password:[null,Validators.required],
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
       data =>{this.client3=data;console.log(data)
         if(this.client3!=null)
         {
+          this.localStorage.setItem("client",this.client3).subscribe((data)=>{});
           console.log('Connexion reussssssssss')
            this.showSuccess();
            this.router.navigate(['client/acceuil']);

@@ -7,6 +7,8 @@ import { Employee } from 'src/app/Classe/Employee';
 import { Competence } from 'src/app/Classe/Competence';
 import { Demande } from 'src/app/Classe/Demande';
 import { UploadFileService } from 'src/app/upload-file.service';
+import { Client } from 'src/app/Classe/Client';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-nouvelle-demande',
@@ -15,6 +17,9 @@ import { UploadFileService } from 'src/app/upload-file.service';
 })
 export class NouvelleDemandeComponent implements OnInit {
 
+  client:Client=new Client();
+  demande:Demande =new Demande();
+  demandeFinal :Demande=new Demande();
   listeCompetences:Array<Competence>;
   selectedCompetencevalues:Array<Competence>=[];
   listeEmployes:Array<Employee>;
@@ -22,7 +27,6 @@ export class NouvelleDemandeComponent implements OnInit {
   selectedEmployevalues=[];
   favCompetenceErreur:boolean=true;
   favEmployeErreur:boolean=true;
-  demande :Demande=new Demande();
   demandeForm= new FormGroup({
     salairePropose:new FormControl(''),
     service :new FormControl(''),
@@ -30,7 +34,7 @@ export class NouvelleDemandeComponent implements OnInit {
     competences :new FormControl(''),
   });
 
-  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private comptenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService) { 
+  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private comptenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
        this.employeService.getAllEmployes().subscribe(
            (data)=>{this.listeEmployes=data;
                     console.log(this.listeEmployes);}
@@ -103,10 +107,27 @@ export class NouvelleDemandeComponent implements OnInit {
   //
   validerDemande()
   {
-     console.log(this.listeEmployes);
-     console.log(this.listeCompetences);
+     
     this.demande=this.demandeForm.value;
-    console.log(this.demande);
+    this.demandeFinal.salairePropose=this.demande.salairePropose;
+    this.demandeFinal.services=this.demandeFinal.services;
+    this.demandeFinal.date=new Date();
+    this.demandeFinal.competences=this.selectedCompetencevalues;
+    this.demandeFinal.employees=this.selectedEmployevalues;
+    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{this.client=data;});
+    this.demandeFinal.client=this.client;
+    this.demandeService.addDemande(this.demandeFinal).subscribe(
+          (data)=>{console.log("Enregistrement demande reussi");
+                  console.log(data);
+                  },
+          (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
+    ); 
+  /*
+   this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
+                       this.client=data;
+                       console.log(this.client);
+                      }); */
+
 }
 
 }
