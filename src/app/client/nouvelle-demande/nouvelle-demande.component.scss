@@ -88,7 +88,7 @@
            color: #999;
         }
         .table-filter .media .title {
-           color: #2BBCDE;
+           color: #000000;
            font-size: 14px;
            font-weight: bold;
            line-height: normal;
@@ -99,7 +99,7 @@
            margin-right: 20px;
         }
         .table-filter .media .title span.pagado {
-            color: #5cb85c;
+            color: #353535;
         }
         .table-filter .media .title span.pendiente {
           color: #f0ad4e;
@@ -109,6 +109,10 @@
         }
         .table-filter .media .summary {
            font-size: 14px;
+        }
+        #observation{
+           font-size: 10px;
+
         }
 /*    ---------------------FIN--------------------------
     :: CSS Pour le Div Permettant de Lister les Employes
@@ -122,8 +126,8 @@
        }
        .competenceCheckBox:checked:before {
 
-         border-color: #2BBCDE;
-         background-color: #2BBCDE;
+         border-color: #cccecc;
+         background-color: #cccecc;
       }
       .competenceCheckBox:checked:after {
          color: #fff;
@@ -132,5 +136,5 @@
       }
       .detail
       {
-         background-color: #5cb85c;
+         background-color: #cccecc;
       }
