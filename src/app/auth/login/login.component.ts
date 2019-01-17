@@ -3,7 +3,6 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ClientService } from 'src/app/service/client.service';
 import { Client } from 'src/app/Classe/Client';
 import { Router } from '@angular/router';
-import { log } from 'util';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -44,17 +43,17 @@ export class LoginComponent implements OnInit {
     this.client2.password=this.client1.password;
     this.ClientService.getLoginClient(this.client2).subscribe(
       data =>{this.client3=data;console.log(data)
-        if(this.client3!=null)
+        /* if(this.client3!=null)
         {
           console.log('Connexion reussssssssss')
            this.showSuccess();
-           this.router.navigate(['client/acceuil']);
+           this.router.navigate(['administration']);
         }else{
           console.log('Connexion echec')
            this.showError();
           this.router.navigate(['login']);
         
-        }
+        } */
         
          },
       error =>{console.log(this.client3)},
