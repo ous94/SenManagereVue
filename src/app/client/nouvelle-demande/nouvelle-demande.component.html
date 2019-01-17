@@ -1,20 +1,20 @@
 <form [formGroup]="demandeForm" (ngSubmit)="validerDemande()">
 <!--Formulaire Pour Donner le Salaire Propose et les Services
 	 ++++++++++++++++DEBUT++++++++++++++++++++++++++++++-->
-		<div class="row">
-		  <div class="col-sm-8" style="background-color:yellow;">
+		<div class="row" style="background-color:rgb(211, 209, 210);">
+		  <div class="col-sm-8" style="background-color:rgb(211, 209, 210);">
 			<div class="col-md-8 bg-dark" id="formulaireDemande">
 				<div class="row">
 				   <div class="col-sm-8 form-group"><br>
 					 <input class="form-control" id="" name="" placeholder="Salaire Proposé en FCFA" type="text" formControlName="salairePropose" >
 				   </div>
 				   <div class="col-sm-12 form-group"><br>
-					  <textarea class="form-control" id="" name="" placeholder="Commentaire sur le(s) Service(s) demande(s)" formControlName="service" rows="7"></textarea>
+					  <textarea class="form-control" id="" name="" placeholder="Commentaire sur le(s) Service(s) demande(s)" formControlName="service" rows="4"></textarea>
 				  </div> 
 				</div> 
 		    </div>
 		  </div>
-		  <div class="col-sm-4" style="background-color:pink;">
+		  <div class="col-sm-4" style="background-color:rgb(211, 209, 210);">
 			<div class="checkbox" >
 				<label class="labCompetence" *ngFor="let competence of listeCompetences; let i=index;"><input class="competenceCheckBox" type="checkbox" value="" (change)="getselectedCompetencevalues(competence)">{{competence.description}}</label><br/><br/>
 			</div>
@@ -50,47 +50,50 @@
 					 <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
 				  </a>
 				  <div class="media-body">
-						<h4 class="title">
-									{{employe.prenom}}  {{employe.nom}}
-									<span class="pull-right pagado">Adresse :{{employe.adresse}}</span>
-						</h4>
-					<div class="row">
-					<span class="media-meta pull-right col-sm-6">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
-					<span class="media-meta pull-right col-sm-6">Date de Naissance :{{employe.dateNaissance}}</span>
-					</div>
-					<div class="row">
-							<h4 class="col-sm-4">Information :</h4>
-							<p class="summary col-sm-8"><textarea disabled>{{employe.observation}}</textarea></p>
-					</div>
+						<div class="title">
+							<h4>{{employe.prenom}}  {{employe.nom}}</h4>
+							<div class="row">
+								<div class="col-sm-6" >
+									<h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+									<p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+								</div>
+								<div class="col-sm-6">
+									<span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+									<span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+									<span class="pull-right pagado col-sm-12">Date de Naissance :{{employe.dateNaissance}}</span>
+									<span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+								</div>
+							</div>
+						</div>
 						<div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
 							<div class="row">
-								<div class="col-sm-6" style="background-color:yellow;">
-									<p>Nationnalite :{{employe.pay.nom}}</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
 								</div>
-								<div class="col-sm-6" style="background-color:pink;">
-									<p>Langues parlées :</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.langues">Langues parlées :</p>
 									<ul>
 										 <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
 									</ul>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-6" style="background-color:pink;">
-									<p>Ethnie :{{employe.ethny.nom}}</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
 								</div>
-								<div class="col-sm-6" style="background-color:yellow;">
-									<p>Competences :</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.competences">Competences :</p>
 									<ul>
 										 <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
 									</ul>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-6" style="background-color:yellow;">
-									<p>Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
 								</div>
-								<div class="col-sm-6" style="background-color:pink;">
-									<p>Disponibilite :</p>
+								<div class="col-sm-6">
+									<p *ngIf="employe.disponibilites">Disponibilite :</p>
 									<ul>
 										<li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
 									</ul>
