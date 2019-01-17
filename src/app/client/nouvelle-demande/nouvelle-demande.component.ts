@@ -29,7 +29,7 @@ export class NouvelleDemandeComponent implements OnInit {
   favEmployeErreur:boolean=true;
   demandeForm= new FormGroup({
     salairePropose:new FormControl(''),
-    service :new FormControl(''),
+    services :new FormControl(''),
     employes :new FormControl(''),
     competences :new FormControl(''),
   });
@@ -55,7 +55,7 @@ export class NouvelleDemandeComponent implements OnInit {
 
     this.demandeForm= this.fb.group({
       salairePropose :[null,Validators.required],
-      service:[null,Validators.required],
+      services:[null,Validators.required],
     });
   }
    //Employes Selectionnes
@@ -110,8 +110,7 @@ export class NouvelleDemandeComponent implements OnInit {
      
     this.demande=this.demandeForm.value;
     this.demandeFinal.salairePropose=this.demande.salairePropose;
-    this.demandeFinal.services=this.demandeFinal.services;
-    this.demandeFinal.date=new Date();
+    this.demandeFinal.services=this.demande.services;
     this.demandeFinal.competences=this.selectedCompetencevalues;
     this.demandeFinal.employees=this.selectedEmployevalues;
     this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{this.client=data;});
@@ -122,12 +121,6 @@ export class NouvelleDemandeComponent implements OnInit {
                   },
           (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
     ); 
-  /*
-   this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
-                       this.client=data;
-                       console.log(this.client);
-                      }); */
-
 }
 
 }
