@@ -45,6 +45,10 @@ export class LoginComponent implements OnInit {
       data =>{this.client3=data;console.log(data)
         if(this.client3!=null)
         {
+<<<<<<< HEAD
+=======
+          this.localStorage.setItem("client",this.client3).subscribe((data)=>{console.log(this.client3);});
+>>>>>>> b146035a55920dd451c22194d34061e8454a24ee
           console.log('Connexion reussssssssss')
            this.showSuccess();
            this.router.navigate(['administration']);
