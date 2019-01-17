@@ -10,7 +10,7 @@ export class AdministrationComponent implements OnInit {
 
   showHideClient:boolean=false;
   showHideInscription:boolean=false;
-  showHideRecherche:boolean=false;
+  showHideDemande:boolean=false;
 @Input()
 client3:Client;
 
@@ -34,20 +34,20 @@ client3:Client;
   {
         this.showHideClient=!this.showHideClient
        this.showHideInscription=false;
-       this.showHideRecherche=false;
+       this.showHideDemande=false;
   }
 
   visibiliteInscription($event)
   {
     this.showHideInscription=!this.showHideInscription
        this.showHideClient=false;
-       this.showHideRecherche=false;
+       this.showHideDemande=false;
   }
-  visibiliteRecherche($event)
+  visibiliteDemande($event)
   {
     this.showHideInscription=false
        this.showHideClient=false;
-       this.showHideRecherche=!this.showHideRecherche;
+       this.showHideDemande=!this.showHideDemande;
   }
 
 }

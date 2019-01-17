@@ -9,6 +9,7 @@ import { BaseUrl } from '../ConfigProjet/baseUrl';
 })
 export class ClientService {
 
+  client : Client = new Client();
   base:BaseUrl = new BaseUrl();
   baseUrl:String=this.base.baseUrl;
   constructor(private httpClient :HttpClient) { }
@@ -32,5 +33,27 @@ export class ClientService {
   getLoginClient(client:Client): Observable<Client> {
     return this.httpClient.post<Client>(this.baseUrl+ '/client/login',client); 
   }
+
+  setteClient(client:Client)
+  {
+    return this.client=client;
+    this.getterClient();
+    console.log(this.getterClient);
+  }
+  
+  getterClient()
+  {
+    return this.client;
+  }
+  //modification de customers
+  updateClient(id: number, client: Client): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/clients/edite/${id}`,client);
+  }
+ /*  updaternew(demande)
+  {
+      return this.httpClient.put(this.baseUrl+"/demande/edite",demande);
+  
+  } */
+
 
 }

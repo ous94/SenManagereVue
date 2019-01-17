@@ -130,7 +130,26 @@ getEmployesByEmail(email: String): Observable<any> {
   return this.httpClient.get(`${this.baseUrl}/employes/email/${email}`);
 }
 
+//servicze recherche Niveau
+getEmployerByNiveauEtude(niveau: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/niveau/${niveau}`);
+}
+//servicze recherche Competence
+getEmployerByCompetence(competence: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/competence/employe/description/${competence}`);
+}
 
-
+//servicze recherche Pays
+getEmployerByPays(pays: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/pays/${pays}`);
+}
+//servicze recherche Localite
+getEmployerByLocalite(Localite: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/localite/${Localite}`);
+}
+//servicze recherche Ethnies
+getEmployerByEthnies(Ethenies: String): Observable<any> {
+  return this.httpClient.get(`${this.baseUrl}/employes/ethnies/${Ethenies}`);
+}
 
 }

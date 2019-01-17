@@ -53,8 +53,7 @@ export class LoginComponent implements OnInit {
           console.log('Connexion echec')
            this.showError();
           this.router.navigate(['login']);
-          
-
+        
         }
         
          },

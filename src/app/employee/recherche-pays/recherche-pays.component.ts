@@ -29,7 +29,7 @@ constructor(private EmployeeService:EmployeeService,private router:Router,privat
 
    // rechercher par age
    private searchCustomers() {
-    this.EmployeeService.getEmployerByAdresse(this.pays)
+    this.EmployeeService.getEmployerByPays(this.pays)
       .subscribe(rechercherPays => this.rechercherPays =rechercherPays);
   }
   //button de validation

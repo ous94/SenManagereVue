@@ -70,6 +70,11 @@ import { RechercheLanguesComponent } from './employee/recherche-langues/recherch
 import { RechercheDisponibiliteComponent } from './employee/recherche-disponibilite/recherche-disponibilite.component';
 import { RecherchePaysComponent } from './employee/recherche-pays/recherche-pays.component';
 import { Contact1Component } from './contact1/contact1.component';
+import { RechercheCompetenceComponent } from './employee/recherche-competence/recherche-competence.component';
+import { RechercheEthniesComponent } from './employee/recherche-ethnies/recherche-ethnies.component';
+import { RechercheLocaliteComponent } from './employee/recherche-localite/recherche-localite.component';
+import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
+import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -162,7 +167,12 @@ const appRoutes: Routes = [
     RechercheLanguesComponent,
     RechercheDisponibiliteComponent,
     RecherchePaysComponent,
-    Contact1Component
+    Contact1Component,
+    RechercheCompetenceComponent,
+    RechercheEthniesComponent,
+    RechercheLocaliteComponent,
+    TapeDemandeComponent,
+    MesDemandesComponent
   ],
   entryComponents: [
     ConfirmComponent

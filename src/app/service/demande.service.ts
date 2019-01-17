@@ -10,6 +10,7 @@ import {Employee} from '../Classe/Employee';
 })
 export class DemandeService {
 
+demande : Demande = new Demande();
   private baseUrl='http://localhost:8000/api';
 
   constructor(private httpClient:HttpClient ) {}
@@ -49,4 +50,29 @@ export class DemandeService {
   deleteAllDemande():Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/disponibilite/delete", { responseType: 'text' });
   }
+  //Les  listes  Demandes
+  getAllDemande(): Observable<any> {
+    return this.httpClient.get(this.baseUrl+"/demandes/"); 
+}
+
+setteDemande(demande:Demande)
+{
+  return this.demande=demande;
+  this.getterDemande();
+  console.log(this.getAllDemande());
+}
+
+getterDemande()
+{
+  return this.demande;
+}
+//modification de customers
+updateDemander(id: number, demande: Demande): Observable<Object> {
+  return this.httpClient.put(`${this.baseUrl}/${id}`, Demande);
+}
+updaternew(demande)
+{
+    return this.httpClient.put(this.baseUrl+"/demande/edite", demande);
+
+}
 }
