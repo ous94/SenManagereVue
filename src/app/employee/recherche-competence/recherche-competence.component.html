@@ -2,7 +2,7 @@
 <div class="col-md-2">
   <form (ngSubmit)="rechercher()">
   <div class="input-group">
-    <input type="text"  placeholder="Search  for..." class="form-control" id="pays" required [(ngModel)]="pays" name="pays">
+    <input type="text"  placeholder="Search  for..." class="form-control" id="competence" required [(ngModel)]="competence" name="competence">
     <span class="input-group-btn">
       <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
     </span>
@@ -16,7 +16,7 @@
   <div class="container">
       <div class="row">
           <!-- Team member -->
-          <div class="col-xs-7 col-sm-6 col-md-3"  *ngFor="let employee of rechercherPays">
+          <div class="col-xs-7 col-sm-6 col-md-3"  *ngFor="let employee of rechercherCompetence">
 <!--                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');" >
 -->                    
                    <div>

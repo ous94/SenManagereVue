@@ -44,10 +44,10 @@
                               </li> -->
                               
                               <li>
-                                  <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
+                                  <a (click)="visibiliteDemande()"><i class=" glyphicon glyphicon-folder-open"></i> Demande</a>
                               </li>
                               <li>
-                                    <a (click)="visibiliteRecherche()"><i class=" fa fa-search"></i> Recherche</a>
+                                    <a ><i class=" fa fa-search"></i> Recherche</a>
                                 </li>
                           </ul>
                           
@@ -80,9 +80,9 @@
 
 
                             <!--  -->
-                                  <div class="inbox-body" *ngIf="showHideRecherche" >
+                                  <div class="inbox-body" *ngIf="showHideDemande" >
                                         <!-- table recherche -->
-                                        <app-tape-recherche></app-tape-recherche>                
+                                        <app-tape-demande></app-tape-demande>                
                                       </div>
                       </aside>
                   </div>

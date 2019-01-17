@@ -9,44 +9,54 @@
                   <li><a data-toggle="tab" (click)="visibiliteRecherchePays()">Pays <span class="glyphicon glyphicon-search"></span></a></li>
                   <li><a data-toggle="tab" (click)="visibiliteRechercheEthenies()">Ethenies <span class="glyphicon glyphicon-search"></span></a></li> 
                   <li><a data-toggle="tab" (click)="visibiliteRechercheLocalite()">Localité <span class="glyphicon glyphicon-search"></span></a></li>
+                  <li><a data-toggle="tab" (click)="visibiliteRechercheCompetence()">Competences <span class="glyphicon glyphicon-search"></span></a></li>
+
 
             </ul>
             <!-- lister -->
         <div class="tab-content" *ngIf="showListerRechercheFormation">
           <div class="tab-pane active" id="home"><br>
-              <p>bojour lister</p>
-             <app-mes-emplyes></app-mes-emplyes>
+              
+             <app-recherche-formation></app-recherche-formation>
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
            <!-- ajouter -->
            <div class="tab-content">
                   <div class="tab-pane active" id="home" *ngIf="showListerRechercheNiveauEtude"><br>
-                      <h3><span class="glyphicon glyphicon-plus-sign"></span>Ajout d'un Employer</h3>
-                      <app-inscription></app-inscription>             
+                      <app-recherche-niveau-etudes></app-recherche-niveau-etudes>            
                     </div><!--/tab-pane-->
                 </div><!--/tab-content-->
                    <!-- action -->
         <div class="tab-content">
               <div class="tab-pane active" id="home" *ngIf="showListerRecherchePays"><br>
-                  <p>pays</p>
+                  <app-recherche-pays></app-recherche-pays>
                   
-                  
+
                 </div><!--/tab-pane-->
             </div><!--/tab-content-->
 
-                <!-- Recherche -->
+                <!-- RechercheEthnies -->
         <div class="tab-content">
               <div class="tab-pane active" id="home" *ngIf="showListerRechercheEthnies"><br>
-                  <p>recherche Ethenies</p>
+                  <app-recherche-ethnies></app-recherche-ethnies>
                     
                           
                 </div><!--/tab-pane-->
             </div><!--/tab-content-->
 
+                     <!-- RechercheEthnies -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="home" *ngIf="showListerRechercheCompetence"><br>
+              <app-recherche-competence></app-recherche-competence>
+                
+                      
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+
             <!-- RechercheSituation -->
         <div class="tab-content">
           <div class="tab-pane active" id="home" *ngIf="showListerRechercheLocalite"><br>
-              <p> localite</p>
+              <app-recherche-localite></app-recherche-localite>
                
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
