@@ -85,6 +85,10 @@ export class NouvelleDemandeComponent implements OnInit {
    {
      this.selectedCompetencevalues.splice(index,index+1);
    }
+   this.comptenceService.getListeEmployes(this.selectedCompetencevalues).subscribe(
+           (data)=>{this.listeEmployes=data;
+                   console.log(this.listeEmployes);}
+   )
    this.favCompetenceErreur = this.selectedCompetencevalues.length >0 ? false :true;
   
   }
@@ -116,14 +120,8 @@ export class NouvelleDemandeComponent implements OnInit {
     this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
                                     this.client=data;
                                     this.demandeFinal.client=this.client;
-                                    console.log("client1");
-                                    console.log(this.client);
-                                    console.log("Client2");
-                                    console.log(this.client);
                                      this.demandeService.addDemande(this.demandeFinal).subscribe(
-                                           (data)=>{console.log("Enregistrement demande reussi");
-                                                   console.log(data);
-                                                   },
+                                           (data)=>{console.log("Enregistrement demande reussi");},
                                            (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
                                      );});
     
