@@ -1,9 +1,4 @@
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container" s>
+<div class="container" *ngIf="vpage">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
   <div class="mail-box">            
      <aside class="sm-side">
@@ -62,10 +57,11 @@
       <aside class="lg-side">
         <div class="inbox-head">
           <h3>Inbox</h3>
-          <form action="#" class="pull-right position">
+          <form action="#" class="pull-right position" [formGroup]="rechercheForm">
              <div class="input-append">
-                <input type="text" class="sr-input" placeholder="Search Mail">
+                <input  formControlName="recherche"type="text" class="sr-input" placeholder="Recherche" (change)="touchRecherche()">
                 <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()">Deconnexion</button>
               </div>
           </form>
         </div>
@@ -73,13 +69,15 @@
         <div class="inbox-body" *ngIf="vDefaut" >
             <p>Page par Defaut</p>
         </div>
+        <div class="inbox-body" *ngIf="vrecherche">
+           <p>Div Pour Faire la Recherche</p>
+        </div>
         <!--Profil du Client -->
         <div class="inbox-body" *ngIf="vProfile" >
             <p>Profil du Client</p>
         </div>
         <!--Demandes du Client -->
         <div class="inbox-body" *ngIf="vDemandes" >
-          <p>Demandes du Client</p>
           <app-nouvelle-demande></app-nouvelle-demande>
         </div>
         <!--Liste Des Employes -->

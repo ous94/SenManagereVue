@@ -46,16 +46,20 @@ export class LoginComponent implements OnInit {
     this.client2.password=this.client1.password;
     this.ClientService.getLoginClient(this.client2).subscribe(
       data =>{this.client3=data;console.log(data)
-        if(this.client3!=null)
+        if(!(this.client3==null))
         {
           this.localStorage.setItem("client",this.client3).subscribe((data)=>{console.log(this.client3);});
           console.log('Connexion reussssssssss')
            this.showSuccess();
            this.router.navigate(['client/acceuil']);
-        }else{
+        }
+        else
+        {
           console.log('Connexion echec')
            this.showError();
-          this.router.navigate(['login']);
+           this.loginForm.reset();
+           alert("login ou Mot de Passe incorrect");
+         // this.router.navigate(['login']);
         
         }
         
@@ -71,7 +75,7 @@ export class LoginComponent implements OnInit {
  }
 
   showSuccess() {
-    this.ToastrService.success('Avec succès !', 'Enregistrement réussi !');
+    this.ToastrService.success('Avec succès !', 'Connexion réussie !');
   }
   showError() {
     this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
