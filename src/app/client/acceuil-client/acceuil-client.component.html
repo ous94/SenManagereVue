@@ -57,21 +57,113 @@
       <aside class="lg-side">
         <div class="inbox-head">
           <h3>Inbox</h3>
-          <form action="#" class="pull-right position" [formGroup]="rechercheForm">
+          <div action="#" class="pull-right position">
              <div class="input-append">
-                <input  formControlName="recherche"type="text" class="sr-input" placeholder="Recherche" (change)="touchRecherche()">
+                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (change)="touchRecherche()">
                 <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
                 <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()">Deconnexion</button>
               </div>
-          </form>
+            </div>
         </div>
         <!--Profil du Client -->
         <div class="inbox-body" *ngIf="vDefaut" >
             <p>Page par Defaut</p>
         </div>
+        <!-- LIste Des Employes par recherhe 
+           +++++++++++++++++++++DEBUT++++++++++++++++++-->
         <div class="inbox-body" *ngIf="vrecherche">
            <p>Div Pour Faire la Recherche</p>
+          <div class="container" id="listeEmployes">
+            <div class="row">
+            	<section class="content">
+	             <div class="table-container panel-body panel panel-default col-md-8">
+	              	<table class="table table-filter">
+		                <tbody>
+		                	<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+			                  <td>
+			                  	<div class="ckbox">
+				                   	<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+					                	<label for="inlineCkeckbox{{position}}"></label>
+			                  	</div>
+			                  </td>
+			                  <td>
+			                   	<a href="javascript:;" class="star">
+				                    <i class="glyphicon glyphicon-star"></i>
+			                  	</a>
+			                  </td>
+			                  <td>
+                          <div class="media">
+				                    <a href="#" class="pull-left">
+					                    <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
+				                    </a>
+				                    <div class="media-body">
+					                  	<div class="title">
+						                  	<h4>{{employe.prenom}}  {{employe.nom}}</h4>
+						                  	<div class="row">
+							                   	<div class="col-sm-6" >
+								                  	<h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+								                	  <p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+							                  	</div>
+								                  <div class="col-sm-6">
+									                  <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+								                   	<span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+								                  	<span class="pull-right pagado col-sm-12">Date de Naissance :{{employe.dateNaissance}}</span>
+								                  	<span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+								                  </div>
+						                    </div>
+						                  </div>
+					                  	<div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+						                   	<div class="row">
+							                   	<div class="col-sm-6">
+								              	      <p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
+							                   	</div>
+							                  	<div class="col-sm-6">
+								                    	<p >Langues parlées :</p>
+								                    	<ul>
+									                    	 <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
+									                    </ul>
+							                  	</div>
+						                  	</div>
+						                  	<div class="row">
+							                   	<div class="col-sm-6">
+								                   	<p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
+							                   	</div>
+							                   	<div class="col-sm-6">
+								                  	<p>Competences :</p>
+								                  	<ul>
+									           	         <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
+								                  	</ul>
+								                  </div>
+						                  	</div>
+							                  <div class="row">
+							                  	<div class="col-sm-6">
+								                  	<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+							                   	</div>
+							                  	<div class="col-sm-6">
+								                   	<p>Disponibilite :</p>
+								                  	<ul>
+									                   	<li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
+								                  	</ul>
+							                   	</div>
+						                  	</div>
+					                  	</div>
+				                    </div>
+                          </div>
+			                  </td>
+			                  <td>
+				                   <button (click)="details(position)"  *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+				                   <button (click)="reduire(position)"  *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+			                   </td>
+		                	</tr>
+		                </tbody>
+	               	</table>
+	              </div>
+              </section>
+            </div>
+          </div> 
         </div>
+        <!-- LIste Des Employes par recherhe 
+           +++++++++++++++++++++FIN++++++++++++++++++-->
         <!--Profil du Client -->
         <div class="inbox-body" *ngIf="vProfile" >
             <p>Profil du Client</p>

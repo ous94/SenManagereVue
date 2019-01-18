@@ -4,6 +4,9 @@ import {Router} from '@angular/router';
 import { Client } from 'src/app/Classe/Client';
 import {NgModel,FormsModule, FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { RechercheCompetenceComponent } from 'src/app/employee/recherche-competence/recherche-competence.component';
+import { UploadFileService } from 'src/app/upload-file.service';
+import { Employee } from 'src/app/Classe/Employee';
+import { RechercheService } from 'src/app/service/recherche.service';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -15,16 +18,15 @@ export class AcceuilClientComponent implements OnInit {
   vpage :boolean =false;
   vEmploye:boolean=false;
   vDemandes:boolean=false;
-  vProfile:boolean=false
+  vProfile:boolean=false;
   vMessages:boolean=false;
   vDefaut:boolean=true;
   vrecherche:boolean=false;
-  rechercheForm= new FormGroup({
-    recherche:new FormControl(''),
-    
-  });
+  recherche :string='';
+  listeEmployes:Array<Employee>;
+  tableauVisibiliteDetail:boolean[]=[];
 
-  constructor(private localStorage:LocalStorage,private router :Router,private fb:FormBuilder) { 
+  constructor(private localStorage:LocalStorage,private router :Router,private uploadFileService :UploadFileService ,private rechercheService :RechercheService) { 
 
     this.localStorage.getItem<Client>("client").subscribe((data:Client)=>
                         {
@@ -48,7 +50,6 @@ export class AcceuilClientComponent implements OnInit {
             this.router.navigate(['test']);
           }
     });
-    this.rechercheForm=this.fb.group({ recherche:[null,Validators.required]});
   }
 
   visibiliteEmploye($event)
@@ -90,11 +91,33 @@ export class AcceuilClientComponent implements OnInit {
        this.localStorage.clear().subscribe(()=>{});
        this.router.navigate(['test']);
   }
+  getPhotoEmploye(photo:String): String
+  {
+    return this.uploadFileService.getPhoto(photo);
+  }
+  //
+  details(position :number)
+  {
+    console.log("Salut vous voulez plus de Details");
+    this.tableauVisibiliteDetail[position]=true;
+  }
+  reduire(position :number)
+  {
+    console.log("Salut vous voulez reduire");
+    this.tableauVisibiliteDetail[position]=false;
+  }
   touchRecherche($event)
   {
+
     this.vrecherche=true;
-    let test:string=this.rechercheForm.value;
-    console.log(test);
+    this.rechercheService.rechercheTous(this.recherche).subscribe(
+      (data)=>{this.listeEmployes=data;
+               console.log(this.listeEmployes);
+               for(let i:number=0;i<this.listeEmployes.length;i++)
+               {
+                 this.tableauVisibiliteDetail[i]=false;
+               }}
+  );
+    console.log(this.recherche); 
   }
 }
-
