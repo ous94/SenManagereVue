@@ -75,6 +75,7 @@ import { RechercheEthniesComponent } from './employee/recherche-ethnies/recherch
 import { RechercheLocaliteComponent } from './employee/recherche-localite/recherche-localite.component';
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
+import { MessageClientComponent } from './client/message-client/message-client.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -172,7 +173,8 @@ const appRoutes: Routes = [
     RechercheEthniesComponent,
     RechercheLocaliteComponent,
     TapeDemandeComponent,
-    MesDemandesComponent
+    MesDemandesComponent,
+    MessageClientComponent
   ],
   entryComponents: [
     ConfirmComponent

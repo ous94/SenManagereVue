@@ -59,6 +59,7 @@ export class AcceuilClientComponent implements OnInit {
       this.vDemandes=false;
       this.vMessages=false;
       this.vProfile=false;
+      this.vrecherche=false;
   }
 
   visibiliteProfile($event)
@@ -68,6 +69,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vEmploye=false;
     this.vDemandes=false;
     this.vMessages=false;
+    this.vrecherche=false;
   }
   visibiliteMessages($event)
   {
@@ -76,6 +78,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vProfile=false;
     this.vEmploye=false;
     this.vDemandes=false;
+    this.vrecherche=false;
   }
   visibiliteDemandes($event)
   {
@@ -84,6 +87,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vMessages=false;
     this.vProfile=false;
     this.vEmploye=false;
+    this.vrecherche=false;
   }
   deconnexion($event)
   {
@@ -119,5 +123,14 @@ export class AcceuilClientComponent implements OnInit {
                }}
   );
     console.log(this.recherche); 
+  }
+  faireRecherche($event)
+  {
+    this.vrecherche=true;
+    this.vDemandes=false;
+    this.vDefaut=false;
+    this.vMessages=false;
+    this.vProfile=false;
+    this.vEmploye=false;
   }
 }

@@ -59,7 +59,7 @@
           <h3>Inbox</h3>
           <div action="#" class="pull-right position">
              <div class="input-append">
-                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (change)="touchRecherche()">
+                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
                 <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
                 <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()">Deconnexion</button>
               </div>
@@ -72,7 +72,6 @@
         <!-- LIste Des Employes par recherhe 
            +++++++++++++++++++++DEBUT++++++++++++++++++-->
         <div class="inbox-body" *ngIf="vrecherche">
-           <p>Div Pour Faire la Recherche</p>
           <div class="container" id="listeEmployes">
             <div class="row">
             	<section class="content">
@@ -178,7 +177,7 @@
         </div>
         <!--Messages du Client -->
         <div class="inbox-body" *ngIf="vMessages" >
-          <p>Messages du Client</p>
+            <app-message-client></app-message-client>
         </div>
       </aside>
     </div>
