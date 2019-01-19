@@ -1,0 +1,129 @@
+<div class="jumbotron">
+    <div class="container ">
+  <img src="../assets/SET1/logo.jpg"   width="120" height="80" >
+  <!-- nav -->  
+<nav class="navbar " >
+    <div class="container-fluid">
+      <div class="navbar-header">
+      
+      </div>
+      <div class="collapse navbar-collapse "  id="myNavbar">
+        <ul class="nav navbar-nav">
+          <!-- <li><a href="#">About</a></li>
+          <li><a href="#">Projects</a></li> -->
+          <li ><a (click)="visibiliteAccuile()" ><span class="glyphicon glyphicon-home"></span> Admin</a></li>
+
+         
+        </ul>
+        <ul class="nav navbar-nav navbar-right"  >
+            <li ><a  ><span class="glyphicon glyphicon-comment"></span> Messagerie</a></li>
+            <li><a  (click)="visibiliteEmployes()"><span class="glyphicon glyphicon-user"></span> Employes</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Client</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-book"></span> Demande</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Configuration</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>    
+<!-- nav -->
+    </div>
+  </div><!-- jumbo -->
+
+
+  <!-- Employés -->
+  <div class="container-fluid" *ngIf="afficheAccueil">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          
+        </div>
+        <!-- centreEmplyer -->
+        <div class="col-sm-8 text-left" *ngIf="afficheAccueil"> 
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <hr>
+            <h3>Test</h3>
+            <p>Lorem ipsum...</p>
+          </div>
+          <div class="col-sm-2 sidenav" *ngIf="afficheAccueil">
+            <!-- <div class="well">
+              --  --
+            </div>
+            <div class="well">
+              --  --
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+
+  <!-- Employés -->
+  <div class="container-fluid" *ngIf="afficheEmployes">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+        <ul class="sid" >
+          <li><a  (click)="nouvelEmployer()"><span class="glyphicon glyphicon-plus"></span> Nouvel Employe</a></li><br>
+           <li><a (click)="listEmployer()"><span class="glyphicon glyphicon-list"></span> Liste Employés</a></li><br>
+           <li><a (click)="rechercheEmployer()"><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br>
+           <li><a (click)="statiqueEmployer()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+        </ul>
+      </div>
+      <!-- centreEmplyer -->
+          <div class="well col-sm-8 text-left" *ngIf="afficheEmployes"> 
+                           <div class="container">
+                                <div class="messaging">
+                                    <div class="inbox_msg">
+                                        <div class="inbox_chat">
+                                              <div class="chat_ ">
+                                                <app-mes-emplyes *ngIf="listeEmployer"></app-mes-emplyes>
+                                                <app-inscription *ngIf="newEmployer"></app-inscription>
+                                                <app-tape-plus *ngIf="recherche"></app-tape-plus>
+
+                              </div>
+                       </div>
+                  </div>
+           </div>
+      </div>   
+  </div>  
+        <div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
+          <!-- <div class="well">
+            --  --
+          </div>
+          <div class="well">
+            --  --
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+      <!-- Clients -->
+  <div class="container-fluid" *ngIf="afficheClient">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          <ul class="sid" >
+            <li><a ><span class="glyphicon glyphicon-plus"></span> Nouvel Client</a></li><br>
+             <li><a ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
+             <li><a ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br>
+             <li><a ><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+          </ul>
+        </div>
+      <!-- fin side -->
+      <div class="col-sm-8 text-left"> 
+        <h1>Welcome</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <hr>
+        <h3>Test</h3>
+        <p>Lorem ipsum...</p>
+      </div>
+      <div class="col-sm-2 sidenav">
+        <!-- <div class="well">
+          --  --
+        </div>
+        <div class="well">
+          --  --
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  

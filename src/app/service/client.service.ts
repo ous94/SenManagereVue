@@ -37,23 +37,15 @@ export class ClientService {
   setteClient(client:Client)
   {
     return this.client=client;
-    this.getterClient();
-    console.log(this.getterClient);
+    
   }
   
-  getterClient()
-  {
-    return this.client;
-  }
+
   //modification de customers
   updateClient(id: number, client: Client): Observable<Object> {
     return this.httpClient.put(`${this.baseUrl}/clients/edite/${id}`,client);
   }
- /*  updaternew(demande)
-  {
-      return this.httpClient.put(this.baseUrl+"/demande/edite",demande);
-  
-  } */
+ 
 
 
 }

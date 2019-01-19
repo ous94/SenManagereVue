@@ -12,38 +12,41 @@
   <th>Action</th>
 </thead>
 <tbody >
-  <tr *ngFor="let demande of listeDemande " class="table-info">
+  <tr *ngFor="let dema of listeDemande " class="table-info">
     <td class="table-primary"><span class="glyphicon glyphicon-user
-      ">{{demande.date}}</span></td>
-    <td>{{demande.services}}</td>
-    <td>{{demande.salairePropose}}</td>
-    <td>{{demande.salaireRetenue}}</td>
-    <td><button type="submit" class="btn btn-danger" (click)='deleteDemande(demande)' ><span class="glyphicon glyphicon-trash"></span></button></td>
-    <td><button type="submit" class="btn btn-primary" (click)='editeDemande(demande)'><span class="glyphicon glyphicon-pencil"></span></button></td>
+      ">{{dema.date}}</span></td>
+    <td>{{dema.services}}</td>
+    <td>{{dema.salairePropose}}</td>
+    <td>{{dema.salaireRetenue}}</td>
+    <td><button type="submit" class="btn btn-danger" (click)='deleteDemande(dema)' ><span class="glyphicon glyphicon-trash"></span></button></td>
+    <td><button type="submit" class="btn btn-primary" (click)='editeDemande(dema)'><span class="glyphicon glyphicon-pencil"></span></button></td>
   </tr>
 </tbody>
 </table>
 </div>
 
 <div>
-    <button type="submit" class="btn btn-primary" (click)='editeDemande()'><span class="glyphicon glyphicon-pencil"></span></button>
 
   <!-- demand edite -->
   <div class="tab-content">
       <div clase="col-sm-8" *ngIf="showdedite">
         <form (ngSubmit)="validerModification(f)" #f="ngForm">
            <!-- for Name -->  
-                     
+           <div class="form-group , col-lg-5">
+              <label for="idDemande"></label>
+<!--               <input  name="idDemande"  class="form-control" id="idDemande" [value]="demandes.iddemande" [(ngModel)]="demandes.iddemande" disabled="disabled" >
+ -->            </div><br/><br/><br/><br/>
+
               <!-- for age -->            
           <div class="form-group , col-lg-5">
               <label for="salairePropose">salairePropose</label>
-              <input  name="salairePropose" class="form-control" id="age" [value]="maDemande.salairePropose" [(ngModel)]="maDemande.salairePropose">
+              <input  name="salairePropose" class="form-control" id="age" [value]="demandes.salairePropose" [(ngModel)]="demandes.salairePropose">
             </div>
             <br/><br/><br/><br/>
                   <!-- for Name -->            
                   <div class="form-group, col-lg-5">
                   <label for="salaireRetenue">salaireRetenue</label>
-                  <input name="salaireRetenue" class="form-control" id="name" [value]="maDemande.salaireRetenue" [(ngModel)]="maDemande.salaireRetenue">
+                  <input name="salaireRetenue" class="form-control" id="name" [value]="demandes.salaireRetenue" [(ngModel)]="demandes.salaireRetenue">
              </div><br/><br/><br/><br/> 
          <button type="submit" class="btn btn-primary" >Modifier</button> <br/><br/><br/>
         </form>

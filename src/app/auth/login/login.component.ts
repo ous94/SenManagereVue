@@ -3,7 +3,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ClientService } from 'src/app/service/client.service';
 import { Client } from 'src/app/Classe/Client';
 import { Router } from '@angular/router';
+import { log } from 'util';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorage } from '@ngx-pwa/local-storage';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
     
   });
 
-  constructor(private ToastrService:ToastrService,private fb: FormBuilder,private ClientService:ClientService,private router:Router) { 
+  constructor(private ToastrService:ToastrService,private fb: FormBuilder,private ClientService:ClientService,private router:Router ,private localStorage :LocalStorage) { 
     this.loginForm=this.fb.group({
       login:[null,Validators.required],
       password:[null,Validators.required],
@@ -45,13 +48,10 @@ export class LoginComponent implements OnInit {
       data =>{this.client3=data;console.log(data)
         if(this.client3!=null)
         {
-<<<<<<< HEAD
-=======
           this.localStorage.setItem("client",this.client3).subscribe((data)=>{console.log(this.client3);});
->>>>>>> b146035a55920dd451c22194d34061e8454a24ee
           console.log('Connexion reussssssssss')
            this.showSuccess();
-           this.router.navigate(['administration']);
+           this.router.navigate(['client/acceuil']);
         }else{
           console.log('Connexion echec')
            this.showError();

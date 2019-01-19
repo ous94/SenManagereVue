@@ -75,6 +75,7 @@ import { RechercheEthniesComponent } from './employee/recherche-ethnies/recherch
 import { RechercheLocaliteComponent } from './employee/recherche-localite/recherche-localite.component';
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
+import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -105,6 +106,8 @@ const appRoutes: Routes = [
     {path:'client/mesclients',component:MesClientsComponent},
     {path:'client/acceuil',component:AcceuilClientComponent},
     {path:'contact1',component:Contact1Component},
+    {path:'espace',component:EspaceAdminComponent},
+
 ];
 
 @NgModule({
@@ -172,7 +175,8 @@ const appRoutes: Routes = [
     RechercheEthniesComponent,
     RechercheLocaliteComponent,
     TapeDemandeComponent,
-    MesDemandesComponent
+    MesDemandesComponent,
+    EspaceAdminComponent
   ],
   entryComponents: [
     ConfirmComponent

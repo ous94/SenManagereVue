@@ -58,8 +58,7 @@ demande : Demande = new Demande();
 setteDemande(demande:Demande)
 {
   return this.demande=demande;
-  this.getterDemande();
-  console.log(this.getAllDemande());
+  
 }
 
 getterDemande()
@@ -68,7 +67,7 @@ getterDemande()
 }
 //modification de customers
 updateDemander(id: number, demande: Demande): Observable<Object> {
-  return this.httpClient.put(`${this.baseUrl}/${id}`, Demande);
+  return this.httpClient.put(`${this.baseUrl}/demande/editer/${id}`, demande);
 }
 updaternew(demande)
 {
