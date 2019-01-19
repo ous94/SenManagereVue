@@ -37,18 +37,19 @@ export class NouvelleDemandeComponent implements OnInit {
   constructor(private fb:FormBuilder ,private employeService:EmployeeService,private comptenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
        this.employeService.getAllEmployes().subscribe(
            (data)=>{this.listeEmployes=data;
-                    console.log(this.listeEmployes);}
+                    console.log(this.listeEmployes);
+                    for(let i:number=0;i<this.listeEmployes.length;i++)
+                    {
+                      this.tableauVisibiliteDetail[i]=false;
+                    }}
        );
        this.comptenceService.getAllCompetences().subscribe(
           (data)=>{this.listeCompetences=data;}
        );
        for(let i:number=0;i<10;i++)
        {
-        // console.log(this.tableauVisibiliteDetail.length);
          this.tableauVisibiliteDetail[i]=false;
        }
-       
-       //console.log(this.listeEmployes.length);
   }
 
   ngOnInit() {
@@ -85,6 +86,14 @@ export class NouvelleDemandeComponent implements OnInit {
    {
      this.selectedCompetencevalues.splice(index,index+1);
    }
+   this.employeService.getAllEmployes().subscribe(
+    (data)=>{this.listeEmployes=data;
+             console.log(this.listeEmployes);
+             for(let i:number=0;i<this.listeEmployes.length;i++)
+             {
+               this.tableauVisibiliteDetail[i]=false;
+             }}
+   );
    this.favCompetenceErreur = this.selectedCompetencevalues.length >0 ? false :true;
   
   }
@@ -107,20 +116,17 @@ export class NouvelleDemandeComponent implements OnInit {
   //
   validerDemande()
   {
-     
     this.demande=this.demandeForm.value;
     this.demandeFinal.salairePropose=this.demande.salairePropose;
     this.demandeFinal.services=this.demande.services;
     this.demandeFinal.competences=this.selectedCompetencevalues;
     this.demandeFinal.employees=this.selectedEmployevalues;
-    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{this.client=data;});
-    this.demandeFinal.client=this.client;
-    this.demandeService.addDemande(this.demandeFinal).subscribe(
-          (data)=>{console.log("Enregistrement demande reussi");
-                  console.log(data);
-                  },
-          (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
-    ); 
-}
-
+    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
+                                    this.client=data;
+                                    this.demandeFinal.client=this.client;
+                                     this.demandeService.addDemande(this.demandeFinal).subscribe(
+                                           (data)=>{console.log("Enregistrement demande reussi");},
+                                           (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
+                                     );});    
+ }
 }

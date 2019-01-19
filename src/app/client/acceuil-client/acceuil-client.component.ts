@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorage} from '@ngx-pwa/local-storage';
+import {Router} from '@angular/router';
+import { Client } from 'src/app/Classe/Client';
+import {NgModel,FormsModule, FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { RechercheCompetenceComponent } from 'src/app/employee/recherche-competence/recherche-competence.component';
+import { UploadFileService } from 'src/app/upload-file.service';
+import { Employee } from 'src/app/Classe/Employee';
+import { RechercheService } from 'src/app/service/recherche.service';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -6,16 +14,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acceuil-client.component.scss']
 })
 export class AcceuilClientComponent implements OnInit {
-
+  
+  vpage :boolean =false;
   vEmploye:boolean=false;
   vDemandes:boolean=false;
-  vProfile:boolean=false
+  vProfile:boolean=false;
   vMessages:boolean=false;
   vDefaut:boolean=true;
+  vrecherche:boolean=false;
+  recherche :string='';
+  listeEmployes:Array<Employee>;
+  tableauVisibiliteDetail:boolean[]=[];
 
-  constructor() { }
+  constructor(private localStorage:LocalStorage,private router :Router,private uploadFileService :UploadFileService ,private rechercheService :RechercheService) { 
+
+    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>
+                        {
+                             if(data==null)
+                              { 
+                                this.router.navigate(['test']);
+                              }
+                              else
+                              {
+                                this.vpage=true;
+                              }
+                        });
+  }
 
   ngOnInit() {
+
+    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>
+    {
+         if(data==null)
+          { 
+            this.router.navigate(['test']);
+          }
+    });
   }
 
   visibiliteEmploye($event)
@@ -25,6 +59,7 @@ export class AcceuilClientComponent implements OnInit {
       this.vDemandes=false;
       this.vMessages=false;
       this.vProfile=false;
+      this.vrecherche=false;
   }
 
   visibiliteProfile($event)
@@ -34,6 +69,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vEmploye=false;
     this.vDemandes=false;
     this.vMessages=false;
+    this.vrecherche=false;
   }
   visibiliteMessages($event)
   {
@@ -42,6 +78,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vProfile=false;
     this.vEmploye=false;
     this.vDemandes=false;
+    this.vrecherche=false;
   }
   visibiliteDemandes($event)
   {
@@ -50,7 +87,50 @@ export class AcceuilClientComponent implements OnInit {
     this.vMessages=false;
     this.vProfile=false;
     this.vEmploye=false;
+    this.vrecherche=false;
   }
+  deconnexion($event)
+  {
+       this.localStorage.removeItem("client").subscribe(()=>{});
+       this.localStorage.clear().subscribe(()=>{});
+       this.router.navigate(['test']);
+  }
+  getPhotoEmploye(photo:String): String
+  {
+    return this.uploadFileService.getPhoto(photo);
+  }
+  //
+  details(position :number)
+  {
+    console.log("Salut vous voulez plus de Details");
+    this.tableauVisibiliteDetail[position]=true;
+  }
+  reduire(position :number)
+  {
+    console.log("Salut vous voulez reduire");
+    this.tableauVisibiliteDetail[position]=false;
+  }
+  touchRecherche($event)
+  {
 
+    this.vrecherche=true;
+    this.rechercheService.rechercheTous(this.recherche).subscribe(
+      (data)=>{this.listeEmployes=data;
+               console.log(this.listeEmployes);
+               for(let i:number=0;i<this.listeEmployes.length;i++)
+               {
+                 this.tableauVisibiliteDetail[i]=false;
+               }}
+  );
+    console.log(this.recherche); 
+  }
+  faireRecherche($event)
+  {
+    this.vrecherche=true;
+    this.vDemandes=false;
+    this.vDefaut=false;
+    this.vMessages=false;
+    this.vProfile=false;
+    this.vEmploye=false;
+  }
 }
-

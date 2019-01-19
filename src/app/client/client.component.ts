@@ -266,7 +266,7 @@ submithandle()
               (error) =>{console.log(error)} );
   
        console.log(this.clientFinal);
-       this.clientForm.reset;
+       this.clientForm.reset();
     
 }
   emailLogin()

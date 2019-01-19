@@ -40,8 +40,4 @@ export class ConctactComponent implements OnInit {
      );
     console.log(this.messages);
   }
-
-
-
-  
 }
