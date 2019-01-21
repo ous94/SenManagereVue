@@ -83,6 +83,7 @@ import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-
 import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
 import { MessagesAdmComponent } from './Adm/messages-adm/messages-adm.component';
 import { RechMessageAdmComponent } from './Adm/rech-message-adm/rech-message-adm.component';
+import { EditerClientComponent } from './client/editer-client/editer-client.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -190,7 +191,8 @@ const appRoutes: Routes = [
     RechercheEmpAdmComponent,
     RechercheCliAdmComponent,
     MessagesAdmComponent,
-    RechMessageAdmComponent
+    RechMessageAdmComponent,
+    EditerClientComponent
   ],
   entryComponents: [
     ConfirmComponent
