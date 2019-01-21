@@ -6,17 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./espace-admin.component.scss']
 })
 export class EspaceAdminComponent implements OnInit {
+
   afficheEmployes:boolean=false;
   afficheMessagerie:boolean=false;
   afficheConfiguration:boolean=false;
   afficheDemande:boolean=false;
   afficheClient:boolean=false;
   afficheAccueil:boolean=true;
-  ///////////////
+///////////////Employer
   listeEmployer:boolean= false;
   newEmployer:boolean=false;
   statique:boolean=false;
   recherche:boolean=false;
+/////////////////Client
+listeClients:boolean= false;
+statiqueClients:boolean=false;
+rechercheClients:boolean=false;
+demandeClients:boolean=false;
+
 
 
   constructor() { }
@@ -27,6 +34,14 @@ export class EspaceAdminComponent implements OnInit {
   visibiliteEmployes(){
     this.afficheEmployes=!this.afficheEmployes;
     this.afficheClient=false;
+    this.afficheConfiguration=false;
+    this.afficheMessagerie=false;
+    this.afficheDemande=false;
+    this.afficheAccueil=false;
+  }
+  visibiliteClients(){
+    this.afficheEmployes=false;
+    this.afficheClient=!this.afficheClient;
     this.afficheConfiguration=false;
     this.afficheMessagerie=false;
     this.afficheDemande=false;
@@ -70,5 +85,35 @@ export class EspaceAdminComponent implements OnInit {
     this.statique=!this.statique;
     
   }
+//partie cliente
+
+demandeClient()
+  {
+    this.demandeClients=!this.demandeClients;
+    this.rechercheClients=false;
+    this.statiqueClients=false;
+    this.listeClients=false;
+
+  }
+  listeClient(){
+    this.listeClients=!this.listeClients;
+    this.rechercheClients=false;
+    this.statiqueClients=false;
+    this.demandeClients=false;
+
+    
+  }
+  rechercheClient(){
+    this.rechercheClients=!this.rechercheClients;
+    this.listeClients=false;
+    this.statiqueClients=false;
+    this.demandeClients=false;
+    
+  }
+  statistiqueClient(){
+    
+  }
+
+  
 
 }

@@ -75,11 +75,10 @@ import { RechercheEthniesComponent } from './employee/recherche-ethnies/recherch
 import { RechercheLocaliteComponent } from './employee/recherche-localite/recherche-localite.component';
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
-<<<<<<< HEAD
 import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component';
-=======
 import { MessageClientComponent } from './client/message-client/message-client.component';
->>>>>>> 3f1c1caa28a29eb32f191dd258acb36b7ef51a99
+import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
+import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -180,11 +179,10 @@ const appRoutes: Routes = [
     RechercheLocaliteComponent,
     TapeDemandeComponent,
     MesDemandesComponent,
-<<<<<<< HEAD
-    EspaceAdminComponent
-=======
-    MessageClientComponent
->>>>>>> 3f1c1caa28a29eb32f191dd258acb36b7ef51a99
+    EspaceAdminComponent,
+    MessageClientComponent,
+    RechercheEmpAdmComponent,
+    RechercheCliAdmComponent
   ],
   entryComponents: [
     ConfirmComponent

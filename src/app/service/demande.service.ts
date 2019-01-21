@@ -74,4 +74,8 @@ updaternew(demande)
     return this.httpClient.put(this.baseUrl+"/demande/edite", demande);
 
 }
+//Les  listes  client
+getAllClient(): Observable<any> {
+  return this.httpClient.get(this.baseUrl+"/clientall/"); 
+}
 }
