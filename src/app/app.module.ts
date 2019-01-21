@@ -81,6 +81,7 @@ import { ListeEmployesComponent } from './client/liste-employes/liste-employes.c
 import { ProfilComponent } from './client/profil/profil.component';
 import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
 import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
+import { EditerClientComponent } from './client/editer-client/editer-client.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -186,7 +187,8 @@ const appRoutes: Routes = [
     ListeEmployesComponent,
     ProfilComponent,
     RechercheEmpAdmComponent,
-    RechercheCliAdmComponent
+    RechercheCliAdmComponent,
+    EditerClientComponent
   ],
   entryComponents: [
     ConfirmComponent

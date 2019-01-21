@@ -2,102 +2,52 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12">
-          <button (click)="editerProfile()">Editer</button>
+          <div class="col-md-4">
+             <p>Prénom :{{clientConnecte.prenom}}</p>
+          </div>
+          <div class="col-md-4">
+             <p>Nom :{{clientConnecte.nom}}</p>
+          </div>
+          <div class="col-md-4">
+             <p>Sexe :{{clientConnecte.sexe}}</p>
+          </div>
+          <div class="col-md-4">
+            <p>Adresse :{{clientConnecte.adresse}}</p>
+          </div>
+          <div class="col-md-4">
+             <p>Telephone Mobile :{{clientConnecte.telephoneMobile}}</p>
+          </div>
+          <div class="col-md-4">
+              <p>Telephone Fixe :{{clientConnecte.telephoneFixe}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Email :{{clientConnecte.email}}</p>
+           </div> 
+           <div class="col-md-4">
+              <p>Login :{{clientConnecte.login}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Numero d'Identification :{{clientConnecte.identification}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Type d'Identification :{{clientConnecte.typeIdentification.nom}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Pays :{{clientConnecte.pay.nom}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Localite :{{clientConnecte.localite.nom}}</p>
+           </div>
+           <div class="col-md-4">
+              <p>Observation</p>
+              <div class="col-md-4">
+                  <textarea>{{clientConnecte.observation}}</textarea>
+               </div>
+           </div>   
         </div>
     </div>
+    <button (click)="editerProfile()">Editer</button>
   </div>
 </div>
-<div *ngIf="editer">
-    <form [formGroup]="clientForm" (ngSubmit)="submithandle()" >
-    <div id="parti1" *ngIf="!suivant">
-      <div class="row">
-       <div class="col-xs-6 col-md-6  Vcenter">
-            <label for="nom">Nom<span>*</span></label>
-            <input type="text" class="form-control activation" id="nom" value="{{clientConnecte.nom}}" formControlName="nom"  [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" > 
-       </div>
-       <div class="col-xs-6 col-md-6">
-             <label for="prenom">Prénom<span>*</span></label>
-             <input type="text" class="form-control activation" id="prenom" value="{{clientConnecte.prenom}}" formControlName="prenom" [ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}">
-       </div>
-       <div class="col-xs-6 col-md-6">
-             <label for="telephoneMobile">Téléphne Mobile<span>*</span></label>
-             <input type="text" class="form-control activation" id="telephoneMobile" value="{{clientConnecte.telephoneMobile}}" formControlName="telephoneMobile" [ngClass]="{'form-control':true,'is-invalid':telephoneMobile.invalid && telephoneMobile.touched, 'is-valid':telephoneMobile.valid && telephoneMobile.touched}">
-       </div>
-       <div class="col-xs-6 col-md-6">
-          <label for="telephoneFixe">Téléphne Fixe</label>
-          <input type="text" class="form-control activation" id="telephoneFixe" value="{{clientConnecte.telephoneFixe}}" formControlName="telephoneFixe" [ngClass]="{'form-control':true,'is-invalid':telephoneFixe.invalid && telephoneFixe.touched, 'is-valid':telephoneFixe.valid && telephoneFixe.touched}">           
-       </div>
-       <div class="col-xs-6 col-md-6">
-             <label for="adresse">Adresse<span>*</span></label>
-             <input type="text" class="form-control activation" id="adresse"value="{{clientConnecte.adresse}}" formControlName="adresse" [ngClass]="{'form-control':true,'is-invalid':adresse.invalid && adresse.touched, 'is-valid':adresse.valid && adresse.touched}">
-       </div>
-       <div class="col-xs-6 col-md-6">
-             <label for="email">Email<span>*</span></label>
-             <input type="text" class="form-control activation" (change)="emailLogin()" id="email" value="{{clientConnecte.email}}" formControlName="email" [ngClass]="{'form-control':true,'is-invalid':email.invalid && email.touched, 'is-valid':email.valid && email.touched}">
-       </div>
-       <div class="col-xs-6 col-md-6">
-          <label for="localite">Localité<span>*</span></label>
-          <select id="localite" class="form-control activation" formControlName="localite" [ngClass]="{'form-control':true,'is-invalid':localite.invalid && localite.touched, 'is-valid':localite.valid && localite.touched}" >
-              <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
-          </select>
-       </div>
-       <div class="col-xs-6 col-md-6">
-         <label for="typeidentification">Type Identification<span>*</span></label>
-         <select id="typeidentification" class="form-control activation"  formControlName="typeidentification"  placeholder="typeidentification" [ngClass]="{'form-control':true,'is-invalid':typeidentification.invalid && typeidentification.touched, 'is-valid':typeidentification.valid && typeidentification.touched}">
-              <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>
-         </select>
-       </div>
-       <div class="col-xs-6 col-md-6">
-         <label for="sexe">Sexe<span>*</span></label>
-         <select id="sexe" class="form-control activation" formControlName="sexe" value="{{clientConnecte.sexe}}"[ngClass]="{'form-control':true,'is-invalid':sexe.invalid && sexe.touched, 'is-valid':sexe.valid && sexe.touched}">
-           <option selected>Masculin</option>
-           <option>Féminin</option>
-         </select>
-      </div>
-      <div class="col-xs-6 col-md-6">
-        <label for="identification">N° d'Identification<span>*</span></label>
-        <input type="text" class="form-control activation" id="identification" value="{{clientConnecte.identification}}" formControlName="identification" [ngClass]="{'form-control':true,'is-invalid':identification.invalid && identification.touched, 'is-valid':identification.valid && identification.touched}">
-     </div>
-     <div class="col-xs-6 col-md-6">
-          <label for="pay">Pays<span>*</span></label>
-          <select id="pay" class="form-control activation" value="Dakar" formControlName="pay" [ngClass]="{'form-control':true,'is-invalid':pay.invalid && pay.touched, 'is-valid':pay.valid && pay.touched}">
-              <option selected >Sénégal</option>
-              <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>
-          </select>
-     </div>
-     <div class="col-xs-6 col-md-6">
-          <label for="textarea">Observation </label>
-          <textarea class="form-control activation" id="observation" rows="5" maxlength="500" formControlName="observation" [ngClass]="{'form-control':true,'is-invalid':observation.invalid && observation.touched, 'is-valid':observation.valid && observation.touched}">{{clientConnecte.observation}}"</textarea>
-      </div>
-     </div>
-     </div>
-     <!-- DEUXIEME DIV CONFIRMATION  -->
-     <div id="parti2">
-          <div >
-               <div class="form-group col-xs-6 col-md-10">
-                   <label for="inputEmail"> Login<span>*</span></label>
-                   <input disabled type="email" id="inputEmail" class="form-control" value="{{clientConnecte.login}}" [ngClass]="{'form-control':true,'is-invalid':login.invalid && login.touched, 'is-valid':login.valid && login.touched}">
-                </div>
-                <div class="form-group col-xs-6 col-md-10" >
-                  <label for="inputPassword">Mot de Passe<span>*</span></label>
-                   <input type="password" id="inputPassword" class="form-control" value="{{clientConnecte.password}}" formControlName="password" [ngClass]="{'form-control':true,'is-invalid':password.invalid && password.touched, 'is-valid':password.valid && password.touched}">
-                   <div *ngIf="f.password.errors" class="invalid-feedback">
-                       <div *ngIf="f.password.errors.minlength" style="font-size: 20px;">Mot de Passe au minimum 8 caractères</div>
-                   </div>
-                </div>
-                <div class="form-group col-xs-6 col-md-10" >
-                   <label for="inputConfirmPassword">Confirmer<span>*</span></label> 
-                   <input type="password" id="inputConfirmPassword" class="form-control" value="{{clientConnecte.password}}" formControlName="confirmer" [ngClass]="{'form-control':true,'is-invalid':confirmer.invalid && confirmer.touched, 'is-valid':confirmer.valid && confirmer.touched}">
-                   <div *ngIf="confirmer.touched  && f.confirmer.errors" class="invalid-feedback">
-                       <div *ngIf="f.confirmer.errors.mustMatch" style="font-size: 20px;">Erreur Veillez confirmer votre Mot de Passe</div>
-                  </div>
-                </div>
-                <div id="boutons" class="row form-group col-xs-6 col-md-10">
-                   <div class="col-md-6 col-sm-6" >
-                     <button id="Valider" class="btn btn-lg btn-primary btn-block text-uppercase  Vcenter" type="submit"[disabled]="!clientForm.valid" >S'enregistrer</button>
-                   </div>
-               </div>
-          </div>
-     </div>
-    </form>
-  </div>
+<app-editer-client *ngIf="editer"></app-editer-client>
+  

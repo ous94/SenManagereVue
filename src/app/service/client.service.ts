@@ -47,8 +47,8 @@ getAllClient(): Observable<any> {
   
 
   //modification de customers
-  updateClient(id: number, client: Client): Observable<Object> {
-    return this.httpClient.put(`${this.baseUrl}/clients/edite/${id}`,client);
+  updateClient(id: number, client: Client): Observable<Client> {
+    return this.httpClient.put<Client>(`${this.baseUrl}/clients/edite/${id}`,client);
   }
  
 
