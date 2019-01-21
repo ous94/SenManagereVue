@@ -178,8 +178,8 @@
                            <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
                            <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
                            <button (click)="deleteEmploye(employe)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
-                           <button (click)="deleteEmploye(employe)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
-
+<!--                            <button (click)="editeEmploye(employe)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+ -->
 
                        </td>
                       </tr>
@@ -189,20 +189,3 @@
               </section>
             </div>
           </div>
-          <!--++++++++++++++++++++FIN++++++++++++++++++++++++++
-           LIste Des employes a associer a la Demande -->
-
-
-
- <!--           <ul class="list-inline">
-                <li class="list-inline-item">
-                        <a (click)='deleteClient(client)' target="_blank">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                            <a (click)='editeClient(client)' target="_blank">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                    </li>
-        </ul> -->

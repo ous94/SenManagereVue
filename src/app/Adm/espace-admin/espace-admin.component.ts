@@ -23,6 +23,10 @@ listeClients:boolean= false;
 statiqueClients:boolean=false;
 rechercheClients:boolean=false;
 demandeClients:boolean=false;
+////////////////Messagerie
+listeMessagerie:boolean= false;
+rechemessageries:boolean= false;
+
 
 
 
@@ -38,6 +42,19 @@ demandeClients:boolean=false;
     this.afficheMessagerie=false;
     this.afficheDemande=false;
     this.afficheAccueil=false;
+  }
+  
+  visibiliteMessage()
+  {
+    this.afficheEmployes=false
+    this.afficheClient=false;
+    this.afficheConfiguration=false;
+    this.afficheMessagerie=false;
+    this.afficheDemande=false;
+    this.afficheMessagerie=true;
+    this.afficheAccueil=false;
+
+
   }
   visibiliteClients(){
     this.afficheEmployes=false;
@@ -113,6 +130,17 @@ demandeClient()
   statistiqueClient(){
     
   }
+  ///partieMessagerie
+  
+  mesmessage(){
+    this.rechemessageries=false;
+    this.listeMessagerie=!this.listeMessagerie;
+  }
+  rechermessage(){
+    this.listeMessagerie=false;
+    this.rechemessageries=!this.rechemessageries;
+  }
+  
 
   
 

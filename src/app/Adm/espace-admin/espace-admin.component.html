@@ -9,14 +9,12 @@
       </div>
       <div class="collapse navbar-collapse "  id="myNavbar">
         <ul class="nav navbar-nav">
-          <!-- <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li> -->
           <li ><a (click)="visibiliteAccuile()" ><span class="glyphicon glyphicon-home"></span> Admin</a></li>
 
          
         </ul>
         <ul class="nav navbar-nav navbar-right"  >
-            <li ><a  ><span class="glyphicon glyphicon-comment"></span> Messagerie</a></li>
+            <li ><a (click)="visibiliteMessage()"><span class="glyphicon glyphicon-comment"></span> Messagerie</a></li>
             <li><a  (click)="visibiliteEmployes()"><span class="glyphicon glyphicon-user"></span> Employes</a></li>
             <li><a (click)="visibiliteClients()"><span class="glyphicon glyphicon-briefcase"></span> Client</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Configuration</a></li>
@@ -28,6 +26,48 @@
 <!-- nav -->
     </div>
   </div><!-- jumbo -->
+
+
+  <!-- Employés -->
+      <div class="container-fluid" *ngIf="afficheMessagerie">
+          <div class="row content">
+            <div class="col-sm-2 sidenav">
+              <ul class="sid" >
+                  <li><a (click)="mesmessage()"><span class="glyphicon glyphicon-list"></span>Messageries</a></li><br>
+                  <li><a (click)="rechermessage()"><span class="glyphicon glyphicon-search"></span> Messageries</a></li><br>
+               
+                    <!--  <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
+                     <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button> -->
+<!--                    <li><a (click)="statiqueEmployer()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+ -->              </ul>
+            </div>
+      <!-- centreEmplyer -->
+      <div class="well col-sm-8 text-left" *ngIf="afficheMessagerie"> 
+          <div class="container">
+              <div class="messaging">
+                  <div class="inbox_msg">
+                      <div class="inbox_chat">
+                            <div class="chat_ ">
+                              <app-messages-adm *ngIf="listeMessagerie"></app-messages-adm>
+                              <app-rech-message-adm *ngIf="rechemessageries"></app-rech-message-adm>
+
+                               </div>
+                         </div>
+                   </div>
+            </div>
+      </div>   
+</div>  
+        <div class="col-sm-2 sidenav" *ngIf="afficheMessagerie">
+          <!-- <div class="well">
+            --  --
+          </div>
+          <div class="well">
+            --  --
+          </div> -->
+        </div>
+      </div>
+    </div>
+
 
 
   <!-- Employés -->
@@ -87,56 +127,53 @@
            </div>
       </div>   
   </div>  
-        <div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
-          <!-- <div class="well">
+<!--         <div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
+ -->          <!-- <div class="well">
             --  --
           </div>
           <div class="well">
             --  --
           </div> -->
-        </div>
+        <!-- </div>
       </div>
-    </div>
+    </div> -->
 
-      <!-- Clients -->
+
+     <!-- Client -->
   <div class="container-fluid" *ngIf="afficheClient">
       <div class="row content">
         <div class="col-sm-2 sidenav">
           <ul class="sid" >
-<!--             <li><a (click)="nouveauClient()"><span class="glyphicon glyphicon-plus"></span> Nouvel Client</a></li><br>
- -->             <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
-                <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
+              <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
+              <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
 
-              <li><a (click)="rechercheClient()" ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br> 
-             <li><a (click)="statistiqueClient()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+            <li><a (click)="rechercheClient()" ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br> 
+           <li><a (click)="statistiqueClient()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+           
+
           </ul>
         </div>
-      <!-- fin side -->
-      <!-- centreEmplyer -->
-      <div class="well col-sm-8 text-left" *ngIf="afficheClient"> 
-          <div class="container">
-               <div class="messaging">
-                   <div class="inbox_msg">
-                       <div class="inbox_chat">
-                             <div class="chat_ ">
-                               <app-mes-clients *ngIf="listeClients"></app-mes-clients>
-                               <app-inscription *ngIf="demandeClients"></app-inscription>
-                               <app-recherche-cli-adm *ngIf="rechercheClients"></app-recherche-cli-adm>
+        <!-- centreEmplyer -->
+            <div class="well col-sm-8 text-left" *ngIf="afficheClient"> 
+                             <div class="container">
+                                  <div class="messaging">
+                                      <div class="inbox_msg">
+                                          <div class="inbox_chat">
+                                                <div class="chat_ ">
+                                                    <app-mes-clients *ngIf="listeClients"></app-mes-clients>
+                                                    <app-inscription *ngIf="demandeClients"></app-inscription>
+                                                    <app-recherche-cli-adm *ngIf="rechercheClients"></app-recherche-cli-adm>
+  
+                                </div>
+                         </div>
+                    </div>
              </div>
-      </div>
- </div>
-</div>
-</div>   
-</div>  
-<div class="col-sm-2 sidenav" *ngIf="afficheClient">
-<!-- <div class="well">
---  --
-</div>
-<div class="well">
---  --
-</div> -->
-       </div>
-    </div>
-  </div>
+        </div>   
+    </div>  
 
+    
+   
+
+
+       <!-- Clients -->
   

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { FormBuilder, FormGroup, FormControl,Validators, FormArray,} from '@angular/forms';
 import {MessagesService} from '../service/messages.service'
 import { Messages } from '../Classe/Messages';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-conctact',
@@ -19,7 +20,7 @@ export class ConctactComponent implements OnInit {
     message :new FormControl(''),
     nomClient :new FormControl('')
   });
-  constructor(private httpClient :HttpClient,private fb:FormBuilder ,private messagesService :MessagesService ) { }
+  constructor(private ToastrService: ToastrService,private httpClient :HttpClient,private fb:FormBuilder ,private messagesService :MessagesService ) { }
 
   ngOnInit() {
 
@@ -35,9 +36,22 @@ export class ConctactComponent implements OnInit {
      this.messages=this.contactForm.value;
      
      this.messagesService.sendMessages(this.messages).subscribe(
-        (data)=>{console.log("Reponse sans erreur :"+data);},
-        (error)=>{console.log("Reponse avec Erreur :"+error)}
+        (data)=>{console.log("Reponse sans erreur :"+data);
+      this.showSuccess();},
+        (error)=>{console.log("Reponse avec Erreur :"+error); this.showError();}
      );
     console.log(this.messages);
   }
+
+  //methode toastr
+showSuccess() {
+
+  this.ToastrService.success('Avec succès !', 'Envoie message réussi !');
+}
+showError() {
+  this.ToastrService.error('Veuillez recommencer !', 'Echec de connexion !');
+} 
+showWarning() {
+  this.ToastrService.warning('Erreur fatal !', 'Attention !');
+} 
 }

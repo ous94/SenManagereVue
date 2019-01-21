@@ -1,0 +1,29 @@
+<div class="well col-sm-9 text-left"> 
+    <div class="container">
+                      <div class="messaging">
+                          <div class="inbox_msg">
+                              <div class="inbox_chat">
+                                    <div class="chat_ "  *ngFor="let message of listeMessage">
+                                            <div class="chat_people">
+                                              <div class="chat_img"> <img  src="../assets/SET1/user-profile.png" alt="sunil"></div>
+                                              <div class="chat_ib">
+                                                <h5>{{message.nomClient}}  <span class="date"> {{message.telClient}} </span></h5>        
+                                                
+                                                <p>{{message.email}}</p>
+
+                                                 <div class="msg_cotainer">
+                                                 <p> {{message.message}}.</p>
+                                             <span class="msg_time">8:40 AM, Today</span>
+                                                               
+                                         </div>
+                                                
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+             </div>
+        </div>
+ </div>
+</div> 
+
+
