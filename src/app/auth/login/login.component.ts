@@ -3,7 +3,6 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ClientService } from 'src/app/service/client.service';
 import { Client } from 'src/app/Classe/Client';
 import { Router } from '@angular/router';
-import { log } from 'util';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 

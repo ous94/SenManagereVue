@@ -24,7 +24,7 @@ export class NouvelleDemandeComponent implements OnInit {
   selectedCompetencevalues:Array<Competence>=[];
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
-  selectedEmployevalues=[];
+  selectedEmployevalues:Array<Employee>=[];
   favCompetenceErreur:boolean=true;
   favEmployeErreur:boolean=true;
   demandeForm= new FormGroup({
@@ -34,7 +34,7 @@ export class NouvelleDemandeComponent implements OnInit {
     competences :new FormControl(''),
   });
 
-  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private comptenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
+  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private competenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
        this.employeService.getAllEmployes().subscribe(
            (data)=>{this.listeEmployes=data;
                     console.log(this.listeEmployes);
@@ -43,7 +43,7 @@ export class NouvelleDemandeComponent implements OnInit {
                       this.tableauVisibiliteDetail[i]=false;
                     }}
        );
-       this.comptenceService.getAllCompetences().subscribe(
+       this.competenceService.getAllCompetences().subscribe(
           (data)=>{this.listeCompetences=data;}
        );
        for(let i:number=0;i<10;i++)
@@ -60,16 +60,20 @@ export class NouvelleDemandeComponent implements OnInit {
     });
   }
    //Employes Selectionnes
-   getselectedEmployesvalues(employe:Employee){
+   getselectedEmployesvalues(employe:Employee,position :number){
     
     let index:number=this.selectedEmployevalues.indexOf(employe);
      if(index==-1)
     {
-    this.selectedEmployevalues.push(employe);
+      this.selectedEmployevalues.push(employe);
+      let element =document.getElementById(""+position); 
+      element.style.backgroundColor="#40826D";
     }
    else
    {
      this.selectedEmployevalues.splice(index,index+1);
+     let element =document.getElementById(""+position); 
+     element.style.backgroundColor="#E0CDA9";
    }
    console.log(this.selectedEmployevalues);
    this.favEmployeErreur = this.selectedEmployevalues.length >0 ? false :true;
@@ -77,25 +81,58 @@ export class NouvelleDemandeComponent implements OnInit {
   //Competences selectionnees
   getselectedCompetencevalues(competence:Competence){
    
+    this.selectedEmployevalues=[];
    let index:number=this.selectedCompetencevalues.indexOf(competence);
    if(index==-1)
    {
     this.selectedCompetencevalues.push(competence);
+    this.competenceService.getListeEmployes(this.selectedCompetencevalues).subscribe(
+      (data)=>
+      {this.listeEmployes=data;
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+            this.tableauVisibiliteDetail[i]=false;
+         }
+       }  
+    );
+    this.favCompetenceErreur=false;
    }
    else
    {
-     this.selectedCompetencevalues.splice(index,index+1);
+      this.selectedCompetencevalues.splice(index,index+1);
+       if(this.selectedCompetencevalues.length>0)
+       {
+          console.log("taille superieur a 0");
+          this.competenceService.getListeEmployes(this.selectedCompetencevalues).subscribe(
+            (data)=>
+                  {
+                    this.listeEmployes=data;
+                    for(let i:number=0;i<this.listeEmployes.length;i++)
+                    {
+                       this.tableauVisibiliteDetail[i]=false;
+                    }
+                  }  
+           );
+           this.favCompetenceErreur=false;
+        }
+       else 
+       {
+          console.log("liste Vide");
+          this.employeService.getAllEmployes().subscribe(
+            (data)=>
+               {
+                  this.listeEmployes=data;
+                  console.log("liste Vide");
+                  for(let i:number=0;i<this.listeEmployes.length;i++)
+                  {
+                    this.tableauVisibiliteDetail[i]=false;
+                  }
+               }
+            );
+           this.favCompetenceErreur=true;
+       }
    }
-   this.employeService.getAllEmployes().subscribe(
-    (data)=>{this.listeEmployes=data;
-             console.log(this.listeEmployes);
-             for(let i:number=0;i<this.listeEmployes.length;i++)
-             {
-               this.tableauVisibiliteDetail[i]=false;
-             }}
-   );
-   this.favCompetenceErreur = this.selectedCompetencevalues.length >0 ? false :true;
-  
+   
   }
   //Chargement de la photo d'un Employe
   getPhotoEmploye(photo:String): String
@@ -116,17 +153,25 @@ export class NouvelleDemandeComponent implements OnInit {
   //
   validerDemande()
   {
-    this.demande=this.demandeForm.value;
-    this.demandeFinal.salairePropose=this.demande.salairePropose;
-    this.demandeFinal.services=this.demande.services;
-    this.demandeFinal.competences=this.selectedCompetencevalues;
-    this.demandeFinal.employees=this.selectedEmployevalues;
-    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
+    if(this.selectedEmployevalues.length==0)
+    {
+         console.log("Erreur aucun employe n'est associe a votre demande");
+         alert("Erreur aucun employe n'est associe a votre demande");
+    }
+    else
+    {
+       this.demande=this.demandeForm.value;
+       this.demandeFinal.salairePropose=this.demande.salairePropose;
+       this.demandeFinal.services=this.demande.services;
+       this.demandeFinal.competences=this.selectedCompetencevalues;
+       this.demandeFinal.employees=this.selectedEmployevalues;
+       this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
                                     this.client=data;
                                     this.demandeFinal.client=this.client;
                                      this.demandeService.addDemande(this.demandeFinal).subscribe(
                                            (data)=>{console.log("Enregistrement demande reussi");},
                                            (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
-                                     );});    
+                                     );});  
+   }   
  }
 }

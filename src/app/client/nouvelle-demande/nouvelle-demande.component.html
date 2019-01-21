@@ -28,14 +28,14 @@
     +++++++++++++++++++++DEBUT++++++++++++++++++-->
 <div class="container" id="listeEmployes">
   <div class="row">
-	<section class="content">
+	<section class="content ">
 	  <div class="table-container panel-body panel panel-default col-md-8">
 		<table class="table table-filter">
 		  <tbody>
-			<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+			<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;" id="{{position}}">
 			  <td>
 				<div class="ckbox">
-					<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+					<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe,position)">
 						<label for="inlineCkeckbox{{position}}"></label>
 				</div>
 			  </td>
@@ -91,6 +91,7 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+									<p *ngIf="employe.localite">Ethnie :{{employe.localite.nom}}</p>
 								</div>
 								<div class="col-sm-6">
 									<p>Disponibilite :</p>
