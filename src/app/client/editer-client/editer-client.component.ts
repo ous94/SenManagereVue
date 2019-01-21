@@ -254,7 +254,7 @@ submithandle()
 {
 
        this.client= this.clientForm.value;
-       console.log(this.client);
+      // console.log(this.client);
       //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
       this.clientFinal.adresse=this.client.adresse;
       this.clientFinal.email=this.client.email;
@@ -269,33 +269,46 @@ submithandle()
       this.clientFinal.password=this.client.password
       //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
       this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
-          (data)=>{this.clientFinal.localite=data},
-          (error) =>{console.log("Erreur sur la localite");}
-      );
-      //Recuperation du Type d'Identification 
-      this.typeIdentificationService.getTypeIdentificationByNom("CNI").subscribe(
-         (data) =>{this.clientFinal.typeIdentification=data;},
-         (error) =>{console.log("erreur sur le TypeIdentification");}
-       );
-      // Recupration du Pays
-      this.paysService.getPaysByNom(this.pay.value).subscribe(
-           (data)=>{this.clientFinal.pay=data;},
-           (error)=>{console.log(error);}
-       );
-      console.log(this.clientFinal);
-      //Sauvegarde du Client
-      let clientrt:Client;
-      this.clientService.updateClient(this.clientConnecte.idclient,this.clientFinal).subscribe(
-              (data) => 
-                {
-                  clientrt=data;
-                  console.log(data);
-                },
-              (error) =>{console.log(error)} );
-       console.log(this.clientFinal);
-       this.clientForm.reset();
-    
-}
+          (data)=>
+          {
+            this.clientFinal.localite=data;
+            this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
+              (data) =>
+              {
+                this.clientFinal.typeIdentification=data;
+                this.paysService.getPaysByNom(this.pay.value).subscribe(
+                  (data)=>
+                  {
+                     this.clientFinal.idclient=this.clientConnecte.idclient;
+                     this.clientFinal.pay=data;
+                     this.clientService.updateClient(this.clientFinal.idclient,this.clientFinal).subscribe(
+                       (data) => 
+                       {
+                          this.localStorage.setItem("client",data);
+                          this.clientForm.reset(); 
+                          alert("Pour la Validation des modifications vous allez etre deconnecter");
+                          this.router.navigate(['login']);
+                          
+                        },
+                        (error) =>
+                        {
+                          console.log(error)
+                          alert("Echec de la Modification Veillez réessayer ultérieurement");
+                        }  
+                      ); 
+                   },
+                   (error)=>
+                   {
+                     console.log(error);
+                   }
+                  );
+                 },
+                 (error) =>{console.log("erreur sur le TypeIdentification");}
+                );
+               },
+           (error) =>{console.log("Erreur sur la localite");}
+        );
+  }
   emailLogin()
   {
     console.log(this.email.value);

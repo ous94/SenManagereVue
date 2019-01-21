@@ -21,23 +21,15 @@ export class ProfilComponent implements OnInit {
 
   //
   editer :boolean=false;
-  clientConnecte:Client;
+  clientConnecte:Client= new Client();
   //
   
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService,private localStorage:LocalStorage) {
-    setTimeout(()=>{
+
     this.localStorage.getItem<Client>("client").subscribe(
-        (data:Client)=>{this.clientConnecte=data;}
-    );
-    },0
-    );
-    
+        (data:Client)=>{this.clientConnecte=data;});
    }
-
-   ngOnInit() {
-   
- }
-
+   ngOnInit() {}
   editerProfile($event)
   {
     this.editer=true;
