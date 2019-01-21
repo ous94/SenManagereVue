@@ -24,6 +24,11 @@ export class ClientService {
     return this.httpClient.get(this.baseUrl+'/clients'); 
   }
 
+  //Les  listes  client
+getAllClient(): Observable<any> {
+  return this.httpClient.get(this.baseUrl+"/clientall"); 
+}
+
 
   // suppression d'un employee
   deleteClientid(id: number): Observable<any> {

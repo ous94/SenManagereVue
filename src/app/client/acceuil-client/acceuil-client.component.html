@@ -59,9 +59,9 @@
           <h3>Inbox</h3>
           <div action="#" class="pull-right position">
              <div class="input-append">
-                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" >
-                <button class="btn sr-btn" type="button" (click)="touchRecherche()"><i class="fa fa-search"></i></button>
-                <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()">Deconnexion</button>
+                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
+                <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()"><span class="	glyphicon glyphicon-off"></span>  Deconnexion</button>
               </div>
             </div>
         </div>
@@ -79,12 +79,12 @@
 	              	<table class="table table-filter">
 		                <tbody>
 		                	<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
-			                  <td>
+			                  <!-- <td>
 			                  	<div class="ckbox">
 				                   	<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
 					                	<label for="inlineCkeckbox{{position}}"></label>
 			                  	</div>
-			                  </td>
+			                  </td> -->
 			                  <td>
 			                   	<a href="javascript:;" class="star">
 				                    <i class="glyphicon glyphicon-star"></i>

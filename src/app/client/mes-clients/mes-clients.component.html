@@ -1,82 +1,79 @@
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!------ Include the above in your HEAD tag ---------->
 
-<!-- Team -->
-<section id="team" class="pb-4">
-    <p>Detail Client<a  (click)="visibiliteDetail()" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a></p>
-    <div class="container">
-        <div class="row">
-            <!-- Team member -->
-            <div class="col-xs-8 col-sm-3 col-md-3"  *ngFor="let client of listeClient">
-<!--                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');" >-->
-                <div>
-                   <div class="mainflip" >
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">{{client.prenom}}</h4>
-                                    <p class="card-text">TelephoneMobile :{{client.telephoneMobile}}</p>
-                                </div>
-                                <div  *ngIf="showdetail" class="card">
-                                        <div class="card-body text-center mt-4">
-                                            <h4 class="card-title">{{client.adresse}}</h4>
-                                            <p class="card-text">{{client.sexe}}</p>
-                                            <p class="card-text">{{client.telephoneFixe}}</p>
-                                            <p class="card-text">{{client.email}}</p>
-                                            <ul class="list-inline">
-                                                    <li class="list-inline-item">
-                                                            <a (click)='deleteClient(client)' target="_blank">
-                                                                <i class="glyphicon glyphicon-trash"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                                <a (click)='editeClient(client)' target="_blank">
-                                                                        <i class="glyphicon glyphicon-pencil"></i>
-                                                                </a>
-                                                        </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+<!-- LIste Des employes a associer a la Demande 
+    +++++++++++++++++++++DEBUT++++++++++++++++++-->
+    <div class="container" id="listeEmployes">
+            <div class="row">
+              <section class="content">
+                <div class="table-container panel-body panel panel-default col-md-8">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr data-status="pagado" *ngFor="let client of listeClients ;let position=index;">
+                       <!--  <td>
+                          <div class="ckbox">
+                              <input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+                                  <label for="inlineCkeckbox{{position}}"></label>
+                          </div>
+                        </td> -->
+                        <td>
+                          <a href="javascript:;" class="star">
+                            <i class="glyphicon glyphicon-star"></i>
+                          </a>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="#" class="pull-left">
+                               <img src="../assets/SET/B1.jpg" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                  <div class="title">
+                                      <h4>{{client.prenom}}  {{client.nom}}</h4>
+                                      <div class="row">
+                                          <div class="col-sm-6" >
+                                              <h5 class="col-sm-8" *ngIf="client.observation">Information :</h5>
+                                              <p class="summary col-sm-8"><textarea *ngIf="client.observation" id="observation" rows="6" disabled>{{client.observation}}</textarea></p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <span class="pull-right pagado col-sm-12">Adresse :{{client.adresse}}</span>
+                                              <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{client.sexe}}</span>
+                                              <span class="pull-right pagado col-sm-12">Email :{{client.email}}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+                                      <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.pay">
+                                              <p *ngIf="client.pay.nom">Nationnalite :{{client.pay.nom}}</p>
+                                          </div>
+            
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.localite">
+                                              <p *ngIf="client.localite.nom">Localite :{{client.localite.nom}}</p>
+                                          </div>
+                                     </div>
+                                     <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.typeIdentification">                                              
+                                          <p *ngIf="client.typeIdentification">TypeIdentification : {{client.typeIdentification.nom}}</p>   
+                                          </div>
+                                      </div>
+            
+                                  </div>
                             </div>
-                        </div>
-                    </div>
+                  </div>
+                       </td>
+                       <td>
+                           <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+                           <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+                           <button (click)="deleteClient(client)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
+                           <button (click)="editeEmploye(client)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+
+
+                       </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+              </section>
             </div>
-            <!-- ./Team member -->
+          </div>
          
-           
-            <!-- ./Team member -->
-
-        </div>
-    </div>
-</section>
-<!-- Team -->
-
-<!-- demand edite -->
-<div class="tab-content">
-        <div clase="col-sm-8" *ngIf="showdetail">
-          <form (ngSubmit)="validerModification(f)" #f="ngForm">
-             <!-- for Name -->  
-             <div class="form-group , col-lg-5">
-                <label for="idClient"></label>
-                <input  name="idClient" class="form-control" id="idClient" [value]="clients.idClient" [(ngModel)]="clients.idClient" disabled="disabled">
-              </div><br/><br/><br/><br/>
-  
-                <!-- for age -->            
-            <div class="form-group , col-lg-5">
-                <label for="prenom">Prenom</label>
-                <input  name="prenom" class="form-control" id="prenom" [value]="clients.prenom" [(ngModel)]="clients.prenom">
-              </div>
-              <br/><br/><br/><br/>
-                    <!-- for Name -->            
-                    <div class="form-group, col-lg-5">
-                    <label for="nom">Nom</label>
-                    <input name="nom" class="form-control" id="nom" [value]="clients.nom" [(ngModel)]="clients.nom">
-               </div><br/><br/><br/><br/> 
-           <button type="submit" class="btn btn-primary" >Modifier</button> <br/><br/><br/>
-          </form>
-        </div>
-        </div>
-  

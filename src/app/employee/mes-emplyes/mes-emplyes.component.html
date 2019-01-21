@@ -69,12 +69,14 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
-<div class="well col-sm-8 text-left"> 
+
+
+<!-- <div class="well col-sm-8 text-left"> 
         <div class="container">
                           <div class="messaging">
                               <div class="inbox_msg">
                                   <div class="inbox_chat">
-                                        <div class="chat_ "  *ngFor="let employee of listeEmploye">
+                                        <div class="chat_ "  *ngFor="let employee of listeEmployes">
                                                 <div class="chat_people">
                                                   <div class="chat_img"> <img  src={{uploadPhotoEmployer(employee.photo)}} alt="sunil"></div>
                                                   <div class="chat_ib">
@@ -89,3 +91,118 @@
             </div>
      </div>
 </div>     
+ -->
+
+
+
+<!-- LIste Des employes a associer a la Demande 
+    +++++++++++++++++++++DEBUT++++++++++++++++++-->
+    <div class="container" id="listeEmployes">
+            <div class="row">
+              <section class="content">
+                <div class="table-container panel-body panel panel-default col-md-8">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+                       <!--  <td>
+                          <div class="ckbox">
+                              <input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+                                  <label for="inlineCkeckbox{{position}}"></label>
+                          </div>
+                        </td> -->
+                        <td>
+                          <a href="javascript:;" class="star">
+                            <i class="glyphicon glyphicon-star"></i>
+                          </a>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="#" class="pull-left">
+                               <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                  <div class="title">
+                                      <h4>{{employe.prenom}}  {{employe.nom}}</h4>
+                                      <div class="row">
+                                          <div class="col-sm-6" >
+                                              <h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+                                              <p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+                                              <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+                                              <span class="pull-right pagado col-sm-12">Date de Naissance :{{employe.dateNaissance}}</span>
+                                              <span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <p >Langues parlées :</p>
+                                              <ul>
+                                                   <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <p>Competences :</p>
+                                              <ul>
+                                                   <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <p>Disponibilite :</p>
+                                              <ul>
+                                                  <li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                            </div>
+                  </div>
+                       </td>
+                       <td>
+                           <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+                           <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+                           <button (click)="deleteEmploye(employe)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
+                           <button (click)="deleteEmploye(employe)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+
+
+                       </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+          <!--++++++++++++++++++++FIN++++++++++++++++++++++++++
+           LIste Des employes a associer a la Demande -->
+
+
+
+ <!--           <ul class="list-inline">
+                <li class="list-inline-item">
+                        <a (click)='deleteClient(client)' target="_blank">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                            <a (click)='editeClient(client)' target="_blank">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                    </li>
+        </ul> -->

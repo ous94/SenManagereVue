@@ -79,6 +79,8 @@ import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component'
 import { MessageClientComponent } from './client/message-client/message-client.component';
 import { ListeEmployesComponent } from './client/liste-employes/liste-employes.component';
 import { ProfilComponent } from './client/profil/profil.component';
+import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
+import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
 const appRoutes: Routes = [
 
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -182,7 +184,9 @@ const appRoutes: Routes = [
     EspaceAdminComponent,
     MessageClientComponent,
     ListeEmployesComponent,
-    ProfilComponent
+    ProfilComponent,
+    RechercheEmpAdmComponent,
+    RechercheCliAdmComponent
   ],
   entryComponents: [
     ConfirmComponent
