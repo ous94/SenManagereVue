@@ -10,6 +10,9 @@ import {ClientService} from '../service/client.service'
 import { MessagesService } from '../service/messages.service';
 import { Observable } from 'rxjs';
 import {MustMatch} from './ValidationPassword';
+import { TypeIdentification } from '../Classe/TypeIdentification';
+import { Pays } from '../Classe/Pays';
+import { Localite } from '../Classe/Localite';
 
 @Component({
   selector: 'app-client',
@@ -103,7 +106,7 @@ addAddressGroup(){
 
 //recuperation d'adresss
 get addresArray(){
-  return <FormArray>this.clientForm.get('adresse  ');
+  return <FormArray>this.clientForm.get('adresse');
 }
 //ajout nouveau adresss
 
@@ -246,21 +249,21 @@ submithandle()
       this.clientFinal.password=this.client.password
       //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
       this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
-          (data)=>
+          (data:Localite)=>
           {
             this.clientFinal.localite=data
-           //Recuperation du Type d'Identification 
+            console.log("//Recuperation du Type d'Identification ");
             this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
-             (data) =>
+             (data:TypeIdentification) =>
              {
                this.clientFinal.typeIdentification=data;
-               // Recupration du Pays
+               console.log("// Recupration du Pays");
               this.paysService.getPaysByNom(this.pay.value).subscribe(
-              (data)=>
+              (data:Pays)=>
               {
                 this.clientFinal.pay=data;
                 console.log(this.clientFinal);
-                //Sauvegarde du Client
+                console.log("//Sauvegarde du Client");
                 this.clientService.addClient(this.clientFinal).subscribe(
                 (data) => 
                 {
