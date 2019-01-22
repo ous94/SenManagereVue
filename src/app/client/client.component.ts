@@ -246,27 +246,47 @@ submithandle()
       this.clientFinal.password=this.client.password
       //Recuperation des valeurs des Champs qui sont de Objet un peut complexe
       this.localiteService.getLocaliteByNom(this.localite.value).subscribe(
-          (data)=>{this.clientFinal.localite=data},
-          (error) =>{console.log("Erreur sur la localite");}
-      );
-      //Recuperation du Type d'Identification 
-      this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
-         (data) =>{this.clientFinal.typeIdentification=data;},
-         (error) =>{console.log("erreur sur le TypeIdentification");}
-       );
-      // Recupration du Pays
-      this.paysService.getPaysByNom(this.pay.value).subscribe(
-           (data)=>{this.clientFinal.pay=data;},
-           (error)=>{console.log(error);}
-       );
-      console.log(this.clientFinal);
-      //Sauvegarde du Client
-      this.clientService.addClient(this.clientFinal).subscribe(
-              (data) => {console.log(data)}, 
-              (error) =>{console.log(error)} );
-  
-       console.log(this.clientFinal);
-       this.clientForm.reset();
+          (data)=>
+          {
+            this.clientFinal.localite=data
+           //Recuperation du Type d'Identification 
+            this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
+             (data) =>
+             {
+               this.clientFinal.typeIdentification=data;
+               // Recupration du Pays
+              this.paysService.getPaysByNom(this.pay.value).subscribe(
+              (data)=>
+              {
+                this.clientFinal.pay=data;
+                console.log(this.clientFinal);
+                //Sauvegarde du Client
+                this.clientService.addClient(this.clientFinal).subscribe(
+                (data) => 
+                {
+                  console.log(data)
+                }, 
+                (error) =>
+                {
+                  console.log(error);
+                } );
+              },
+              (error)=>
+              {
+                console.log(error);
+              });  
+            },
+            (error) =>
+            {
+              console.log("erreur sur le TypeIdentification");
+            });        
+          },
+          (error) =>
+          {
+            console.log("Erreur sur la localite");
+          });
+          console.log(this.clientFinal);
+          this.clientForm.reset();
     
 }
   emailLogin()
