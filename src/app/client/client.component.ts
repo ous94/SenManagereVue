@@ -75,7 +75,7 @@ export class ClientComponent implements OnInit {
     this.clientForm= this.fb.group({
       prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50), Validators.required])],
       nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30), Validators.required])],
-      adresse:[null,Validators.compose([,Validators.minLength(5),Validators.maxLength(20), Validators.required])],
+      adresse:[null,Validators.compose([,Validators.minLength(2),Validators.maxLength(20), Validators.required])],
       telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
       telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
       email:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
@@ -234,6 +234,9 @@ submithandle()
 {
 
        this.client= this.clientForm.value;
+       let typeid:string=this.typeidentification.value;
+       let paysSelect:string=this.pay.value;
+       console.log("typeId :"+typeid+"  Pays :"+paysSelect);
        console.log(this.client);
       //Recuperation des  valeurs des champs Simple a partir des valeurs renseigner sur le formulaire
       this.clientFinal.adresse=this.client.adresse;
@@ -252,13 +255,13 @@ submithandle()
           (data:Localite)=>
           {
             this.clientFinal.localite=data
-            console.log("//Recuperation du Type d'Identification ");
-            this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
+            console.log("//Recuperation du Type d'Identification "+typeid);
+            this.typeIdentificationService.getTypeIdentificationByNom(typeid).subscribe(
              (data:TypeIdentification) =>
              {
                this.clientFinal.typeIdentification=data;
-               console.log("// Recupration du Pays");
-              this.paysService.getPaysByNom(this.pay.value).subscribe(
+               console.log("// Recupration du Pays"+paysSelect);
+              this.paysService.getPaysByNom(paysSelect).subscribe(
               (data:Pays)=>
               {
                 this.clientFinal.pay=data;
