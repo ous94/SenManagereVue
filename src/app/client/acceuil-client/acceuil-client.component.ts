@@ -23,6 +23,7 @@ export class AcceuilClientComponent implements OnInit {
   vMessages:boolean=false;
   vDefaut:boolean=true;
   vrecherche:boolean=false;
+  vDemandesClient :boolean=false;
   recherche :string='';
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
@@ -34,7 +35,7 @@ export class AcceuilClientComponent implements OnInit {
                              if(data==null)
                               { 
                                 this.clientConnecte=data;
-                                this.router.navigate(['test']);
+                                this.router.navigate(['']);
                               }
                               else
                               {
@@ -50,7 +51,7 @@ export class AcceuilClientComponent implements OnInit {
     {
          if(data==null)
           { 
-            this.router.navigate(['test']);
+            this.router.navigate(['']);
           }
     });
   }
@@ -63,8 +64,8 @@ export class AcceuilClientComponent implements OnInit {
       this.vMessages=false;
       this.vProfile=false;
       this.vrecherche=false;
+      this.vDemandesClient=false;
   }
-
   visibiliteProfile($event)
   {
     this.vProfile=!this.vProfile
@@ -73,6 +74,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vDemandes=false;
     this.vMessages=false;
     this.vrecherche=false;
+    this.vDemandesClient=false;
   }
   visibiliteMessages($event)
   {
@@ -82,6 +84,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vEmploye=false;
     this.vDemandes=false;
     this.vrecherche=false;
+    this.vDemandesClient=false;
   }
   visibiliteDemandes($event)
   {
@@ -91,12 +94,33 @@ export class AcceuilClientComponent implements OnInit {
     this.vProfile=false;
     this.vEmploye=false;
     this.vrecherche=false;
+    this.vDemandesClient=false;
+  }
+  faireRecherche($event)
+  {
+    this.vrecherche=!this.vrecherche;
+    this.vDefaut=!this.vrecherche;
+    this.vDemandes=false;
+    this.vMessages=false;
+    this.vProfile=false;
+    this.vEmploye=false;
+    this.vDemandesClient=false;
+  }
+  visibiliteDemandesClient($event)
+  {
+    this.vDemandesClient=!this.vDemandesClient;
+    this.vDefaut=!this.vDemandesClient;
+    this.vrecherche=false;
+    this.vDemandes=false;
+    this.vMessages=false;
+    this.vProfile=false;
+    this.vEmploye=false;
   }
   deconnexion($event)
   {
        this.localStorage.removeItem("client").subscribe(()=>{});
        this.localStorage.clear().subscribe(()=>{});
-       this.router.navigate(['test']);
+       this.router.navigate(['']);
   }
   getPhotoEmploye(photo:String): String
   {
@@ -127,13 +151,5 @@ export class AcceuilClientComponent implements OnInit {
   );
     console.log(this.recherche); 
   }
-  faireRecherche($event)
-  {
-    this.vrecherche=true;
-    this.vDemandes=false;
-    this.vDefaut=false;
-    this.vMessages=false;
-    this.vProfile=false;
-    this.vEmploye=false;
-  }
+  
 }

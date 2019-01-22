@@ -26,13 +26,13 @@
             <a (click)="visibiliteDemandes()"><i class="fa fa-inbox"></i>Nouvelle Demandes</a>
           </li>
           <li>
+            <a (click)="visibiliteDemandesClient()"><i class=" fa fa-trash-o"></i> Mes demandes</a>
+          </li>
+          <li>
              <a (click)="visibiliteEmploye()"><i class="fa fa-external-link"></i>Employes</a>
           </li>
           <li>
             <a (click)="visibiliteMessages()"><i class=" fa fa-envelope-o "></i>Messages <span class="label label-info pull-right">30</span></a>
-          </li>
-          <li>
-            <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
           </li>
         </ul>
         <div class="inbox-body text-center">
@@ -179,6 +179,10 @@
         <div class="inbox-body" *ngIf="vMessages" >
             <app-message-client></app-message-client>
         </div>
+        <!--Liste des Demande du Client -->
+        <div class="inbox-body" *ngIf="vDemandesClient" >
+          <app-liste-demande></app-liste-demande>
+      </div>
       </aside>
     </div>
  </div>
