@@ -2,51 +2,71 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12">
-          <div class="col-md-4">
+          <div class="col-md-6">
              <p>Prénom :{{clientConnecte.prenom}}</p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
              <p>Nom :{{clientConnecte.nom}}</p>
           </div>
-          <div class="col-md-4">
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6">
              <p>Sexe :{{clientConnecte.sexe}}</p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <p>Adresse :{{clientConnecte.adresse}}</p>
           </div>
-          <div class="col-md-4">
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6">
              <p>Telephone Mobile :{{clientConnecte.telephoneMobile}}</p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
               <p>Telephone Fixe :{{clientConnecte.telephoneFixe}}</p>
            </div>
-           <div class="col-md-4">
+         </div>
+         <div class="col-md-12">
+           <div class="col-md-6">
               <p>Email :{{clientConnecte.email}}</p>
            </div> 
-           <div class="col-md-4">
+           <div class="col-md-6">
               <p>Login :{{clientConnecte.login}}</p>
            </div>
-           <div class="col-md-4">
+         </div>
+         <div class="col-md-12">
+           <div class="col-md-6">
               <p>Numero d'Identification :{{clientConnecte.identification}}</p>
            </div>
-           <div class="col-md-4">
+           <div class="col-md-6">
               <p>Type d'Identification :{{clientConnecte.typeIdentification.nom}}</p>
            </div>
-           <div class="col-md-4">
+         </div>
+         <div class="col-md-12">
+           <div class="col-md-6">
               <p>Pays :{{clientConnecte.pay.nom}}</p>
            </div>
-           <div class="col-md-4">
+           <div class="col-md-6">
               <p>Localite :{{clientConnecte.localite.nom}}</p>
            </div>
-           <div class="col-md-4">
-              <p>Observation</p>
-              <div class="col-md-4">
-                  <textarea>{{clientConnecte.observation}}</textarea>
-               </div>
-           </div>   
+         </div>
+         <div class="col-md-12">
+           <div class="col-md-8 col-xs-6">
+              <p>Observation :</p>
+             <textarea rows="7"  class="msg_cotainer form-control">{{clientConnecte.observation}}</textarea>
+           </div>
+         </div>
+         <div class="col-md-12">
+            <div class="col-md-6" >
+            </div>
+            <div class="col-md-6">
+                 <div class="col-md-3">
+                 </div>
+                 <div class="col-md-">
+                     <button (click)="editerProfile()">Editer</button> 
+                 </div>
+            </div>     
         </div>
     </div>
-    <button (click)="editerProfile()">Editer</button>
   </div>
 </div>
 <app-editer-client *ngIf="editer"></app-editer-client>
