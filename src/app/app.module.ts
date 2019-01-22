@@ -86,7 +86,8 @@ import { RechMessageAdmComponent } from './Adm/rech-message-adm/rech-message-adm
 import { EditerClientComponent } from './client/editer-client/editer-client.component';
 const appRoutes: Routes = [
 
-  {path: '', pathMatch: 'full', component: HomeComponent},
+  //{path: '', pathMatch: 'full', component: HomeComponent},
+    {path: '', pathMatch: 'full', component: TestComponent},
    {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
@@ -102,7 +103,7 @@ const appRoutes: Routes = [
     {path:'nav',component:NavbarComponent},
     {path:'client',component:ClientComponent},
     {path:'listeClient',component:ListeClientComponent},
-    {path:'test',component:TestComponent},
+    {path:'',component:TestComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
     {path:'contacter',component:ConctactComponent},
     //new version

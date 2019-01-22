@@ -15,6 +15,7 @@ import { RechercheService } from 'src/app/service/recherche.service';
 })
 export class AcceuilClientComponent implements OnInit {
   
+  clientConnecte:Client= new Client();
   vpage :boolean =false;
   vEmploye:boolean=false;
   vDemandes:boolean=false;
@@ -32,10 +33,12 @@ export class AcceuilClientComponent implements OnInit {
                         {
                              if(data==null)
                               { 
+                                this.clientConnecte=data;
                                 this.router.navigate(['test']);
                               }
                               else
                               {
+                                this.clientConnecte=data;
                                 this.vpage=true;
                               }
                         });
