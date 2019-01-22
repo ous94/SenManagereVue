@@ -250,7 +250,7 @@ submithandle()
           (error) =>{console.log("Erreur sur la localite");}
       );
       //Recuperation du Type d'Identification 
-      this.typeIdentificationService.getTypeIdentificationByNom("CNI").subscribe(
+      this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
          (data) =>{this.clientFinal.typeIdentification=data;},
          (error) =>{console.log("erreur sur le TypeIdentification");}
        );

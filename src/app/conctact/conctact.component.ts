@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl,Validators, FormArray,} from '@angu
 import {MessagesService} from '../service/messages.service'
 import { Messages } from '../Classe/Messages';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-conctact',
@@ -20,7 +21,7 @@ export class ConctactComponent implements OnInit {
     message :new FormControl(''),
     nomClient :new FormControl('')
   });
-  constructor(private ToastrService: ToastrService,private httpClient :HttpClient,private fb:FormBuilder ,private messagesService :MessagesService ) { }
+  constructor(private ToastrService: ToastrService,private httpClient :HttpClient,private fb:FormBuilder ,private messagesService :MessagesService ,private router:Router) { }
 
   ngOnInit() {
 
@@ -37,7 +38,9 @@ export class ConctactComponent implements OnInit {
      
      this.messagesService.sendMessages(this.messages).subscribe(
         (data)=>{console.log("Reponse sans erreur :"+data);
-      this.showSuccess();},
+                alert(" Votre message a été  envoyé");
+                this.router.navigate(['']);
+         },
         (error)=>{console.log("Reponse avec Erreur :"+error); this.showError();}
      );
     console.log(this.messages);
