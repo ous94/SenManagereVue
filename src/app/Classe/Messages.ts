@@ -5,4 +5,5 @@ export class Messages
     message:String;
     nomClient :String;
     telClient :String;
+    date:Date;
 }

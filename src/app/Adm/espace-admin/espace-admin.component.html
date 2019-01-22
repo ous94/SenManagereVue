@@ -33,8 +33,8 @@
           <div class="row content">
             <div class="col-sm-2 sidenav">
               <ul class="sid" >
-                  <li><a (click)="mesmessage()"><span class="glyphicon glyphicon-list"></span>Messageries</a></li><br>
-                  <li><a (click)="rechermessage()"><span class="glyphicon glyphicon-search"></span> Messageries</a></li><br>
+           <!--        <li><a (click)="mesmessage()"><span class="glyphicon glyphicon-list"></span>Messageries</a></li><br>
+                  <li><a (click)="rechermessage()"><span class="glyphicon glyphicon-search"></span> Messageries</a></li><br> -->
                
                     <!--  <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
                      <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button> -->
@@ -48,7 +48,7 @@
                   <div class="inbox_msg">
                       <div class="inbox_chat">
                             <div class="chat_ ">
-                              <app-messages-adm *ngIf="listeMessagerie"></app-messages-adm>
+                              <app-messages-adm *ngIf="afficheMessagerie"></app-messages-adm>
                               <app-rech-message-adm *ngIf="rechemessageries"></app-rech-message-adm>
 
                                </div>
@@ -67,6 +67,50 @@
         </div>
       </div>
     </div>
+
+    <!-- client -->
+
+    <!-- Employés -->
+    <div class="container-fluid" *ngIf="afficheClient">
+        <div class="row content">
+          <div class="col-sm-2 sidenav">
+            <ul class="sid" >
+                <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
+                <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
+  
+              <li><a (click)="rechercheClient()" ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br> 
+             <li><a (click)="statistiqueClient()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+
+            </ul>
+          </div>
+    <!-- centreEmplyer -->
+    <div class="well col-sm-8 text-left" *ngIf="afficheClient"> 
+        <div class="container">
+            <div class="messaging">
+                <div class="inbox_msg">
+                    <div class="inbox_chat">
+                          <div class="chat_ ">
+                              <app-mes-clients *ngIf="listeClients"></app-mes-clients>
+                              <app-inscription *ngIf="demandeClients"></app-inscription>
+                              <app-recherche-cli-adm *ngIf="rechercheClients"></app-recherche-cli-adm>
+
+                             </div>
+                       </div>
+                 </div>
+          </div>
+    </div>   
+</div>  
+      <div class="col-sm-2 sidenav" *ngIf="afficheClient">
+        <!-- <div class="well">
+          --  --
+        </div>
+        <div class="well">
+          --  --
+        </div> -->
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -127,53 +171,8 @@
            </div>
       </div>   
   </div>  
-<!--         <div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
- -->          <!-- <div class="well">
-            --  --
-          </div>
-          <div class="well">
-            --  --
-          </div> -->
-        <!-- </div>
-      </div>
-    </div> -->
-
-
-     <!-- Client -->
-  <div class="container-fluid" *ngIf="afficheClient">
-      <div class="row content">
-        <div class="col-sm-2 sidenav">
-          <ul class="sid" >
-              <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
-              <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
-
-            <li><a (click)="rechercheClient()" ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br> 
-           <li><a (click)="statistiqueClient()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
-           
-
-          </ul>
-        </div>
-        <!-- centreEmplyer -->
-            <div class="well col-sm-8 text-left" *ngIf="afficheClient"> 
-                             <div class="container">
-                                  <div class="messaging">
-                                      <div class="inbox_msg">
-                                          <div class="inbox_chat">
-                                                <div class="chat_ ">
-                                                    <app-mes-clients *ngIf="listeClients"></app-mes-clients>
-                                                    <app-inscription *ngIf="demandeClients"></app-inscription>
-                                                    <app-recherche-cli-adm *ngIf="rechercheClients"></app-recherche-cli-adm>
-  
-                                </div>
-                         </div>
-                    </div>
-             </div>
-        </div>   
-    </div>  
-
+<div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
     
-   
-
-
-       <!-- Clients -->
-  
+    </div>
+  </div>
+</div>
