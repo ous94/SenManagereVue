@@ -50,7 +50,19 @@ getAllClient(): Observable<any> {
   updateClient(id: number, client: Client): Observable<Client> {
     return this.httpClient.put<Client>(`${this.baseUrl}/clients/edite/${id}`,client);
   }
- 
+ // recuperation Email
+ getEmailClient(email:String): Observable<boolean>{
+  return this.httpClient.get<boolean>(`${this.baseUrl}/client/email/${email}`);
+
+
+ }
+ // recuperation Email
+ getTelephoneClient(telephone:String): Observable<boolean>{
+  return this.httpClient.get<boolean>(`${this.baseUrl}/client/telephoneMobile/${telephone}`);
+
+
+ }
+
 
 
 }

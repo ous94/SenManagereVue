@@ -17,7 +17,7 @@
             <li ><a (click)="visibiliteMessage()"><span class="glyphicon glyphicon-comment"></span> Messagerie</a></li>
             <li><a  (click)="visibiliteEmployes()"><span class="glyphicon glyphicon-user"></span> Employes</a></li>
             <li><a (click)="visibiliteClients()"><span class="glyphicon glyphicon-briefcase"></span> Client</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Configuration</a></li>
+            <li><a (click)="visibiliteReferenciel()"><span class="glyphicon glyphicon-cog"></span> Referenciel</a></li>
 <!--             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
  -->        </ul>
       </div>
@@ -57,7 +57,7 @@
             </div>
       </div>   
 </div>  
-        <div class="col-sm-2 sidenav" *ngIf="afficheMessagerie">
+        <div class="col-sm sidenav" *ngIf="afficheMessagerie">
           <!-- <div class="well">
             --  --
           </div>
@@ -75,6 +75,7 @@
         <div class="row content">
           <div class="col-sm-2 sidenav">
             <ul class="sid" >
+                <li><a (click)="newClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
                 <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
                 <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
   
@@ -110,7 +111,55 @@
       </div>
     </div>
   </div>
+  <!-- fin client -->
+  <!-- afficheConfiguration -->
+  <div class="container-fluid" *ngIf="afficheConfiguration">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          <ul class="sid" >
+              <li><a (click)="referencePays()" >Pays</a></li><br>
+              <li><a (click)="referenceEthnies()">Ethnies</a></li><br>
+              <li><a (click)="referenceLangues()" >Langues</a></li><br>
+              <li><a (click)="referenceLoaclites()"> Localités</a></li><br>
+              <li><a (click)="referenceCompetences()" > Competences</a></li><br> 
+              <li><a (click)="referenceNiveauEtudes()"> NiveauEtudes</a></li><br> 
+              <li><a (click)="referenceTypes()" >TypeIdentifications</a></li><br> 
 
+
+          </ul>
+        </div>
+  <!-- centreEmplyer -->
+  <div class="well col-sm-8 text-left" *ngIf="afficheConfiguration"> 
+      <div class="container">
+          <div class="messaging">
+              <div class="inbox_msg">
+                  <div class="inbox_chat">
+                        <div class="chat_ ">
+                            <app-ref-competence *ngIf="refComp"></app-ref-competence>
+                            <app-reflocalite *ngIf="refloc"></app-reflocalite>
+                            <app-ref-lang *ngIf="refLang"W></app-ref-lang>
+                            <app-ref-ethnie *ngIf="refethnies"></app-ref-ethnie>
+                            <app-ref-type-iden *ngIf="reftype"></app-ref-type-iden>
+                            <app-ref-niveau-etude *ngIf="refNiveauEtudes"></app-ref-niveau-etude>
+                            <app-ref-pays *ngIf="refpays"></app-ref-pays>
+
+                           </div>
+                     </div>
+               </div>
+        </div>
+  </div>   
+</div>  
+    <div class="col-sm-2 sidenav" *ngIf="afficheConfiguration">
+      <!-- <div class="well">
+        --  --
+      </div>
+      <div class="well">
+        --  --
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- afficheConfiguration -->
 
 
 
