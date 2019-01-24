@@ -1,4 +1,4 @@
-<form [formGroup]="demandeForm" (ngSubmit)="validerDemande()">
+<form [formGroup]="demandeForm">
 <!--Formulaire Pour Donner le Salaire Propose et les Services
 	 ++++++++++++++++DEBUT++++++++++++++++++++++++++++++-->
 		<div class="row" style="background-color:rgb(211, 209, 210);">
@@ -113,9 +113,21 @@
 		</table>
 	  </div>
 	</section>
-  </div>
+	<div class="col-md-12">
+		<div class="col-md-8">
+			<div class="col-md-6" >
+				<button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+			</div>
+			<div class="col-md-6" >
+					<button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+			</div>
+		</div >
+		<div class="col-md-4">
+		</div> 
+	</div>
+ </div>
 </div>
-<button  class="btn btn-primary" type="submit" >Valider<span class=" glyphicon glyphicon-ok"></span></button>
+<button  class="btn btn-primary" type="submit" (click)="validerDemande()" >Valider<span class=" glyphicon glyphicon-ok"></span></button>
 </form>
 <!--++++++++++++++++++++FIN++++++++++++++++++++++++++
  LIste Des employes a associer a la Demande -->

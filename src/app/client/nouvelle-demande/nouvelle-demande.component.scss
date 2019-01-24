@@ -143,3 +143,18 @@
       {
          background-color: #cccecc;
       }
+
+      //Button Direction
+      .direction
+      {
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #ffff;
+        font-weight: 600;
+        width: 70%;
+        cursor: pointer;
+      }

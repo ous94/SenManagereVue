@@ -11,17 +11,25 @@ import { Employee } from 'src/app/Classe/Employee';
 export class ListeEmployesComponent implements OnInit {
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
+  offset:number=0;
+  vsuivant:boolean=false;
+  vprecedent:boolean=false;
 
   constructor(private employeService:EmployeeService ,private uploadFileService :UploadFileService) { 
 
-    this.employeService.getAllEmployes().subscribe(
-      (data)=>{this.listeEmployes=data;
-               console.log(this.listeEmployes);
-               for(let i:number=0;i<this.listeEmployes.length;i++)
-               {
+    this.employeService.getAllEmployesPagination(this.offset).subscribe(
+      (data)=>{
+        this.listeEmployes=data;
+        if(this.listeEmployes.length>=2)
+        {
+             this.vsuivant=true;
+        }
+        console.log(this.listeEmployes);
+        for(let i:number=0;i<this.listeEmployes.length;i++)
+        {
                  this.tableauVisibiliteDetail[i]=false;
-               }}
-  );
+        }
+    });
   }
 
 
@@ -43,5 +51,52 @@ export class ListeEmployesComponent implements OnInit {
     console.log("Salut vous voulez reduire");
     this.tableauVisibiliteDetail[position]=false;
   }
-
+  suivant($event)
+  {
+    if(this.listeEmployes.length>=2)
+    {
+      this.offset++;
+      this.vsuivant=true;
+      this.vprecedent=true;
+      this.employeService.getAllEmployesPagination(this.offset).subscribe(
+        (data)=>{
+          this.listeEmployes=data;
+          if(this.listeEmployes.length<=0)
+          {
+            this.vsuivant=false;
+          }
+          console.log(this.listeEmployes);
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+             this.tableauVisibiliteDetail[i]=false;
+          }
+        } );
+    }
+    else
+    {
+      this.vsuivant=false;
+      this.vprecedent=true;
+    }
+  }
+  precedent($event)
+  {
+    if(this.offset>=0)
+    {
+      this.offset--;
+      this.vsuivant=true;
+      this.employeService.getAllEmployesPagination(this.offset).subscribe(
+        (data)=>{
+          this.listeEmployes=data;
+          if(this.offset==0)
+          {
+            this.vprecedent=false;
+          }
+          console.log(this.listeEmployes);
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+             this.tableauVisibiliteDetail[i]=false;
+          }
+        });
+    }
+  }
 }

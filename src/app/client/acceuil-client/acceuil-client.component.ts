@@ -7,6 +7,7 @@ import { RechercheCompetenceComponent } from 'src/app/employee/recherche-compete
 import { UploadFileService } from 'src/app/upload-file.service';
 import { Employee } from 'src/app/Classe/Employee';
 import { RechercheService } from 'src/app/service/recherche.service';
+import { RechercheTous } from 'src/app/Classe/RechercheTous';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -28,21 +29,27 @@ export class AcceuilClientComponent implements OnInit {
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
 
+  //
+  offset:number=0;
+  vsuivant:boolean=false;
+  vprecedent:boolean=false;
+  //
+
   constructor(private localStorage:LocalStorage,private router :Router,private uploadFileService :UploadFileService ,private rechercheService :RechercheService) { 
 
-    this.localStorage.getItem<Client>("client").subscribe((data:Client)=>
-                        {
-                             if(data==null)
-                              { 
-                                this.clientConnecte=data;
-                                this.router.navigate(['']);
-                              }
-                              else
-                              {
-                                this.clientConnecte=data;
-                                this.vpage=true;
-                              }
-                        });
+    this.localStorage.getItem<Client>("client").subscribe(
+      (data:Client)=>{
+        if(data==null)
+        { 
+           this.clientConnecte=data;
+           this.router.navigate(['']);
+        }
+        else
+        {
+          this.clientConnecte=data;
+          this.vpage=true;
+        }
+      });
   }
 
   ngOnInit() {
@@ -139,17 +146,89 @@ export class AcceuilClientComponent implements OnInit {
   }
   touchRecherche($event)
   {
-
-    this.vrecherche=true;
-    this.rechercheService.rechercheTous(this.recherche).subscribe(
-      (data)=>{this.listeEmployes=data;
-               console.log(this.listeEmployes);
-               for(let i:number=0;i<this.listeEmployes.length;i++)
-               {
-                 this.tableauVisibiliteDetail[i]=false;
-               }}
-  );
-    console.log(this.recherche); 
+     this.vrecherche=true;
+     let rechercheEmploye:RechercheTous=new RechercheTous();
+     rechercheEmploye.offset=this.offset;
+     rechercheEmploye.recherche=this.recherche;
+     console.log(rechercheEmploye);
+     this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
+      (data:Employee[])=>{
+        this.listeEmployes=data;
+        console.log(this.listeEmployes);
+        if(this.listeEmployes.length>0)
+        {
+        this.vsuivant=true;
+        }
+        console.log(this.listeEmployes);
+        for(let i:number=0;i<this.listeEmployes.length;i++)
+        {
+          this.tableauVisibiliteDetail[i]=false;
+        }
+      });
   }
-  
+  suivant($event)
+  {
+    
+    if(this.listeEmployes.length>0)
+    {
+      console.log("Suivant Suivant"+this.offset);
+      this.offset++;
+      let rechercheEmploye:RechercheTous=new RechercheTous();
+      rechercheEmploye.offset=this.offset;
+      rechercheEmploye.recherche=this.recherche;
+      this.vsuivant=true;
+      this.vprecedent=true;
+      this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
+        (data)=>{
+          this.listeEmployes=data;
+          if(this.listeEmployes.length<=0)
+          {
+            this.vsuivant=false;
+          }
+          console.log(this.listeEmployes);
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+             this.tableauVisibiliteDetail[i]=false;
+          }
+        });
+    }
+    else
+    {
+      this.vsuivant=false;
+      this.vprecedent=true;
+    }
+  }
+  precedent($event)
+  {
+    console.log("Precedent");
+    if(this.offset>0)
+    {
+      console.log("Precedent"+this.offset);
+      this.offset--;
+      if(this.offset>=0)
+      {
+         let rechercheEmploye:RechercheTous=new RechercheTous();
+         rechercheEmploye.offset=this.offset;
+         rechercheEmploye.recherche=this.recherche;
+         this.vsuivant=true;
+         this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
+          (data)=>{
+            this.listeEmployes=data;
+            if(this.offset==0)
+            {
+               this.vprecedent=false;
+            }
+            console.log(this.listeEmployes);
+            for(let i:number=0;i<this.listeEmployes.length;i++)
+            {
+               this.tableauVisibiliteDetail[i]=false;
+            }
+         });
+       }
+      }
+      else
+      {
+        this.vprecedent=false;
+      }
+  }
 }

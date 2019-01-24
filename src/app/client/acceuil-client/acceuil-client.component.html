@@ -158,6 +158,18 @@
 	               	</table>
 	              </div>
               </section>
+              <div class="col-md-12">
+                <div class="col-md-8">
+                  <div class="col-md-6" >
+                    <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+                  </div>
+                  <div class="col-md-6" >
+                    <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+                  </div>
+                </div >
+                <div class="col-md-4">
+                </div> 
+              </div>
             </div>
           </div> 
         </div>

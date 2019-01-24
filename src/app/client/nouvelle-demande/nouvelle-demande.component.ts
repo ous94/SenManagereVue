@@ -9,6 +9,7 @@ import { Demande } from 'src/app/Classe/Demande';
 import { UploadFileService } from 'src/app/upload-file.service';
 import { Client } from 'src/app/Classe/Client';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nouvelle-demande',
@@ -33,16 +34,25 @@ export class NouvelleDemandeComponent implements OnInit {
     employes :new FormControl(''),
     competences :new FormControl(''),
   });
+  //
+   offset:number=0;
+   vsuivant:boolean=false;
+   vprecedent:boolean=false;
 
   constructor(private fb:FormBuilder ,private employeService:EmployeeService,private competenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
-       this.employeService.getAllEmployes().subscribe(
-           (data)=>{this.listeEmployes=data;
-                    console.log(this.listeEmployes);
-                    for(let i:number=0;i<this.listeEmployes.length;i++)
-                    {
-                      this.tableauVisibiliteDetail[i]=false;
-                    }}
-       );
+       this.employeService.getAllEmployesPagination(this.offset).subscribe(
+         (data)=>{
+            this.listeEmployes=data;
+            if(this.listeEmployes.length>=2)
+            {
+               this.vsuivant=true;
+            }
+            console.log(this.listeEmployes);
+            for(let i:number=0;i<this.listeEmployes.length;i++)
+            {
+               this.tableauVisibiliteDetail[i]=false;
+            }
+       });
        this.competenceService.getAllCompetences().subscribe(
           (data)=>{this.listeCompetences=data;}
        );
@@ -165,13 +175,63 @@ export class NouvelleDemandeComponent implements OnInit {
        this.demandeFinal.services=this.demande.services;
        this.demandeFinal.competences=this.selectedCompetencevalues;
        this.demandeFinal.employees=this.selectedEmployevalues;
-       this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
-                                    this.client=data;
-                                    this.demandeFinal.client=this.client;
-                                     this.demandeService.addDemande(this.demandeFinal).subscribe(
-                                           (data)=>{console.log("Enregistrement demande reussi");},
-                                           (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
-                                     );});  
+       this.localStorage.getItem<Client>("client").subscribe(
+         (data:Client)=>{
+            this.client=data;
+            this.demandeFinal.client=this.client;
+            this.demandeService.addDemande(this.demandeFinal).subscribe(
+              (data)=>{console.log("Enregistrement demande reussi");},
+              (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");
+            });
+          });  
    }   
- }
+  }
+  suivant($event)
+  {
+    if(this.listeEmployes.length>=2)
+    {
+      this.offset++;
+      this.vsuivant=true;
+      this.vprecedent=true;
+      this.employeService.getAllEmployesPagination(this.offset).subscribe(
+        (data)=>{
+          this.listeEmployes=data;
+          if(this.listeEmployes.length<=0)
+          {
+            this.vsuivant=false;
+          }
+          console.log(this.listeEmployes);
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+             this.tableauVisibiliteDetail[i]=false;
+          }
+        } );
+    }
+    else
+    {
+      this.vsuivant=false;
+      this.vprecedent=true;
+    }
+  }
+  precedent($event)
+  {
+    if(this.offset>=0)
+    {
+      this.offset--;
+      this.vsuivant=true;
+      this.employeService.getAllEmployesPagination(this.offset).subscribe(
+        (data)=>{
+          this.listeEmployes=data;
+          if(this.offset==0)
+          {
+            this.vprecedent=false;
+          }
+          console.log(this.listeEmployes);
+          for(let i:number=0;i<this.listeEmployes.length;i++)
+          {
+             this.tableauVisibiliteDetail[i]=false;
+          }
+        });
+    }
+  }
 }
