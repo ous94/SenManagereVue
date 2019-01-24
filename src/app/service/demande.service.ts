@@ -54,7 +54,6 @@ demande : Demande = new Demande();
   getAllDemande(): Observable<any> {
     return this.httpClient.get(this.baseUrl+"/demandes/"); 
 }
-
 setteDemande(demande:Demande)
 {
   return this.demande=demande;
@@ -77,5 +76,9 @@ updaternew(demande)
 //Les  listes  client
 getAllClient(): Observable<any> {
   return this.httpClient.get(this.baseUrl+"/clientall/"); 
+}
+getDemandeClient(idClient:number):Observable<any>
+{
+    return this.httpClient.get(this.baseUrl+"/demande/client/"+idClient);
 }
 }

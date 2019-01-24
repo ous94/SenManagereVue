@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Competence } from '../Classe/Competence';
 import { Employee } from '../Classe/Employee';
+import { RerchercheCompetence } from '../Classe/RechercheCompetence';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,8 @@ export class CompetenceService {
   }
   getListeEmployes (listeCompetence: Competence[]): Observable<Employee[]> {
     return this.http.post<Employee[]>(this.baseUrl+ '/competence/description/employes', listeCompetence);
+  }
+  getListeEmployesPagination (rechercheCompetence:RerchercheCompetence): Observable<Employee[]> {
+    return this.http.post<Employee[]>(this.baseUrl+ '/competence/description/employes/pagination', rechercheCompetence);
   }
 }
