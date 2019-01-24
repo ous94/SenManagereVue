@@ -85,6 +85,13 @@ import { MessagesAdmComponent } from './Adm/messages-adm/messages-adm.component'
 import { RechMessageAdmComponent } from './Adm/rech-message-adm/rech-message-adm.component';
 import { EditerClientComponent } from './client/editer-client/editer-client.component';
 import { ListeDemandeComponent } from './client/liste-demande/liste-demande.component';
+import { RefPaysComponent } from './Adm/ref-pays/ref-pays.component';
+import { ReflocaliteComponent } from './Adm/reflocalite/reflocalite.component';
+import { RefEthnieComponent } from './Adm/ref-ethnie/ref-ethnie.component';
+import { RefTypeIdenComponent } from './Adm/ref-type-iden/ref-type-iden.component';
+import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
+import { RefCompetenceComponent } from './Adm/ref-competence/ref-competence.component';
+import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude.component';
 const appRoutes: Routes = [
 
   //{path: '', pathMatch: 'full', component: HomeComponent},
@@ -195,7 +202,14 @@ const appRoutes: Routes = [
     MessagesAdmComponent,
     RechMessageAdmComponent,
     EditerClientComponent,
-    ListeDemandeComponent
+    ListeDemandeComponent,
+    RefPaysComponent,
+    ReflocaliteComponent,
+    RefEthnieComponent,
+    RefTypeIdenComponent,
+    RefLangComponent,
+    RefCompetenceComponent,
+    RefNiveauEtudeComponent
   ],
   entryComponents: [
     ConfirmComponent
@@ -211,7 +225,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 5000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

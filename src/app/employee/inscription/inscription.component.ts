@@ -113,13 +113,22 @@ export class InscriptionComponent implements OnInit {
 
     this.nestedForm= this.fb.group({
      // idemploye:[1,Validators.required],
-      prenom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(3)])],
+     prenom:[null,Validators.compose([Validators.minLength(3),Validators.maxLength(50),Validators.pattern('[a-zA-Z]*'), Validators.required])],
+     nom:[null,Validators.compose([Validators.minLength(2),Validators.maxLength(30),Validators.pattern('[a-zA-Z]*'), Validators.required])],
+     adresse:[null,Validators.compose([,Validators.minLength(2),Validators.maxLength(20), Validators.required])],
+     telephoneFixe:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13),Validators.pattern('[0-9]*')])],
+     telephoneMobile:[null,Validators.compose([Validators.minLength(9),Validators.maxLength(13), Validators.required,Validators.pattern('[0-9]*')])],
+     email:[null,Validators.compose([Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$'),Validators.minLength(10),Validators.required])],
+
+     ////
+     /*  prenom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(3)])],
       nom:[null,Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.minLength(2)])],
       adresse:[null,Validators.required],
-      dateNaissance :[null,Validators.required],
       telephoneFixe:[null,Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(9),Validators.maxLength(14)])],
       telephoneMobile:[null,Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(9),Validators.maxLength(14)])],
-      email:[null,Validators.compose([Validators.required,Validators.pattern('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$')])],
+      email:[null,Validators.compose([Validators.required,Validators.pattern('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$')])], */
+      dateNaissance :[null,Validators.required],
+      /*  */
       niveauetude :[null,Validators.required],
       pay:[null,Validators.required],
       typeidentification:[null,Validators.required],
@@ -145,6 +154,9 @@ export class InscriptionComponent implements OnInit {
     );
    
   }
+
+  get f() { return this.nestedForm.controls; }
+
   //
   addAddressGroup(){
     return this.fb.group({

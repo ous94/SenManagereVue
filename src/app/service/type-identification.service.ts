@@ -17,3 +17,11 @@ export class TypeIdentificationService {
     return this.http.get<TypeIdentification>(this.baseUrl+"/ttypeIdentification/nom/"+nom);
   }
 }
+
+
+
+
+//////////
+
+
+

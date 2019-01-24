@@ -15,18 +15,19 @@
                     <!-- pour nom -->
          <div class="form-group input-group-sm col-sm-2">
             <label for="prenom">Prenom</label>
-             <input type="text" formControlName="prenom" [ngClass]="{'form-control':true,
-             'is-invalid':prenom.invalid && prenom.touched,
-               'is-valid':prenom.valid}" id="prenom" placeholder="Entrer prenom">
+             <input type="text" formControlName="prenom"[ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}" id="prenom" placeholder="Entrer prenom">
+             <div *ngIf="f.prenom.errors" class="invalid-feedback">
+                <div *ngIf="f.prenom.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 3 caractères</div>
+            </div>
         </div>
           
           <!-- pour nom -->
          <div class="form-group input-group-sm col-sm-2">
             <label for="nomtext">nom</label>
-             <input type="text" formControlName="nom" [ngClass]="{'form-control':true,
-             'is-invalid':nom.invalid && nom.touched,
-               'is-valid':nom.valid}" id="nomtext" placeholder="Entrer nom">
-            
+             <input type="text" formControlName="nom" [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" id="nomtext" placeholder="Entrer nom">
+             <div *ngIf="f.nom.errors" class="invalid-feedback">
+                <div *ngIf="f.nom.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 2 caractères</div>
+            </div>
           </div>
         </div>
                 <!--  -->
@@ -39,6 +40,10 @@
              <input type="text" formControlName="adresse" [ngClass]="{'form-control':true,
              'is-invalid':adresse.invalid && adresse.touched,
                'is-valid':adresse.valid}" id="addtext" placeholder="Entrer adresse">
+               <div *ngIf="f.adresse.errors" class="invalid-feedback">
+                  <div *ngIf="f.adresse.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 2 caractères</div>
+              </div>
+              
         </div>
          <!-- pour DateNaissance -->
          <div class="form-group input-group-sm col-sm-2">
@@ -49,24 +54,33 @@
   
           </div>
                 <!-- pour telephoneFixe -->
-        <div class="form-group input-group-sm col-sm-2">
+        <!-- <div class="form-group input-group-sm col-sm-2">
           <label for="fixetext">Téléphone Fixe</label>
            <input type="tel" formControlName="telephoneFixe" [ngClass]="{'form-control':true,
            'is-invalid':telephoneFixe.invalid && telephoneFixe.touched,
              'is-valid':telephoneFixe.valid}" id="fixetext" placeholder="Entrer Telephone Fixe">
-      </div>
+      </div> -->
         </div><br><br><br><br>
                 <!--  -->
 
         <div class="col">
          
-         
+           <!-- pour telephoneFixe -->
+        <div class="form-group input-group-sm col-sm-2">
+            <label for="fixetext">Téléphone Fixe</label>
+             <input type="tel" formControlName="telephoneFixe" [ngClass]="{'form-control':true,
+             'is-invalid':telephoneFixe.invalid && telephoneFixe.touched,
+               'is-valid':telephoneFixe.valid}" id="fixetext" placeholder="Entrer Telephone Fixe">
+        </div>
         <!-- pour telephoneMobile -->
         <div class="form-group input-group-sm col-sm-2">
             <label for="mobiletext">Téléphone Mobile</label>
              <input type="tel" formControlName="telephoneMobile" [ngClass]="{'form-control':true,
              'is-invalid':telephoneMobile.invalid && telephoneMobile.touched,
                'is-valid':telephoneMobile.valid}" id="mobiletext" placeholder="Entrer TelephoneMobile">
+               <div *ngIf="f.telephoneMobile.errors" class="invalid-feedback">
+                  <div *ngIf="f.telephoneMobile.errors.minlength" style="font-size: 10px; color: red;">numero au minimum 9 chiffre et 14chiffre au maxim </div>
+              </div>
           </div>
 
             <!-- pour Email -->
@@ -86,20 +100,8 @@
           <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>      
       </select>
           </div>
-           <!-- pour typeIdentification  -->
-           <div class="form-group input-group-sm col-sm-2">
-              <label for="typeidentification">Type Identification:</label>
-              <select id="typeidentification" class="form-control"  formControlName="typeidentification" >
-                  <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>   
-              </select>
-          </div>
-          <!-- pour identification -->
-          <div class="form-group input-group-sm col-sm-2">
-              <label for="identification">N° d'Identification</label>
-             <input type="text" formControlName="identification" [ngClass]="{'form-control':true,
-             'is-invalid':identification.invalid && identification.touched,
-               'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
-              </div>
+        
+        
 
         </div>
       <!-- fin -->
@@ -165,8 +167,43 @@
       </div>
 
     </div>
-    <!-- Competence -->
-    <div class="form-group input-group-sm col-sm-2">
+       <!-- pour typeIdentification  -->
+       <div class="form-group input-group-sm col-sm-2">
+          <label for="typeidentification">Type Identification:</label>
+          <select id="typeidentification" class="form-control"  formControlName="typeidentification" >
+              <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>   
+          </select>
+      </div>
+      <!-- pour identification -->
+      <div class="form-group input-group-sm col-sm-2">
+          <label for="identification">N° d'Identification</label>
+         <input type="text" formControlName="identification" [ngClass]="{'form-control':true,
+         'is-invalid':identification.invalid && identification.touched,
+           'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
+          </div>
+          
+    </div>
+</div>
+
+ <!-- Langues -->
+ <div class="form-group input-group-sm col-sm-2">
+    <label for="langues" class="form-label">Langues Parlées:</label>   
+   <div class="col-xs-14">
+     <div class="well" style="max-height: 140px;overflow: auto;">
+
+       <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
+           <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+             <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+             <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+             <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
+        </div>
+
+      </div>
+      </div>  
+
+   </div>
+     <!-- Competence -->
+     <div class="form-group input-group-sm col-sm-2">
         <label for="competences" class="form-label">Competences:</label>
 
        <div class="col-xs-20">
@@ -181,82 +218,57 @@
 
           </div>
           </div>
-       </div>
-           <!-- Langues -->
-           <div class="form-group input-group-sm col-sm-2">
-              <label for="langues" class="form-label">Langues Parlées:</label>   
-             <div class="col-xs-14">
-               <div class="well" style="max-height: 140px;overflow: auto;">
-  
-                 <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
-                     <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
-                       <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
-                       <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                       <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
-                  </div>
-  
-                </div>
-                </div>  
-  
-             </div>
-             <!-- Multiple Radios (inline) -->
-          <div class="form-group input-group-sm col-md-2">
-              <label class="col-md control-label" for="horaire" >Disponiblité:</label>
-             <div class="col-md">
-                
-              <div class="radio" >
-                <label><input type="radio" name="horaire" id="radios-0" value="Weekend"  formControlName="horaire">Weekend</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="horaire" id="radios-1" formControlName="horaire" value="Semaine">Semaine</label>
-              </div>
-              <div class="radio">
-                  <label><input type="radio" name="horaire" id="radios-2" formControlName="horaire" value="Quinzaine">Quinzaine</label>
-                </div>
-  
-             </div>
-             </div>
-              <!-- horaire disponiblité -->
-           <div class="form-group input-group-sm col-md-2">
-              <label for="disponiblites" class="form-label">Horaire disponible :</label>   
-             <div class="col-xs">
-               <div class="well" style="max-height: 140px;overflow: auto;">
-  
-                 <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
-                     <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
-                       <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
-                       <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
-                       <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
-                  </div>
-  
-                </div>
-                </div>  
-             </div>
-
-           <!-- fin -->
+        </div>
+   <!-- Multiple dispo (inline) -->
+<div class="form-group input-group-sm col-md-2">
+    <label class="col-md control-label" for="horaire" >Disponiblité:</label>
+   <div class="col-md">
+      
+    <div class="radio" >
+      <label><input type="radio" name="horaire" id="radios-0" value="Weekend"  formControlName="horaire">Weekend</label>
     </div>
-</div>
-      <!-- section3 -->    
-            <div class="container-fluid" style=" padding-left: 0px; ">
-                <div class="col col-md-3">
+    <div class="radio">
+      <label><input type="radio" name="horaire" id="radios-1" formControlName="horaire" value="Semaine">Semaine</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="horaire" id="radios-2" formControlName="horaire" value="Quinzaine">Quinzaine</label>
+      </div>
 
-                 <!--  -->
-                  <!-- pour telephoneFixe -->
-                  <div class="form-group">
-                      <label for="comment">Obseravtion :</label>
-                      <textarea class="form-control" rows="3"   id="comment" formControlName="observation"></textarea>
-                 </div>
-                 <div class="form-group input-group-sm">
-                    <img src="../../../../../../image/image1.jpeg" class="img-thumbnail"> 
-                 </div>
-                 <div class="form-group input-group-sm">
-                   <input type="file" (change)="selectFile($event)" class="form-control" />
-                   <button  class="btn btn-success" type="submit" [disabled]="nestedForm.valid">Save<span class=" glyphicon glyphicon-ok"></span></button>
-                 </div>
-                </div>
-               </div>
-              </div>
-            </div>
+   </div>
+   </div>
+    <!-- horaire disponiblité -->
+ <div class="form-group input-group-sm col-md-2">
+    <label for="disponiblites" class="form-label">Horaire disponible :</label>   
+   <div class="col-xs">
+     <div class="well" style="max-height: 140px;overflow: auto;">
+
+       <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
+           <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+             <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+             <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+             <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
+        </div>
+
+      </div>
+      </div>  
+   </div> 
+<!--    <br><br><br><br><br><br><br><br>
+ -->       
+ </div>
+</div>
+    <div class="col col-md-3">
+          <div class="form-group">
+              <label for="comment">Obseravtion :</label>
+              <textarea class="form-control" rows="7"   id="comment" formControlName="observation"></textarea>
+         </div>
+         <div class="form-group input-group-sm">
+            <img src="../../../../../../image/image1.jpeg" class="img-thumbnail"> 
+         </div>
+         <div class="form-group input-group-sm">
+           <input type="file" (change)="selectFile($event)" class="form-control" />
+           <button  class="btn btn-success" type="submit" [disabled]="nestedForm.valid">Save<span class=" glyphicon glyphicon-ok"></span></button>
+         </div>
+        </div>
   </form>
 <!--   <button  class="btn btn-success" type="submit" (click)="showSuccess()">Save<span class=" glyphicon glyphicon-ok"></span></button>
  -->

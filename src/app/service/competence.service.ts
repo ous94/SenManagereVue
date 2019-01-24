@@ -31,4 +31,9 @@ export class CompetenceService {
   getListeEmployes (listeCompetence: Competence[]): Observable<Employee[]> {
     return this.http.post<Employee[]>(this.baseUrl+ '/competence/description/employes', listeCompetence);
   }
+  //ajout
+  addCompetence(competence:Competence): Observable<any>{
+    return this.http.post<Competence>(this.baseUrl+"/competence/create",competence);
+  }
+
 }

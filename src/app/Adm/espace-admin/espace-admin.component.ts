@@ -23,9 +23,19 @@ listeClients:boolean= false;
 statiqueClients:boolean=false;
 rechercheClients:boolean=false;
 demandeClients:boolean=false;
+nouveauClients:Boolean=false;
 ////////////////Messagerie
 listeMessagerie:boolean= false;
 rechemessageries:boolean= false;
+//////////////Reference
+refpays:Boolean=false;
+refethnies:Boolean=false;
+reftype:Boolean=false;
+refloc:Boolean=false;
+refLang:Boolean=false;
+refComp:Boolean=false;
+refNiveauEtudes:Boolean=false;
+
 
 
 
@@ -42,6 +52,15 @@ rechemessageries:boolean= false;
     this.afficheMessagerie=false;
     this.afficheDemande=false;
     this.afficheAccueil=false;
+  }
+  visibiliteReferenciel(){
+    this.afficheConfiguration=!this.afficheConfiguration;
+    this.afficheClient=false;
+    this.afficheEmployes=false;
+    this.afficheMessagerie=false;
+    this.afficheDemande=false;
+    this.afficheAccueil=false;
+
   }
   
   visibiliteMessage()
@@ -87,6 +106,7 @@ rechemessageries:boolean= false;
     this.recherche=false
     this.newEmployer=false;
     this.listeEmployer=!this.listeEmployer;
+    
   }
   rechercheEmployer(){
     this.statique=false;
@@ -110,6 +130,8 @@ demandeClient()
     this.rechercheClients=false;
     this.statiqueClients=false;
     this.listeClients=false;
+    this.nouveauClients=false;
+
 
   }
   listeClient(){
@@ -117,6 +139,8 @@ demandeClient()
     this.rechercheClients=false;
     this.statiqueClients=false;
     this.demandeClients=false;
+    this.nouveauClients=false;
+
 
     
   }
@@ -125,13 +149,27 @@ demandeClient()
     this.listeClients=false;
     this.statiqueClients=false;
     this.demandeClients=false;
+    this.nouveauClients=false;
     
   }
   statistiqueClient(){
+    this.statiqueClients=!this.statiqueClients;
+    this.listeClients=false;
+    this.rechercheClients=false;
+    this.demandeClients=false;
+    this.nouveauClients=false;
+    
+  }
+  newClient(){
+    this.statiqueClients=!this.statiqueClients;
+    this.listeClients=false;
+    this.rechercheClients=false;
+    this.demandeClients=false;
+    this.nouveauClients=false;
     
   }
   ///partieMessagerie
-  
+
   mesmessage(){
     this.rechemessageries=false;
     this.listeMessagerie=!this.listeMessagerie;
@@ -140,7 +178,76 @@ demandeClient()
     this.listeMessagerie=false;
     this.rechemessageries=!this.rechemessageries;
   }
-  
+//Referenciel
+referencePays(){
+  this.refpays=!this.refpays;
+  this.reftype = false;
+  this.refloc = false;
+  this.refLang = false;
+  this.refNiveauEtudes = false;
+  this.refComp = false;
+  this.refethnies = false;
+
+}
+referenceEthnies(){
+  this.refethnies=!this.refethnies;
+  this.reftype = false;
+  this.refloc = false;
+  this.refLang = false;
+  this.refNiveauEtudes = false;
+  this.refComp = false;
+  this.refpays = false;
+
+}
+referenceTypes(){
+  this.reftype=!this.reftype;
+  this.refpays = false;
+  this.refloc = false;
+  this.refLang = false;
+  this.refNiveauEtudes = false;
+  this.refComp = false;
+  this.refethnies = false;
+
+}
+referenceLoaclites(){
+  this.refloc=!this.refloc;
+  this.reftype = false;
+  this.refpays = false;
+  this.refLang = false;
+  this.refNiveauEtudes = false;
+  this.refComp = false;
+  this.refethnies = false;
+
+}
+referenceCompetences(){
+  this.refComp=!this.refComp;
+  this.reftype = false;
+  this.refloc = false;
+  this.refLang = false;
+  this.refNiveauEtudes = false;
+  this.refpays = false;
+  this.refethnies = false;
+}
+referenceLangues(){
+  this.refLang=!this.refLang;
+  this.reftype = false;
+  this.refloc = false;
+  this.refpays = false;
+  this.refNiveauEtudes = false;
+  this.refComp = false;
+  this.refethnies = false;
+}
+referenceNiveauEtudes(){
+  this.refNiveauEtudes=!this.refNiveauEtudes;
+  this.reftype = false;
+  this.refloc = false;
+  this.refLang = false;
+  this.refethnies = false;
+  this.refComp = false;
+  this.refpays = false;
+
+}
+
 
   
 
