@@ -35,5 +35,10 @@ export class CompetenceService {
   addCompetence(competence:Competence): Observable<any>{
     return this.http.post<Competence>(this.baseUrl+"/competence/create",competence);
   }
+// competencePagination
+getAllCompetencePagination(offset:number):Observable<any>
+  {
+    return this.http.get(this.baseUrl+"/competences/pagination/"+offset);
+}
 
 }

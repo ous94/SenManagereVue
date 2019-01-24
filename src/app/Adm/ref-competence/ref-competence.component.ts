@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CompetenceService } from 'src/app/service/competence.service';
 import { Competence } from 'src/app/Classe/Competence';
+import { log } from 'util';
 
 @Component({
   selector: 'app-ref-competence',
@@ -12,6 +13,9 @@ export class RefCompetenceComponent implements OnInit {
 
   ajoutercompetence:Boolean=false;
   listerCompetence:Boolean=false;
+  vsuivant:boolean=false;
+  vprecedant:boolean=false;
+  offset:number=0;
   listeCompences:Array<Competence>;
   competence: Competence = new Competence();
  
@@ -36,6 +40,16 @@ export class RefCompetenceComponent implements OnInit {
   {
     this.ajoutercompetence=false;
     this.listerCompetence=!this.listerCompetence;
+    this.compservice.getAllCompetencePagination(this.offset).subscribe((data)=>
+    {
+      this.listeCompences=data;
+      if(this.listeCompences.length>0)
+      {
+        this.vsuivant=true;
+      }
+      console.log(this.listeCompences);
+      
+    });
 
   }
 
@@ -59,4 +73,48 @@ export class RefCompetenceComponent implements OnInit {
     });
   }
 
+  editeCompetence()
+  {
+
+  }
+  deleteCompetence()
+  {
+    
+  }
+  suivant(){
+    if(this.listeCompences.length>0)
+    {
+      this.offset++;
+      this.vprecedant=true;
+      this.compservice.getAllCompetencePagination(this.offset).subscribe((data)=>
+    {
+      this.listeCompences=data;
+      if(this.listeCompences.length<=0)
+      {
+        this.vsuivant=false;
+      }
+      console.log(this.listeCompences);
+      
+    });
+    }
+  
+
+  }
+  precedant(){
+    if(this.offset>0)
+    {
+      this.offset--;
+      this.compservice.getAllCompetencePagination(this.offset).subscribe((data)=>
+    {
+      this.listeCompences=data;
+      console.log(this.listeCompences);
+      
+    });
+    }else{
+      this.vsuivant=true;
+      this.vprecedant=false;
+
+    }
+
+  }
 }
