@@ -175,13 +175,15 @@ export class NouvelleDemandeComponent implements OnInit {
        this.demandeFinal.services=this.demande.services;
        this.demandeFinal.competences=this.selectedCompetencevalues;
        this.demandeFinal.employees=this.selectedEmployevalues;
-       this.localStorage.getItem<Client>("client").subscribe((data:Client)=>{
-                                    this.client=data;
-                                    this.demandeFinal.client=this.client;
-                                     this.demandeService.addDemande(this.demandeFinal).subscribe(
-                                           (data)=>{console.log("Enregistrement demande reussi");},
-                                           (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");}
-                                     );});  
+       this.localStorage.getItem<Client>("client").subscribe(
+         (data:Client)=>{
+            this.client=data;
+            this.demandeFinal.client=this.client;
+            this.demandeService.addDemande(this.demandeFinal).subscribe(
+              (data)=>{console.log("Enregistrement demande reussi");},
+              (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");
+            });
+          });  
    }   
   }
   suivant($event)
@@ -194,9 +196,9 @@ export class NouvelleDemandeComponent implements OnInit {
       this.employeService.getAllEmployesPagination(this.offset).subscribe(
         (data)=>{
           this.listeEmployes=data;
-          if(this.listeEmployes.length==0)
+          if(this.listeEmployes.length<=0)
           {
-            this.vsuivant=true;
+            this.vsuivant=false;
           }
           console.log(this.listeEmployes);
           for(let i:number=0;i<this.listeEmployes.length;i++)

@@ -61,9 +61,9 @@ export class ListeEmployesComponent implements OnInit {
       this.employeService.getAllEmployesPagination(this.offset).subscribe(
         (data)=>{
           this.listeEmployes=data;
-          if(this.listeEmployes.length==0)
+          if(this.listeEmployes.length<=0)
           {
-            this.vsuivant=true;
+            this.vsuivant=false;
           }
           console.log(this.listeEmployes);
           for(let i:number=0;i<this.listeEmployes.length;i++)
@@ -97,8 +97,6 @@ export class ListeEmployesComponent implements OnInit {
              this.tableauVisibiliteDetail[i]=false;
           }
         });
-     
     }
   }
-
 }

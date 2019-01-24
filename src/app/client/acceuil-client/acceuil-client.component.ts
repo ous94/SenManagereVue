@@ -168,8 +168,10 @@ export class AcceuilClientComponent implements OnInit {
   }
   suivant($event)
   {
+    
     if(this.listeEmployes.length>0)
     {
+      console.log("Suivant Suivant"+this.offset);
       this.offset++;
       let rechercheEmploye:RechercheTous=new RechercheTous();
       rechercheEmploye.offset=this.offset;
@@ -179,6 +181,10 @@ export class AcceuilClientComponent implements OnInit {
       this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
         (data)=>{
           this.listeEmployes=data;
+          if(this.listeEmployes.length<=0)
+          {
+            this.vsuivant=false;
+          }
           console.log(this.listeEmployes);
           for(let i:number=0;i<this.listeEmployes.length;i++)
           {
@@ -194,8 +200,10 @@ export class AcceuilClientComponent implements OnInit {
   }
   precedent($event)
   {
+    console.log("Precedent");
     if(this.offset>0)
     {
+      console.log("Precedent"+this.offset);
       this.offset--;
       if(this.offset>=0)
       {
@@ -223,5 +231,4 @@ export class AcceuilClientComponent implements OnInit {
         this.vprecedent=false;
       }
   }
-  
 }
