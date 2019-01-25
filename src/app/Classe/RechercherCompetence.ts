@@ -1,6 +1,6 @@
 import {Competence} from '../Classe/Competence';
 
-export class RerchercheCompetence
+export class RechercheCompetence
  {
     constructor() {}
     listeCompetences :Array<Competence>;

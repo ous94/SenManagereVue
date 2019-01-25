@@ -147,6 +147,7 @@ export class AcceuilClientComponent implements OnInit {
   touchRecherche($event)
   {
      this.vrecherche=true;
+     this.offset=0;
      let rechercheEmploye:RechercheTous=new RechercheTous();
      rechercheEmploye.offset=this.offset;
      rechercheEmploye.recherche=this.recherche;
@@ -176,6 +177,7 @@ export class AcceuilClientComponent implements OnInit {
       let rechercheEmploye:RechercheTous=new RechercheTous();
       rechercheEmploye.offset=this.offset;
       rechercheEmploye.recherche=this.recherche;
+      console.log(rechercheEmploye);
       this.vsuivant=true;
       this.vprecedent=true;
       this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
@@ -210,6 +212,7 @@ export class AcceuilClientComponent implements OnInit {
          let rechercheEmploye:RechercheTous=new RechercheTous();
          rechercheEmploye.offset=this.offset;
          rechercheEmploye.recherche=this.recherche;
+         console.log(rechercheEmploye);
          this.vsuivant=true;
          this.rechercheService.rechercheFromEmployePagination(rechercheEmploye).subscribe(
           (data)=>{
