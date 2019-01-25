@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
+import { Langue } from '../Classe/Langue';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,14 @@ export class LangueService {
   getAllLangueNom():Observable<any>
   {
     return this.http.get(this.baseUrl+"/langues");
+  }
+
+  updateLangue(id:number,langue:Langue): Observable<Object>{
+    return this.http.put(`${this.baseUrl}/langue/edite/${id}`,langue);
+  }
+  deleteLangueById(langue :number) : Observable<any>
+  {
+      console.log("Suppression des ethnies choisi");
+      return this.http.delete(this.baseUrl+"/langue/delete/"+langue, { responseType: 'text' });
   }
 }

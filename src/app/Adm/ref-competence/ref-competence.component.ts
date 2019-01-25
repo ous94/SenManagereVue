@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { CompetenceService } from 'src/app/service/competence.service';
 import { Competence } from 'src/app/Classe/Competence';
 import { log } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ref-competence',
@@ -15,9 +16,12 @@ export class RefCompetenceComponent implements OnInit {
   listerCompetence:Boolean=false;
   vsuivant:boolean=false;
   vprecedant:boolean=false;
+  vEdite:boolean=false;
+  vajout:boolean=false;
   offset:number=0;
   listeCompences:Array<Competence>;
   competence: Competence = new Competence();
+  compEdite:Competence;
  
 
   compForm=new FormGroup({
@@ -26,7 +30,7 @@ export class RefCompetenceComponent implements OnInit {
 
 
 
-  constructor(private compservice:CompetenceService,private fb:FormBuilder) { }
+  constructor(private ToastrService:ToastrService,private compservice:CompetenceService,private fb:FormBuilder) { }
 
   ngOnInit() {
     
@@ -66,20 +70,65 @@ export class RefCompetenceComponent implements OnInit {
    this.competence.employees=null;
    this.competence.idcompetence=null;
    console.log(this.compForm.value);
-   
-   this.compservice.addCompetence(this.competence).subscribe((data)=>
+   if(this.competence.description==null)
+   {
+     this.showError();
+   }
+   else if(!this.vajout){
+
+    this.compservice.addCompetence(this.competence).subscribe((data)=>
     {
     console.log(data);
+    if(data==null)
+    {
+      this.showError();
+
+    }
+    else{
+      this.showSuccess();
+    }
     });
+
+   }else
+   {     
+     this.compservice.updateCompetence(this.compEdite.idcompetence,this.competence).
+     subscribe((data)=>  {
+    console.log(data);
+    if(data==null)
+    {
+      this.showErrorEdite();
+
+    }
+      else{
+      this.showSuccessedite();
+      this.compForm.reset();
+    }
+    });
+   }
+   
+  
   }
 
-  editeCompetence()
+  // delete employee
+  deleteCompetence(competence:Competence) {
+    //alert('confirmer Suppression');
+    confirm('confirmer Suppression');
+    if(confirm)
+  this.compservice.deleteCompetenceById(competence.idcompetence)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.listeCompences.splice(this.listeCompences.indexOf(competence),1);
+        
+      },
+      error => console.log(error));
+}
+  editeCompetence(competence:Competence)
   {
-
-  }
-  deleteCompetence()
-  {
-    
+    this.compEdite=competence;
+    console.log(this.compEdite);
+    this.vEdite=true;
+    this.vajout=true;
   }
   suivant(){
     if(this.listeCompences.length>0)
@@ -104,6 +153,7 @@ export class RefCompetenceComponent implements OnInit {
     if(this.offset>0)
     {
       this.offset--;
+      this.vsuivant=true;
       this.compservice.getAllCompetencePagination(this.offset).subscribe((data)=>
     {
       this.listeCompences=data;
@@ -116,5 +166,19 @@ export class RefCompetenceComponent implements OnInit {
 
     }
 
+  }
+
+  showSuccess() {
+    this.ToastrService.success('Avec succès !', 'Enregistrement réussie !');
+  }
+  showError() {
+    this.ToastrService.error('Veuillez recommencer !', 'Echec Enregistrement !');
+  } 
+  showErrorEdite() {
+    this.ToastrService.error('Veuillez recommencer !', 'Echec Enregistrement !');
+  } 
+
+  showSuccessedite() {
+    this.ToastrService.success('Avec succès !', 'Modification réussie !');
   }
 }

@@ -40,13 +40,13 @@ export class CompetenceService {
   addCompetence(competence:Competence): Observable<any>{
     return this.http.post<Competence>(this.baseUrl+"/competence/create",competence);
   }
-<<<<<<< HEAD
 // competencePagination
 getAllCompetencePagination(offset:number):Observable<any>
   {
     return this.http.get(this.baseUrl+"/competences/pagination/"+offset);
 }
+updateCompetence(id:number,competence:Competence): Observable<Object>{
+  return this.http.put(`${this.baseUrl}/competence/edite/${id}`,competence);
+}
 
-=======
->>>>>>> 417a964f46c63a9d65efb6c64fa5e55ea434cc7a
 }

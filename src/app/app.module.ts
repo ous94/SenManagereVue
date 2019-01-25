@@ -92,10 +92,12 @@ import { RefTypeIdenComponent } from './Adm/ref-type-iden/ref-type-iden.componen
 import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
 import { RefCompetenceComponent } from './Adm/ref-competence/ref-competence.component';
 import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 const appRoutes: Routes = [
 
   //{path: '', pathMatch: 'full', component: HomeComponent},
-    {path: '', pathMatch: 'full', component: TestComponent},
+    {path: '', pathMatch: 'full', component: RefLangComponent},
    {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
@@ -111,7 +113,7 @@ const appRoutes: Routes = [
     {path:'nav',component:NavbarComponent},
     {path:'client',component:ClientComponent},
     {path:'listeClient',component:ListeClientComponent},
-    {path:'',component:TestComponent},
+    {path:'',component:RefLangComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
     {path:'contacter',component:ConctactComponent},
     //new version
@@ -229,6 +231,8 @@ const appRoutes: Routes = [
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
+    AngularFontAwesomeModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

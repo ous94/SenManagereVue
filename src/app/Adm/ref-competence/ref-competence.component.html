@@ -1,6 +1,6 @@
 <div class="container bootstrap snippet">
-    <div class="row">
-        <div class="col-md-6 ">
+    <div class="row" >
+        <div class="col-md-8 " *ngIf="!vajout">
         <h5>Nouvelle Competence</h5>
         <form [formGroup]="compForm" (ngSubmit)="validercompetence()" >
             <div class="form-group col-md-5">
@@ -8,17 +8,32 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success" ><i class="glyphicon glyphicon-plus-sign"></i></button>
-                <button (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
 
             </div>
 
-        </form>
-    </div>
-  	    
-                          
+           </form>
+            <button id="idbtn" (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
+
+        </div>
+      
+        <div class="col-md-8 " *ngIf="vEdite">
+                <h5>Editer Competence</h5>
+                <form [formGroup]="compForm" (ngSubmit)="validercompetence()" >
+                    <div class="form-group col-md-5">
+                        <input type="text" class="form-control activation" [value]="compEdite.description" [(ngModel)]="compEdite.description" id="description" placeholder="description " formControlName="description"   > 
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" ><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
+        
+                    </div>
+        
+                   </form>
+                </div>
+
     </div>
 </div>
-
+    <!-- fin -->
 
  <div class="col-md-6">
 <div class="panel panel-primary" *ngIf="listerCompetence">
@@ -34,7 +49,7 @@
     <tr *ngFor="let comp of listeCompences " class="table-info">
       <td>{{comp.description}}</td>
       <td><button (click)="deleteCompetence(comp)" class="btn btn-danger" ><i class="glyphicon glyphicon-trash"></i></button>
-        <td><button (click)="deleteCompetence(comp)" class="btn btn-primary" ><i class="glyphicon glyphicon-pencil"></i></button>
+        <td><button (click)="editeCompetence(comp)" class="btn btn-primary" ><i class="glyphicon glyphicon-pencil"></i></button>
         
       </td>
     </tr>
@@ -45,7 +60,6 @@
           <li *ngIf="vprecedant" (click)="precedant()"><a class="glyphicon glyphicon-menu-left"></a></li>
           <li *ngIf="vsuivant" (click)="suivant()"><a class="glyphicon glyphicon-menu-right"></a></li>
 
-     
         </ul>
       </div>
   </div>

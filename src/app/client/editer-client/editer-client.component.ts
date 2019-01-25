@@ -115,24 +115,13 @@ export class EditerClientComponent implements OnInit {
 get f() { return this.clientForm.controls; }
 
 
-addAddressGroup(){
-  return this.fb.group({
-    primaryFlg:[],
-    stresAddress :[null,Validators.required],
-    state:[null,Validators.required],
-    zipcode:[null,[Validators.required,Validators.pattern('^[0-9]{5}$')]], 
-  });
-}
+
 
 //recuperation d'adresss
 get addresArray(){
   return <FormArray>this.clientForm.get('adresse  ');
 }
-//ajout nouveau adresss
 
-addAdress(){
-  this.addresArray.push(this.addAddressGroup())
-}
 
 // recuperation prenom
 get prenom()
