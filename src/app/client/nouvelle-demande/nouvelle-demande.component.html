@@ -24,6 +24,24 @@
 <!--+++++++++++++++FIN+++++++++++++++++++++++++++++++++
    Formulaire Pour Donner le Salaire Propose et les Services-->
 
+	<!-- LIste Des employes selectionner pour la demande 
+		+++++++++++++++++++++DEBUT++++++++++++++++++-->
+   <div class="col-md-12" style="background-color: darkred" *ngIf="selectedEmployevalues.length!=0" >
+		 <div class="col-md-6" style="background-color: burlywood ;border: white solid 2px;" *ngFor="let emp of selectedEmployevalues">
+				<div class="col-md-6">
+						<p>{{emp.nom}}</p>
+						<p>{{emp.prenom}}</p>
+						<p>{{emp.religion}}</p>
+				</div>
+				<div class="col-md-6">
+						<p>{{emp.dateNaissance}}</p>
+						<p>{{emp.situationMatrimoniale}}</p>
+				</div>
+		 </div>
+	 </div>
+	<!--+++++++++++++++FIN+++++++++++++++++++++++++++++++++
+   LIste Des employes selectionner pour la demande-->
+		
 <!-- LIste Des employes a associer a la Demande 
     +++++++++++++++++++++DEBUT++++++++++++++++++-->
 <div class="container" id="listeEmployes">
@@ -91,7 +109,7 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
-									<p *ngIf="employe.localite">Ethnie :{{employe.localite.nom}}</p>
+									<p *ngIf="employe.localite">Localite :{{employe.localite.nom}}</p>
 								</div>
 								<div class="col-sm-6">
 									<p>Disponibilite :</p>

@@ -66,6 +66,7 @@ export class RefPaysComponent implements OnInit {
   {
    this.pays = this.compForm.value;
    this.pays.employees=null;
+   this.pays.clients=null;
    console.log(this.compForm.value);
    if(this.pays.nom==null || this.pays.nom=="")
    {
@@ -140,6 +141,7 @@ export class RefPaysComponent implements OnInit {
         this.vsuivant=false;
       }
       console.log(this.listePays);
+      
       
     });
     }

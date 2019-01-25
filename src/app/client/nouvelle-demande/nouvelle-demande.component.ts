@@ -9,7 +9,7 @@ import { Demande } from 'src/app/Classe/Demande';
 import { UploadFileService } from 'src/app/upload-file.service';
 import { Client } from 'src/app/Classe/Client';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { ToastrModule } from 'ngx-toastr';
+import { RechercheCompetence } from 'src/app/Classe/RechercherCompetence';
 
 @Component({
   selector: 'app-nouvelle-demande',
@@ -26,6 +26,7 @@ export class NouvelleDemandeComponent implements OnInit {
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
   selectedEmployevalues:Array<Employee>=[];
+  selectedEmployevaluesId:Array<number>=[];
   favCompetenceErreur:boolean=true;
   favEmployeErreur:boolean=true;
   demandeForm= new FormGroup({
@@ -35,12 +36,13 @@ export class NouvelleDemandeComponent implements OnInit {
     competences :new FormControl(''),
   });
   //
-   offset:number=0;
+  offset1:number=0;
+   offset2:number=0;
    vsuivant:boolean=false;
    vprecedent:boolean=false;
 
   constructor(private fb:FormBuilder ,private employeService:EmployeeService,private competenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
-       this.employeService.getAllEmployesPagination(this.offset).subscribe(
+       this.employeService.getAllEmployesPagination(this.offset1).subscribe(
          (data)=>{
             this.listeEmployes=data;
             if(this.listeEmployes.length>=2)
@@ -72,15 +74,18 @@ export class NouvelleDemandeComponent implements OnInit {
    //Employes Selectionnes
    getselectedEmployesvalues(employe:Employee,position :number){
     
-    let index:number=this.selectedEmployevalues.indexOf(employe);
+    let index:number=this.selectedEmployevaluesId.indexOf(employe.idemploye);
+    //let index:number=this.selectedEmployevalues.indexOf(employe);
      if(index==-1)
     {
+      this.selectedEmployevaluesId.push(employe.idemploye);
       this.selectedEmployevalues.push(employe);
       let element =document.getElementById(""+position); 
       element.style.backgroundColor="#40826D";
     }
    else
    {
+     this.selectedEmployevaluesId.splice(index,index+1)
      this.selectedEmployevalues.splice(index,index+1);
      let element =document.getElementById(""+position); 
      element.style.backgroundColor="#E0CDA9";
@@ -91,58 +96,72 @@ export class NouvelleDemandeComponent implements OnInit {
   //Competences selectionnees
   getselectedCompetencevalues(competence:Competence){
    
-    this.selectedEmployevalues=[];
-   let index:number=this.selectedCompetencevalues.indexOf(competence);
-   if(index==-1)
-   {
-    this.selectedCompetencevalues.push(competence);
-    this.competenceService.getListeEmployes(this.selectedCompetencevalues).subscribe(
-      (data)=>
-      {this.listeEmployes=data;
-          for(let i:number=0;i<this.listeEmployes.length;i++)
-          {
-            this.tableauVisibiliteDetail[i]=false;
+  this.selectedEmployevalues=[];
+  let index:number=this.selectedCompetencevalues.indexOf(competence);
+  this.offset1=0;
+  this.offset2=0;
+  this.vprecedent=false;
+  this.vsuivant=false;
+  if(index==-1)
+  {
+   this.selectedCompetencevalues.push(competence);
+   let rechercheCompetence :RechercheCompetence =new RechercheCompetence();
+   rechercheCompetence.offset=this.offset2;
+   rechercheCompetence.listeCompetences=this.selectedCompetencevalues;
+   this.competenceService.getListeEmployesPagination(rechercheCompetence).subscribe(
+     (data)=>{
+         this.listeEmployes=data;
+         if(this.listeEmployes.length>=2)
+         {
+           this.vsuivant=true;
          }
-       }  
-    );
-    this.favCompetenceErreur=false;
-   }
-   else
-   {
-      this.selectedCompetencevalues.splice(index,index+1);
-       if(this.selectedCompetencevalues.length>0)
-       {
-          console.log("taille superieur a 0");
-          this.competenceService.getListeEmployes(this.selectedCompetencevalues).subscribe(
-            (data)=>
-                  {
-                    this.listeEmployes=data;
-                    for(let i:number=0;i<this.listeEmployes.length;i++)
-                    {
-                       this.tableauVisibiliteDetail[i]=false;
-                    }
-                  }  
-           );
-           this.favCompetenceErreur=false;
+         for(let i:number=0;i<this.listeEmployes.length;i++)
+         {
+           this.tableauVisibiliteDetail[i]=false;
         }
-       else 
-       {
-          console.log("liste Vide");
-          this.employeService.getAllEmployes().subscribe(
-            (data)=>
-               {
-                  this.listeEmployes=data;
-                  console.log("liste Vide");
-                  for(let i:number=0;i<this.listeEmployes.length;i++)
-                  {
-                    this.tableauVisibiliteDetail[i]=false;
-                  }
-               }
-            );
-           this.favCompetenceErreur=true;
+      }  
+   );
+   this.favCompetenceErreur=false;
+  }
+  else
+  {
+     this.selectedCompetencevalues.splice(index,index+1);
+      if(this.selectedCompetencevalues.length>0)
+      {
+         console.log("taille superieur a 0");
+         let rechercheCompetence :RechercheCompetence =new RechercheCompetence();
+         rechercheCompetence.offset=this.offset2;
+         rechercheCompetence.listeCompetences=this.selectedCompetencevalues;
+         this.competenceService.getListeEmployesPagination(rechercheCompetence).subscribe(
+           (data)=>
+                 {
+                   this.listeEmployes=data;
+                   for(let i:number=0;i<this.listeEmployes.length;i++)
+                   {
+                      this.tableauVisibiliteDetail[i]=false;
+                   }
+                 }  
+          );
+          this.favCompetenceErreur=false;
+
        }
-   }
-   
+      else 
+      {
+        this.employeService.getAllEmployesPagination(this.offset1).subscribe(
+          (data)=>{
+             this.listeEmployes=data;
+             if(this.listeEmployes.length>=2)
+             {
+                this.vsuivant=true;
+             }
+             console.log(this.listeEmployes);
+             for(let i:number=0;i<this.listeEmployes.length;i++)
+             {
+                this.tableauVisibiliteDetail[i]=false;
+             }
+        });
+      }
+  }
   }
   //Chargement de la photo d'un Employe
   getPhotoEmploye(photo:String): String
@@ -188,50 +207,146 @@ export class NouvelleDemandeComponent implements OnInit {
   }
   suivant($event)
   {
-    if(this.listeEmployes.length>=2)
+    if(this.selectedCompetencevalues.length>0)
     {
-      this.offset++;
-      this.vsuivant=true;
-      this.vprecedent=true;
-      this.employeService.getAllEmployesPagination(this.offset).subscribe(
-        (data)=>{
-          this.listeEmployes=data;
-          if(this.listeEmployes.length<=0)
+       if(this.listeEmployes.length>=2)
+      {
+         this.offset2++;
+         this.vsuivant=true;
+         this.vprecedent=true;
+         let rechercheCompetence :RechercheCompetence =new RechercheCompetence();
+         rechercheCompetence.offset=this.offset2;
+         rechercheCompetence.listeCompetences=this.selectedCompetencevalues;
+         this.competenceService.getListeEmployesPagination(rechercheCompetence).subscribe(
+           (data)=>{
+              this.listeEmployes=data;
+              if(this.listeEmployes.length<2)
+              {
+                this.vsuivant=false;
+              }
+              console.log(this.listeEmployes);
+              for(let i:number=0;i<this.listeEmployes.length;i++)
+              {
+                  this.tableauVisibiliteDetail[i]=false;
+              }
+           });
+        }
+        else
+        {
+           this.vsuivant=false;
+           this.vprecedent=true;
+        }
+      }
+      else
+      {
+        if(this.listeEmployes.length>=2)
+        {
+          this.offset1++;
+          this.vsuivant=true;
+          this.vprecedent=true;
+          this.employeService.getAllEmployesPagination(this.offset1).subscribe(
+            (data)=>{
+              this.listeEmployes=data;
+              if(this.listeEmployes.length<2)
+              {
+                this.vsuivant=false;
+              }
+              console.log(this.listeEmployes);
+              for(let i:number=0;i<this.listeEmployes.length;i++)
+              {
+                 this.tableauVisibiliteDetail[i]=false;
+              }
+            } );
+        }
+        else
+        {
+          this.vsuivant=false;
+          this.vprecedent=true;
+        }
+        
+      }
+      setTimeout(() => {
+        for(let i:number=0;i<this.listeEmployes.length;i++)
+        {
+          let index:number=this.selectedEmployevaluesId.indexOf(this.listeEmployes[i].idemploye);
+          if(index!=-1)
           {
-            this.vsuivant=false;
+            let element =document.getElementById(""+i); 
+             element.style.backgroundColor="#40826D";
+             console.log(element.innerHTML);
+             document.getElementById("inlineCkeckbox"+i).setAttribute("checked","checked");
           }
-          console.log(this.listeEmployes);
-          for(let i:number=0;i<this.listeEmployes.length;i++)
+          else
           {
-             this.tableauVisibiliteDetail[i]=false;
+                console.log("Salut Suivant"+i);
           }
-        } );
-    }
-    else
-    {
-      this.vsuivant=false;
-      this.vprecedent=true;
-    }
+         }
+      }, 3000);
   }
   precedent($event)
   {
-    if(this.offset>=0)
+    if(this.selectedCompetencevalues.length>0)
     {
-      this.offset--;
-      this.vsuivant=true;
-      this.employeService.getAllEmployesPagination(this.offset).subscribe(
-        (data)=>{
-          this.listeEmployes=data;
-          if(this.offset==0)
-          {
-            this.vprecedent=false;
-          }
-          console.log(this.listeEmployes);
-          for(let i:number=0;i<this.listeEmployes.length;i++)
-          {
-             this.tableauVisibiliteDetail[i]=false;
-          }
-        });
-    }
-  }
+       if(this.offset2>=0)
+       {
+          this.offset2--;
+          this.vsuivant=true;
+          let rechercheCompetence :RechercheCompetence =new RechercheCompetence();
+          rechercheCompetence.offset=this.offset2;
+          rechercheCompetence.listeCompetences=this.selectedCompetencevalues;
+          this.competenceService.getListeEmployesPagination(rechercheCompetence).subscribe(
+            (data)=>{
+              this.listeEmployes=data;
+              if(this.offset2==0)
+              {
+                this.vprecedent=false;
+              }
+              console.log(this.listeEmployes);
+              for(let i:number=0;i<this.listeEmployes.length;i++)
+              {
+                 this.tableauVisibiliteDetail[i]=false;
+              }
+          });
+        }
+      }
+      else
+      {
+        if(this.offset1>=0)
+        {
+          this.offset1--;
+          this.vsuivant=true;
+          this.employeService.getAllEmployesPagination(this.offset1).subscribe(
+            (data)=>{
+              this.listeEmployes=data;
+              if(this.offset1==0)
+              {
+                this.vprecedent=false;
+              }
+              console.log(this.listeEmployes);
+              for(let i:number=0;i<this.listeEmployes.length;i++)
+              {
+                 this.tableauVisibiliteDetail[i]=false;
+              }
+          });
+        }
+     }
+    
+     setTimeout(() => {
+      for(let i:number=0;i<this.listeEmployes.length;i++)
+      {
+         let index:number=this.selectedEmployevaluesId.indexOf(this.listeEmployes[i].idemploye);
+         if(index!=-1)
+         {
+             let element =document.getElementById(""+i); 
+            element.style.backgroundColor="#40826D";
+            console.log(element.innerHTML);
+            document.getElementById("inlineCkeckbox"+i).setAttribute("checked","checked");
+         }
+         else
+         {
+            console.log("Salut Precedent"+i);
+         }
+       }
+     }, 3000);
+  }  
 }
