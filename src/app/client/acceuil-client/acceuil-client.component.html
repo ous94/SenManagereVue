@@ -1,9 +1,4 @@
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container" s>
+<div class="container" *ngIf="vpage">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
   <div class="mail-box">            
      <aside class="sm-side">
@@ -13,8 +8,8 @@
           </a>
           <!--  -->
           <div class="user-name">
-            <h5><a href="#">Sen Menagere</a></h5>
-            <span><a href="#">Administration</a></span>
+            <h5><a >{{clientConnecte.prenom}}</a></h5>
+            <span><a >{{clientConnecte.nom}}</a></span>
           </div>
           <a class="mail-dropdown pull-right" href="javascript:;">
               <i class="fa fa-chevron-down"></i>
@@ -31,13 +26,13 @@
             <a (click)="visibiliteDemandes()"><i class="fa fa-inbox"></i>Nouvelle Demandes</a>
           </li>
           <li>
+            <a (click)="visibiliteDemandesClient()"><i class=" fa fa-trash-o"></i> Mes demandes</a>
+          </li>
+          <li>
              <a (click)="visibiliteEmploye()"><i class="fa fa-external-link"></i>Employes</a>
           </li>
           <li>
             <a (click)="visibiliteMessages()"><i class=" fa fa-envelope-o "></i>Messages <span class="label label-info pull-right">30</span></a>
-          </li>
-          <li>
-            <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
           </li>
         </ul>
         <div class="inbox-body text-center">
@@ -62,34 +57,144 @@
       <aside class="lg-side">
         <div class="inbox-head">
           <h3>Inbox</h3>
-          <form action="#" class="pull-right position">
+          <div action="#" class="pull-right position">
              <div class="input-append">
-                <input type="text" class="sr-input" placeholder="Search Mail">
+                <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
                 <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn sr-btn" id="deconnexion" (click)="deconnexion()"><span class="	glyphicon glyphicon-off"></span>  Deconnexion</button>
               </div>
-          </form>
+            </div>
         </div>
         <!--Profil du Client -->
         <div class="inbox-body" *ngIf="vDefaut" >
             <p>Page par Defaut</p>
         </div>
+        <!-- LIste Des Employes par recherhe 
+           +++++++++++++++++++++DEBUT++++++++++++++++++-->
+        <div class="inbox-body" *ngIf="vrecherche">
+          <div class="container" id="listeEmployes">
+            <div class="row">
+            	<section class="content">
+	             <div class="table-container panel-body panel panel-default col-md-8">
+	              	<table class="table table-filter">
+		                <tbody>
+		                	<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+			                  <!-- <td>
+			                  	<div class="ckbox">
+				                   	<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+					                	<label for="inlineCkeckbox{{position}}"></label>
+			                  	</div>
+			                  </td> -->
+			                  <td>
+			                   	<a href="javascript:;" class="star">
+				                    <i class="glyphicon glyphicon-star"></i>
+			                  	</a>
+			                  </td>
+			                  <td>
+                          <div class="media">
+				                    <a href="#" class="pull-left">
+					                    <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
+				                    </a>
+				                    <div class="media-body">
+					                  	<div class="title">
+						                  	<h4>{{employe.prenom}}  {{employe.nom}}</h4>
+						                  	<div class="row">
+							                   	<div class="col-sm-6" >
+								                  	<h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+								                	  <p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+							                  	</div>
+								                  <div class="col-sm-6">
+									                  <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+								                   	<span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+								                  	<span class="pull-right pagado col-sm-12">Date de Naissance :{{employe.dateNaissance}}</span>
+								                  	<span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+								                  </div>
+						                    </div>
+						                  </div>
+					                  	<div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+						                   	<div class="row">
+							                   	<div class="col-sm-6">
+								              	      <p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
+							                   	</div>
+							                  	<div class="col-sm-6">
+								                    	<p >Langues parlées :</p>
+								                    	<ul>
+									                    	 <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
+									                    </ul>
+							                  	</div>
+						                  	</div>
+						                  	<div class="row">
+							                   	<div class="col-sm-6">
+								                   	<p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
+							                   	</div>
+							                   	<div class="col-sm-6">
+								                  	<p>Competences :</p>
+								                  	<ul>
+									           	         <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
+								                  	</ul>
+								                  </div>
+						                  	</div>
+							                  <div class="row">
+							                  	<div class="col-sm-6">
+								                  	<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+							                   	</div>
+							                  	<div class="col-sm-6">
+								                   	<p>Disponibilite :</p>
+								                  	<ul>
+									                   	<li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
+								                  	</ul>
+							                   	</div>
+						                  	</div>
+					                  	</div>
+				                    </div>
+                          </div>
+			                  </td>
+			                  <td>
+				                   <button (click)="details(position)"  *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+				                   <button (click)="reduire(position)"  *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+			                   </td>
+		                	</tr>
+		                </tbody>
+	               	</table>
+	              </div>
+              </section>
+              <div class="col-md-12">
+                <div class="col-md-8">
+                  <div class="col-md-6" >
+                    <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+                  </div>
+                  <div class="col-md-6" >
+                    <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+                  </div>
+                </div >
+                <div class="col-md-4">
+                </div> 
+              </div>
+            </div>
+          </div> 
+        </div>
+        <!-- LIste Des Employes par recherhe 
+           +++++++++++++++++++++FIN++++++++++++++++++-->
         <!--Profil du Client -->
         <div class="inbox-body" *ngIf="vProfile" >
-            <p>Profil du Client</p>
+            <app-profil></app-profil>
         </div>
         <!--Demandes du Client -->
         <div class="inbox-body" *ngIf="vDemandes" >
-          <p>Demandes du Client</p>
           <app-nouvelle-demande></app-nouvelle-demande>
         </div>
         <!--Liste Des Employes -->
         <div class="inbox-body" *ngIf="vEmploye" >
-          <p>Liste des Employes</p>
+          <app-liste-employes></app-liste-employes>
         </div>
         <!--Messages du Client -->
         <div class="inbox-body" *ngIf="vMessages" >
-          <p>Messages du Client</p>
+            <app-message-client></app-message-client>
         </div>
+        <!--Liste des Demande du Client -->
+        <div class="inbox-body" *ngIf="vDemandesClient" >
+          <app-liste-demande></app-liste-demande>
+      </div>
       </aside>
     </div>
  </div>

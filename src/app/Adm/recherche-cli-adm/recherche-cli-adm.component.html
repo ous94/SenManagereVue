@@ -1,0 +1,81 @@
+<div class="col-md-2">
+    <div class="input-group">
+      <input type="text"  placeholder="Search  for..." class="form-control" id="competence" required [(ngModel)]="recherche" (change)="touchRecherche()">
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <br/> <br/>  <br/> <br/>
+  <div class="inbox-body" *ngIf="vrecherche">
+      <div class="container" id="listeEmployes">
+        <div class="row">
+          <section class="content">
+           <div class="table-container panel-body panel panel-default col-md-8">
+              <table class="table table-filter">
+                <tbody>
+                  <tr data-status="pagado" *ngFor="let employe of listeClients ;let position=index;">
+                    <td>
+                       <a href="javascript:;" class="star">
+                        <i class="glyphicon glyphicon-star"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <div class="media">
+                        <a href="#" class="pull-left">
+                          <img src="../assets/SET1/clientlogo.jpeg" class="media-photo">
+                        </a>
+                        <div class="media-body">
+                          <div class="title">
+                            <h4>{{employe.prenom}}  {{employe.nom}}</h4>
+                            <div class="row">
+                               <div class="col-sm-6" >
+                                <h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+                                <p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+                              </div>
+                              <div class="col-sm-6">
+                                <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+                                 <span class="pull-right pagado col-sm-12">Sexe :{{employe.sexe}}</span>
+                                <span class="pull-right pagado col-sm-12">Telephone Mobile :{{employe.telephoneMobile}}</span>
+                                <span class="pull-right pagado col-sm-12">Email :{{employe.email}}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+                             <div class="row">
+                               <div class="col-sm-6">
+                                  <p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
+                               </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-sm-6">
+                                 <p *ngIf="employe.localite.nom">Localite :{{employe.localite.nom}}</p>
+                               </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <p *ngIf="employe.typeIdentification.nom">Identification :{{employe.typeIdentification.nom}}</p>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                     
+                        <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+                        <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+                        <button (click)="deleteClient(employe)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
+                        <button (click)="editeClient(employe)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+                     </td>
+                  </tr>
+                </tbody>
+               </table>
+            </div>
+          </section>
+        </div>
+      </div> 
+    </div>
+    <!-- LIste Des Employes par recherhe -->
+
+

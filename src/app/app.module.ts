@@ -76,9 +76,17 @@ import { RechercheLocaliteComponent } from './employee/recherche-localite/recher
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
 import { PagewebComponent } from './Adm/pageweb/pageweb.component';
+import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
+import { ProfilComponent } from './client/profil/profil.component';
+import { ListeEmployesComponent} from './client/liste-employes/liste-employes.component';
+import { EditerClientComponent} from './client/editer-client/editer-client.component';
+import {ListeDemandeComponent} from './client/liste-demande/liste-demande.component';
+import { MessageClientComponent} from './client/message-client/message-client.component';
+
 const appRoutes: Routes = [
 
-  {path: '', pathMatch: 'full', component: HomeComponent},
+  //{path: '', pathMatch: 'full', component: HomeComponent},
+    {path: '', pathMatch: 'full', component: RefLangComponent},
    {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
@@ -94,7 +102,7 @@ const appRoutes: Routes = [
     {path:'nav',component:NavbarComponent},
     {path:'client',component:ClientComponent},
     {path:'listeClient',component:ListeClientComponent},
-    {path:'test',component:TestComponent},
+    {path:'',component:RefLangComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
     {path:'contacter',component:ConctactComponent},
     //new version
@@ -177,7 +185,13 @@ const appRoutes: Routes = [
     RechercheLocaliteComponent,
     TapeDemandeComponent,
     MesDemandesComponent,
-    PagewebComponent
+    RefLangComponent,
+    ProfilComponent,
+    PagewebComponent,
+    ListeEmployesComponent,
+    ListeDemandeComponent,
+    EditerClientComponent,
+    MessageClientComponent 
   ],
   entryComponents: [
     ConfirmComponent
@@ -193,10 +207,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 5000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,68 @@
+<div class="container bootstrap snippet">
+    <div class="row" >
+        <div class="col-md-8 " *ngIf="!vajout">
+        <h5>Nouvelle Competence</h5>
+        <form [formGroup]="compForm" (ngSubmit)="validercompetence()" >
+            <div class="form-group col-md-5">
+                <input type="text" class="form-control activation" id="description" placeholder="description " formControlName="description"   > 
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" ><i class="glyphicon glyphicon-plus-sign"></i></button>
+
+            </div>
+
+           </form>
+            <button id="idbtn" (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
+
+        </div>
+      
+        <div class="col-md-8 " *ngIf="vEdite">
+                <h5>Editer Competence</h5>
+                <form [formGroup]="compForm" (ngSubmit)="validercompetence()" >
+                    <div class="form-group col-md-5">
+                        <input type="text" class="form-control activation" [value]="compEdite.description" [(ngModel)]="compEdite.description" id="description" placeholder="description " formControlName="description"   > 
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" ><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
+        
+                    </div>
+        
+                   </form>
+                </div>
+
+    </div>
+</div>
+    <!-- fin -->
+
+ <div class="col-md-6">
+<div class="panel panel-primary" *ngIf="listerCompetence">
+    <div class="panel-heading"><span class="glyphicon glyphicon-list"> Mes Competences</span></div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <th>Description</th>
+    <th>Supprimmer</th>
+    <th>editer</th>
+
+  </thead>
+  <tbody >
+    <tr *ngFor="let comp of listeCompences " class="table-info">
+      <td>{{comp.description}}</td>
+      <td><button (click)="deleteCompetence(comp)" class="btn btn-danger" ><i class="glyphicon glyphicon-trash"></i></button>
+        <td><button (click)="editeCompetence(comp)" class="btn btn-primary" ><i class="glyphicon glyphicon-pencil"></i></button>
+        
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  <div class="container">
+        <ul class="pagination">
+          <li *ngIf="vprecedant" (click)="precedant()"><a class="glyphicon glyphicon-menu-left"></a></li>
+          <li *ngIf="vsuivant" (click)="suivant()"><a class="glyphicon glyphicon-menu-right"></a></li>
+
+        </ul>
+      </div>
+  </div>
+  
+  <div>
+</div>

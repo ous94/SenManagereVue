@@ -4,6 +4,7 @@ import { DemandeService } from 'src/app/service/demande.service';
 import { UploadFileService } from 'src/app/upload-file.service';
 import { Route, Router } from '@angular/router';
 import { FormGroup, FormControl, NgForm } from '@angular/forms';
+import { log } from 'util';
 
 @Component({
   selector: 'app-mes-demandes',
@@ -14,13 +15,13 @@ export class MesDemandesComponent implements OnInit {
 
 
   demandes: any;
-  demandeEdite:Demande;
+  demandeEdite:Demande = new Demande();
 
   maDemande: Demande = {
     iddemande :0,
     date : new Date,
-    salairePropose :0,
-    salaireRetenue :0,
+    salairePropose :null,
+    salaireRetenue :null,
     services :'',
     competences :[],
     client :null,
@@ -43,22 +44,25 @@ export class MesDemandesComponent implements OnInit {
 
   ngOnInit() {
     this.reloadData();
-    this.initiermodifier();
-       this.maDemande.iddemande=this.demandes.iddemande;
-       this.maDemande.salaireRetenue=this.demandes.salaireRetenue;
+       
+
        
   }
 
   initiermodifier()
   {
-  this.demandes =this.DemandeService.getterDemande();       
+  this.demandes =this.DemandeService.getterDemande();  
+  console.log(this.demandes);     
   }
    validerModification(form : NgForm)
    {
      this.demandeEdite=form.value;
-    console.log(this.demandeEdite);
-        console.log(this.maDemande.iddemande);
-     this.DemandeService.updateDemander(this.maDemande.iddemande,this.demandeEdite).
+    // this.demandes.iddemande=this.demandeEdite.iddemande;
+     this.demandes.salairePropose=this.demandeEdite.salairePropose;
+     this.demandes.salaireRetenue=this.demandeEdite.salaireRetenue;
+     
+    console.log(this.demandes);
+     this.DemandeService.updateDemander(this.demandes.iddemande,this.demandes).
      subscribe(data => console.log(data), error => console.log(error));
     ///this.customer = new Customer();
     //this.router.navigate(['']);
@@ -92,7 +96,10 @@ deleteDemande(demande:Demande) {
 }
     ///edite
    editeDemande(demande:Demande) {
-      this.DemandeService.setteDemande(demande);
+    console.log(demande);
+     this.demandes= this.DemandeService.setteDemande(demande);
+      console.log(this.demandes);
+
       this.showdedite=!this.showdedite;
       //this.router.navigate(['/edite'])
     }

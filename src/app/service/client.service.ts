@@ -24,6 +24,11 @@ export class ClientService {
     return this.httpClient.get(this.baseUrl+'/clients'); 
   }
 
+  //Les  listes  client
+getAllClient(): Observable<any> {
+  return this.httpClient.get(this.baseUrl+"/clientall"); 
+}
+
 
   // suppression d'un employee
   deleteClientid(id: number): Observable<any> {
@@ -37,23 +42,27 @@ export class ClientService {
   setteClient(client:Client)
   {
     return this.client=client;
-    this.getterClient();
-    console.log(this.getterClient);
+    
   }
   
-  getterClient()
-  {
-    return this.client;
-  }
+
   //modification de customers
-  updateClient(id: number, client: Client): Observable<Object> {
-    return this.httpClient.put(`${this.baseUrl}/clients/edite/${id}`,client);
+  updateClient(id: number, client: Client): Observable<Client> {
+    return this.httpClient.put<Client>(`${this.baseUrl}/clients/edite/${id}`,client);
   }
- /*  updaternew(demande)
-  {
-      return this.httpClient.put(this.baseUrl+"/demande/edite",demande);
-  
-  } */
+ // recuperation Email
+ getEmailClient(email:String): Observable<boolean>{
+  return this.httpClient.get<boolean>(`${this.baseUrl}/client/email/${email}`);
+
+
+ }
+ // recuperation Email
+ getTelephoneClient(telephone:String): Observable<boolean>{
+  return this.httpClient.get<boolean>(`${this.baseUrl}/client/telephoneMobile/${telephone}`);
+
+
+ }
+
 
 
 }

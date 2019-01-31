@@ -1,0 +1,99 @@
+<div class="col-md-2">
+    <div class="input-group">
+      <input type="text"  placeholder="Search  for..." class="form-control" id="competence" required [(ngModel)]="recherche" (change)="touchRecherche()">
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <br/> <br/>  <br/> <br/>
+  <div class="inbox-body" *ngIf="vrecherche">
+      <div class="container" id="listeEmployes">
+        <div class="row">
+          <section class="content">
+           <div class="table-container panel-body panel panel-default col-md-8">
+              <table class="table table-filter">
+                <tbody>
+                  <tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+                    <td>
+                       <a href="javascript:;" class="star">
+                        <i class="glyphicon glyphicon-star"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <div class="media">
+                        <a href="#" class="pull-left">
+                          <img src={{getPhotoEmploye(employe.photo)}} class="media-photo">
+                        </a>
+                        <div class="media-body">
+                          <div class="title">
+                            <h4>{{employe.prenom}}  {{employe.nom}}</h4>
+                            <div class="row">
+                               <div class="col-sm-6" >
+                                <h5 class="col-sm-8" *ngIf="employe.observation">Information :</h5>
+                                <p class="summary col-sm-8"><textarea *ngIf="employe.observation" id="observation" rows="6" disabled>{{employe.observation}}</textarea></p>
+                              </div>
+                              <div class="col-sm-6">
+                                <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+                                 <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+                                <span class="pull-right pagado col-sm-12">Date de Naissance :{{employe.dateNaissance}}</span>
+                                <span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+                             <div class="row">
+                               <div class="col-sm-6">
+                                  <p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
+                               </div>
+                              <div class="col-sm-6">
+                                  <p >Langues parlées :</p>
+                                  <ul>
+                                     <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
+                                  </ul>
+                              </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-sm-6">
+                                 <p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
+                               </div>
+                               <div class="col-sm-6">
+                                <p>Competences :</p>
+                                <ul>
+                                    <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+                               </div>
+                              <div class="col-sm-6">
+                                 <p>Disponibilite :</p>
+                                <ul>
+                                   <li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
+                                </ul>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                     
+                        <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+                        <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+                        <button (click)="deleteEmploye(employe)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
+                        <button (click)="editeEmploye(employe)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+                     </td>
+                  </tr>
+                </tbody>
+               </table>
+            </div>
+          </section>
+        </div>
+      </div> 
+    </div>
+    <!-- LIste Des Employes par recherhe -->
+
+

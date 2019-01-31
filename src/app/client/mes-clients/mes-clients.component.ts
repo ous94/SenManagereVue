@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/Classe/Client';
 import { ClientService } from 'src/app/service/client.service';
 import { UploadFileService } from 'src/app/upload-file.service';
+import { NgForm } from '@angular/forms';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-mes-clients',
@@ -10,75 +12,83 @@ import { UploadFileService } from 'src/app/upload-file.service';
 })
 export class MesClientsComponent implements OnInit {
 
-  listeClient:Client[];
-  showdetail:boolean=false;
+  //listeEmploye:Employee[];
 
-  constructor(private ClientService:ClientService, private UploadFileService:UploadFileService) { 
 
-    setTimeout(() => {
-      this.reloadData();
+  listeClients:Array<Client>;
+  tableauVisibiliteDetail:boolean[]=[];
+  selectedClientvalues=[];
+  //favCompetenceErreur:boolean=true;
+  //favEmployeErreur:boolean=true;
 
-      
-    }, 2000
-     );
-   }
+constructor(private ClientService:ClientService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
+    this.reloadData();
+
+}
+
+ //Chargement de la photo d'un Employe
+ getPhotoClient(photo:String): String
+ {
+   return this.uploadFileService.getPhoto(photo);
+ }
+ //
+ details(position :number)
+ {
+   console.log("Salut vous voulez plus de Details");
+   this.tableauVisibiliteDetail[position]=true;
+ }
+ reduire(position :number)
+ {
+   console.log("Salut vous voulez reduire");
+   this.tableauVisibiliteDetail[position]=false;
+ }
 
   ngOnInit() {
-    this.reloadData();
+    //this.reloadData();
+  }
+
+  reloadData() {
+
+    this.ClientService.getAllClient().subscribe(
+      (data)=>{this.listeClients=data;
+               console.log(this.listeClients);
+               for(let i:number=0;i<this.listeClients.length;i++)
+               {
+                 this.tableauVisibiliteDetail[i]=false;
+               }}
+  );
+ /*  this.comptenceService.getAllCompetences().subscribe(
+     (data)=>{this.listeCompetences=data;}
+  ); */
+ 
+
   }
 
 
-  reloadData() {
-  
-    //misea ajour Ethnies
-     this.ClientService.getClients().subscribe(
-       data =>{this.listeClient=data;console.log(data)},
-       error =>{console.log(this.listeClient)},
  
-       ()=>{console.log('errer chargement des donnés')}
-       );
-     }
 
-
-// delete client
+// delete employee
 deleteClient(client:Client) {
   this.ClientService.deleteClientid(client.idclient)
     .subscribe(
       data => {
         console.log(data);
-        this.listeClient.splice(this.listeClient.indexOf(client),1);
+        this.listeClients.splice(this.listeClients.indexOf(client),1);
         
       },
       error => console.log(error));
       this.reloadData();
 }
+//edite emplo
+editeEmploye()
+     {
+       
+     }
+    
 
 
-     ///edite
-     editeClient(client:Client) {
-      this.ClientService.deleteClientid(client.idclient)
-        .subscribe(
-          data => {
-            console.log(data);
-            this.listeClient.splice(this.listeClient.indexOf(client),1);
-            
-          },
-          error => console.log(error));
-          this.reloadData();
-    }
-
-
-
-    uploadPhotoEmployer(photo:String): String
+    uploadPhotoClient(photo:String): String
     {
-      return this.UploadFileService.getPhoto(photo);
+      return this.uploadFileService.getPhoto(photo);
+    }
   }
-  //
-  visibiliteDetail()
-{
-  this.showdetail=!this.showdetail;
-  
-}
-
-
-}

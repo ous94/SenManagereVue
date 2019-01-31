@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { BaseUrl } from '../ConfigProjet/baseUrl';
+import { TypeIdentification } from '../Classe/TypeIdentification';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,16 @@ export class TypeIdentificationService {
 
   constructor(private http:HttpClient) { }
 
-  getTypeIdentificationByNom(nom:String):Observable<any>
+  getTypeIdentificationByNom(nom:String):Observable<TypeIdentification>
   {
-    return this.http.get(this.baseUrl+"/ttypeIdentification/nom/"+nom);
+    return this.http.get<TypeIdentification>(this.baseUrl+"/ttypeIdentification/nom/"+nom);
   }
 }
+
+
+
+
+//////////
+
+
+

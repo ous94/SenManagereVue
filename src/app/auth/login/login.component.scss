@@ -12,22 +12,21 @@ body {
 
 .container {
     padding: 25px;
-    position: fixed;
-    left: 50%;
-    margin-left: -650px;
-    margin-top: 10%;
+   // position: fixed;
+    //left: 50%;
+   // margin-left: -650px;
+   vertical-align: middle;
+   // margin-top: 10%;
 }
 
 .form-login {
     background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
     border-radius: 15px;
     border-color:#d2d2d2;
     border-width: 5px;
     box-shadow:0 1px 0 #cfcfcf;
+    vertical-align: middle;
 }
 
 h4 { 
@@ -43,4 +42,18 @@ h4 {
 
 .wrapper {
     text-align: center;
+}
+
+#userName , #userPassword
+{
+    font-size:20px;
+    height: 50px;
+    font-weight: bold;
+}
+.formulaire ,.div1, .div2,.div3
+{
+    vertical-align: middle;
+} 
+.div3{
+    margin-top: 200px;
 }

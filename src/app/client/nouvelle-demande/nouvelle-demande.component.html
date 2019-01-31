@@ -1,4 +1,4 @@
-<form [formGroup]="demandeForm" (ngSubmit)="validerDemande()">
+<form [formGroup]="demandeForm">
 <!--Formulaire Pour Donner le Salaire Propose et les Services
 	 ++++++++++++++++DEBUT++++++++++++++++++++++++++++++-->
 		<div class="row" style="background-color:rgb(211, 209, 210);">
@@ -9,7 +9,7 @@
 					 <input class="form-control" id="" name="" placeholder="Salaire Proposé en FCFA" type="text" formControlName="salairePropose" >
 				   </div>
 				   <div class="col-sm-12 form-group"><br>
-					  <textarea class="form-control" id="" name="" placeholder="Commentaire sur le(s) Service(s) demande(s)" formControlName="service" rows="4"></textarea>
+					  <textarea class="form-control" id="" name="" placeholder="Commentaire sur le(s) Service(s) demande(s)" formControlName="services" rows="4"></textarea>
 				  </div> 
 				</div> 
 		    </div>
@@ -24,18 +24,36 @@
 <!--+++++++++++++++FIN+++++++++++++++++++++++++++++++++
    Formulaire Pour Donner le Salaire Propose et les Services-->
 
+	<!-- LIste Des employes selectionner pour la demande 
+		+++++++++++++++++++++DEBUT++++++++++++++++++-->
+   <div class="col-md-12" style="background-color: darkred" *ngIf="selectedEmployevalues.length!=0" >
+		 <div class="col-md-6" style="background-color: burlywood ;border: white solid 2px;" *ngFor="let emp of selectedEmployevalues">
+				<div class="col-md-6">
+						<p>{{emp.nom}}</p>
+						<p>{{emp.prenom}}</p>
+						<p>{{emp.religion}}</p>
+				</div>
+				<div class="col-md-6">
+						<p>{{emp.dateNaissance}}</p>
+						<p>{{emp.situationMatrimoniale}}</p>
+				</div>
+		 </div>
+	 </div>
+	<!--+++++++++++++++FIN+++++++++++++++++++++++++++++++++
+   LIste Des employes selectionner pour la demande-->
+		
 <!-- LIste Des employes a associer a la Demande 
     +++++++++++++++++++++DEBUT++++++++++++++++++-->
 <div class="container" id="listeEmployes">
   <div class="row">
-	<section class="content">
+	<section class="content ">
 	  <div class="table-container panel-body panel panel-default col-md-8">
 		<table class="table table-filter">
 		  <tbody>
-			<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+			<tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;" id="{{position}}">
 			  <td>
 				<div class="ckbox">
-					<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+					<input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe,position)">
 						<label for="inlineCkeckbox{{position}}"></label>
 				</div>
 			  </td>
@@ -71,7 +89,7 @@
 									<p *ngIf="employe.pay.nom">Nationnalite :{{employe.pay.nom}}</p>
 								</div>
 								<div class="col-sm-6">
-									<p *ngIf="employe.langues">Langues parlées :</p>
+									<p >Langues parlées :</p>
 									<ul>
 										 <li *ngFor="let langue of employe.langues">{{langue.nom}}</li>
 									</ul>
@@ -82,7 +100,7 @@
 									<p *ngIf="employe.ethny.nom">Ethnie :{{employe.ethny.nom}}</p>
 								</div>
 								<div class="col-sm-6">
-									<p *ngIf="employe.competences">Competences :</p>
+									<p>Competences :</p>
 									<ul>
 										 <li *ngFor="let competence of employe.competences">{{competence.description}}</li>
 									</ul>
@@ -91,16 +109,16 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
+									<p *ngIf="employe.localite">Localite :{{employe.localite.nom}}</p>
 								</div>
 								<div class="col-sm-6">
-									<p *ngIf="employe.disponibilites">Disponibilite :</p>
+									<p>Disponibilite :</p>
 									<ul>
 										<li *ngFor="let disponibilite of employe.disponibilites"> {{disponibilite.moment}}  {{disponibilite.horaire}}</li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						
 				  </div>
         </div>
 			 </td>
@@ -113,9 +131,21 @@
 		</table>
 	  </div>
 	</section>
-  </div>
+	<div class="col-md-12">
+		<div class="col-md-8">
+			<div class="col-md-6" >
+				<button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+			</div>
+			<div class="col-md-6" >
+					<button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+			</div>
+		</div >
+		<div class="col-md-4">
+		</div> 
+	</div>
+ </div>
 </div>
-<button  class="btn btn-primary" type="submit" >Valider<span class=" glyphicon glyphicon-ok"></span></button>
+<button  class="btn btn-primary" type="submit" (click)="validerDemande()" >Valider<span class=" glyphicon glyphicon-ok"></span></button>
 </form>
 <!--++++++++++++++++++++FIN++++++++++++++++++++++++++
  LIste Des employes a associer a la Demande -->

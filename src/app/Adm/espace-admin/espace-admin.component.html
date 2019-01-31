@@ -1,0 +1,227 @@
+<div class="jumbotron">
+    <div class="container ">
+  <img src="../assets/SET1/logo.jpg"   width="120" height="80" >
+  <!-- nav -->  
+<nav class="navbar " >
+    <div class="container-fluid">
+      <div class="navbar-header">
+      
+      </div>
+      <div class="collapse navbar-collapse "  id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li ><a (click)="visibiliteAccuile()" ><span class="glyphicon glyphicon-home"></span> Admin</a></li>
+
+         
+        </ul>
+        <ul class="nav navbar-nav navbar-right"  >
+            <li ><a (click)="visibiliteMessage()"><span class="glyphicon glyphicon-comment"></span> Messagerie</a></li>
+            <li><a  (click)="visibiliteEmployes()"><span class="glyphicon glyphicon-user"></span> Employes</a></li>
+            <li><a (click)="visibiliteClients()"><span class="glyphicon glyphicon-briefcase"></span> Client</a></li>
+            <li><a (click)="visibiliteReferenciel()"><span class="glyphicon glyphicon-cog"></span> Referenciel</a></li>
+<!--             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+ -->        </ul>
+      </div>
+    </div>
+  </nav>    
+<!-- nav -->
+    </div>
+  </div><!-- jumbo -->
+
+
+  <!-- Employés -->
+      <div class="container-fluid" *ngIf="afficheMessagerie">
+          <div class="row content">
+            <div class="col-sm-2 sidenav">
+              <ul class="sid" >
+           <!--        <li><a (click)="mesmessage()"><span class="glyphicon glyphicon-list"></span>Messageries</a></li><br>
+                  <li><a (click)="rechermessage()"><span class="glyphicon glyphicon-search"></span> Messageries</a></li><br> -->
+               
+                    <!--  <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
+                     <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button> -->
+<!--                    <li><a (click)="statiqueEmployer()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+ -->              </ul>
+            </div>
+      <!-- centreEmplyer -->
+      <div class="well col-sm-8 text-left" *ngIf="afficheMessagerie"> 
+          <div class="container">
+              <div class="messaging">
+                  <div class="inbox_msg">
+                      <div class="inbox_chat">
+                            <div class="chat_ ">
+                              <app-messages-adm *ngIf="afficheMessagerie"></app-messages-adm>
+                              <app-rech-message-adm *ngIf="rechemessageries"></app-rech-message-adm>
+
+                               </div>
+                         </div>
+                   </div>
+            </div>
+      </div>   
+</div>  
+        <div class="col-sm sidenav" *ngIf="afficheMessagerie">
+          <!-- <div class="well">
+            --  --
+          </div>
+          <div class="well">
+            --  --
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- client -->
+
+    <!-- Employés -->
+    <div class="container-fluid" *ngIf="afficheClient">
+        <div class="row content">
+          <div class="col-sm-2 sidenav">
+            <ul class="sid" >
+                <li><a (click)="newClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
+                <li><a (click)="listeClient()" ><span class="glyphicon glyphicon-list"></span> Liste Clients</a></li><br>
+                <li><a (click)="demandeClient()"><span class="glyphicon glyphicon-book"></span> Demandes</a></li><br>
+  
+              <li><a (click)="rechercheClient()" ><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br> 
+             <li><a (click)="statistiqueClient()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+
+            </ul>
+          </div>
+    <!-- centreEmplyer -->
+    <div class="well col-sm-8 text-left" *ngIf="afficheClient"> 
+        <div class="container">
+            <div class="messaging">
+                <div class="inbox_msg">
+                    <div class="inbox_chat">
+                          <div class="chat_ ">
+                              <app-mes-clients *ngIf="listeClients"></app-mes-clients>
+                              <app-mes-demandes *ngIf="demandeClients"></app-mes-demandes>
+                              <app-recherche-cli-adm *ngIf="rechercheClients"></app-recherche-cli-adm>
+
+                             </div>
+                       </div>
+                 </div>
+          </div>
+    </div>   
+</div>  
+      <div class="col-sm-2 sidenav" *ngIf="afficheClient">
+        <!-- <div class="well">
+          --  --
+        </div>
+        <div class="well">
+          --  --
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- fin client -->
+  <!-- afficheConfiguration -->
+  <div class="container-fluid" *ngIf="afficheConfiguration">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          <ul class="sid" >
+              <li><a (click)="referencePays()" >Pays</a></li><br>
+              <li><a (click)="referenceEthnies()">Ethnies</a></li><br>
+              <li><a (click)="referenceLangues()" >Langues</a></li><br>
+              <li><a (click)="referenceLoaclites()"> Localités</a></li><br>
+              <li><a (click)="referenceCompetences()" > Competences</a></li><br> 
+              <li><a (click)="referenceNiveauEtudes()"> NiveauEtudes</a></li><br> 
+              <li><a (click)="referenceTypes()" >TypeIdentifications</a></li><br> 
+
+
+          </ul>
+        </div>
+  <!-- centreEmplyer -->
+  <div class="well col-sm-8 text-left" *ngIf="afficheConfiguration"> 
+      <div class="container">
+          <div class="messaging">
+              <div class="inbox_msg">
+                  <div class="inbox_chat">
+                        <div class="chat_ ">
+                            <app-ref-competence *ngIf="refComp"></app-ref-competence>
+                            <app-reflocalite *ngIf="refloc"></app-reflocalite>
+                            <app-ref-lang *ngIf="refLang"W></app-ref-lang>
+                            <app-ref-ethnie *ngIf="refethnies"></app-ref-ethnie>
+                            <app-ref-type-iden *ngIf="reftype"></app-ref-type-iden>
+                            <app-ref-niveau-etude *ngIf="refNiveauEtudes"></app-ref-niveau-etude>
+                            <app-ref-pays *ngIf="refpays"></app-ref-pays>
+
+                           </div>
+                     </div>
+               </div>
+        </div>
+  </div>   
+</div>  
+    <div class="col-sm-2 sidenav" *ngIf="afficheConfiguration">
+      <!-- <div class="well">
+        --  --
+      </div>
+      <div class="well">
+        --  --
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- afficheConfiguration -->
+
+
+
+  <!-- Employés -->
+  <div class="container-fluid" *ngIf="afficheAccueil">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          
+        </div>
+        <!-- centreEmplyer -->
+        <div class="col-sm-8 text-left" *ngIf="afficheAccueil"> 
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <hr>
+            <h3>Test</h3>
+            <p>Lorem ipsum...</p>
+          </div>
+          <div class="col-sm-2 sidenav" *ngIf="afficheAccueil">
+            <!-- <div class="well">
+              --  --
+            </div>
+            <div class="well">
+              --  --
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+
+  <!-- Employés -->
+  <div class="container-fluid" *ngIf="afficheEmployes">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+        <ul class="sid" >
+          <li><a  (click)="nouvelEmployer()"><span class="glyphicon glyphicon-plus"></span> Nouvel Employe</a></li><br>
+           <li><a (click)="listEmployer()"><span class="glyphicon glyphicon-list"></span> Liste Employés</a></li><br>
+           <li><a (click)="rechercheEmployer()"><span class="glyphicon glyphicon-search"></span> Recherche</a></li><br>
+         
+              <!--  <input [(ngModel)]="recherche" type="text" class="sr-input" placeholder="Recherche" (click)="faireRecherche()" (change)="touchRecherche()">
+               <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button> -->
+             <li><a (click)="statiqueEmployer()"><span class="glyphicon glyphicon-signal"></span> Statistiques</a></li><br>
+        </ul>
+      </div>
+      <!-- centreEmplyer -->
+          <div class="well col-sm-8 text-left" *ngIf="afficheEmployes"> 
+                           <div class="container">
+                                <div class="messaging">
+                                    <div class="inbox_msg">
+                                        <div class="inbox_chat">
+                                              <div class="chat_ ">
+                                                <app-mes-emplyes *ngIf="listeEmployer"></app-mes-emplyes>
+                                                <app-inscription *ngIf="newEmployer"></app-inscription>
+                                                <app-recherche-emp-adm *ngIf="recherche"></app-recherche-emp-adm>
+
+                              </div>
+                       </div>
+                  </div>
+           </div>
+      </div>   
+  </div>  
+<div class="col-sm-2 sidenav" *ngIf="afficheEmployes">
+    
+    </div>
+  </div>
+</div>

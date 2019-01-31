@@ -17,5 +17,14 @@ export class MessagesService {
   sendMessages(messages: Messages): Observable<String> {
     return this.httpClient.post<String>(this.baseUrl+ '/messages/send', messages);
   }
+  getallMessage():  Observable<any> {
+    return this.httpClient.get(this.baseUrl+'/mesMessages');
+  }
+   // suppression de message
+   deleteMessageid(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/employes/delete/${id}`, { responseType: 'text' });
+
+  }
+  
 
 }
