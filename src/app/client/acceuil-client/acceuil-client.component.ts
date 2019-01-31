@@ -83,7 +83,7 @@ export class AcceuilClientComponent implements OnInit {
     this.vrecherche=false;
     this.vDemandesClient=false;
   }
-  visibiliteMessages($event)
+  visibiliteContrats($event)
   {
     this.vMessages=!this.vMessages;
     this.vDefaut=!this.vMessages;

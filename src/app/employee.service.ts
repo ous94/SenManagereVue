@@ -155,5 +155,15 @@ getAllEmployesPagination(offset:number):Observable<any>
 {
   return this.httpClient.get<any>(this.baseUrl+"/allEmploye/pagination/"+offset);
 }
+//nombre Employes libre
+countEmployeLibre():Observable<number>
+{
+  return this.httpClient.get<number>(this.baseUrl+"/employe/libre/count");
+}
+//Nouveau Recrue
+countEmployeNouveau():Observable<number>
+{
+  return this.httpClient.get<number>(this.baseUrl+"/employe/nouveau/count");
+}
 
 }

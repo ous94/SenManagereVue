@@ -1,28 +1,148 @@
-<div class="panel panel-primary">
-  <div class="panel-heading"><span class="glyphicon glyphicon-euro
-    "> Liste Des Demandes</span></div>
-<table class="table table-striped">
-  <thead class="thead-dark">
-  <th>Date</th>
-  <th>Service</th>
-  <th>Salaire Propose</th>
-  <th>Salaire Retenue</th>
-  <th>active</th>
-  <th>Action</th>
-</thead>
-<tbody >
-  <tr *ngFor="let dema of listeDemande " class="table-info">
-    <td>{{dema.date}}</td>
-    <td>{{dema.services}}</td>
-    <td>{{dema.salairePropose}}</td>
-    <td>{{dema.salaireRetenue}}</td>
-    <td><button type="submit" class="btn btn-danger" (click)='deleteDemande(dema)' ><span class="glyphicon glyphicon-trash"></span></button></td>
-    <td><button type="submit" class="btn btn-primary" (click)='editeDemande(dema)'><span class="glyphicon glyphicon-pencil"></span></button></td>
+<div class="panel panel-primary col-dm-12">
+    <div class="col-md-12" style="background-color: darkcyan; padding-bottom: 20px; margin-bottom: 20px;">
+      <div class="col-md-2 rech">
+        <input class="recherche"  [(ngModel)]="rechercheNom" type="text" placeholder="nom du client" />
+      </div> 
+      <div class="col-md-2 rech" >
+        <input  class="recherche" [(ngModel)]="recherchePrenom" type="text" placeholder="Prenom du Client" />
+      </div> 
+      <div class="col-md-2 rech" > 
+        <input class="recherche"  [(ngModel)]="rechercheSalaire" type="text" placeholder="salaire Proposé" />
+      </div>
+      <div class="col-md-2 rech">
+        <input class="recherche"  [(ngModel)]="rechercheServices" type="text" placeholder="services" />
+      </div>
+      <div class="col-md-1 rech"> 
+        <input id="inputDate" [(ngModel)]="rechercheDate" type="date" placeholder="Date Demande" />
+      </div>
+      <div class="col-md-2 rech"> 
+        <button id="buttonRecherche" (click)="recherche()">Rercherche</button>
+      </div>
+      </div>
+    <table class="table table-striped">
+      <tbody >
+        <tr *ngFor="let dema of listeDemande;let position=index;" class="table-info">
+          <td>
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <p><span>Date :{{dema.date}}</span></p>
+                <p><span>Salaire Proposé : {{dema.salairePropose}}</span></p>
+             </div>
+             <div class="col-md-6">
+                <span>Service :</span>
+                <div class="col-md-12">
+                   <textarea rows="5" disabled>{{dema.services}}</textarea>
+                </div>
+             </div>
+           </div>
+         </td>
+         <td><button type="submit" class="btn btn-danger" (click)='deleteDemande(dema)' ><span class="glyphicon glyphicon-trash"></span></button></td>
+         <td><button type="submit" class="btn btn-primary" (click)='editeDemande(dema)'><span class="glyphicon glyphicon-pencil"></span></button></td>
+         <td *ngIf="!listeVisibiliteCreatContrat[position]">
+            <button (click)="vCreateContrat(position)">Creer un Contrat</button>
+         </td>
+         <td *ngIf="!vDetailDemande[position]">
+            <button (click)="detailDemande(position)">Details</button>
+         </td>
+         <td *ngIf="vDetailDemande[position]">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-8">
+                   <p>Employes :</p>
+                   <div class="col-md-8" *ngFor="let employe of dema.employees" style="border-bottom:#00a8b3 solid 5px;">
+                      <div class="col-md-6">
+                        <span class="pull-right pagado col-sm-12">Prenom :{{employe.prenom}}</span>
+                        <span class="pull-right pagado col-sm-12">Nom :{{employe.nom}}</span>
+                        <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+                        <span class="pull-right pagado col-sm-12">Email :{{employe.email}}</span>
+                      </div>
+                      <div class="col-md-6" >
+                         <span class="pull-right pagado col-sm-12">Mobile :{{employe.telephoneMobile}}</span>
+                         <span class="pull-right pagado col-sm-12">Fixe :{{employe.telephoneFixe}}</span>
+                         <span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+                         <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+                      </div>
+                   </div>
+               </div>
+               <div class="col-md-4">
+                <div class="col-md-12">
+                 <ul *ngFor="let competence of dema.competences ">
+                   <li>{{competence.description}}</li>
+                 </ul>
+               </div>
+              </div>
+              <div class="col-md-12">
+                <p>Client :</p>
+                <div class="col-md-6">
+                  <span class="pull-right pagado col-sm-12">Prenom :{{dema.client.prenom}}</span>
+                  <span class="pull-right pagado col-sm-12">Nom :{{dema.client.nom}}</span>
+                  <span class="pull-right pagado col-sm-12">Adresse :{{dema.client.adresse}}</span>
+                  <span class="pull-right pagado col-sm-12">Email :{{dema.client.email}}</span>
+                </div>
+                <div class="col-md-6" >
+                  <span class="pull-right pagado col-sm-12">Mobile :{{dema.client.telephoneMobile}}</span>
+                  <span class="pull-right pagado col-sm-12">Fixe :{{dema.client.telephoneFixe}}</span>
+                  <span class="pull-right pagado col-sm-12">Sexe :{{dema.client.sexe}}</span>
+                  <span class="pull-right pagado col-sm-12">Numero Identification:{{dema.client.identification}}</span>
+                </div>
+            </div>
+          </div>
+      </div>
+    </td>
+    <td *ngIf="listeVisibiliteCreatContrat[position]">
+        <div class="col-md-12">
+          <div class=col-md-6>
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <span>Debut Contrat</span>
+              </div>
+              <div class="col-md-12">
+                <input type="date" [(ngModel)]="debutContrat"/>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <span>Fin Contrat</span>
+              </div>
+              <div class="col-md-12">
+                <input type="date" [(ngModel)]="finContrat" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <span>Salaire Mensuel</span>
+              </div>
+              <div class="col-md-12">
+                <input type="number" [(ngModel)]="salaire" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="radio col-md-12" *ngFor="let emp of dema.employees; ">
+               <label><input type="radio" name="employe" id="radios-4" (change)="changeEmploye(emp)"  >{{emp.prenom}} {{emp.nom}}</label>
+            </div>
+            <div class="col-md-12">
+               <button (click)="validerContrat(dema)">Valider</button>
+            </div>
+          </div>
+        </div>
+    </td>
   </tr>
 </tbody>
 </table>
 </div>
-
+<div class="col-md-8">
+    <div class="col-md-8">
+      <div class="col-md-6" >
+        <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+      </div>
+      <div class="col-md-6" >
+          <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+      </div>
+    </div >
+    <div class="col-md-4">
+    </div> 
+  </div>
 <div>
 
   <!-- demand edite -->

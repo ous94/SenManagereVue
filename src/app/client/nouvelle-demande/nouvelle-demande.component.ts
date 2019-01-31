@@ -72,16 +72,28 @@ export class NouvelleDemandeComponent implements OnInit {
     });
   }
    //Employes Selectionnes
-   getselectedEmployesvalues(employe:Employee,position :number){
+   getselectedEmployesvalues(employe:Employee,position :number,$event:Event){
     
     let index:number=this.selectedEmployevaluesId.indexOf(employe.idemploye);
     //let index:number=this.selectedEmployevalues.indexOf(employe);
      if(index==-1)
     {
-      this.selectedEmployevaluesId.push(employe.idemploye);
-      this.selectedEmployevalues.push(employe);
-      let element =document.getElementById(""+position); 
-      element.style.backgroundColor="#40826D";
+      if(this.selectedEmployevalues.length<=4)
+      {
+         this.selectedEmployevaluesId.push(employe.idemploye);
+         this.selectedEmployevalues.push(employe);
+         let element =document.getElementById(""+position); 
+         element.style.backgroundColor="#40826D";
+      }
+      else
+      {
+         alert("Vous avez le nombre maximale d'employes à associer a votre demande");
+         //document.getElementById("inlineCkeckbox"+position).setAttribute("unchecked","unchecked");
+         var t=document.getElementById("inlineCkeckbox"+position);
+         $event.stopPropagation();
+         $event.stopImmediatePropagation();
+         
+      }
     }
    else
    {

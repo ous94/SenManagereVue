@@ -76,7 +76,7 @@ import { RechercheLocaliteComponent } from './employee/recherche-localite/recher
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
 import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component';
-import { MessageClientComponent } from './client/message-client/message-client.component';
+import { ContratClientComponent } from './client/contrat-client/contrat-client.component';
 import { ListeEmployesComponent } from './client/liste-employes/liste-employes.component';
 import { ProfilComponent } from './client/profil/profil.component';
 import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
@@ -93,6 +93,8 @@ import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
 import { RefCompetenceComponent } from './Adm/ref-competence/ref-competence.component';
 import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MesContratsComponent } from './Adm/mes-contrats/mes-contrats.component';
+import { PageDefautComponent } from './client/page-defaut/page-defaut.component';
 
 const appRoutes: Routes = [
 
@@ -126,6 +128,8 @@ const appRoutes: Routes = [
     {path:'client/acceuil',component:AcceuilClientComponent},
     {path:'contact1',component:Contact1Component},
     {path:'espace',component:EspaceAdminComponent},
+    {path:'mesdemandes',component:MesDemandesComponent},
+    {path:'mescontrats',component:MesContratsComponent},
 
 ];
 
@@ -196,7 +200,7 @@ const appRoutes: Routes = [
     TapeDemandeComponent,
     MesDemandesComponent,
     EspaceAdminComponent,
-    MessageClientComponent,
+    ContratClientComponent,
     ListeEmployesComponent,
     ProfilComponent,
     RechercheEmpAdmComponent,
@@ -211,7 +215,9 @@ const appRoutes: Routes = [
     RefTypeIdenComponent,
     RefLangComponent,
     RefCompetenceComponent,
-    RefNiveauEtudeComponent
+    RefNiveauEtudeComponent,
+    MesContratsComponent,
+    PageDefautComponent
   ],
   entryComponents: [
     ConfirmComponent

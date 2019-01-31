@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Demande} from '../Classe/Demande';
 import {Client} from '../Classe/Client';
 import {Employee} from '../Classe/Employee';
+import { RechercheDemande } from '../Classe/RechercheDemande';
 
 @Injectable({
   providedIn: 'root'
@@ -80,5 +81,23 @@ getAllClient(): Observable<any> {
 getDemandeClient(idClient:number):Observable<any>
 {
     return this.httpClient.get(this.baseUrl+"/demande/client/"+idClient);
+}
+
+//Pagination des requetes d'interrogation sur la table Demande
+getDemandeClientPagination(rechercheDemande:RechercheDemande):Observable<Demande[]>
+{
+  return this.httpClient.post<Demande[]>(this.baseUrl+"/demande/client/pagination",rechercheDemande);
+}
+getAllDemandePagination(offset:number):Observable<Demande[]>
+{
+  return this.httpClient.get<Demande[]>(this.baseUrl+"/demandes/pagination/"+offset)
+}
+rechercheDemandeDetails(rechercheDemande:RechercheDemande):Observable<Demande[]>
+{
+      return this.httpClient.post<Demande[]>(this.baseUrl+"/demande/recherche/detail",rechercheDemande);
+}
+countDemandeClient(client:Client):Observable<number>
+{
+  return this.httpClient.post<number>(this.baseUrl+"/demande/client/count",client);
 }
 }

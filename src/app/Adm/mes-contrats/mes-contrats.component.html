@@ -1,0 +1,109 @@
+<div class="row colo-md-8">
+  <div class="col-md-12" style="background-color: darkcyan; padding-bottom: 20px; margin-bottom: 20px;">
+    <div class="col-md-2">
+      <div class="col-md-12">
+        <span class="recherche"> Debut Contrat</span>
+      </div>
+      <div class="col-md-12">
+        <input type="date" [(ngModel)]="rechercheDebut" />
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="col-md-12">
+        <span class="recherche"> Fin Contrat</span>
+      </div>
+      <div class="col-md-12">
+        <input type="date" [(ngModel)]="rechercheFin" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12">
+        <span class="recherche">Salaire Mensuel</span>
+      </div>
+      <div class="col-md-12">
+        <input type="number" [(ngModel)]="rechercheSalaire" />
+        <button style="margin-left: 10px; font-weight: bold;"(click)="recherche()">Rercherche</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngFor="let contrat of listeContrats;let position=index;" style="border-bottom: darkcyan solid 2px;">
+      <div class="col-md-6">
+        <div class="col-md-6">
+          <p>Client :</p>
+          <p><span>Prénom :{{contrat.demande.client.prenom}}</span></p>
+          <p><span>Nom :{{contrat.demande.client.nom}}</span></p>
+          <p><span>Adresse :{{contrat.demande.client.adresse}}</span></p>
+          <p><span>Email :{{contrat.demande.client.email}}</span></p>
+          <p><span>Mobile :{{contrat.demande.client.telephoneMobile}}</span></p>
+          <p><span>Fixe :{{contrat.demande.client.telephoneFixe}}</span></p>
+          <p><span>Identification :{{contrat.demande.client.identification}}</span></p>
+        </div>
+        <div class="col-md-6">
+          <p>Employe :</p>
+          <p><span>Prénom :{{contrat.employee.prenom}}</span></p>
+          <p><span>Nom :{{contrat.employee.nom}}</span></p>
+          <p><span>Adresse :{{contrat.employee.adresse}}</span></p>
+          <p><span>Email :{{contrat.employee.email}}</span></p>
+          <p><span>Mobile :{{contrat.employee.telephoneMobile}}</span></p>
+          <p><span>Fixe :{{contrat.employee.telephoneFixe}}</span></p>
+          <p><span>Identification :{{contrat.employee.identification}}</span></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <p>Détails :</p>
+        <p><span>Date début :{{contrat.debut}}</span></p>
+        <p><span>Date fin :{{contrat.fin}}</span></p>
+        <p><span>Salaire :{{contrat.salaire}}</span></p>
+        <div class="col-md-12">
+           <button (click)="vediter(position,contrat)" *ngIf="!vediteContrat[position]" style="margin-bottom: 20px;">Editer contrat </button>
+        </div>
+        <div class="col-md-12">
+          <button (click)="annuler(contrat)" style="margin-bottom: 20px;">Mettre fin au contrat</button>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="vediteContrat[position]">
+        <p>Détails :</p>
+        <div class=col-md-6>
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <span>Debut Contrat</span>
+            </div>
+            <div class="col-md-12">
+              <input type="date" [(ngModel)]="debutContrat"/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <span>Fin Contrat</span>
+            </div>
+            <div class="col-md-12">
+              <input type="date" [(ngModel)]="finContrat" />
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <span>Salaire Mensuel</span>
+            </div>
+            <div class="col-md-12">
+              <input type="number" [(ngModel)]="salaire" />
+            </div>
+          </div>
+          <div class="col-md-12">
+             <button (click)="editer(contrat)">Editer</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="col-md-8">
+    <div class="col-md-8">
+      <div class="col-md-6" >
+        <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+      </div>
+      <div class="col-md-6" >
+          <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+      </div>
+    </div >
+    <div class="col-md-4">
+    </div> 
+  </div>

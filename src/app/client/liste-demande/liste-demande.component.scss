@@ -2,3 +2,38 @@ div
 {
     overflow: auto;
 }
+span
+{
+    font-weight: bold;
+}
+#annuler
+{
+    color:red;
+    font-weight: bold;
+}
+.direction
+{
+   float: right;
+   margin-top: 10%;
+   border: none;
+   border-radius: 1.5rem;
+   padding: 2%;
+   background: #0062cc;
+   color: #ffff;
+   font-weight: 600;
+   width: 70%;
+   cursor: pointer;
+}
+.demande
+{
+    border:#0062b2c4 solid 2px;
+     margin-bottom: 2px;
+}
+.employe
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom:#00a8b3 solid 2px;
+    border-left:#00a8b3 solid 2px;
+    border-right:#00a8b3 solid 2px;
+}
