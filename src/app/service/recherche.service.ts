@@ -24,4 +24,5 @@ export class RechercheService {
   {
      return this.httpClient.post<Employee[]>(this.baseUrl+ '/recherche/allEmploye/pagination', rechercheTous);
   }
+  //
 }

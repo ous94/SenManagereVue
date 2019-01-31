@@ -69,7 +69,7 @@ export class RefNiveauEtudeComponent implements OnInit {
    this.niveauetude.employees=null;
    console.log(this.compForm.value);
 
-   if(this.niveauetude.niveau=="")
+   if(this.niveauetude.niveau=="" || this.niveauetude.niveau==null)
    {
      this.showError();
    }

@@ -81,4 +81,9 @@ getDemandeClient(idClient:number):Observable<any>
 {
     return this.httpClient.get(this.baseUrl+"/demande/client/"+idClient);
 }
+/////conter
+conterDemande():Observable<any>
+{
+  return this.httpClient.get<any>(this.baseUrl+"/demande/nombre/");
+}
 }

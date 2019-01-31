@@ -487,7 +487,7 @@ submithandle()
                      this.employe.photo=this.nomFichier;
                      //Sauvegarde de l'employer
                      console.log(this.employe);
-                     this.showSuccess();
+                     //this.showSuccess();
                      this.EmployeeService.addEmployee(this.employe).subscribe(
                        
                          (data) => { 
@@ -514,6 +514,7 @@ submithandle()
              } );
       },
       (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
+      this.showSuccess();
       this.nestedForm.reset();
   
       /////__________________________________
@@ -546,14 +547,13 @@ showWarning() {
 validerSave() 
 {
   console.log(this.nestedForm.value);
-  //this.employeeTest= this.nestedForm.value;
+   // this.employeeTest= this.nestedForm.value;
    /*  this.employeeTest.prenom !=null && this.employeeTest.nom !=null && this.employeeTest.adresse !=null && this.employeeTest.dateNaissance !=null
     && this.employeeTest.telephoneFixe !=null && this.employeeTest.telephoneMobile!=null && this.employeeTest.email!=null && this.employeeTest.pay !=null
     && this.employeeTest.typeIdentification!=null && this.employeeTest.identification!=null && this.employeeTest.localite!=null && this.employeeTest.ethnies!=null
     && this.employeeTest.situationMatrimoniale!=null && this.employeeTest.nive auetude!=null && this.employeeTest.religion!=null && this.employeeTest.competences!=null
     && this.employeeTest.langues null && this.employeeTest.disponibilites!=null && this.employeeTest.horaire!=null  && this.employeeTest.observation!=null  && this.employeeTest.photo!=null && this.fichierChoisi!=null */
-    this.showSuccess();
-    this.submithandle();
+    //this.submithandle();
 }
 
  // Success Type

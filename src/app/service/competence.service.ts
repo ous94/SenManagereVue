@@ -48,4 +48,8 @@ getAllCompetencePagination(offset:number):Observable<any>
 updateCompetence(id:number,competence:Competence): Observable<Object>{
   return this.http.put(`${this.baseUrl}/competence/edite/${id}`,competence);
 }
+conterCompet():Observable<any>
+{
+  return this.http.get<any>(this.baseUrl+"/competence/nombre/");
+}
 }

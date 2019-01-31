@@ -67,7 +67,7 @@ export class RefEthnieComponent implements OnInit {
    this.ethnies = this.compForm.value;
    this.ethnies.employees=null;
    console.log(this.compForm.value);
-   if(this.ethnies.nom=="")
+   if(this.ethnies.nom=="" || this.ethnies.nom==null)
    {
      this.showError();
    }

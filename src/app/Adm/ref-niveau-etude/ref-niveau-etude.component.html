@@ -1,6 +1,6 @@
-<div class="container bootstrap snippet">
-    <div class="row" >
-        <div class="col-md-8 " *ngIf="!vajout">
+<div class=col-md>
+    <div class="row col-md-12" >
+        <div class="col-md-9 " *ngIf="!vajout">
         <h5>Nouveau NiveauEtude</h5>
         <form [formGroup]="compForm" (ngSubmit)="validerNiveau()" >
             <div class="form-group col-md-5">
@@ -15,8 +15,7 @@
             <button id="idbtn" (click)="visibiliteLister()" class="btn btn-primary" ><i class="glyphicon glyphicon-list"></i></button>
 
         </div>
-      
-        <div class="col-md-8 " *ngIf="vEdite">
+        <div class="col-md-9 " *ngIf="vEdite">
                 <h5>Editer NiveauEtude</h5>
                 <form [formGroup]="compForm" (ngSubmit)="validerNiveau()" >
                     <div class="form-group col-md-5">
@@ -35,7 +34,7 @@
 </div>
     <!-- fin -->
 
- <div class="col-md-6">
+ <div class="col-md-12">
 <div class="panel panel-primary" *ngIf="listerCompetence">
     <div class="panel-heading"><span class="glyphicon glyphicon-list"> Mes Ethnies</span></div>
   <table class="table table-striped">

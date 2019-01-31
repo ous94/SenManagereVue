@@ -93,11 +93,13 @@ import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
 import { RefCompetenceComponent } from './Adm/ref-competence/ref-competence.component';
 import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ClientnewAdmComponent } from './Adm/clientnew-adm/clientnew-adm.component';
+import { MesemployesAdmComponent } from './Adm/mesemployes-adm/mesemployes-adm.component';
 
 const appRoutes: Routes = [
 
   //{path: '', pathMatch: 'full', component: HomeComponent},
-    {path: '', pathMatch: 'full', component: RefLangComponent},
+    {path: '', pathMatch: 'full', component: TestComponent},
    {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
@@ -113,7 +115,7 @@ const appRoutes: Routes = [
     {path:'nav',component:NavbarComponent},
     {path:'client',component:ClientComponent},
     {path:'listeClient',component:ListeClientComponent},
-    {path:'',component:RefLangComponent},
+    {path:'',component:TestComponent},
     {path:'employDisponible',component:EmployeDisponibleComponent},
     {path:'contacter',component:ConctactComponent},
     //new version
@@ -126,6 +128,11 @@ const appRoutes: Routes = [
     {path:'client/acceuil',component:AcceuilClientComponent},
     {path:'contact1',component:Contact1Component},
     {path:'espace',component:EspaceAdminComponent},
+    {path:'lang',component:RefLangComponent},
+    {path:'scripte',component:ScriptComponent},
+
+
+
 
 ];
 
@@ -211,7 +218,9 @@ const appRoutes: Routes = [
     RefTypeIdenComponent,
     RefLangComponent,
     RefCompetenceComponent,
-    RefNiveauEtudeComponent
+    RefNiveauEtudeComponent,
+    ClientnewAdmComponent,
+    MesemployesAdmComponent
   ],
   entryComponents: [
     ConfirmComponent

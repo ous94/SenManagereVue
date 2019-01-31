@@ -37,5 +37,10 @@ getAllPaysPagination(offset:number):Observable<any>
 updatePays(id:number,pays:Pays): Observable<Object>{
     return this.http.put(`${this.baseUrl}/pays/edite/${id}`,pays);
 }
+///
+conterPays():Observable<any>
+{
+  return this.http.get<any>(this.baseUrl+"/pays/nombre/");
+}
 
 }

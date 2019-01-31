@@ -20,7 +20,7 @@ export class EthniesService {
   deleteEthniesById(idetheni :number) : Observable<any>
   {
       console.log("Suppression des ethnies choisi");
-      return this.http.delete(this.baseUrl+"/ethnies/suppression/"+idetheni, { responseType: 'text' });
+      return this.http.delete(this.baseUrl+"/ethnies/delete/"+idetheni, { responseType: 'text' });
   }
 
    //ajout
@@ -34,6 +34,10 @@ getAllEthniesPagination(offset:number):Observable<any>
 }
 updateEthnies(id:number,ethnies:Ethnies): Observable<Object>{
   return this.http.put(`${this.baseUrl}/ethnies/edite/${id}`,ethnies);
+}
+conterEthnie():Observable<any>
+{
+  return this.http.get<any>(this.baseUrl+"/ethnie/nombre/");
 }
 
 

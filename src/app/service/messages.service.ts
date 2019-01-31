@@ -22,6 +22,11 @@ export class MessagesService {
     return this.httpClient.delete(`${this.baseUrl}/employes/delete/${id}`, { responseType: 'text' });
 
   }
+  /////conter
+conterMeassages():Observable<any>
+{
+  return this.httpClient.get<any>(this.baseUrl+"/message/nombre/");
+}
   
 
 }

@@ -2,14 +2,14 @@
     +++++++++++++++++++++DEBUT++++++++++++++++++-->
     <div class="container" id="listeEmployes">
         <div class="row">
-        <section class="content">
+        <section class="content ">
           <div class="table-container panel-body panel panel-default col-md-8">
           <table class="table table-filter">
             <tbody>
-            <tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;">
+            <tr data-status="pagado" *ngFor="let employe of listeEmployes ;let position=index;" id="{{position}}">
               <td>
               <div class="ckbox">
-                <input type="checkbox" id="inlineCkeckbox{{position}}" >
+                <input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe,position)">
                   <label for="inlineCkeckbox{{position}}"></label>
               </div>
               </td>
@@ -65,7 +65,7 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <p *ngIf="employe.niveauetude.niveau">Niveau d'Etude :{{employe.niveauetude.niveau}}</p>
-                        <p *ngIf="employe.localite">Ethnie :{{employe.localite.nom}}</p>
+                        <p *ngIf="employe.localite">Localite :{{employe.localite.nom}}</p>
                       </div>
                       <div class="col-sm-6">
                         <p>Disponibilite :</p>
@@ -89,17 +89,44 @@
         </section>
         <div class="col-md-12">
           <div class="col-md-8">
-              <div class="col-md-6" >
-                <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
-              </div>
-              <div class="col-md-6" >
-                 <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
-              </div>
+            <div class="col-md-6" >
+              <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+            </div>
+            <div class="col-md-6" >
+                <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+            </div>
           </div >
           <div class="col-md-4">
           </div> 
         </div>
        </div>
       </div>
-<!--++++++++++++++++++++FIN++++++++++++++++++++++++++
-     LIste Des employes a associer a la Demande -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- partie activite Employer  -->
+<div class="col-md-9">
+          <!-- statistique -->
+          <div class="panel panel-primary">
+             <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+                 <div class="panel-body panel-hover">
+                   
+                   
+                </div>
+            </div>
+
+</div><!-- md-9  fin partie employer-->  

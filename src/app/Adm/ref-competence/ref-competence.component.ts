@@ -70,7 +70,7 @@ export class RefCompetenceComponent implements OnInit {
    this.competence.employees=null;
    this.competence.idcompetence=null;
    console.log(this.compForm.value);
-   if(this.competence.description==null)
+   if(this.competence.description==null || this.competence.description=="")
    {
      this.showError();
    }

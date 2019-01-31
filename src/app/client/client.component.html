@@ -101,16 +101,14 @@
                                        <input type="text" class="form-control activation" id="telephoneFixe" placeholder="telephoneFixe" formControlName="telephoneFixe" [ngClass]="{'form-control':true,'is-invalid':telephoneFixe.invalid && telephoneFixe.touched, 'is-valid':telephoneFixe.valid && telephoneFixe.touched}">           
                                    </div>
                                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                                             <p  class="btnRegister"></p>
                                              <li class="nav-item">
-                                                       <button class="nav-link active" type="submit" [disabled]="!clientForm2.valid" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true">          Suivant</button>
-
+                                                       <button class="nav-link active" type="submit" [disabled]="!clientForm2.valid" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true">Suivant</button>
                                             </li>
                                      </ul>
 
                                      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                                         <li class="nav-item">
-                                             <button class="nav-link active"  id="home-tab" data-toggle="tab" (click)="afficheSuivant()" role="tab" aria-controls="home" aria-selected="false">Precedant</button>
+                                             <button class="nav-link active"  type="button" id="home-tab" data-toggle="tab" (click)="afficheSuivant()" role="tab" aria-controls="home" aria-selected="false">Precedant</button>
                                         </li>   
                                    </ul>
                               </div>
@@ -154,22 +152,18 @@
                                             </div>
                                           </div>
                                           <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                                                  <p  class="btnRegister"></p>
                                                   <li class="nav-item">
-                                                    <button class="nav-link active" type="submit" id="home-tab" data-toggle="tab" [disabled]="!clientForm3.valid"   role="tab" aria-controls="home" aria-selected="true">Register</button>
-
+                                                       <button class="nav-link active" type="submit" [disabled]="!clientForm3.valid" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="false">Register</button>
                                                  </li>
                                           </ul>
-
-                                          <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                                             <li class="nav-item">
-                                                  <button class="nav-link active" id="home-tab" data-toggle="tab" (click)="afficheSuivant4()" role="tab" aria-controls="home" aria-selected="true">Precedant</button>
-                                             </li>   
-                                        </ul>
-                                      </div>
-                                 </form>
-                               <!-- fin -->
-
+                                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                                                  <li class="nav-item">
+                                                       <button class="nav-link active"  type="button" id="home-tab" data-toggle="tab" (click)="afficheSuivant4()" role="tab" aria-controls="home" aria-selected="false">Precedant</button>
+                                                  </li>   
+                                         </ul>
+                                   </div>
+                          </form>
+                    <!-- fin -->
               </div>
       </div>
  </div>           

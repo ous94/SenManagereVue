@@ -1,7 +1,439 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!-- 
+  <-- Fixed navbar
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand smothscroll" ><b>Welcom , Barry</b></a>
+    
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a [routerLink]="['/']" routerLinkActive="router-link-active"  class="smothscroll glyphicon glyphicon-home">Accueil</a></li>
+              <li><a  class="smothscroll glyphicon glyphicon-envelope">Messages</a></li>
+              <li><a  class="smothscroll glyphicon glyphicon-user">Employes</a></li>
+              <li><a  class="smothscroll glyphicon glyphicon-briefcase">Clients</a></li>
+              <li><a  class="smothscroll glyphicon glyphicon-user">Users</a></li>
+              <li><a  class="smothscroll  glyphicon glyphicon-cog">References</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  class="smothscroll  glyphicon glyphicon-log-in">S'Inscrire</a></li>
+                <li><a  class="smothscroll  glyphicon glyphicon-off">Logout</a></li>
+              </ul>
+          </div>
+          
+        </div>
+      </nav> 
+    
+        <div class="sect">
+          <header id="header">
+            <div class="container">
+               <div class="row"> 
+                 <div class="col-md-10">
+                   <h1><span class="glyphicon glyphicon-cog"></span>Dasbord<small>Mangement</small></h1>
+    
+             </div> 
+             <div class="col-md-2">
+    
+             </div>
+    
+           </div>
+    
+         </div>
+      </header>
+      </div>
+    
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand"  class="smothscroll"><h5>SeneMenagère</h5></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a class="smothscroll" [routerLink]="['/']" routerLinkActive="router-link-active" ><h5>Acceuil</h5></a></li>
+                <li><a [routerLink]="['/contacter']" routerLinkActive="router-link-active" ><h5>Contact</h5></a></li>
+               
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a class="smothscroll" [routerLink]="['/EspaceClient']" routerLinkActive="router-link-active" ><h5>S'inscrire</h5></a></li>
+                <li><a class="smothscroll" [routerLink]="['/login']" routerLinkActive="router-link-active" ><h5><span class="glyphicon glyphicon-log-in"></span> Connexion</h5></a></li>
+              </ul>
+            </div>
+      </div>
+    </nav>
+ -->
+
+
+ <form [formGroup]="nestedForm" (ngSubmit)="validerSave()" >
+
+ <div class="col-md-12">
+    <!-- inscription -->
+     <div class="panel panel-primary">
+       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+           <div class="panel-body panel-hover">
+
+
+              <div class="col-md-4">
+                  <div class="well dash-box">
+                    
+                    <div class="formGroup">
+                        <label for="addtext">Prenom</label>
+                        <input type="text" formControlName="prenom"[ngClass]="{'form-control':true,'is-invalid':prenom.invalid && prenom.touched, 'is-valid':prenom.valid && prenom.touched}" id="prenom" placeholder="Entrer prenom">
+                        <div *ngIf="f.prenom.errors" class="invalid-feedback">
+                           <div *ngIf="f.prenom.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 3 caractères</div>
+                       </div>
+                        </div>
+                    <div class="formGroup">
+                        <label for="nomtext">nom</label><br>
+                        <input type="text" formControlName="nom" [ngClass]="{'form-control':true,'is-invalid':nom.invalid && nom.touched, 'is-valid':nom.valid && nom.touched}" id="nomtext" placeholder="Entrer nom">
+                        <div *ngIf="f.nom.errors" class="invalid-feedback">
+                           <div *ngIf="f.nom.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 2 caractères</div>
+                       </div>
+                   </div>
+                </div><!-- well dash -->
+            </div><!-- md-4 -->
+                <div class="col-md-4">
+                    <div class="well dash-box">
+                      
+                      <div class="formGroup">
+                          <label for="emailtext">Email</label><br>
+                          <input type="email" formControlName="email" [ngClass]="{'form-control':true,
+                          'is-invalid':email.invalid && email.touched,
+                            'is-valid':email.valid}" id="emailtext" placeholder="Entrer Email" >
+                          </div>
+                      <div class="formGroup">
+                          <label for="datetext">Date de Naissance</label>
+                          <input type="date" formControlName="dateNaissance" [ngClass]="{'form-control':true,'is-invalid':dateNaissance.invalid && dateNaissance.touched,'is-valid':dateNaissance.valid}" id="datetext" placeholder="Entrer dateNaissance">   
+                     </div>
+                  </div><!-- well dash -->
+              </div><!-- md-4 -->
+
+                <!-- fin2 -->
+                  <!-- fin -->
+                  <div class="col-md-4">
+                      <div class="well dash-box">
+                        
+                        <div class="formGroup">
+                            <label for="fixetext">Téléphone Fixe</label>
+                             <input type="tel" formControlName="telephoneFixe" [ngClass]="{'form-control':true,'is-invalid':telephoneFixe.invalid && telephoneFixe.touched,'is-valid':telephoneFixe.valid}" id="fixetext" placeholder="Entrer Telephone Fixe">
+                        </div>
+                        <div class="formGroup">
+                            <label for="mobiletext">Téléphone Mobile</label>
+                            <input type="tel" formControlName="telephoneMobile" [ngClass]="{'form-control':true,
+                            'is-invalid':telephoneMobile.invalid && telephoneMobile.touched,
+                              'is-valid':telephoneMobile.valid}" id="mobiletext" placeholder="Entrer TelephoneMobile">
+                              <div *ngIf="f.telephoneMobile.errors" class="invalid-feedback">
+                                 <div *ngIf="f.telephoneMobile.errors.minlength" style="font-size: 10px; color: red;">numero au minimum 9 chiffre et 14chiffre au maxim </div>
+                             </div>
+                      </div><!-- well dash -->
+                    </div><!-- md-4 -->
+                  <!-- fin 3-->
+           </div>
+     </div>      
+</div><!-- md-9  fin partie Activite-->  
+
+<!-- 2eme partie -->
+<div class="col-md-12">
+    <!-- inscription -->
+     <div class="panel panel-primary">
+       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+           <div class="panel-body panel-hover">
+
+
+              <div class="col-md-4">
+                  <div class="well dash-box">
+                    
+                    <div class="formGroup">
+                        <label for="addtext">Adresse</label>
+                        <input type="text" formControlName="adresse" [ngClass]="{'form-control':true,
+                        'is-invalid':adresse.invalid && adresse.touched,
+                          'is-valid':adresse.valid}" id="addtext" placeholder="Entrer adresse">
+                          <div *ngIf="f.adresse.errors" class="invalid-feedback">
+                             <div *ngIf="f.adresse.errors.minlength" style="font-size: 10px; color: red;">Nom au minimum 2 caractères</div>
+                         </div>
+                       
+                    </div>
+                    <div class="formGroup">
+                        <label for="pay">Nationalité:</label>
+                         <select id="pay" class="form-control"  formControlName="pay" >
+                          <option selected >Sénégal</option>
+                            <option  *ngFor="let nom of paysliste" value="{{nom}}">{{nom}}</option>      
+                        </select>
+                   </div>
+                </div><!-- well dash -->
+            </div><!-- md-4 -->
+            
+
+                <div class="col-md-4">
+                    <div class="well dash-box">
+                      
+                      <div class="formGroup">
+                          <label for="typeidentification">Type Identification:</label>
+                          <select id="typeidentification" class="form-control"  formControlName="typeidentification" >
+                             <option  *ngFor="let nom of identificationListe" value="{{nom}}">{{nom}}</option>   
+                          </select>
+                          </div>
+                      <div class="formGroup">
+                          <label for="identification">N° d'Identification</label>
+                          <input type="text" formControlName="identification" [ngClass]="{'form-control':true,
+                          'is-invalid':identification.invalid && identification.touched,
+                            'is-valid':identification.valid}" id="identification" placeholder="Entrer Identification">
+
+                     </div>
+                  </div><!-- well dash -->
+              </div><!-- md-4 -->
+
+                <!-- fin2 -->
+                  <!-- fin -->
+                  <div class="col-md-4">
+                      <div class="well dash-box">
+                        
+                        <div class="formGroup">
+                            <label for="Localte">Localité:</label>
+                            <select id="Localte" class="form-control"  formControlName="localite" >
+                                <option  *ngFor="let nom of localiteListe" value="{{nom}}">{{nom}}</option>
+                            </select>
+                        </div>
+                        <div class="formGroup">
+                            <label for="ethnies">Ethnie :</label>
+                            <select id="ethnies" class="form-control"  formControlName="ethnies" >
+                                <option  *ngFor="let nom of ethniesListe" value="{{nom}}">{{nom}}</option>
+                            </select>
+                      </div><!-- well dash -->
+                    </div><!-- md-4 -->
+                  <!-- fin 3-->
+
+               
+           </div>
+    </div>
+         <!-- fin statistique -->
+        
+</div><!-- md-12 fin 2partie Activite-->  
+
+<!-- 3eme partie -->
+<div class="col-md-12">
+    <!-- inscription -->
+     <div class="panel panel-primary">
+       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+           <div class="panel-body panel-hover">
+
+
+              <div class="col-md-4">
+                  <div class="well dash-box">
+                    
+                    <div class="formGroup">
+                        <label for="situationMatrimoniale">Situation Matrimoniale</label>
+                        <select id="situationMatrimoniale" class="form-control" formControlName="situationMatrimoniale">
+                          <option value="Celibataire">Celibataire</option>
+                          <option value="Mariee">Mariee</option>
+                          <option value="Divorcee">Divorcee</option>
+                          <option value="Veuve">Veuve</option>
+                          </select>
+                       
+                    </div>
+                    <div class="formGroup">
+                        <label for="niveauetude">Niveau d'Etudes</label>
+                          <select id="niveauetude" class="form-control"  formControlName="niveauetude" >
+                        <option  *ngFor="let nom of niveauetudeliste" value="{{nom}}">{{nom}}</option>
+                        </select>
+                   </div>
+                </div><!-- well dash -->
+            </div><!-- md-4 -->
+            
+
+                <div class="col-md-4">
+                    <div class="well dash-box">
+                      
+                      <div class="formGroup">
+                          <label for="langues" class="form-label">Langues Parlées:</label>   
+                          <div class="col-xs-14">
+                            <div class="well" style="max-height: 140px;overflow: auto;">
+                       
+                              <div class="list-group checked-list-box" *ngFor="let control of langueArray.controls; let i=index;">
+                                  <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                                    <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                                    <input class="form-check-input" [formControl]="control" (change)="getselectedLanguevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                                    <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauLangue[i]}}</label>
+                               </div>
+                       
+                             </div>
+                             </div>
+                         
+                     </div>
+                  </div><!-- well dash -->
+              </div><!-- md-4 -->
+
+                <!-- fin2 -->
+                  <!-- fin -->
+                  <div class="col-md-4">
+                      <div class="well dash-box">
+                        
+                        <div class="formGroup">
+                            <label for="competences" class="form-label">Competences:</label>
+
+       <div class="col-xs-20">
+         <div class="well" style="max-height: 140px;overflow: auto;">
+
+           <div class="list-group checked-list-box" *ngFor="let control of competenceArray.controls; let i=index;">
+               <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                 <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                 <input class="form-check-input" [formControl]="control" (change)="getselectedCompetencevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                 <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauCompetence[i]}}</label>
+            </div>
+
+          </div>
+          </div>
+      </div>
+    </div><!-- well dash -->
+  </div><!-- md-4 -->
+<!-- fin 3-->  
+</div>
+</div>
+<!-- fin statistique -->     
+</div><!-- md-9  fin 3 partie Activite-->  
+
+<!-- 4eme partie -->
+<div class="col-md-12">
+    <!-- inscription -->
+     <div class="panel panel-primary">
+       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+           <div class="panel-body panel-hover">
+
+
+              <div class="col-md-4">
+                  <div class="well dash-box">
+                    
+                    <div class="formGroup">
+
+                        <label class="col-md control-label" for="religion" >Religion</label>
+                        <div class="col-md">
+                           
+                         <div class="radio" checked >
+                           <label><input type="radio" checked="true"  name="religion" id="radios-0" value="Musulmane" checked="checked" formControlName="religion">Musulmane</label>
+                         </div>
+                         <div class="radio">
+                           <label><input type="radio" name="religion" id="radios-1" formControlName="religion" value="Chretienne">Chrétienne</label>
+                         </div>
+                      </div>
+                       
+                    </div>
+                    <!-- <div class="formGroup">
+                        <label for="niveauetude">Niveau d'Etudes</label>
+                          <select id="niveauetude" class="form-control"  formControlName="niveauetude" >
+                        <option  *ngFor="let nom of niveauetudeliste" value="{{nom}}">{{nom}}</option>
+                        </select>
+                   </div> -->
+                </div><!-- well dash -->
+            </div><!-- md-4 -->
+            
+
+                <div class="col-md-4">
+                    <div class="well dash-box">
+                      
+                      <div class="formGroup">
+                          <label class="col-md control-label" for="horaire" >Disponiblité:</label>
+                          <div class="col-md">
+                             
+                           <div class="radio" >
+                             <label><input type="radio" name="horaire" id="radios-0" value="Weekend"  formControlName="horaire">Weekend</label>
+                           </div>
+                           <div class="radio">
+                             <label><input type="radio" name="horaire" id="radios-1" formControlName="horaire" value="Semaine">Semaine</label>
+                           </div>
+                           <div class="radio">
+                               <label><input type="radio" name="horaire" id="radios-2" formControlName="horaire" value="Quinzaine">Quinzaine</label>
+                             </div>
+                          </div>
+
+                     </div>
+                  </div><!-- well dash -->
+              </div><!-- md-4 -->
+
+                <!-- fin2 -->
+                  <!-- fin -->
+                  <div class="col-md-4">
+                <div class="well dash-box">
+            <div class="formGroup">
+                <label for="disponiblites" class="form-label">Horaire disponible :</label>   
+                <div class="col-xs">
+                  <div class="well" style="max-height: 140px;overflow: auto;">
+             
+                    <div class="list-group checked-list-box" *ngFor="let control of disponibliteArray.controls; let i=index;">
+                        <!-- <label class="checkbox-inline" *ngFor="let description of competenceListe">
+                          <input class="form-control" type="checkbox" value="" formControlName="competence" name="competence">{{description}}</label> -->
+                          <input class="form-check-input" [formControl]="control" (change)="getselectedDisponiblitevalues()" type="checkbox" id="inlineCkeckbox{{i}}" value="option">
+                          <label class="form-check-label " for="inlineCkeckbox{{i}}">{{tableauDisponiblite[i]}}</label>
+                     </div>
+             
+                     </div>
+                  </div>  
+                </div>
+             </div><!-- well dash -->
+          </div><!-- md-4 -->
+<!-- fin 3-->  
+     </div>
+  </div>        
+</div><!-- md-9  fin partie Activite-->  
+
+
+
+<div class="col-md-12">
+    <!-- inscription -->
+     <div class="panel panel-primary">
+       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
+           <div class="panel-body panel-hover">
+
+
+              <div class="col-md-4">
+                  <div class="well dash-box">
+                    
+                    <div class="formGroup">
+                        <label for="comment">Obseravtion :</label>
+                        <textarea class="form-control" rows="7"   id="comment" formControlName="observation"></textarea>
+                   </div>
+                  
+                    
+                </div><!-- well dash -->
+            </div><!-- md-4 -->
+               
+            <div class="col-md-4">
+                <div class="well dash-box">
+              <div class="formGroup">
+                  <div class="form-group input-group-sm">
+                      <input type="file" (change)="selectFile($event)" class="form-control" />
+                    </div>
+                 </div>
+                 <div class="formGroup">
+                    <button  class="btn btn-success" type="submit" [disabled]="nestedForm.valid">Save<span class=" glyphicon glyphicon-ok"></span></button>
+
+                 </div>
+                  
+              </div><!-- well dash -->
+          </div><!-- md-4 -->
+
+       </div>
+     </div>      
+</div><!-- md-9  fin partie Activite-->  
+</div>
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+

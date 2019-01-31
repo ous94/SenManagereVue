@@ -29,4 +29,13 @@ export class LangueService {
       console.log("Suppression des ethnies choisi");
       return this.http.delete(this.baseUrl+"/langue/delete/"+langue, { responseType: 'text' });
   }
+  getALLlanguePagianation(offset :number) : Observable<any>
+  {
+      console.log("get langue pagination");
+      return this.http.get(this.baseUrl+"/langue/pagination/"+offset);
+  }
+  conterLangue():Observable<any>
+{
+  return this.http.get<any>(this.baseUrl+"/langue/nombre/");
+}
 }

@@ -155,5 +155,10 @@ getAllEmployesPagination(offset:number):Observable<any>
 {
   return this.httpClient.get<any>(this.baseUrl+"/allEmploye/pagination/"+offset);
 }
+/////conter
+conterEmployes():Observable<any>
+{
+  return this.httpClient.get<any>(this.baseUrl+"/employee/nombre/");
+}
 
 }

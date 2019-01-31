@@ -8,6 +8,7 @@
         <div class="container slider-top-text">
             <div class="row">
                 <div  class="col-md-12 text-center">
+                    <br><br>
                     <h3 id="text1" class="my-heading">Bienvenue sur <span class="bg-main">votre Espace Ménagère</span></h3>
                     <h4 class="myp-slider text-center">Nous vous proposons des Services de qualités</h4>
                     <h4 class="myp text-center">Services Entreprises    |   Service Ménagères    |   Service d'Organisations </h4>
@@ -120,3 +121,33 @@
 </div>
 </div>
 <app-footer1></app-footer1>
+
+<script>
+
+        jQuery(document).ready(function( $ ) {
+        
+        // Smooth scroll for the menu and links with .scrollto classes
+        $('.smothscroll').on('click', function(e) {
+          e.preventDefault();
+          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            if (target.length) {
+        
+              $('html, body').animate({
+                scrollTop: target.offset().top + 20
+              }, 1500, 'easeInOutExpo');
+            }
+          }
+        });
+        
+        $(".navbar-collapse a").on('click', function() {
+          $(".navbar-collapse.collapse").removeClass('in');
+        });
+        
+        
+        $('.carousel').carousel({
+          interval: 3500
+        });
+        
+        });
+        </script>

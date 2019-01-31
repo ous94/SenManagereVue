@@ -59,10 +59,11 @@ getAllClient(): Observable<any> {
  // recuperation Email
  getTelephoneClient(telephone:String): Observable<boolean>{
   return this.httpClient.get<boolean>(`${this.baseUrl}/client/telephoneMobile/${telephone}`);
-
-
  }
-
-
+ /////conter
+conterClient():Observable<any>
+{
+  return this.httpClient.get<any>(this.baseUrl+"/client/nombre/");
+}
 
 }

@@ -35,4 +35,8 @@ getAllNiveauetudePagination(offset:number):Observable<any>
 updateNiveauetude(id:number,niveauetude:Niveauetude): Observable<Object>{
   return this.http.put(`${this.baseUrl}/niveauEtudes/edite/${id}`,niveauetude);
 }
+conterNiveau():Observable<any>
+{
+  return this.http.get<any>(this.baseUrl+"/niveauEtude/nombre/");
+}
 }
