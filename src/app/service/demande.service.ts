@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Demande} from '../Classe/Demande';
 import {Client} from '../Classe/Client';
 import {Employee} from '../Classe/Employee';
+import { BaseUrl } from '../ConfigProjet/baseUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import {Employee} from '../Classe/Employee';
 export class DemandeService {
 
 demande : Demande = new Demande();
-  private baseUrl='http://localhost:8000/api';
+  base:BaseUrl = new BaseUrl();
+  baseUrl:String=this.base.baseUrl;
 
   constructor(private httpClient:HttpClient ) {}
  //Ajouter une Demande

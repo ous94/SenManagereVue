@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { BaseUrl } from '../ConfigProjet/baseUrl';
 import { Niveauetude } from '../Classe/Niveauetude';
 
 @Injectable({
@@ -8,7 +9,8 @@ import { Niveauetude } from '../Classe/Niveauetude';
 })
 export class NiveauEtudeService {
 
-  private baseUrl='http://localhost:8000/api';
+  base:BaseUrl = new BaseUrl();
+  baseUrl:String=this.base.baseUrl;
 
   constructor(private http:HttpClient) { }
 

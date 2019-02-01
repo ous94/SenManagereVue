@@ -193,7 +193,7 @@ export class RefLangComponent implements OnInit {
     this.EmployesListes=false;
     this.EmployesRecherche=false;
     this.EmployesNew=false;
-     //
+     //reference
      this.Paysref=false;
      this.Ethnieref=false;
      this.Languesref=false;
@@ -202,6 +202,10 @@ export class RefLangComponent implements OnInit {
      this.typeIdentificationref=false;
      this.niveauEtuderef=false;
      this.referenceStatistique=false;
+     //client
+     this.ClientsListes=false;
+    this.ClientsRecherche=false;
+    this.ClientsNew=false;
   }
   vEmploye(){
     this.afficheEmployes=!this.afficheEmployes;
@@ -245,6 +249,11 @@ export class RefLangComponent implements OnInit {
    this.typeIdentificationref=false;
    this.niveauEtuderef=false;
    this.referenceStatistique=false;
+    //employee
+    this.EmployesListes=false;
+    this.EmployesNew=false;
+    this.EmployesRecherche=false;
+  
 
 
     
@@ -267,6 +276,7 @@ export class RefLangComponent implements OnInit {
    this.competenceref=false;
    this.typeIdentificationref=false;
    this.niveauEtuderef=false;
+   
   }
   vEmployeListe(){
     this.EmployeStatistique=false;

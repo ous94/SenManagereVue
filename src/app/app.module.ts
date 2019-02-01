@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClient } from 'selenium-webdriver/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,7 +20,6 @@ import { AsideComponent } from './aside/aside.component';
 import { ListeEmployeComponent } from './liste-employe/liste-employe.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
-
 import { ConnexionComponent } from './connexion/connexion.component';
 import { EspaceClientComponent } from './espace-client/espace-client.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -75,26 +74,25 @@ import { RechercheEthniesComponent } from './employee/recherche-ethnies/recherch
 import { RechercheLocaliteComponent } from './employee/recherche-localite/recherche-localite.component';
 import { TapeDemandeComponent } from './Adm/tape-demande/tape-demande.component';
 import { MesDemandesComponent } from './Adm/mes-demandes/mes-demandes.component';
-import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component';
-import { MessageClientComponent } from './client/message-client/message-client.component';
-import { ListeEmployesComponent } from './client/liste-employes/liste-employes.component';
-import { ProfilComponent } from './client/profil/profil.component';
-import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
-import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
-import { MessagesAdmComponent } from './Adm/messages-adm/messages-adm.component';
-import { RechMessageAdmComponent } from './Adm/rech-message-adm/rech-message-adm.component';
-import { EditerClientComponent } from './client/editer-client/editer-client.component';
-import { ListeDemandeComponent } from './client/liste-demande/liste-demande.component';
-import { RefPaysComponent } from './Adm/ref-pays/ref-pays.component';
-import { ReflocaliteComponent } from './Adm/reflocalite/reflocalite.component';
-import { RefEthnieComponent } from './Adm/ref-ethnie/ref-ethnie.component';
-import { RefTypeIdenComponent } from './Adm/ref-type-iden/ref-type-iden.component';
+import { PagewebComponent } from './Adm/pageweb/pageweb.component';
 import { RefLangComponent } from './Adm/ref-lang/ref-lang.component';
 import { RefCompetenceComponent } from './Adm/ref-competence/ref-competence.component';
 import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ClientnewAdmComponent } from './Adm/clientnew-adm/clientnew-adm.component';
 import { MesemployesAdmComponent } from './Adm/mesemployes-adm/mesemployes-adm.component';
+import { ProfilComponent } from './client/profil/profil.component';
+import { ListeEmployesComponent} from './client/liste-employes/liste-employes.component';
+import { EditerClientComponent} from './client/editer-client/editer-client.component';
+import {ListeDemandeComponent} from './client/liste-demande/liste-demande.component';
+import { MessageClientComponent} from './client/message-client/message-client.component';
+import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component';
+import { RefPaysComponent } from './Adm/ref-pays/ref-pays.component';
+import { ReflocaliteComponent } from './Adm/reflocalite/reflocalite.component';
+import { RefEthnieComponent } from './Adm/ref-ethnie/ref-ethnie.component';
+import { RefTypeIdenComponent } from './Adm/ref-type-iden/ref-type-iden.component';
+import { RechercheCliAdmComponent } from './Adm/recherche-cli-adm/recherche-cli-adm.component';
+import { RechercheEmpAdmComponent } from './Adm/recherche-emp-adm/recherche-emp-adm.component';
 
 const appRoutes: Routes = [
 
@@ -132,6 +130,7 @@ const appRoutes: Routes = [
     {path:'scripte',component:ScriptComponent},
 
 
+    {path:'web',component:PagewebComponent},
 
 
 ];
@@ -202,15 +201,10 @@ const appRoutes: Routes = [
     RechercheLocaliteComponent,
     TapeDemandeComponent,
     MesDemandesComponent,
-    EspaceAdminComponent,
-    MessageClientComponent,
-    ListeEmployesComponent,
+    RefLangComponent,
     ProfilComponent,
-    RechercheEmpAdmComponent,
-    RechercheCliAdmComponent,
-    MessagesAdmComponent,
-    RechMessageAdmComponent,
-    EditerClientComponent,
+    PagewebComponent,
+    ListeEmployesComponent,
     ListeDemandeComponent,
     RefPaysComponent,
     ReflocaliteComponent,
@@ -220,7 +214,11 @@ const appRoutes: Routes = [
     RefCompetenceComponent,
     RefNiveauEtudeComponent,
     ClientnewAdmComponent,
-    MesemployesAdmComponent
+    MesemployesAdmComponent,
+    EditerClientComponent,
+    MessageClientComponent,
+    RechercheCliAdmComponent,
+    RechercheEmpAdmComponent
   ],
   entryComponents: [
     ConfirmComponent
@@ -240,7 +238,6 @@ const appRoutes: Routes = [
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    AngularFontAwesomeModule,
 
   ],
   providers: [],
