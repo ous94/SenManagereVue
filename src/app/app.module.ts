@@ -95,6 +95,7 @@ import { RefNiveauEtudeComponent } from './Adm/ref-niveau-etude/ref-niveau-etude
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MesContratsComponent } from './Adm/mes-contrats/mes-contrats.component';
 import { PageDefautComponent } from './client/page-defaut/page-defaut.component';
+import { PagewebComponent } from './Adm/pageweb/pageweb.component';
 
 const appRoutes: Routes = [
 
@@ -130,6 +131,7 @@ const appRoutes: Routes = [
     {path:'espace',component:EspaceAdminComponent},
     {path:'mesdemandes',component:MesDemandesComponent},
     {path:'mescontrats',component:MesContratsComponent},
+    {path:'web',component:PagewebComponent},
 
 ];
 
@@ -202,12 +204,10 @@ const appRoutes: Routes = [
     EspaceAdminComponent,
     ContratClientComponent,
     ListeEmployesComponent,
+    RefLangComponent,
     ProfilComponent,
-    RechercheEmpAdmComponent,
-    RechercheCliAdmComponent,
-    MessagesAdmComponent,
-    RechMessageAdmComponent,
-    EditerClientComponent,
+    PagewebComponent,
+    ListeEmployesComponent,
     ListeDemandeComponent,
     RefPaysComponent,
     ReflocaliteComponent,
@@ -217,7 +217,9 @@ const appRoutes: Routes = [
     RefCompetenceComponent,
     RefNiveauEtudeComponent,
     MesContratsComponent,
-    PageDefautComponent
+    PageDefautComponent,
+    EditerClientComponent,
+
   ],
   entryComponents: [
     ConfirmComponent
@@ -237,7 +239,6 @@ const appRoutes: Routes = [
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    AngularFontAwesomeModule,
 
   ],
   providers: [],

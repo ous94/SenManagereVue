@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { BaseUrl } from '../ConfigProjet/baseUrl';
 import { TypeIdentification } from '../Classe/TypeIdentification';
 
 @Injectable({
@@ -8,7 +9,9 @@ import { TypeIdentification } from '../Classe/TypeIdentification';
 })
 export class TypeIdentificationService {
 
-  private baseUrl='http://localhost:8000/api';
+
+  base:BaseUrl = new BaseUrl();
+  baseUrl:String=this.base.baseUrl;
 
   constructor(private http:HttpClient) { }
 

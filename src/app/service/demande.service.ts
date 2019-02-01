@@ -5,6 +5,7 @@ import {Demande} from '../Classe/Demande';
 import {Client} from '../Classe/Client';
 import {Employee} from '../Classe/Employee';
 import { RechercheDemande } from '../Classe/RechercheDemande';
+import { BaseUrl } from '../ConfigProjet/baseUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import { RechercheDemande } from '../Classe/RechercheDemande';
 export class DemandeService {
 
 demande : Demande = new Demande();
-  private baseUrl='http://localhost:8000/api';
+  base:BaseUrl = new BaseUrl();
+  baseUrl:String=this.base.baseUrl;
 
   constructor(private httpClient:HttpClient ) {}
  //Ajouter une Demande
