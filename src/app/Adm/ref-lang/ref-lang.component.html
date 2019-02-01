@@ -63,8 +63,8 @@
                     <div class="list-group">
                     <a   class="list-group-item active" ><span class=" glyphicon glyphicon-cog"></span>Gestion Employes</a>
                     <a (click)="vEmployenew()" class="list-group-item"><span class=" glyphicon glyphicon-plus-sign"></span> Employes</a>
-                    <a  (click)="vEmployeListe()"class="list-group-item"><span class=" glyphicon glyphicon-list-alt"></span> Listes Employes</a>
-                    <a  (click)="vEmployeRecherche()"class="list-group-item"><span class=" glyphicon glyphicon-search"></span> Employes</a>
+                    <a (click)="vEmployeListe()"class="list-group-item"><span class=" glyphicon glyphicon-list-alt"></span> Listes Employes</a>
+                    <a (click)="vEmployeRecherche()"class="list-group-item"><span class=" glyphicon glyphicon-search"></span> Employes</a>
   
                   </div>
                 </div><!-- fin activation Employes -->
@@ -163,19 +163,7 @@
 
  <!-- partie activite client  -->
  <div class="col-md-9" *ngIf="vClient">
-    <!-- statistique -->
-    <div class="panel panel-primary" *ngIf="clientStatistique">
-       <div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Sen Menagere</div> 
-           <div class="panel-body panel-hover">
-             <div class="col-md-3">
-               <div class="well dash-box">
-                 <h4><span class=" glyphicon glyphicon-user" aria-hidden="true"></span> {{clientNombre}}</h4>
-                 <h6>Clients</h6>
-               </div>
-
-     </div><!-- md-3 -->
-</div>
-</div>
+ 
   <!-- les activite Emplyes -->             
 <app-mes-clients *ngIf="ClientsListes"></app-mes-clients>
 <app-clientnew-adm *ngIf="ClientsNew"></app-clientnew-adm>

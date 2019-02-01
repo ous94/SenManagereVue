@@ -162,6 +162,24 @@ export class RefLangComponent implements OnInit {
     this.accueilAdmin=false;
     this.referenceStatistique=true;
     this.Paysref=false;
+     //
+     this.Paysref=false;
+     this.Ethnieref=false;
+     this.Languesref=false;
+     this.localiteref=false;
+     this.competenceref=false;
+     this.typeIdentificationref=false;
+     this.niveauEtuderef=false;
+     //client
+     this.ClientsListes=false;
+     this.ClientsNew=false;
+     this.ClientsRecherche=false;
+     this.clientStatistique=false;
+     //employee
+     this.EmployeStatistique=false;
+     this.EmployesListes=false;
+     this.EmployesNew=false;
+     this.EmployesRecherche=false;
   }
   vClient(){
     this.afficheClients=!this.afficheClients;
@@ -170,6 +188,7 @@ export class RefLangComponent implements OnInit {
     this.affichemessages=false;
     this.accueilAdmin=false;
     this.clientStatistique=true;
+    //employes
     this.EmployeStatistique=false;
     this.EmployesListes=false;
     this.EmployesRecherche=false;
@@ -182,19 +201,21 @@ export class RefLangComponent implements OnInit {
      this.competenceref=false;
      this.typeIdentificationref=false;
      this.niveauEtuderef=false;
+     this.referenceStatistique=false;
   }
   vEmploye(){
     this.afficheEmployes=!this.afficheEmployes;
     this.afficheClients=false;
     this.afficheReferences=false;
     this.affichemessages=false;
+    //client
     this.EmployeStatistique=true;
     this.clientStatistique=false;
     this.accueilAdmin=false;
     this.ClientsListes=false;
     this.ClientsRecherche=false;
     this.ClientsNew=false;
-     //
+     //refere
      this.Paysref=false;
      this.Ethnieref=false;
      this.Languesref=false;
@@ -202,6 +223,11 @@ export class RefLangComponent implements OnInit {
      this.competenceref=false;
      this.typeIdentificationref=false;
      this.niveauEtuderef=false;
+     this.referenceStatistique=false;
+      //employee
+      this.EmployesListes=false;
+      this.EmployesNew=false;
+      this.EmployesRecherche=false;
     
   }
   vemessage(){
@@ -218,6 +244,8 @@ export class RefLangComponent implements OnInit {
    this.competenceref=false;
    this.typeIdentificationref=false;
    this.niveauEtuderef=false;
+   this.referenceStatistique=false;
+
 
     
   }
@@ -242,6 +270,9 @@ export class RefLangComponent implements OnInit {
   }
   vEmployeListe(){
     this.EmployeStatistique=false;
+    this.clientStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false    
     this.EmployesRecherche=false;
     this.EmployesNew=false;
     this.EmployesListes=!this.EmployesListes;
@@ -260,6 +291,8 @@ export class RefLangComponent implements OnInit {
   }
   vEmployenew(){
     this.EmployeStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false
     this.EmployesListes=false;
     this.EmployesRecherche=false;
     this.EmployesNew=!this.EmployesNew;
@@ -281,6 +314,8 @@ export class RefLangComponent implements OnInit {
     this.ClientsRecherche=!this.ClientsRecherche;
     this.ClientsNew=false;
     this.EmployeStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false
     this.EmployesListes=false;
     this.EmployesRecherche=false;
     this.EmployesNew=false;
@@ -299,6 +334,8 @@ export class RefLangComponent implements OnInit {
     this.ClientsRecherche=!this.ClientsRecherche;
     this.ClientsNew=false;
     this.EmployeStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false
     this.EmployesListes=false;
     this.EmployesRecherche=false;
     this.EmployesNew=false;
@@ -317,6 +354,10 @@ export class RefLangComponent implements OnInit {
     this.ClientsRecherche=false;
     this.ClientsNew=!this.ClientsNew;
     this.EmployeStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false;
+    this.clientStatistique=false;
+    this.referenceStatistique=false
     this.EmployesListes=false;
     this.EmployesRecherche=false;
     this.EmployesNew=false;
@@ -328,6 +369,7 @@ export class RefLangComponent implements OnInit {
     this.competenceref=false;
     this.typeIdentificationref=false;
     this.niveauEtuderef=false;
+    this.accueilAdmin=false;
   }
   /////////////////////Reference
   vpaysref(){
