@@ -1,0 +1,42 @@
+<body>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 contrat" *ngFor="let contrat of listeContrats">
+      <div class="col-sm-6 col-md-6 contenue">
+        <div class="form-group col-md-12">
+          <label for="email">Date Debut :</label>
+          <label>{{contrat.debut}}</label>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="email">Date Fin :</label>
+          <label>{{contrat.fin}}</label>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="email">Salaire Mensuel :</label>
+          <label>{{contrat.salaire}}</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 contenue">
+        <div class="form-group col-md-12">
+           <label for="email">Nom :</label>
+           <label>{{contrat.employee.nom}}</label>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="email">Prenom :</label>
+          <label>{{contrat.employee.prenom}}</label>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="email">Adresse :</label>
+          <label>{{contrat.employee.adresse}}</label>
+        </div>
+        <div class="form-group col-md-12">
+           <label for="email">Mobile :</label>
+           <label>{{contrat.employee.telephoneMobile}}</label>
+        </div>
+        <div class="form-group col-md-12">
+           <label for="email">Situation Matrimoniale :</label>
+           <label>{{contrat.employee.situationMatrimoniale}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+<body>

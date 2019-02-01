@@ -25,9 +25,10 @@ export class ProfilComponent implements OnInit {
   //
   
   constructor(private EmployeeService:EmployeeService,private router:Router,private fb:FormBuilder,private localiteService:LocaliteService,private typeIdentificationService:TypeIdentificationService ,private paysService :PaysService,private clientService :ClientService ,private messageService :MessagesService,private localStorage:LocalStorage) {
-
-    this.localStorage.getItem<Client>("client").subscribe(
-        (data:Client)=>{this.clientConnecte=data;});
+   setTimeout(() => {this.localStorage.getItem<Client>("client").subscribe(
+    (data:Client)=>{this.clientConnecte=data;});
+     }, 30);
+    
    }
    ngOnInit() {}
   editerProfile($event)

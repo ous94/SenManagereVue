@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Demande} from '../Classe/Demande';
 import {Client} from '../Classe/Client';
 import {Employee} from '../Classe/Employee';
+import { RechercheDemande } from '../Classe/RechercheDemande';
 import { BaseUrl } from '../ConfigProjet/baseUrl';
 
 @Injectable({
@@ -83,9 +84,29 @@ getDemandeClient(idClient:number):Observable<any>
 {
     return this.httpClient.get(this.baseUrl+"/demande/client/"+idClient);
 }
+
 /////conter
 conterDemande():Observable<any>
 {
   return this.httpClient.get<any>(this.baseUrl+"/demande/nombre/");
+}
+
+//Pagination des requetes d'interrogation sur la table Demande
+getDemandeClientPagination(rechercheDemande:RechercheDemande):Observable<Demande[]>
+{
+  return this.httpClient.post<Demande[]>(this.baseUrl+"/demande/client/pagination",rechercheDemande);
+}
+getAllDemandePagination(offset:number):Observable<Demande[]>
+{
+  return this.httpClient.get<Demande[]>(this.baseUrl+"/demandes/pagination/"+offset)
+}
+rechercheDemandeDetails(rechercheDemande:RechercheDemande):Observable<Demande[]>
+{
+      return this.httpClient.post<Demande[]>(this.baseUrl+"/demande/recherche/detail",rechercheDemande);
+}
+countDemandeClient(client:Client):Observable<number>
+{
+  return this.httpClient.post<number>(this.baseUrl+"/demande/client/count",client);
+
 }
 }

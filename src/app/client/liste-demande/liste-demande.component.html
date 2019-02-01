@@ -1,32 +1,45 @@
 <div class="row">
-    <div class="col-md-12" style="background-color: aqua;">
-      <div class="col-md-8" style="background-color: brown;">
-        <div class="col-md-4" style="background-color: lightcoral;">
-            <img  width="150px" hieght="200px" src="../../assets/SET1/pp.jpg">
-        </div>
-        <div class="col-md-8" style="background-color :lightslategrey;">
-            <span class="pull-right pagado col-sm-12">Prenom :</span>
-            <span class="pull-right pagado col-sm-12">Nom :</span>
-            <span class="pull-right pagado col-sm-12">Adresse :</span>
-            <span class="pull-right pagado col-sm-12">Telephone Mobile :</span>
-            <span class="pull-right pagado col-sm-12">Religion :</span>
-            <span class="pull-right pagado col-sm-12">Situation Matrimoniale</span>
+    <div class="col-md-12 demande" *ngFor="let demande of listeDemande" >
+      <div class="col-md-8">
+        <div class="col-md-12 employe" *ngFor="let employe of demande.employees">
+          <div class="col-md-6">
+            <span class="pull-right pagado col-sm-12">Prenom :{{employe.prenom}}</span>
+            <span class="pull-right pagado col-sm-12">Nom :{{employe.nom}}</span>
+            <span class="pull-right pagado col-sm-12">Adresse :{{employe.adresse}}</span>
+          </div>
+          <div class="col-md-6" >
+            <span class="pull-right pagado col-sm-12">Religion :{{employe.religion}}</span>
+            <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{employe.situationMatrimoniale}}</span>
+          </div>
         </div>
       </div>
-      <div class="col-md-4" style="background-color: chartreuse">
-         <div class="col-md-12" style="background-color: darkgoldenrod;">
-            <ul>
-              <li>Competence 1:</li>
+      <div class="col-md-4">
+         <div class="col-md-12">
+            <ul *ngFor="let competence of demande.competences ">
+              <li>{{competence.description}}</li>
             </ul>
         </div>
-        <div class="col-md-12" style="background-color: indigo;">
-            <span class="pull-right pagado col-sm-12">Salaire Proposé :1000000 FCFA</span>
-            <span class="pull-right pagado col-sm-12">Salaire Retenu :1000000 FCFA</span>
-            <textarea class="pull-right pagado col-sm-12" rows="7">Service demandé</textarea>
+        <div class="col-md-12">
+            <span class="pull-right pagado col-sm-12">Salaire Proposé :{{demande.salairePropose}} FCFA</span>
+            <span class="pull-right pagado col-sm-12">Salaire Retenu :{{demande.salaireRetenue}} FCFA</span>
+            <span class="pull-right pagado col-sm-12">Date :{{demande.date}} </span>
+            <textarea class="pull-right pagado col-sm-12" rows="7">{{demande.services}}</textarea>
         </div>
-        <div class="col-md-12" style="background-color:silver ">
-          <button (click)="annulerDemande()" style="margin-left: 70px; margin-top: 20px;">Annuler</button>
+        <div class="col-md-12">
+          <button id="annuler" (click)="annulerDemande(demande)" style="margin-left: 70px; margin-top: 20px;">Annuler</button>
         </div>
       </div>
     </div>
+</div>
+<div class="col-md-12">
+  <div class="col-md-8">
+    <div class="col-md-6" >
+      <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+    </div>
+    <div class="col-md-6" >
+        <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
+    </div>
+  </div >
+  <div class="col-md-4">
+  </div> 
 </div>
