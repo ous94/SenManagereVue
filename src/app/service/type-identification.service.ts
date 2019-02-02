@@ -38,9 +38,9 @@ getAllTypeIdentificationPagination(offset:number):Observable<any>
 updateTypeIdent(id:number,ethnies:TypeIdentification): Observable<Object>{
   return this.http.put(`${this.baseUrl}/typeIdentification/edite/${id}`,ethnies);
 }
-conterTypeien():Observable<any>
+conterTypeidentifaction():Observable<any>
 {
-  return this.http.get<any>(this.baseUrl+"/typeIdentification/nombre/");
+  return this.http.get<any>(this.baseUrl+"/typidentification/nombre/");
 }
 }
 

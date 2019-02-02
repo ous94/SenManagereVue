@@ -1,36 +1,25 @@
 
-   <nav id="nav1"class="navbar navbar-primary">
-      <div class="container-fluid">
+
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
           <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-              </button>
+          </div>
+          <ul class="nav navbar-nav">
+            <li ><a class="active" [routerLink]="['/']" routerLinkActive="router-link-active" > Acceuil</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="smothscroll" [routerLink]="['/login']" routerLinkActive="router-link-active" ><span class="glyphicon glyphicon-log-in"></span> Deconnexion</a></li>
+          </ul>
         </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a [routerLink]="['/']" routerLinkActive="router-link-active"><span class=" glyphicon glyphicon-home"></span>Accueil</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a type="button" class="modal-toggle" data-toggle="modal" data-target="Logout"><span class=" glyphicon glyphicon-off"></span>Logout</a></li>
-                    </ul>
-            </div>
-      </div>
-    </nav>
+      </nav>
   <header id="header">
         <div class="container">
              <div class="row">
               <div  class="col-md-10">
-                <h1><span aria-hidden="true" class="glyphicon glyphicon-cog"></span>Admin<small>management</small></h1>
+                <h1><span aria-hidden="true" class="glyphicon glyphicon-cog"></span>Admin<small>SeneMenagere</small></h1>
               </div>
-              <div class="col-md-2">
-                <div class="header">
-                  <button><a type="button" class="modal-toggle" data-toggle="modal" data-target="Logout"><span class=" glyphicon glyphicon-off"></span>Logout</a></button>
-                   </div>
-                  <!-- Single button -->
-
-              </div>
+        
             </div>
               
           </div>

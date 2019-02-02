@@ -59,6 +59,7 @@ export class InscriptionComponent implements OnInit {
   employe :Employee=new Employee();
   employeRetour :Employee=new Employee();
   disponibilite :Disponibilite= new Disponibilite();
+  momentdisponible:String;
 //
   nestedForm= new FormGroup({
     //idemploye:new FormControl(''),
@@ -412,7 +413,7 @@ submithandle()
   const newItemlangu =this.selectedLanguevalues;
   const newitemCompetence=this.selectedCompetenceevalues;
   this.employee1= this.nestedForm.value;
-
+  this.momentdisponible=this.horaire.value;
   //
   //Recuperation de Tyep d'Identification
   this.typeIdentificationService.getTypeIdentificationByNom(this.typeidentification.value).subscribe(
@@ -453,8 +454,6 @@ submithandle()
     );
   };
   // Recuperation des disponibilites
-  
-  
   //
   console.log(this.employee1);
   this.employe.nom=this.employee1.nom;
@@ -462,7 +461,6 @@ submithandle()
   this.employe.religion=this.employee1.religion;
   this.employe.adresse=this.employee1.adresse;
   this.employe.email=this.employee1.email
-  this.employe.idemploye=++this.employee1.telephoneMobile;
   //this.employe.observation=this.employee1.observation;
   this.employe.photo=this.employee1.photo;
   this.employe.situationMatrimoniale=this.employee1.situationMatrimoniale;
@@ -497,25 +495,30 @@ submithandle()
                                      {
                                          this.disponibilite=new Disponibilite();
                                          this.disponibilite.horaire=this.selectedDisponiblitevalues[i];
-                                         this.disponibilite.moment=this.horaire.value;
+                                         this.disponibilite.moment=this.momentdisponible;
+                                         console.log("matinnnnnnnnnnnnn");
+                                         console.log(this.momentdisponible);
+                                         console.log("matinnnnnnnnnnnnn");
+;
                                          this.disponibilite.employee=data;
                                          console.log(this.disponibilite);
                                          this.disponibiliteService.addDisponibilite(this.disponibilite).subscribe(
-                                             (data)=>{console.log(data)},
+                                             (data)=>{console.log(data);
+                                              this.showSuccess();
+                                              this.nestedForm.reset();
+                                             },
                                              (error)=>{console.log(error);} );    
                                      }
                                      
                                      console.log(data)
                                  }, 
-                         (error) =>{console.log(error)} );
+                         (error) =>{console.log(error); this.showError(); } );
                    },
              (error)=>{
                console.log(error);
              } );
       },
       (error)=> {console.log("erreur intervenant lors de la sauvegarde");});
-      this.showSuccess();
-      this.nestedForm.reset();
   
       /////__________________________________
 
