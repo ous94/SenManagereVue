@@ -230,6 +230,8 @@ const appRoutes: Routes = [
     MesContratsComponent,
     PageDefautComponent,
     EditerClientComponent,
+    MessagesAdmComponent,
+    RechMessageAdmComponent,
 
   ],
   entryComponents: [
