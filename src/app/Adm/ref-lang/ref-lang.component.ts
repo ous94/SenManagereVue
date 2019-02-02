@@ -140,7 +140,7 @@ export class RefLangComponent implements OnInit {
  
      });
       ///typiden
-    this.type.conterTypeien().subscribe((data)=>
+    this.type.conterTypeidentifaction().subscribe((data)=>
     {
       console.log(data);
       
@@ -341,12 +341,12 @@ export class RefLangComponent implements OnInit {
   }
   vClientListe(){
     this.ClientsListes=false;
-    this.ClientsRecherche=!this.ClientsRecherche;
+    this.ClientsListes=!this.ClientsListes;
     this.ClientsNew=false;
     this.EmployeStatistique=false;
     this.clientStatistique=false;
     this.referenceStatistique=false
-    this.EmployesListes=false;
+    this.ClientsRecherche=false;
     this.EmployesRecherche=false;
     this.EmployesNew=false;
      //

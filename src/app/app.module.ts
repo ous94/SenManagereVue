@@ -104,7 +104,7 @@ import { EspaceAdminComponent } from './Adm/espace-admin/espace-admin.component'
 const appRoutes: Routes = [
 
   //{path: '', pathMatch: 'full', component: HomeComponent},
-    {path: '', pathMatch: 'full', component: TestComponent},
+    {path: '', pathMatch: 'full', component: PagewebComponent},
    {path:'DemandeEmployee',component:DemandeEmployeeComponent},
     {path:'login',component:LoginComponent},
     {path:'admin',component:AdminComponent},
@@ -137,7 +137,7 @@ const appRoutes: Routes = [
     {path:'scripte',component:ScriptComponent},
     {path:'mesdemandes',component:MesDemandesComponent},
     {path:'mescontrats',component:MesContratsComponent},
-    {path:'web',component:PagewebComponent},
+    {path:'Pageaccueil',component:PagewebComponent},
 
 ];
 

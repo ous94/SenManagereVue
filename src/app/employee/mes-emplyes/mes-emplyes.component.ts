@@ -18,6 +18,7 @@ export class MesEmplyesComponent implements OnInit {
 
 
   listeCompetences:Array<Competence>;
+  
   selectedCompetencevalues:Array<Competence>=[];
   listeEmployes:Array<Employee>;
   tableauVisibiliteDetail:boolean[]=[];
