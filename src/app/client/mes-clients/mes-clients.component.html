@@ -1,80 +1,79 @@
 
 <!-- LIste Des employes a associer a la Demande 
     +++++++++++++++++++++DEBUT++++++++++++++++++-->
-<div class="container" id="listeEmployes">
-   <div class="row">
-    <section class="content">
-      <div class="table-container panel-body panel panel-default col-md-8">
-        <table class="table table-filter">
-          <tbody>
-            <tr data-status="pagado" *ngFor="let client of listeClients ;let position=index;">
-              <td>
-                <a href="javascript:;" class="star">
-                  <i class="glyphicon glyphicon-star"></i>
-                </a>
-              </td>
-              <td>
-                <div class="media">
-                  <a href="#" class="pull-left">
-                    <img  src="../assets/SET1/user-profile.png" class="media-photo">
-                  </a>
-                  <div class="media-body">
-                    <div class="title">
-                      <h4>{{client.prenom}}  {{client.nom}}</h4>
-                      <div class="row">
-                        <div class="col-sm-6" >
-                          <h5 class="col-sm-8" *ngIf="client.observation">Information :</h5>
-                          <p class="summary col-sm-8"><textarea *ngIf="client.observation" id="observation" rows="6" disabled>{{client.observation}}</textarea></p>
-                        </div>
-                        <div class="col-sm-6">
-                           <span class="pull-right pagado col-sm-12">Adresse :{{client.adresse}}</span>
-                           <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{client.sexe}}</span>
-                           <span class="pull-right pagado col-sm-12">Email :{{client.email}}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
-                      <div class="row">
-                        <div class="col-sm-6" *ngIf="client.pay">
-                            <p *ngIf="client.pay.nom">Nationnalite :{{client.pay.nom}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6" *ngIf="client.localite">
-                           <p *ngIf="client.localite.nom">Localite :{{client.localite.nom}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6" *ngIf="client.typeIdentification">                                              
-                           <p *ngIf="client.typeIdentification">TypeIdentification : {{client.typeIdentification.nom}}</p>   
-                        </div>
-                      </div>
-                    </div>
+    <div class="container" id="listeEmployes">
+            <div class="row">
+              <section class="content">
+                <div class="table-container panel-body panel panel-default col-md-8">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr data-status="pagado" *ngFor="let client of listeClients ;let position=index;">
+                       <!--  <td>
+                          <div class="ckbox">
+                              <input type="checkbox" id="inlineCkeckbox{{position}}" (change)="getselectedEmployesvalues(employe)">
+                                  <label for="inlineCkeckbox{{position}}"></label>
+                          </div>
+                        </td> -->
+                        <td>
+                          <a href="javascript:;" class="star">
+                            <i class="glyphicon glyphicon-star"></i>
+                          </a>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="#" class="pull-left">
+                             <img  src="../assets/SET1/user-profile.png" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                  <div class="title">
+                                      <h4>{{client.prenom}}  {{client.nom}}</h4>
+                                      <div class="row">
+                                          <div class="col-sm-6" >
+                                              <h5 class="col-sm-8" *ngIf="client.observation">Information :</h5>
+                                              <p class="summary col-sm-8"><textarea *ngIf="client.observation" id="observation" rows="6" disabled>{{client.observation}}</textarea></p>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <span class="pull-right pagado col-sm-12">Adresse :{{client.adresse}}</span>
+                                              <span class="pull-right pagado col-sm-12">Situation Matrimoniale :{{client.sexe}}</span>
+                                              <span class="pull-right pagado col-sm-12">Email :{{client.email}}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="container-fluid detail" *ngIf="tableauVisibiliteDetail[position]">
+                                      <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.pay">
+                                              <p *ngIf="client.pay.nom">Nationnalite :{{client.pay.nom}}</p>
+                                          </div>
+            
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.localite">
+                                              <p *ngIf="client.localite.nom">Localite :{{client.localite.nom}}</p>
+                                          </div>
+                                     </div>
+                                     <div class="row">
+                                          <div class="col-sm-6" *ngIf="client.typeIdentification">                                              
+                                          <p *ngIf="client.typeIdentification">TypeIdentification : {{client.typeIdentification.nom}}</p>   
+                                          </div>
+                                      </div>
+            
+                                  </div>
+                            </div>
                   </div>
+                       </td>
+                       <td>
+                           <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
+                           <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
+                           <button (click)="deleteClient(client)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
+<!--                            <button (click)="editeEmploye(client)" class="btn btn-primary"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-pencil"></i></button>
+ -->
+
+                       </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </td>
-              <td>
-                <button (click)="details(position)" class="glyphicon glyphicon-plus" *ngIf="!tableauVisibiliteDetail[position]">Détails </button>
-                <button (click)="reduire(position)"  class="glyphicon glyphicon-minus" *ngIf="tableauVisibiliteDetail[position]">Réduire</button>
-                <button (click)="deleteClient(client)" class="btn btn-danger"  *ngIf="tableauVisibiliteDetail[position]" ><i class="glyphicon glyphicon-trash"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-     </section>
-    <div class="col-md-12">
-        <div class="col-md-8">
-            <div class="col-md-6" >
-              <button *ngIf="vprecedent" class="direction"style="font-weight: bold" (click)="precedent()"><span class="glyphicon glyphicon-menu-left"></span>Précédent</button>
+              </section>
             </div>
-            <div class="col-md-6" >
-               <button *ngIf="vsuivant" class="direction" style="font-weight: bold"  (click)="suivant()">Suivant<span class="glyphicon glyphicon-menu-right"></span></button>
-            </div>
-        </div >
-        <div class="col-md-4">
-        </div> 
-    </div>
-  </div>
-</div>
+          </div>
          

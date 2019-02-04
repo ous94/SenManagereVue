@@ -12,12 +12,14 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 })
 export class MesClientsComponent implements OnInit {
 
-  offset:number=0;
-  vsuivant:boolean=false;
-  vprecedent:boolean=false;
+  //listeEmploye:Employee[];
+
+
   listeClients:Array<Client>;
   tableauVisibiliteDetail:boolean[]=[];
   selectedClientvalues=[];
+  //favCompetenceErreur:boolean=true;
+  //favEmployeErreur:boolean=true;
 
 constructor(private ClientService:ClientService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
     this.reloadData();
@@ -47,63 +49,46 @@ constructor(private ClientService:ClientService,private uploadFileService :Uploa
 
   reloadData() {
 
-    this.ClientService.getAllPagination(this.offset).subscribe(
+    this.ClientService.getAllClient().subscribe(
       (data)=>{this.listeClients=data;
-         for(let i:number=0;i<this.listeClients.length;i++)
-        {
-          this.tableauVisibiliteDetail[i]=false;
-        }});
-    if(this.listeClients.length>2)
-    {
-      this.vsuivant=true;
-    }
+               console.log(this.listeClients);
+               for(let i:number=0;i<this.listeClients.length;i++)
+               {
+                 this.tableauVisibiliteDetail[i]=false;
+               }}
+  );
+ /*  this.comptenceService.getAllCompetences().subscribe(
+     (data)=>{this.listeCompetences=data;}
+  ); */
+ 
+
   }
 
-// delete Client
+
+ 
+
+// delete employee
 deleteClient(client:Client) {
-  this.ClientService.deleteClientid(client.idclient).subscribe(
-      (data) =>{alert("le Client a été bien supprimé");},
-      error =>{alert("Echec de la suppression");});
-  this.reloadData();
+  this.ClientService.deleteClientid(client.idclient)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.listeClients.splice(this.listeClients.indexOf(client),1);
+        
+      },
+      error => console.log(error));
+      this.reloadData();
 }
 //edite emplo
-  editeClient()
-  {
+editeEmploye()
+     {
        
-  }
-  uploadPhotoClient(photo:String): String
-  {
-    return this.uploadFileService.getPhoto(photo);
-  }
-  suivant($event)
-  {
-    if(this.listeClients.length>=2)
+     }
+    
+
+
+    uploadPhotoClient(photo:String): String
     {
-      this.offset++;
-      this.vprecedent=true;
-      this.reloadData();
-      if(this.listeClients.length<2)
-      {
-        this.vsuivant=false;
-      } 
+      return this.uploadFileService.getPhoto(photo);
     }
-    else
-    {
-      this.vsuivant=false;
-      this.vprecedent=true;
-    }
-  }
-  precedent($event)
-  {
-    if(this.offset>0)
-    {
-      this.offset--;
-      this.vsuivant=true;
-      this.reloadData();
-      if(this.offset==0)
-      {
-         this.vprecedent=false;
-      }
-    }
-  }
   }
