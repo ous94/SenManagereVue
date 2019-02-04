@@ -10,6 +10,7 @@ import { UploadFileService } from 'src/app/upload-file.service';
 import { Client } from 'src/app/Classe/Client';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { RechercheCompetence } from 'src/app/Classe/RechercherCompetence';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nouvelle-demande',
@@ -41,7 +42,7 @@ export class NouvelleDemandeComponent implements OnInit {
    vsuivant:boolean=false;
    vprecedent:boolean=false;
 
-  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private competenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage) { 
+  constructor(private fb:FormBuilder ,private employeService:EmployeeService,private competenceService:CompetenceService,private demandeService:DemandeService,private uploadFileService :UploadFileService ,private localStorage :LocalStorage ,private router :Router) { 
        this.employeService.getAllEmployesPagination(this.offset1).subscribe(
          (data)=>{
             this.listeEmployes=data;
@@ -211,8 +212,17 @@ export class NouvelleDemandeComponent implements OnInit {
             this.client=data;
             this.demandeFinal.client=this.client;
             this.demandeService.addDemande(this.demandeFinal).subscribe(
-              (data)=>{console.log("Enregistrement demande reussi");},
-              (error)=>{console.log("Une erreur est survenue  lors de l'enregistrement");
+              (data)=>{if(data==null)
+                  {
+                    alert("Demande rejeté réessayer plus tard");
+                  }
+                  else
+                  {
+                    this.router.navigate(['client/acceuil']);
+                    alert("Votre demande a éte bien enregistrer");
+                  };
+                },
+              (error)=>{alert("Echec veillez réessayer plus tard");
             });
           });  
    }   

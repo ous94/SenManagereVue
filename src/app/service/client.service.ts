@@ -28,6 +28,11 @@ export class ClientService {
 getAllClient(): Observable<any> {
   return this.httpClient.get(this.baseUrl+"/clientall"); 
 }
+//liste des Clients paginees
+getAllPagination(offset:number):Observable<Client[]>
+{
+     return this.httpClient.get<Client[]>(this.baseUrl+"/client/allClient/pgination/"+offset);
+}
 
 
   // suppression d'un employee
